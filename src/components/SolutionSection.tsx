@@ -15,8 +15,17 @@ const SolutionSection = () => {
             <div className="rounded-lg overflow-hidden shadow-md">
               <AspectRatio ratio={16 / 9}>
                 <img 
-                  src="/lovable-uploads/3fef74f1-6fb1-492d-8b4d-11b40b1abd21.png" 
-                  alt="Milling machine loading a dump truck" 
+                  src="/lovable-uploads/facbf64f-c97d-4ead-a752-da4b94742cb2.png" 
+                  alt="Excavator loading a dump truck with dirt" 
+                  className="w-full h-full object-cover"
+                />
+              </AspectRatio>
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-md">
+              <AspectRatio ratio={16 / 9}>
+                <img 
+                  src="/lovable-uploads/cd9550e2-89af-4418-8ee9-79d50c4b551c.png" 
+                  alt="Asphalt paving operation with dump trucks" 
                   className="w-full h-full object-cover"
                 />
               </AspectRatio>
@@ -60,6 +69,16 @@ const SolutionSection = () => {
               <div>
                 <h3 className="text-xl font-bold mb-2">Professional Crew</h3>
                 <p>Our courteous, experienced drivers ensure safe and efficient hauling on every job.</p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <div className="flex-shrink-0">
+                <MapPin size={28} className="text-mem-blue mt-1" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Local Expertise</h3>
+                <p>With deep knowledge of Memphis and surrounding areas, we navigate efficiently to meet your project's location needs.</p>
               </div>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import { Lock } from "lucide-react";
 import QuoteForm from "./QuoteForm";
 
@@ -13,8 +12,8 @@ const HeroSection = () => {
           <div>
             <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center font-extrabold 
               text-[#060606] 
-              drop-shadow-[0_0_10px_rgba(14,165,233,0.7)]
-              [-webkit-text-stroke:1px_#0EA5E9]"
+              drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]
+              [-webkit-text-stroke:2px_white]"
             >
               #1 Dump Trucks in Memphis – Rugged, Reliable, Ready When You Are
             </h1>
@@ -52,4 +51,3 @@ const HeroSection = () => {
     </section>;
 };
 export default HeroSection;
-

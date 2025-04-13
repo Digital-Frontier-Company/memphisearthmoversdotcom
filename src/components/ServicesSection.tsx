@@ -94,12 +94,14 @@ const ServicesSection = () => {
               </div>
             </div>
             
-            <div className="mt-4 h-44 overflow-hidden rounded-md">
-              <img 
-                src="https://images.unsplash.com/photo-1583001809873-a128495da465?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Landscaping project" 
-                className="w-full h-full object-cover transition-transform group-hover:scale-105"
-              />
+            <div className="mt-4 h-64 overflow-hidden rounded-md">
+              <AspectRatio ratio={16 / 9} className="h-full">
+                <img 
+                  src="/lovable-uploads/7713a843-e930-4591-a487-959cb1eac6fe.png" 
+                  alt="Landscaping project with dirt delivery" 
+                  className="w-full h-full object-contain transition-transform group-hover:scale-105"
+                />
+              </AspectRatio>
             </div>
           </div>
         </div>
@@ -109,3 +111,4 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+

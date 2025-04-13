@@ -20,8 +20,8 @@ const SolutionSection = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md">
               <img 
-                src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" 
-                alt="Memphis Earth Movers equipment" 
+                src="/lovable-uploads/1dbfa978-2fa2-4d7f-a3eb-5c028c5614f6.png" 
+                alt="Memphis Earth Movers dump trucks" 
                 className="w-full h-64 object-cover"
               />
             </div>

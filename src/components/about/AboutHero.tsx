@@ -7,9 +7,9 @@ const AboutHero = () => {
     <section className="bg-gradient-to-b from-white to-gray-100 py-12 md:py-20 relative">
       <div className="absolute inset-0 bg-black/30 z-0">
         <img 
-          src="/lovable-uploads/17a03914-331b-4e10-82ea-af2d4e3d4ff3.png" 
-          alt="Dump trucks on a road with asphalt"
-          className="w-full h-full object-cover object-center opacity-20" 
+          src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
+          alt="Memphis Earth Movers global earth moving services"
+          className="w-full h-full object-cover object-center opacity-45" 
         />
       </div>
       

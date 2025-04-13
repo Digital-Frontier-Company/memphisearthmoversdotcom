@@ -26,7 +26,7 @@ const Header = () => {
             className="flex items-center gap-2 text-mem-darkGray hover:text-mem-blue transition-colors"
           >
             <Phone size={20} />
-            <span className="font-semibold hidden sm:inline">Call Now: (901)461-1011</span>
+            <span className="font-semibold hidden sm:inline">Call Now: (901) 461-1011</span>
             <span className="font-semibold sm:hidden">Call Now</span>
           </a>
         </div>

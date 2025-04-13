@@ -43,7 +43,7 @@ const Navigation = () => {
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <Link to="/#contact" className={navigationMenuTriggerStyle()}>
+          <Link to="/contact" className={`${navigationMenuTriggerStyle()} ${isActive('/contact') ? 'bg-mem-blue/10 text-mem-blue' : ''}`}>
             <Phone className="mr-1 h-4 w-4" />
             Contact
           </Link>

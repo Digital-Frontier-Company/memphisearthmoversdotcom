@@ -1,9 +1,7 @@
 import { Truck, Package, Construction, TreePalm } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-
 const ServicesSection = () => {
-  return (
-    <section className="mem-section bg-mem-offWhite">
+  return <section className="mem-section bg-mem-offWhite">
       <div className="mem-container">
         <h2 className="text-center mb-12 text-mem-blue">Our Services at a Glance</h2>
         
@@ -23,11 +21,7 @@ const ServicesSection = () => {
             </div>
             
             <div className="mt-4 h-44 overflow-hidden rounded-md">
-              <img 
-                src="https://images.unsplash.com/photo-1581094790087-b41e26a67095?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Dump truck on construction site" 
-                className="w-full h-full object-cover transition-transform group-hover:scale-105"
-              />
+              <img alt="Dump truck on construction site" src="/lovable-uploads/00805ab4-523b-4bc1-895d-2ab713bd4905.jpg" className="w-full h-full transition-transform group-hover:scale-105 object-contain" />
             </div>
           </div>
           
@@ -47,11 +41,7 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img 
-                  src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" 
-                  alt="Construction materials being loaded into dump truck" 
-                  className="w-full h-full object-contain transition-transform group-hover:scale-105"
-                />
+                <img src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" alt="Construction materials being loaded into dump truck" className="w-full h-full object-contain transition-transform group-hover:scale-105" />
               </AspectRatio>
             </div>
           </div>
@@ -72,11 +62,7 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img 
-                  src="/lovable-uploads/1ffbb656-c5d9-4533-90e7-f89b7a2577dc.png" 
-                  alt="Excavator loading asphalt millings into dump truck" 
-                  className="w-full h-full object-cover object-top transition-transform group-hover:scale-105"
-                />
+                <img alt="Excavator loading asphalt millings into dump truck" className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" />
               </AspectRatio>
             </div>
           </div>
@@ -97,18 +83,12 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img 
-                  src="/lovable-uploads/7713a843-e930-4591-a487-959cb1eac6fe.png" 
-                  alt="Landscaping project with dirt delivery" 
-                  className="w-full h-full object-contain transition-transform group-hover:scale-105"
-                />
+                <img alt="Landscaping project with dirt delivery" className="w-full h-full object-contain transition-transform group-hover:scale-105" src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" />
               </AspectRatio>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServicesSection;

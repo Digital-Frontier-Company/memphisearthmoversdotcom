@@ -5,7 +5,13 @@ import QuoteForm from "./QuoteForm";
 const HeroSection = () => {
   return (
     <section className="relative bg-mem-blue text-white py-16 md:py-24">
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div 
+        className="absolute inset-0 bg-black/40 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/lovable-uploads/1dbfa978-2fa2-4d7f-a3eb-5c028c5614f6.png')",
+          backgroundBlendMode: "overlay"
+        }}
+      ></div>
       <div className="mem-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>

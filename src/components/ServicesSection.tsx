@@ -1,5 +1,4 @@
-
-import { Truck, Package, Construction, PalmTree } from "lucide-react";
+import { Truck, Package, Construction, TreePalm } from "lucide-react";
 
 const ServicesSection = () => {
   return (
@@ -54,7 +53,7 @@ const ServicesSection = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="p-3 bg-mem-blue text-white rounded-full">
-                  <PalmTree size={24} />
+                  <TreePalm size={24} />
                 </div>
               </div>
               <div>

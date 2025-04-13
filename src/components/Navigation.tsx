@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calculator, Phone } from "lucide-react";
+import { Home, Calculator, Phone, Users } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,6 +25,13 @@ const Navigation = () => {
           <Link to="/" className={`${navigationMenuTriggerStyle()} ${isActive('/') ? 'bg-mem-blue/10 text-mem-blue' : ''}`}>
             <Home className="mr-1 h-4 w-4" />
             Home
+          </Link>
+        </NavigationMenuItem>
+        
+        <NavigationMenuItem>
+          <Link to="/about-us" className={`${navigationMenuTriggerStyle()} ${isActive('/about-us') ? 'bg-mem-blue/10 text-mem-blue' : ''}`}>
+            <Users className="mr-1 h-4 w-4" />
+            About Us
           </Link>
         </NavigationMenuItem>
         

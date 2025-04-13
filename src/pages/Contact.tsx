@@ -7,7 +7,7 @@ import ContactForms from "@/components/contact/ContactForms";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-mem-darkNavy">
       <Helmet>
         <title>Contact Us | Memphis Earth Movers</title>
         <meta name="description" content="Get in touch with Memphis Earth Movers for dump truck services and gravel delivery. Request a truck or order gravel for your project." />
@@ -17,7 +17,9 @@ const Contact = () => {
       
       <main className="flex-grow">
         <ContactHero />
-        <ContactForms />
+        <div className="py-12">
+          <ContactForms />
+        </div>
       </main>
       
       <Footer />

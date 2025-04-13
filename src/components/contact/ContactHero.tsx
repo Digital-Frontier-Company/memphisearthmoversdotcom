@@ -3,7 +3,7 @@ import React from "react";
 
 const ContactHero = () => {
   return (
-    <section className="relative bg-mem-blue text-white py-16 md:py-24">
+    <section className="relative bg-mem-darkNavy text-white py-16 md:py-24">
       <div className="absolute inset-0 z-0">
         <img 
           src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 

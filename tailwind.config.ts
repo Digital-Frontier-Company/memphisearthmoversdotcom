@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Memphis Earth Movers colors - updated blue to match logo
+				// Memphis Earth Movers colors - updated to include dark navy and baby blue
 				mem: {
 					blue: "#0B3D91",      // Darker blue that matches the logo
 					darkBlue: "#072A64",  // Even darker blue for hover states
@@ -72,6 +72,8 @@ export default {
 					offWhite: "#F8F8F8",
 					gray: "#E1E1E1",
 					darkGray: "#555555",
+					darkNavy: "#143166",  // Dark navy blue from the image
+					babyBlue: "#4DD2FF",  // Glowing baby blue for accents
 				}
 			},
 			borderRadius: {
@@ -105,3 +107,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

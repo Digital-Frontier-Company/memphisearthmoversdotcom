@@ -37,13 +37,13 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 217 71% 25%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 217 71% 25%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 217 71% 25%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
@@ -73,11 +73,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-mem-darkNavy text-foreground;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-mem-darkGray;
+    @apply font-bold text-white;
   }
 
   h1 {
@@ -93,7 +93,7 @@
   }
 
   p {
-    @apply text-mem-darkGray;
+    @apply text-white/90;
   }
 }
 
@@ -115,10 +115,15 @@
   }
   
   .mem-card {
-    @apply bg-white p-6 rounded-lg shadow-md border border-mem-gray;
+    @apply bg-mem-darkNavy/80 p-6 rounded-lg shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/30 backdrop-blur-sm text-white;
   }
 
   .mem-input {
-    @apply w-full px-4 py-3 border border-mem-gray rounded-md focus:outline-none focus:ring-2 focus:ring-mem-blue;
+    @apply w-full px-4 py-3 border border-mem-gray rounded-md focus:outline-none focus:ring-2 focus:ring-mem-babyBlue bg-white/10 text-white;
+  }
+  
+  .glow-container {
+    @apply shadow-[0_0_20px_rgba(77,210,255,0.4)] border border-mem-babyBlue/30 backdrop-blur-sm;
   }
 }
+

@@ -6,9 +6,9 @@ const HeroSection = () => {
   return (
     <section className="relative bg-mem-blue text-white py-16 md:py-24">
       <div 
-        className="absolute inset-0 bg-black/40 bg-cover bg-center"
+        className="absolute inset-0 bg-black/40 bg-cover bg-center opacity-30"
         style={{
-          backgroundImage: "url('/lovable-uploads/1dbfa978-2fa2-4d7f-a3eb-5c028c5614f6.png')",
+          backgroundImage: "url('/lovable-uploads/692c96aa-9237-4058-a5a5-19f75bc169e7.png')",
           backgroundBlendMode: "overlay"
         }}
       ></div>

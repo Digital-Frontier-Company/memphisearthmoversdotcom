@@ -15,9 +15,9 @@ const HeroSection = () => {
       <div className="mem-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Fast, Reliable Hauling for Your Construction Needs
-            </h2>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              #1 Dump Trucks in Memphis – Rugged, Reliable, Ready When You Are
+            </h1>
             <p className="text-lg md:text-xl text-white/90 mb-6">
               Serving Memphis with dump truck rentals, gravel delivery, and asphalt millings – on schedule and on budget.
             </p>

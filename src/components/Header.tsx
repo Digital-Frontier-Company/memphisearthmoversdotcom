@@ -1,5 +1,5 @@
 
-import { Phone, Facebook, Twitter, Instagram, ShoppingBag } from "lucide-react";
+import { Phone, Facebook, Twitter, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -21,7 +21,7 @@ const Header = () => {
           {/* Top navigation with logo in center on desktop */}
           <div className="flex w-full justify-between items-center order-1 md:order-2 md:justify-center md:flex-1">
             {/* Navigation for desktop */}
-            <nav className="hidden md:flex items-center">
+            <div className="hidden md:flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>

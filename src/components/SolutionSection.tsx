@@ -1,17 +1,19 @@
+
 import React from 'react';
 import { CheckCircle, Truck, ThumbsUp, MapPin } from "lucide-react";
 import { Link } from "react-scroll";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+
 const SolutionSection = () => {
-  return <section className="mem-section">
+  return <section className="mem-section" itemScope itemType="https://schema.org/Service">
       <div className="mem-container">
-        <h2 className="text-center mb-12">The MEM Solution: Hauling You Can Count On</h2>
+        <h2 className="text-center mb-12" itemProp="name">The MEM Solution: Hauling You Can Count On</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           <div className="grid grid-cols-1 gap-8">
             <div className="rounded-lg overflow-hidden shadow-md">
               <AspectRatio ratio={16 / 9}>
-                <img alt="Excavator loading a dump truck with dirt" src="/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg" className="w-full h-full object-cover" />
+                <img alt="Excavator loading a dump truck with dirt" src="/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg" className="w-full h-full object-cover" itemProp="image" />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-md">
@@ -26,7 +28,7 @@ const SolutionSection = () => {
             </div>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-6" itemProp="description">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <CheckCircle size={28} className="text-mem-blue mt-1" />
@@ -66,6 +68,10 @@ const SolutionSection = () => {
                 <p>With deep knowledge of Memphis and surrounding areas, we navigate efficiently to meet your project's location needs.</p>
               </div>
             </div>
+            
+            <meta itemProp="serviceType" content="Dump Trucks, Earth Moving, Gravel Delivery, Construction Hauling" />
+            <meta itemProp="areaServed" content="Memphis, DeSoto County, Shelby County" />
+            <meta itemProp="provider" content="Memphis Earth Movers" />
           </div>
         </div>
         

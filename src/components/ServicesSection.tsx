@@ -1,5 +1,5 @@
 
-import { Truck, Brick, Road, Tree } from "lucide-react";
+import { Truck, Package, Construction, PalmTree } from "lucide-react";
 
 const ServicesSection = () => {
   return (
@@ -26,7 +26,7 @@ const ServicesSection = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="p-3 bg-mem-blue text-white rounded-full">
-                  <Brick size={24} />
+                  <Package size={24} />
                 </div>
               </div>
               <div>
@@ -40,7 +40,7 @@ const ServicesSection = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="p-3 bg-mem-blue text-white rounded-full">
-                  <Road size={24} />
+                  <Construction size={24} />
                 </div>
               </div>
               <div>
@@ -54,7 +54,7 @@ const ServicesSection = () => {
             <div className="flex gap-4">
               <div className="flex-shrink-0">
                 <div className="p-3 bg-mem-blue text-white rounded-full">
-                  <Tree size={24} />
+                  <PalmTree size={24} />
                 </div>
               </div>
               <div>

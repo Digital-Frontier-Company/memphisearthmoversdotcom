@@ -1,5 +1,6 @@
+
 import { Link } from "react-router-dom";
-import { Truck, Check, Clock, Tool, Star, Phone } from "lucide-react";
+import { Truck, Check, Clock, Wrench, Star, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -87,7 +88,7 @@ const AboutUs = () => {
               </div>
               
               <div className="mem-card">
-                <Tool className="h-10 w-10 text-red-500 mb-4" />
+                <Wrench className="h-10 w-10 text-red-500 mb-4" />
                 <p className="text-xl font-bold mb-3">Poor Quality Equipment</p>
                 <p>It's held together by duct tape and a prayer, leaving you worried about breakdowns and safety.</p>
               </div>

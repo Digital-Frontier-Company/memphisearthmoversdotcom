@@ -1,3 +1,4 @@
+
 import { Truck, Package, Construction, TreePalm } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -73,9 +74,9 @@ const ServicesSection = () => {
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
                 <img 
-                  src="/lovable-uploads/3fef74f1-6fb1-492d-8b4d-11b40b1abd21.png" 
-                  alt="Asphalt milling machine" 
-                  className="w-full h-full object-contain transition-transform group-hover:scale-105"
+                  src="/lovable-uploads/b1cd41bb-0844-457e-ab47-63334e2ebcc1.png" 
+                  alt="Excavator loading asphalt millings into dump truck" 
+                  className="w-full h-full object-cover object-center transform translate-y-8 transition-transform group-hover:scale-105"
                 />
               </AspectRatio>
             </div>

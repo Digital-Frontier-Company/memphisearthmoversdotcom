@@ -9,9 +9,9 @@ const HeroSection = () => {
       backgroundBlendMode: "overlay"
     }}></div>
       <div className="mem-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white mx-[109px] px-[109px] rounded-2xl py-[35px] my-[60px]">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center font-extrabold 
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center mx-4 my-[60px]">
+          <div className="md:col-span-3">
+            <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center md:text-left font-extrabold 
               text-[#060606] 
               drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]
               [-webkit-text-stroke:2px_white]"
@@ -39,7 +39,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-6 shadow-lg rounded-xl">
+          <div className="md:col-span-2 bg-white p-6 shadow-lg rounded-xl">
             <h3 className="text-2xl font-bold text-mem-blue mb-4">Get a FREE Quote</h3>
             <QuoteForm />
             <div className="flex items-center justify-center mt-4 text-sm text-mem-darkGray">

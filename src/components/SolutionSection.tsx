@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { CheckCircle, Truck, ThumbsUp, MapPin } from "lucide-react";
 import { Link } from "react-scroll";
 
@@ -9,12 +10,21 @@ const SolutionSection = () => {
         <h2 className="text-center mb-12">The MEM Solution: Hauling You Can Count On</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="rounded-lg overflow-hidden shadow-md">
-            <img 
-              src="/lovable-uploads/3fef74f1-6fb1-492d-8b4d-11b40b1abd21.png" 
-              alt="Milling machine loading a dump truck" 
-              className="w-full h-64 object-cover"
-            />
+          <div className="grid grid-cols-1 gap-8">
+            <div className="rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/3fef74f1-6fb1-492d-8b4d-11b40b1abd21.png" 
+                alt="Milling machine loading a dump truck" 
+                className="w-full h-64 object-cover"
+              />
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" 
+                alt="Memphis Earth Movers equipment" 
+                className="w-full h-64 object-cover"
+              />
+            </div>
           </div>
           
           <div className="space-y-6">

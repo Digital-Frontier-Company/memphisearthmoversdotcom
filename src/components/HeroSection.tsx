@@ -1,5 +1,6 @@
 import { Lock } from "lucide-react";
 import QuoteForm from "./QuoteForm";
+
 const HeroSection = () => {
   return <section className="relative bg-mem-blue text-white py-16 md:py-24">
       <div className="absolute inset-0 bg-black/40 bg-cover bg-center opacity-30" style={{
@@ -9,7 +10,11 @@ const HeroSection = () => {
       <div className="mem-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-blue-700 mx-[109px] px-[109px] rounded-2xl py-[35px] my-[60px]">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center font-extrabold text-[#060606]">
+            <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center font-extrabold 
+              text-[#060606] 
+              drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]
+              [-webkit-text-stroke:1px_white]"
+            >
               #1 Dump Trucks in Memphis – Rugged, Reliable, Ready When You Are
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-6">

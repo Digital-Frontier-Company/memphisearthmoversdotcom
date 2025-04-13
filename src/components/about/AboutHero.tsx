@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 const AboutHero = () => {
   return (
     <section className="bg-gradient-to-b from-white to-gray-100 py-12 md:py-20 relative">
-      <div className="absolute inset-0 bg-black/30 z-0">
+      <div className="absolute inset-0 z-0">
         <img 
           src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
           alt="Memphis Earth Movers global earth moving services"
-          className="w-full h-full object-cover object-center opacity-45" 
+          className="w-full h-full object-cover object-center" 
         />
+        <div className="absolute inset-0 bg-black/55"></div>
       </div>
       
       <div className="mem-container relative z-10">

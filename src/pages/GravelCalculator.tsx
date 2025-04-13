@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Calculator, Ruler, SquareStack, Truck, CircleDollarSign, Info } from "lucide-react";
@@ -44,6 +43,7 @@ const GravelCalculator = () => {
     sand: { imperial: 95, metric: 1520 },
     "pea gravel": { imperial: 92, metric: 1470 },
     "limestone": { imperial: 103, metric: 1650 },
+    "asphalt": { imperial: 145, metric: 2322 }, // Added asphalt with appropriate density values
   });
   
   const [isOpen, setIsOpen] = useState(false);
@@ -292,6 +292,7 @@ const GravelCalculator = () => {
                         <SelectItem value="sand">Sand</SelectItem>
                         <SelectItem value="pea gravel">Pea Gravel</SelectItem>
                         <SelectItem value="limestone">Limestone</SelectItem>
+                        <SelectItem value="asphalt">Asphalt</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -460,6 +461,7 @@ const GravelCalculator = () => {
                   <li>Sand: Perfect for playground areas and sandboxes.</li>
                   <li>Pea Gravel: Great for walkways and decorative landscaping.</li>
                   <li>Limestone: Used for driveways and construction projects.</li>
+                  <li>Asphalt: Ideal for driveways and parking lots.</li>
                 </ul>
               </div>
             </div>

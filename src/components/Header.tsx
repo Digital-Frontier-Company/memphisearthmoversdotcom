@@ -1,5 +1,6 @@
 
 import { Phone } from "lucide-react";
+import Navigation from "./Navigation";
 
 const Header = () => {
   return (
@@ -17,14 +18,18 @@ const Header = () => {
             className="hidden ml-4 h-12 md:h-16"
           />
         </div>
-        <a 
-          href="tel:9014611011" 
-          className="flex items-center gap-2 text-mem-darkGray hover:text-mem-blue transition-colors"
-        >
-          <Phone size={20} />
-          <span className="font-semibold hidden sm:inline">Call Now: (901)461-1011</span>
-          <span className="font-semibold sm:hidden">Call Now</span>
-        </a>
+        
+        <div className="flex items-center gap-4">
+          <Navigation />
+          <a 
+            href="tel:9014611011" 
+            className="flex items-center gap-2 text-mem-darkGray hover:text-mem-blue transition-colors"
+          >
+            <Phone size={20} />
+            <span className="font-semibold hidden sm:inline">Call Now: (901)461-1011</span>
+            <span className="font-semibold sm:hidden">Call Now</span>
+          </a>
+        </div>
       </div>
     </header>
   );

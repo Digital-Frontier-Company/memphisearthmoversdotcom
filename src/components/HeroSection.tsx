@@ -1,21 +1,15 @@
-
 import { Lock } from "lucide-react";
 import QuoteForm from "./QuoteForm";
-
 const HeroSection = () => {
-  return (
-    <section className="relative bg-mem-blue text-white py-16 md:py-24">
-      <div 
-        className="absolute inset-0 bg-black/40 bg-cover bg-center opacity-30"
-        style={{
-          backgroundImage: "url('/lovable-uploads/692c96aa-9237-4058-a5a5-19f75bc169e7.png')",
-          backgroundBlendMode: "overlay"
-        }}
-      ></div>
+  return <section className="relative bg-mem-blue text-white py-16 md:py-24">
+      <div className="absolute inset-0 bg-black/40 bg-cover bg-center opacity-30" style={{
+      backgroundImage: "url('/lovable-uploads/692c96aa-9237-4058-a5a5-19f75bc169e7.png')",
+      backgroundBlendMode: "overlay"
+    }}></div>
       <div className="mem-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-blue-700 mx-[109px] px-[109px] rounded-2xl py-[35px] my-[60px]">
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center font-extrabold text-[#060606]">
               #1 Dump Trucks in Memphis – Rugged, Reliable, Ready When You Are
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-6">
@@ -33,7 +27,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="bg-white p-6 shadow-lg rounded-xl">
             <h3 className="text-2xl font-bold text-mem-blue mb-4">Get a FREE Quote</h3>
             <QuoteForm />
             <div className="flex items-center justify-center mt-4 text-sm text-mem-darkGray">
@@ -43,8 +37,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;

@@ -25,17 +25,17 @@ const HeroSection = () => {
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
                 shadow-[0_0_10px_rgba(255,255,255,0.7)]
                 border border-white/30">
-                <span className="text-mem-blue font-semibold">Licensed & Insured</span>
+                <span className="text-white font-semibold">Licensed & Insured</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
                 shadow-[0_0_10px_rgba(255,255,255,0.7)]
                 border border-white/30">
-                <span className="text-mem-blue font-semibold">20+ Years Experience</span>
+                <span className="text-white font-semibold">20+ Years Experience</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
                 shadow-[0_0_10px_rgba(255,255,255,0.7)]
                 border border-white/30">
-                <span className="text-mem-blue font-semibold">★★★★★ Rated</span>
+                <span className="text-white font-semibold">★★★★★ Rated</span>
               </div>
             </div>
           </div>
@@ -52,3 +52,4 @@ const HeroSection = () => {
     </section>;
 };
 export default HeroSection;
+

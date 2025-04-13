@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 bg-mem-darkNavy shadow-md glow-container">
+    <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="mem-container py-2 flex justify-between items-center">
         <div className="flex items-center">
           <img 
@@ -23,7 +23,7 @@ const Header = () => {
           <Navigation />
           <a 
             href="tel:9014611011" 
-            className="flex items-center gap-2 text-white hover:text-mem-babyBlue transition-colors"
+            className="flex items-center gap-2 text-mem-darkNavy hover:text-mem-blue transition-colors"
           >
             <Phone size={20} />
             <span className="font-semibold hidden sm:inline">Call Now: (901) 461-1011</span>

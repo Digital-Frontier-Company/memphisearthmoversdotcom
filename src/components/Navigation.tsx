@@ -22,28 +22,28 @@ const Navigation = () => {
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to="/" className={`${navigationMenuTriggerStyle()} ${isActive('/') ? 'bg-mem-babyBlue/20 text-mem-babyBlue' : 'text-white'}`}>
+          <Link to="/" className={`${navigationMenuTriggerStyle()} ${isActive('/') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Home className="mr-1 h-4 w-4" />
             Home
           </Link>
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <Link to="/about-us" className={`${navigationMenuTriggerStyle()} ${isActive('/about-us') ? 'bg-mem-babyBlue/20 text-mem-babyBlue' : 'text-white'}`}>
+          <Link to="/about-us" className={`${navigationMenuTriggerStyle()} ${isActive('/about-us') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Users className="mr-1 h-4 w-4" />
             About Us
           </Link>
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <Link to="/gravel-calculator" className={`${navigationMenuTriggerStyle()} ${isActive('/gravel-calculator') ? 'bg-mem-babyBlue/20 text-mem-babyBlue' : 'text-white'}`}>
+          <Link to="/gravel-calculator" className={`${navigationMenuTriggerStyle()} ${isActive('/gravel-calculator') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Calculator className="mr-1 h-4 w-4" />
             Gravel Calculator
           </Link>
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <Link to="/contact" className={`${navigationMenuTriggerStyle()} ${isActive('/contact') ? 'bg-mem-babyBlue/20 text-mem-babyBlue' : 'text-white'}`}>
+          <Link to="/contact" className={`${navigationMenuTriggerStyle()} ${isActive('/contact') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Phone className="mr-1 h-4 w-4" />
             Contact
           </Link>

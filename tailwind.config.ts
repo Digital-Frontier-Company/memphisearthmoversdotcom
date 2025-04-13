@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Memphis Earth Movers colors
+				mem: {
+					blue: "#1EAEDB",
+					darkBlue: "#0FA0CE",
+					lightBlue: "#33C3F0",
+					white: "#FFFFFF",
+					offWhite: "#F8F8F8",
+					gray: "#E1E1E1",
+					darkGray: "#555555",
 				}
 			},
 			borderRadius: {

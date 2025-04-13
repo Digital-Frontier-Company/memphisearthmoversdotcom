@@ -19,7 +19,7 @@ const HeroSection = () => {
               #1 Dump Trucks in Memphis – Rugged, Reliable, Ready When You Are
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-6">
-              Serving Memphis with dump truck rentals, gravel delivery, and asphalt millings – on schedule and on budget.
+              Serving Memphis and DeSoto County with top-rated dump truck services, gravel delivery, and earth moving solutions – your local experts for construction hauling.
             </p>
             <div className="flex flex-wrap gap-4 mt-6">
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md">

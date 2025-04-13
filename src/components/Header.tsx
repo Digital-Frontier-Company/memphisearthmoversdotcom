@@ -11,6 +11,11 @@ const Header = () => {
             alt="Memphis Earth Movers Logo" 
             className="h-16 md:h-20"
           />
+          <img 
+            src="/lovable-uploads/7713a843-e930-4591-a487-959cb1eac6fe.png" 
+            alt="Memphis Earth Movers Alternative Logo" 
+            className="hidden ml-4 h-12 md:h-16"
+          />
         </div>
         <a 
           href="tel:9015551234" 

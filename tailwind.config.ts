@@ -63,11 +63,11 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Memphis Earth Movers colors
+				// Memphis Earth Movers colors - updated blue to match logo
 				mem: {
-					blue: "#1EAEDB",
-					darkBlue: "#0FA0CE",
-					lightBlue: "#33C3F0",
+					blue: "#0B3D91",      // Darker blue that matches the logo
+					darkBlue: "#072A64",  // Even darker blue for hover states
+					lightBlue: "#2E5EBF", // Lighter blue for accents
 					white: "#FFFFFF",
 					offWhite: "#F8F8F8",
 					gray: "#E1E1E1",

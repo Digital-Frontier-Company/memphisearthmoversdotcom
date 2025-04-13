@@ -6,10 +6,14 @@ import QuoteForm from "./QuoteForm";
 const HeroSection = () => {
   return <section className="relative bg-mem-blue text-white py-16 md:py-24" 
     itemScope itemType="https://schema.org/Service">
-      <div className="absolute inset-0 bg-black/40 bg-cover bg-center opacity-30" style={{
-      backgroundImage: "url('/lovable-uploads/692c96aa-9237-4058-a5a5-19f75bc169e7.png')",
-      backgroundBlendMode: "overlay"
-    }}></div>
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
+          alt="Memphis Earth Movers dump truck services"
+          className="w-full h-full object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-black/55"></div>
+      </div>
       <div className="mem-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center mx-4 my-[60px]">
           <div className="md:col-span-3">

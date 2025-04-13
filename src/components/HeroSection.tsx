@@ -9,12 +9,12 @@ const HeroSection = () => {
       backgroundBlendMode: "overlay"
     }}></div>
       <div className="mem-container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-blue-700 mx-[109px] px-[109px] rounded-2xl py-[35px] my-[60px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white mx-[109px] px-[109px] rounded-2xl py-[35px] my-[60px]">
           <div>
             <h1 className="text-4xl md:text-5xl font-extra-bold mb-4 text-center font-extrabold 
               text-[#060606] 
-              drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]
-              [-webkit-text-stroke:1px_white]"
+              drop-shadow-[0_0_10px_rgba(14,165,233,0.7)]
+              [-webkit-text-stroke:1px_#0EA5E9]"
             >
               #1 Dump Trucks in Memphis – Rugged, Reliable, Ready When You Are
             </h1>
@@ -23,19 +23,19 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-wrap gap-4 mt-6">
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
-                shadow-[0_0_10px_rgba(255,255,255,0.7)]
-                border border-white/30">
-                <span className="text-white font-semibold">Licensed & Insured</span>
+                shadow-[0_0_10px_rgba(14,165,233,0.7)]
+                border border-[#0EA5E9]/30">
+                <span className="text-mem-blue font-semibold">Licensed & Insured</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
-                shadow-[0_0_10px_rgba(255,255,255,0.7)]
-                border border-white/30">
-                <span className="text-white font-semibold">20+ Years Experience</span>
+                shadow-[0_0_10px_rgba(14,165,233,0.7)]
+                border border-[#0EA5E9]/30">
+                <span className="text-mem-blue font-semibold">20+ Years Experience</span>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
-                shadow-[0_0_10px_rgba(255,255,255,0.7)]
-                border border-white/30">
-                <span className="text-white font-semibold">★★★★★ Rated</span>
+                shadow-[0_0_10px_rgba(14,165,233,0.7)]
+                border border-[#0EA5E9]/30">
+                <span className="text-mem-blue font-semibold">★★★★★ Rated</span>
               </div>
             </div>
           </div>
@@ -52,3 +52,4 @@ const HeroSection = () => {
     </section>;
 };
 export default HeroSection;
+

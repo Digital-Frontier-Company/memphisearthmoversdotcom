@@ -3,8 +3,16 @@ import { Star } from "lucide-react";
 
 const TestimonialsSection = () => {
   return (
-    <section className="mem-section bg-gray-100">
-      <div className="mem-container">
+    <section className="mem-section bg-gray-100 relative">
+      <div className="absolute inset-0 opacity-10 z-0">
+        <img 
+          src="/lovable-uploads/17a03914-331b-4e10-82ea-af2d4e3d4ff3.png" 
+          alt="Dump trucks on a job site" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+      
+      <div className="mem-container relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
           <Star className="h-10 w-10 inline-block mr-3 text-mem-blue" />
           What Our Clients Say

@@ -32,6 +32,14 @@ const FrustrationSection = () => {
             <p>And then it breaks down halfway through the job, leaving you holding the bag. But hey, you still get that full invoice, right?</p>
           </div>
         </div>
+        
+        <div className="mt-12 rounded-lg overflow-hidden shadow-lg">
+          <img 
+            src="/lovable-uploads/6b9fae30-0565-426c-b400-51dedb816ca0.png"
+            alt="Dump truck in action" 
+            className="w-full h-auto" 
+          />
+        </div>
       </div>
     </section>
   );

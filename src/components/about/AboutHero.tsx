@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 
 const AboutHero = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-gray-100 py-12 md:py-20">
-      <div className="mem-container">
+    <section className="bg-gradient-to-b from-white to-gray-100 py-12 md:py-20 relative">
+      <div className="absolute inset-0 bg-black/30 z-0">
+        <img 
+          src="/lovable-uploads/17a03914-331b-4e10-82ea-af2d4e3d4ff3.png" 
+          alt="Dump trucks on a road with asphalt"
+          className="w-full h-full object-cover object-center opacity-20" 
+        />
+      </div>
+      
+      <div className="mem-container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Dump Trucks in Memphis That Show Up. Load Up. And Don't Let You Down.
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-mem-darkGray">
+          <p className="text-xl md:text-2xl mb-8 text-white">
             Reliable tri-axle dump truck rentals for contractors, builders, and business owners who are tired of the usual BS.
           </p>
           <Link to="/#contact" className="mem-btn-primary">

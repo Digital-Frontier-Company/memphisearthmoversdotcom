@@ -18,11 +18,11 @@ const Header = () => {
           />
         </div>
         <a 
-          href="tel:9015551234" 
+          href="tel:9014611011" 
           className="flex items-center gap-2 text-mem-darkGray hover:text-mem-blue transition-colors"
         >
           <Phone size={20} />
-          <span className="font-semibold hidden sm:inline">Call Now: 901-555-1234</span>
+          <span className="font-semibold hidden sm:inline">Call Now: (901)461-1011</span>
           <span className="font-semibold sm:hidden">Call Now</span>
         </a>
       </div>

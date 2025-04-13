@@ -22,14 +22,14 @@ const CallToAction = () => {
         </Link>
         
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
-          <a href="tel:9015551234" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">
+          <a href="tel:9014611011" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">
             <Phone size={20} />
-            <span className="font-semibold">Call: 901-555-1234</span>
+            <span className="font-semibold">Call: (901)461-1011</span>
           </a>
           
-          <a href="mailto:info@memphisearthmovers.com" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">
+          <a href="mailto:David@memphisearthmovers.com" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">
             <Mail size={20} />
-            <span className="font-semibold">Email: info@memphisearthmovers.com</span>
+            <span className="font-semibold">Email: David@memphisearthmovers.com</span>
           </a>
         </div>
         

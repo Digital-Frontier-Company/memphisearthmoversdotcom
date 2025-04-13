@@ -1,3 +1,4 @@
+
 import { Lock } from "lucide-react";
 import QuoteForm from "./QuoteForm";
 
@@ -21,13 +22,19 @@ const HeroSection = () => {
               Serving Memphis and DeSoto County with top-rated dump truck services, gravel delivery, and earth moving solutions – your local experts for construction hauling.
             </p>
             <div className="flex flex-wrap gap-4 mt-6">
-              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md">
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
+                shadow-[0_0_10px_rgba(255,255,255,0.7)]
+                border border-white/30">
                 <span className="text-white font-semibold">Licensed & Insured</span>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md">
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
+                shadow-[0_0_10px_rgba(255,255,255,0.7)]
+                border border-white/30">
                 <span className="text-white font-semibold">20+ Years Experience</span>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md">
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-md 
+                shadow-[0_0_10px_rgba(255,255,255,0.7)]
+                border border-white/30">
                 <span className="text-white font-semibold">★★★★★ Rated</span>
               </div>
             </div>

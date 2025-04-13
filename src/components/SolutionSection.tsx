@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { CheckCircle, Truck, ThumbsUp, MapPin } from "lucide-react";
 import { Link } from "react-scroll";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-
 const SolutionSection = () => {
-  return (
-    <section className="mem-section">
+  return <section className="mem-section">
       <div className="mem-container">
         <h2 className="text-center mb-12">The MEM Solution: Hauling You Can Count On</h2>
         
@@ -14,29 +11,17 @@ const SolutionSection = () => {
           <div className="grid grid-cols-1 gap-8">
             <div className="rounded-lg overflow-hidden shadow-md">
               <AspectRatio ratio={16 / 9}>
-                <img 
-                  src="/lovable-uploads/facbf64f-c97d-4ead-a752-da4b94742cb2.png" 
-                  alt="Excavator loading a dump truck with dirt" 
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Excavator loading a dump truck with dirt" src="/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg" className="w-full h-full object-cover" />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-md">
               <AspectRatio ratio={16 / 9}>
-                <img 
-                  src="/lovable-uploads/cd9550e2-89af-4418-8ee9-79d50c4b551c.png" 
-                  alt="Asphalt paving operation with dump trucks" 
-                  className="w-full h-full object-cover"
-                />
+                <img src="/lovable-uploads/cd9550e2-89af-4418-8ee9-79d50c4b551c.png" alt="Asphalt paving operation with dump trucks" className="w-full h-full object-cover" />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-md">
               <AspectRatio ratio={16 / 9}>
-                <img 
-                  src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" 
-                  alt="Memphis Earth Movers dump trucks" 
-                  className="w-full h-full object-contain"
-                />
+                <img src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" alt="Memphis Earth Movers dump trucks" className="w-full h-full object-contain" />
               </AspectRatio>
             </div>
           </div>
@@ -85,18 +70,11 @@ const SolutionSection = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <Link
-            to="quoteForm"
-            smooth={true}
-            duration={500}
-            className="mem-btn-primary"
-          >
+          <Link to="quoteForm" smooth={true} duration={500} className="mem-btn-primary">
             Request Your Quote Now
           </Link>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default SolutionSection;

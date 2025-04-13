@@ -1,5 +1,6 @@
 
-import { Lock } from "lucide-react";
+import { Lock, Calculator } from "lucide-react";
+import { Link } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
 
 const HeroSection = () => {
@@ -39,6 +40,12 @@ const HeroSection = () => {
                 border border-white/30">
                 <span className="text-white font-semibold">★★★★★ Rated</span>
               </div>
+            </div>
+            <div className="mt-8">
+              <Link to="/gravel-calculator" className="bg-white text-mem-blue hover:bg-mem-offWhite transition-colors duration-300 py-3 px-6 rounded-md inline-flex items-center">
+                <Calculator className="mr-2 h-5 w-5" />
+                <span className="font-medium">Free Gravel Calculator</span>
+              </Link>
             </div>
             <div className="mt-6 hidden md:block">
               <meta itemProp="areaServed" content="Memphis, DeSoto County, Shelby County, Germantown, Collierville" />

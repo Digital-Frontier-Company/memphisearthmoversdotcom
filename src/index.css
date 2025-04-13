@@ -115,7 +115,7 @@
   }
   
   .mem-card {
-    @apply bg-mem-darkNavy/80 p-6 rounded-lg shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/30 backdrop-blur-sm text-white;
+    @apply bg-mem-darkNavy/80 p-6 rounded-lg shadow-[0_0_15px_rgba(77,210,255,0.5)] border border-mem-babyBlue/30 backdrop-blur-sm text-white;
   }
 
   .mem-input {
@@ -123,6 +123,13 @@
   }
   
   .glow-container {
-    @apply shadow-[0_0_20px_rgba(77,210,255,0.4)] border border-mem-babyBlue/30 backdrop-blur-sm;
+    @apply shadow-[0_0_20px_rgba(77,210,255,0.5)] border border-mem-babyBlue/30 backdrop-blur-sm;
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(77, 210, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(77, 210, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
   }
 }

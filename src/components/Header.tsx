@@ -4,9 +4,13 @@ import { Phone } from "lucide-react";
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="mem-container py-4 flex justify-between items-center">
+      <div className="mem-container py-2 flex justify-between items-center">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-mem-blue">Memphis Earth Movers</h1>
+          <img 
+            src="/lovable-uploads/2815d7b7-489c-42c6-a5f2-45c7e47f6371.png" 
+            alt="Memphis Earth Movers Logo" 
+            className="h-16 md:h-20"
+          />
         </div>
         <a 
           href="tel:9015551234" 

@@ -34,7 +34,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-bold text-mem-darkGray mb-4">Get a FREE Quote</h3>
+            <h3 className="text-2xl font-bold text-mem-blue mb-4">Get a FREE Quote</h3>
             <QuoteForm />
             <div className="flex items-center justify-center mt-4 text-sm text-mem-darkGray">
               <Lock size={14} className="mr-1" />

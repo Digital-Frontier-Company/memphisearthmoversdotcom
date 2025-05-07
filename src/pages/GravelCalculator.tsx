@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -16,6 +17,8 @@ const MATERIALS = [
   { id: "limestone", name: "Limestone", density: 1.4, price: 55 },
   { id: "river-rock", name: "River Rock", density: 1.3, price: 60 },
   { id: "sand", name: "Sand", density: 1.2, price: 40 },
+  { id: "asphalt", name: "Regular Asphalt", density: 1.35, price: 65 },
+  { id: "crushed-asphalt", name: "Crushed Asphalt", density: 1.35, price: 50 },
 ];
 
 const GravelCalculator = () => {

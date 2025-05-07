@@ -103,7 +103,11 @@ const GravelCalculator = () => {
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
       document.body.appendChild(iframe);
-      iframe.contentWindow?.location.href = mailtoLink;
+      
+      // Fixed: Use conditional check instead of optional chaining for assignment
+      if (iframe.contentWindow) {
+        iframe.contentWindow.location.href = mailtoLink;
+      }
       
       // Log the lead for debugging
       console.log("Lead sent to Dcthompson89@gmail.com:", {

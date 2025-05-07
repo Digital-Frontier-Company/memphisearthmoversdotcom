@@ -1,29 +1,34 @@
 
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactForms from "@/components/contact/ContactForms";
+import ContactInfo from "@/components/contact/ContactInfo";
+import Footer from "@/components/Footer";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-mem-darkNavy">
+    <>
       <Helmet>
-        <title>Contact Us | Memphis Earth Movers</title>
-        <meta name="description" content="Get in touch with Memphis Earth Movers for dump truck services and gravel delivery. Request a truck or order gravel for your project." />
+        <title>Contact Memphis Earth Movers | Dump Truck Services</title>
+        <meta name="description" content="Need a dump truck in Memphis? Contact Memphis Earth Movers for reliable dump truck services. Call (901) 461-1011 or fill out our form for a quick quote." />
       </Helmet>
       
-      <Header />
-      
-      <main className="flex-grow">
-        <ContactHero />
-        <div className="py-12">
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        
+        <main className="flex-grow">
+          <ContactHero />
           <ContactForms />
-        </div>
-      </main>
-      
-      <Footer />
-    </div>
+          <ContactInfo />
+        </main>
+        
+        <Footer />
+        <BackToTopButton />
+      </div>
+    </>
   );
 };
 

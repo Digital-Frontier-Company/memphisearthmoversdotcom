@@ -1,6 +1,7 @@
 
 import { Phone } from "lucide-react";
 import Navigation from "./Navigation";
+import MobileNavigation from "./MobileNavigation";
 
 const Header = () => {
   return (
@@ -29,6 +30,7 @@ const Header = () => {
             <span className="font-semibold hidden sm:inline">Call Now: (901) 461-1011</span>
             <span className="font-semibold sm:hidden">Call Now</span>
           </a>
+          <MobileNavigation />
         </div>
       </div>
     </header>

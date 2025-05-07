@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FaqSection from "@/components/FaqSection";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const Index = () => {
   return (
@@ -16,18 +17,23 @@ const Index = () => {
       <Header />
       
       <main className="flex-grow">
-        <Element name="quoteForm">
-          <HeroSection />
+        <HeroSection />
+        <Element name="problemSection">
+          <ProblemSection />
         </Element>
-        <ProblemSection />
-        <SolutionSection />
-        <ServicesSection />
+        <Element name="solutionSection">
+          <SolutionSection />
+        </Element>
+        <Element name="servicesSection">
+          <ServicesSection />
+        </Element>
         <TestimonialsSection />
         <FaqSection />
         <CallToAction />
       </main>
       
       <Footer />
+      <BackToTopButton />
     </div>
   );
 };

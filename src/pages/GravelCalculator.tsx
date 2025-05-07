@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -139,9 +138,8 @@ const GravelCalculator = () => {
         <main className="flex-grow">
           <section className="mem-section bg-mem-darkNavy">
             <div className="mem-container max-w-4xl">
-              <h1 className="text-mem-darkNavy text-center mb-8">
-                <span className="text-mem-babyBlue">Interactive </span>
-                Gravel Calculator
+              <h1 className="text-white text-center mb-8">
+                Memphis Dump Trucks - Gravel Calculator
               </h1>
               <p className="text-mem-darkGray text-center mb-12">
                 Draw your project area, adjust material and depth, and get an instant estimate of how much material you need. 

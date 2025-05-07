@@ -28,7 +28,9 @@ const Index = () => {
           <ServicesSection />
         </Element>
         <TestimonialsSection />
-        <FaqSection />
+        <Element name="faqSection" className="bg-mem-darkNavy">
+          <FaqSection />
+        </Element>
         <CallToAction />
       </main>
       

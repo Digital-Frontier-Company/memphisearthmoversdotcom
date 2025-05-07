@@ -3,10 +3,10 @@ import { Truck } from "lucide-react";
 
 const ServicesSection = () => {
   return (
-    <section className="mem-section bg-white">
+    <section className="mem-section bg-mem-darkNavy">
       <div className="mem-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-          <Truck className="h-10 w-10 inline-block mr-3 text-mem-blue" />
+          <Truck className="h-10 w-10 inline-block mr-3 text-mem-babyBlue" />
           Services We Offer
         </h2>
         

@@ -3,7 +3,7 @@ import { Clock, Wrench, Truck, Star } from "lucide-react";
 
 const FrustrationSection = () => {
   return (
-    <section className="mem-section bg-white">
+    <section className="mem-section bg-mem-darkNavy">
       <div className="mem-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Why You're Frustrated with Most Rentals</h2>
         

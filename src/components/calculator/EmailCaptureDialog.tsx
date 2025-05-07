@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Check, XCircle, Mail } from "lucide-react";
+import { Check, XCircle, Mail, Loader } from "lucide-react";
 import { z } from "zod";
 
 interface EmailCaptureDialogProps {
   open: boolean;
   onClose: () => void;
   onSubmit: (email: string) => void;
+  isSubmitting?: boolean;
 }
 
 const emailSchema = z.string().email({ message: "Please enter a valid email address" });
@@ -18,6 +19,7 @@ const EmailCaptureDialog: React.FC<EmailCaptureDialogProps> = ({
   open,
   onClose,
   onSubmit,
+  isSubmitting = false,
 }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -65,6 +67,7 @@ const EmailCaptureDialog: React.FC<EmailCaptureDialogProps> = ({
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-mem-darkNavy/50 border-mem-babyBlue/40 text-white"
               autoFocus
+              disabled={isSubmitting}
             />
             {error && (
               <p className="text-red-400 text-xs mt-1 flex items-center gap-1">
@@ -80,6 +83,7 @@ const EmailCaptureDialog: React.FC<EmailCaptureDialogProps> = ({
               className="rounded border-mem-babyBlue/40 bg-mem-darkNavy/50"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
+              disabled={isSubmitting}
             />
             <label htmlFor="agree" className="text-sm text-white/80">
               I agree to receive material information and promotions
@@ -89,15 +93,15 @@ const EmailCaptureDialog: React.FC<EmailCaptureDialogProps> = ({
           <div className="bg-mem-darkNavy/40 p-3 rounded border border-mem-babyBlue/30 text-white/70 text-sm">
             <p className="flex items-start gap-2">
               <Check className="h-4 w-4 text-mem-babyBlue shrink-0 mt-0.5" />
-              <span>We'll send your calculation results to your email for future reference</span>
+              <span>Your calculation results will be displayed immediately</span>
+            </p>
+            <p className="flex items-start gap-2 mt-2">
+              <Check className="h-4 w-4 text-mem-babyBlue shrink-0 mt-0.5" />
+              <span>A copy will also be sent to your email for future reference</span>
             </p>
             <p className="flex items-start gap-2 mt-2">
               <Check className="h-4 w-4 text-mem-babyBlue shrink-0 mt-0.5" />
               <span>Your privacy is important to us. We won't share your email with third parties.</span>
-            </p>
-            <p className="flex items-start gap-2 mt-2">
-              <Check className="h-4 w-4 text-mem-babyBlue shrink-0 mt-0.5" />
-              <span>Your information will be sent to our team who will provide additional assistance if needed.</span>
             </p>
           </div>
           
@@ -105,8 +109,16 @@ const EmailCaptureDialog: React.FC<EmailCaptureDialogProps> = ({
             <Button
               type="submit"
               className="w-full bg-mem-blue hover:bg-mem-darkBlue text-white py-6"
+              disabled={isSubmitting}
             >
-              View My Results
+              {isSubmitting ? (
+                <span className="flex items-center gap-2">
+                  <Loader className="h-4 w-4 animate-spin" />
+                  Processing...
+                </span>
+              ) : (
+                "View My Results"
+              )}
             </Button>
           </DialogFooter>
         </form>

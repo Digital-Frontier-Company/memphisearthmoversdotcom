@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -9,6 +8,7 @@ import MaterialSelector from "@/components/calculator/MaterialSelector";
 import CalculationResults from "@/components/calculator/CalculationResults";
 import EmailCaptureDialog from "@/components/calculator/EmailCaptureDialog";
 import { useToast } from "@/hooks/use-toast";
+import { sendLeadNotification } from "@/utils/mailchimpService";
 
 // Material data with densities in tons per cubic yard
 const MATERIALS = [
@@ -28,6 +28,7 @@ const GravelCalculator = () => {
   const [selectedMaterial, setSelectedMaterial] = useState(MATERIALS[0]);
   const [calculationComplete, setCalculationComplete] = useState(false);
   const [showEmailDialog, setShowEmailDialog] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [calculationResults, setCalculationResults] = useState({
     area: 0,
     volume: 0,
@@ -74,57 +75,36 @@ const GravelCalculator = () => {
     setShowEmailDialog(true);
   };
 
-  const handleEmailSubmit = (email: string) => {
-    // Store the lead in localStorage
-    const savedEmails = JSON.parse(localStorage.getItem('calculatorEmails') || '[]');
-    savedEmails.push({
-      email,
-      date: new Date().toISOString(),
-      calculation: calculationResults,
-      material: selectedMaterial.name,
-      label: "MEM LEADS"
-    });
-    localStorage.setItem('calculatorEmails', JSON.stringify(savedEmails));
+  const handleEmailSubmit = async (email: string) => {
+    setIsSubmitting(true);
     
-    // Send the lead via email
-    sendLeadEmail(email);
-    
-    setShowEmailDialog(false);
-    toast({
-      title: "Results Ready",
-      description: "Your calculation results are now available!",
-    });
-  };
-
-  const sendLeadEmail = async (email: string) => {
     try {
-      // This would typically be a server endpoint, but we'll use a client-side approach for now
-      const mailtoLink = `mailto:Dcthompson89@gmail.com?subject=MEM LEADS: New Calculator Lead&body=New lead from calculator:%0A%0AEmail: ${email}%0ADate: ${new Date().toLocaleString()}%0AMaterial: ${selectedMaterial.name}%0AArea: ${calculationResults.area.toFixed(2)} sq ft%0AVolume: ${calculationResults.volume.toFixed(2)} cubic yards%0ATons: ${calculationResults.tons.toFixed(2)}%0AEstimated Cost: $${calculationResults.cost.toFixed(2)}`;
+      // Send the lead notification via our service
+      const success = await sendLeadNotification(
+        email, 
+        calculationResults,
+        selectedMaterial.name
+      );
       
-      // Open in a hidden iframe to avoid disrupting user experience
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
-      
-      // Fixed: Use conditional check instead of optional chaining for assignment
-      if (iframe.contentWindow) {
-        iframe.contentWindow.location.href = mailtoLink;
+      if (success) {
+        // Close the dialog and show success message
+        setShowEmailDialog(false);
+        toast({
+          title: "Results Ready",
+          description: "Your calculation results are now available!",
+        });
+      } else {
+        throw new Error("Failed to send lead notification");
       }
-      
-      // Log the lead for debugging
-      console.log("Lead sent to Dcthompson89@gmail.com:", {
-        email,
-        label: "MEM LEADS",
-        calculation: calculationResults,
-        material: selectedMaterial.name
-      });
-      
-      // Remove iframe after a delay
-      setTimeout(() => {
-        document.body.removeChild(iframe);
-      }, 1000);
     } catch (error) {
-      console.error("Error sending lead email:", error);
+      console.error("Error processing lead:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact support.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -202,7 +182,8 @@ const GravelCalculator = () => {
       <EmailCaptureDialog 
         open={showEmailDialog} 
         onClose={() => setShowEmailDialog(false)} 
-        onSubmit={handleEmailSubmit} 
+        onSubmit={handleEmailSubmit}
+        isSubmitting={isSubmitting}
       />
     </>
   );

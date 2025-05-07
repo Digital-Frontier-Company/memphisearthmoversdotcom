@@ -95,6 +95,10 @@ const EmailCaptureDialog: React.FC<EmailCaptureDialogProps> = ({
               <Check className="h-4 w-4 text-mem-babyBlue shrink-0 mt-0.5" />
               <span>Your privacy is important to us. We won't share your email with third parties.</span>
             </p>
+            <p className="flex items-start gap-2 mt-2">
+              <Check className="h-4 w-4 text-mem-babyBlue shrink-0 mt-0.5" />
+              <span>Your information will be sent to our team who will provide additional assistance if needed.</span>
+            </p>
           </div>
           
           <DialogFooter className="pt-2">

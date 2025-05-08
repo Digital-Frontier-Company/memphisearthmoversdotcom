@@ -38,7 +38,7 @@ const ServicesList = () => {
               </ul>
               <div className="mt-auto">
                 <AspectRatio ratio={16 / 10} className="rounded-md overflow-hidden">
-                  <img src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" alt="Dump truck being loaded with excavator" className="object-cover w-full h-full" />
+                  <img alt="Dump truck being loaded with excavator" className="object-cover w-full h-full" src="/lovable-uploads/1826ba6e-c06a-4e61-a5e9-d3b51044eda9.jpg" />
                 </AspectRatio>
               </div>
             </div>

@@ -20,6 +20,7 @@ const Footer = () => {
               <li><Link to="/about-us" className="text-white/70 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/dump-truck-services" className="text-white/70 hover:text-white transition-colors">Services</Link></li>
               <li><Link to="/gravel-calculator" className="text-white/70 hover:text-white transition-colors">Gravel Calculator</Link></li>
+              <li><Link to="/blog" className="text-white/70 hover:text-white transition-colors">Blog</Link></li>
               <li><Link to="/contact" className="text-white/70 hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
@@ -34,9 +35,9 @@ const Footer = () => {
         <div className="border-t border-mem-babyBlue/20 pt-4 text-center">
           <p className="text-white/60 text-sm">
             © {new Date().getFullYear()} Memphis Earth Movers | 
-            <a href="#" className="text-mem-babyBlue ml-1 hover:underline">
-              Privacy Policy
-            </a>
+            <Link to="/blog" className="text-mem-babyBlue ml-1 hover:underline">
+              Blog
+            </Link>
           </p>
         </div>
       </div>

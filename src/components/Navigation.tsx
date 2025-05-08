@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calculator, Phone, Users, Truck } from "lucide-react";
+import { Home, Calculator, Phone, Users, Truck, BookOpen } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -46,6 +46,13 @@ const Navigation = () => {
           <Link to="/gravel-calculator" className={`${navigationMenuTriggerStyle()} ${isActive('/gravel-calculator') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Calculator className="mr-1 h-4 w-4" />
             Gravel Calculator
+          </Link>
+        </NavigationMenuItem>
+        
+        <NavigationMenuItem>
+          <Link to="/blog" className={`${navigationMenuTriggerStyle()} ${isActive('/blog') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
+            <BookOpen className="mr-1 h-4 w-4" />
+            Blog
           </Link>
         </NavigationMenuItem>
         

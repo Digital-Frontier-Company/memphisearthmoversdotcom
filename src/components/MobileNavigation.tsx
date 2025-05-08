@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Home, Calculator, Phone, Users, Truck } from "lucide-react";
+import { Menu, X, Home, Calculator, Phone, Users, Truck, BookOpen } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const MobileNavigation = () => {
@@ -84,6 +84,19 @@ const MobileNavigation = () => {
               >
                 <Calculator className="h-4 w-4" />
                 Gravel Calculator
+              </Link>
+              
+              <Link 
+                to="/blog" 
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                  isActive('/blog') 
+                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
+                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                }`}
+                onClick={handleLinkClick}
+              >
+                <BookOpen className="h-4 w-4" />
+                Blog
               </Link>
               
               <Link 

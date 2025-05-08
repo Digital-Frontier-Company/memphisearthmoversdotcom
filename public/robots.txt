@@ -1,4 +1,5 @@
 
+# Memphis Earth Movers - Robots.txt
 User-agent: *
 Allow: /
 
@@ -36,3 +37,4 @@ Allow: /dump-truck-services
 Allow: /contact
 Allow: /about-us
 Allow: /gravel-calculator
+Allow: /blog

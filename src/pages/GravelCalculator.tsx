@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -7,8 +8,11 @@ import CalculatorArea from "@/components/calculator/CalculatorArea";
 import MaterialSelector from "@/components/calculator/MaterialSelector";
 import CalculationResults from "@/components/calculator/CalculationResults";
 import EmailCaptureDialog from "@/components/calculator/EmailCaptureDialog";
+import CalculatorBreadcrumbs from "@/components/calculator/CalculatorBreadcrumbs";
+import CalculatorFaq from "@/components/calculator/CalculatorFaq";
 import { useToast } from "@/hooks/use-toast";
 import { sendLeadNotification } from "@/utils/mailchimpService";
+import { Link } from "react-router-dom";
 
 // Material data with densities in tons per cubic yard
 const MATERIALS = [
@@ -20,6 +24,86 @@ const MATERIALS = [
   { id: "asphalt", name: "Regular Asphalt", density: 1.35, price: 65 },
   { id: "crushed-asphalt", name: "Crushed Asphalt", density: 1.35, price: 50 },
 ];
+
+// BreadcrumbList Schema
+const BreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://memphis-earthmovers.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Memphis Gravel Calculator",
+      "item": "https://memphis-earthmovers.com/gravel-calculator"
+    }
+  ]
+};
+
+// FAQ Schema
+const CalculatorFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the Memphis gravel calculator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our Memphis gravel calculator allows you to draw your project area or enter dimensions, select your preferred material, and specify depth. It then calculates the volume in cubic yards and weight in tons needed for your Memphis project, along with an estimated cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What materials can I calculate for my Memphis project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our Memphis calculator supports various materials including crushed gravel, pea gravel, limestone, river rock, sand, regular asphalt, and crushed asphalt. Each material has specific density values to provide accurate calculations for your Memphis project."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Memphis Earth Movers deliver the calculated materials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! After calculating your materials, you can request a delivery quote. Our Memphis dump trucks can deliver all calculated materials directly to your project site throughout Memphis and DeSoto County."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the Memphis gravel calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our Memphis gravel calculator provides a close estimate based on industry standard density values. For the most precise quote for your Memphis project, we recommend contacting us directly at (901) 461-1011 after using the calculator."
+      }
+    }
+  ]
+};
+
+// Calculator Schema
+const CalculatorSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Memphis Gravel Calculator",
+  "applicationCategory": "CalculatorApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Calculate the amount of gravel, limestone, sand, or asphalt millings needed for your Memphis project. Get accurate material estimates and delivery quotes.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Memphis Earth Movers",
+    "url": "https://memphis-earthmovers.com"
+  }
+};
 
 const GravelCalculator = () => {
   const { toast } = useToast();
@@ -111,8 +195,19 @@ const GravelCalculator = () => {
   return (
     <>
       <Helmet>
-        <title>Gravel Calculator | Memphis Earth Movers</title>
-        <meta name="description" content="Calculate how much gravel you need for your project with our free gravel calculator. Memphis Earth Movers provides reliable delivery services throughout Memphis." />
+        <title>Memphis Gravel Calculator | Memphis Dump Truck Delivery</title>
+        <meta name="description" content="Calculate how much gravel you need for your Memphis project with our free gravel calculator. Memphis Earth Movers provides reliable delivery services throughout Memphis and DeSoto County." />
+        <meta name="keywords" content="Memphis gravel calculator, Memphis material calculator, Memphis dump truck delivery, gravel estimator Memphis, Memphis material delivery" />
+        <link rel="canonical" href="https://memphis-earthmovers.com/gravel-calculator" />
+        <script type="application/ld+json">
+          {JSON.stringify(CalculatorSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(BreadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(CalculatorFaqSchema)}
+        </script>
       </Helmet>
       
       <div className="min-h-screen flex flex-col">
@@ -124,19 +219,21 @@ const GravelCalculator = () => {
               <h1 className="text-white text-center mb-8">
                 Memphis Dump Trucks - Gravel Calculator
               </h1>
-              <p className="text-mem-darkGray text-center mb-12">
+              <p className="text-white/80 text-center mb-4">
                 Draw your project area, adjust material and depth, and get an instant estimate of how much material you need. 
-                Perfect for planning driveways, pathways, and landscaping projects.
+                Perfect for planning Memphis driveways, pathways, and landscaping projects.
               </p>
               
-              <div className="mem-card p-8">
-                <h2 className="text-white text-xl mb-6">Calculate Your Material Needs</h2>
+              <CalculatorBreadcrumbs />
+              
+              <div className="mem-card p-8 mt-8">
+                <h2 className="text-white text-xl mb-6">Calculate Your Memphis Material Needs</h2>
                 
                 <div className="space-y-8">
                   {/* Step 1: Draw or enter area dimensions */}
                   <div className="space-y-4">
                     <h3 className="text-white text-lg">Step 1: Define Your Area</h3>
-                    <p className="text-white/80 mb-4">Draw the shape of your project area or enter the dimensions below:</p>
+                    <p className="text-white/80 mb-4">Draw the shape of your Memphis project area or enter the dimensions below:</p>
                     <CalculatorArea onAreaUpdate={handleAreaUpdate} />
                   </div>
                   
@@ -158,7 +255,7 @@ const GravelCalculator = () => {
                       className="mem-btn-primary w-full py-4"
                       onClick={calculateResults}
                     >
-                      Calculate Materials Needed
+                      Calculate Materials for Memphis Delivery
                     </button>
                   </div>
                   
@@ -169,10 +266,20 @@ const GravelCalculator = () => {
                       materialName={selectedMaterial.name}
                     />
                   )}
+                  
+                  {calculationComplete && !showEmailDialog && (
+                    <div className="mt-6 text-center">
+                      <Link to="/contact" className="mem-btn-primary">
+                        Request Memphis Delivery Quote
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </section>
+          
+          <CalculatorFaq />
         </main>
         
         <Footer />

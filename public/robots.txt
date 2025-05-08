@@ -16,3 +16,23 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Delay between requests to reduce server load
+Crawl-delay: 10
+
+# Block certain directories we don't want indexed
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /includes/
+
+# Memphis Keywords Optimization Path
+Allow: /dump-truck-services
+Allow: /contact
+Allow: /about-us
+Allow: /gravel-calculator

@@ -1,13 +1,10 @@
-
 import { Truck, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
 const ServicesHero = () => {
-  return (
-    <section className="mem-hero-section bg-mem-darkNavy py-16 lg:py-24 relative">
+  return <section className="mem-hero-section bg-mem-darkNavy py-16 lg:py-24 relative">
       {/* Grid background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 py-[17px] my-[2px] bg-blue-700 rounded-3xl px-[11px] mx-[4px]"></div>
       
       <div className="mem-container">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -38,16 +35,10 @@ const ServicesHero = () => {
           </div>
           
           <div className="rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/20">
-            <img 
-              src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" 
-              alt="Memphis Earth Movers dump truck being loaded with materials" 
-              className="w-full object-cover h-[400px]"
-            />
+            <img src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" alt="Memphis Earth Movers dump truck being loaded with materials" className="w-full object-cover h-[400px]" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServicesHero;

@@ -1,10 +1,7 @@
-
 import { Truck, Construction, Package, TreePalm } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-
 const ServicesList = () => {
-  return (
-    <section id="services" className="mem-section py-16 bg-white">
+  return <section id="services" className="mem-section py-16 bg-white">
       <div className="mem-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-mem-darkNavy">Our Dump Truck Services</h2>
@@ -41,11 +38,7 @@ const ServicesList = () => {
               </ul>
               <div className="mt-auto">
                 <AspectRatio ratio={16 / 10} className="rounded-md overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png"
-                    alt="Dump truck being loaded with excavator"
-                    className="object-cover w-full h-full"
-                  />
+                  <img src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" alt="Dump truck being loaded with excavator" className="object-cover w-full h-full" />
                 </AspectRatio>
               </div>
             </div>
@@ -78,11 +71,7 @@ const ServicesList = () => {
               </ul>
               <div className="mt-auto">
                 <AspectRatio ratio={16 / 10} className="rounded-md overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/5c31bd27-ead3-4cd3-880d-b43b999cebd1.png"
-                    alt="Asphalt millings pile with excavator"
-                    className="object-cover w-full h-full"
-                  />
+                  <img alt="Asphalt millings pile with excavator" className="object-cover w-full h-full" src="/lovable-uploads/75669d2c-878b-455e-8ca3-1b08055767d9.jpg" />
                 </AspectRatio>
               </div>
             </div>
@@ -115,11 +104,7 @@ const ServicesList = () => {
               </ul>
               <div className="mt-auto">
                 <AspectRatio ratio={16 / 10} className="rounded-md overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/11a0b045-104b-4209-a7eb-a517c9ee8d09.png"
-                    alt="Dump truck delivering materials"
-                    className="object-cover w-full h-full"
-                  />
+                  <img src="/lovable-uploads/11a0b045-104b-4209-a7eb-a517c9ee8d09.png" alt="Dump truck delivering materials" className="object-cover w-full h-full" />
                 </AspectRatio>
               </div>
             </div>
@@ -152,19 +137,13 @@ const ServicesList = () => {
               </ul>
               <div className="mt-auto">
                 <AspectRatio ratio={16 / 10} className="rounded-md overflow-hidden">
-                  <img 
-                    src="/lovable-uploads/8d3ba62a-6f5b-44ff-81e6-4199a6a18d46.png"
-                    alt="Completed asphalt millings driveway"
-                    className="object-cover w-full h-full"
-                  />
+                  <img src="/lovable-uploads/8d3ba62a-6f5b-44ff-81e6-4199a6a18d46.png" alt="Completed asphalt millings driveway" className="object-cover w-full h-full" />
                 </AspectRatio>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServicesList;

@@ -1,6 +1,8 @@
+
 import { Truck, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+
 const ServicesHero = () => {
   return <section className="mem-hero-section bg-mem-darkNavy py-16 lg:py-24 relative">
       {/* Grid background */}
@@ -35,10 +37,15 @@ const ServicesHero = () => {
           </div>
           
           <div className="rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/20">
-            <img src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" alt="Memphis Earth Movers dump truck being loaded with materials" className="w-full object-cover h-[400px]" />
+            <img 
+              src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" 
+              alt="Memphis Earth Movers dump truck being loaded with materials" 
+              className="w-full object-contain h-auto lg:h-[450px]" 
+            />
           </div>
         </div>
       </div>
     </section>;
 };
+
 export default ServicesHero;

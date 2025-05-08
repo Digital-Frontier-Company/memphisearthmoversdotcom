@@ -1,20 +1,10 @@
-
 import { Link } from "react-scroll";
 import QuoteForm from "./QuoteForm";
-
 const HeroSection = () => {
-  return (
-    <section 
-      id="quoteForm"
-      className="relative min-h-[80vh] flex items-center bg-mem-darkNavy overflow-hidden"
-    >
+  return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
-          alt="Memphis Earth Movers dump trucks"
-          className="w-full h-full object-cover opacity-25" 
-        />
+        <img src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" alt="Memphis Earth Movers dump trucks" className="w-full h-full object-cover opacity-25" />
       </div>
       
       {/* Glowing Baby Blue Light Effect */}
@@ -33,13 +23,7 @@ const HeroSection = () => {
               We show up when promised with the equipment you need.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="servicesSection" 
-                smooth={true} 
-                duration={500} 
-                offset={-100}
-                className="mem-btn-primary"
-              >
+              <Link to="servicesSection" smooth={true} duration={500} offset={-100} className="mem-btn-primary">
                 Our Services
               </Link>
               <a href="tel:9014611011" className="mem-btn-secondary">
@@ -54,8 +38,6 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;

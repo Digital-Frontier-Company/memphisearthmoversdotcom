@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { Home, Calculator, Phone, Users } from "lucide-react";
+import { Home, Calculator, Phone, Users, Truck } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -32,6 +32,13 @@ const Navigation = () => {
           <Link to="/about-us" className={`${navigationMenuTriggerStyle()} ${isActive('/about-us') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Users className="mr-1 h-4 w-4" />
             About Us
+          </Link>
+        </NavigationMenuItem>
+        
+        <NavigationMenuItem>
+          <Link to="/dump-truck-services" className={`${navigationMenuTriggerStyle()} ${isActive('/dump-truck-services') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
+            <Truck className="mr-1 h-4 w-4" />
+            Services
           </Link>
         </NavigationMenuItem>
         

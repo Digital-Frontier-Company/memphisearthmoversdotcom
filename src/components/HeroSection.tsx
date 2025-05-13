@@ -1,10 +1,16 @@
+
 import { Link } from "react-scroll";
 import QuoteForm from "./QuoteForm";
+
 const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" alt="Memphis Earth Movers dump trucks" className="w-full h-full object-cover opacity-25" />
+        <img 
+          src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
+          alt="Memphis Earth Movers tri-axle dump truck fleet serving Memphis and DeSoto County" 
+          className="w-full h-full object-cover opacity-25" 
+        />
       </div>
       
       {/* Glowing Baby Blue Light Effect */}
@@ -18,10 +24,17 @@ const HeroSection = () => {
               <span className="block text-mem-babyBlue mb-2">Memphis Earth Movers</span>
               Dump Trucks When You Need Them
             </h1>
-            <p className="text-xl mb-8 max-w-xl">
+            
+            {/* Added clear service summary for LLMs per SEO report recommendation */}
+            <p className="text-xl mb-4 max-w-xl">
               Local, reliable hauling services for construction projects.
               We show up when promised with the equipment you need.
             </p>
+            
+            <p className="mb-6 max-w-xl">
+              Memphis Earth Movers provides dump truck rental and material hauling services throughout Memphis and DeSoto County. Our fleet of 5 tri-axle dump trucks is available for hourly rental starting at $125/hr with a 3-hour minimum. USDOT #3241789.
+            </p>
+            
             <div className="flex flex-wrap gap-4">
               <Link to="servicesSection" smooth={true} duration={500} offset={-100} className="mem-btn-primary">
                 Our Services
@@ -40,4 +53,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;

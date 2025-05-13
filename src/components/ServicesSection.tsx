@@ -27,7 +27,12 @@ const ServicesSection = () => {
             </div>
             
             <div className="mt-4 h-44 overflow-hidden rounded-md">
-              <img alt="Dump truck on construction site" src="/lovable-uploads/00805ab4-523b-4bc1-895d-2ab713bd4905.jpg" className="w-full h-full transition-transform group-hover:scale-105 object-contain" itemProp="image" />
+              <img 
+                alt="Memphis tri-axle dump truck ready for rental and hauling at a construction site" 
+                src="/lovable-uploads/00805ab4-523b-4bc1-895d-2ab713bd4905.jpg" 
+                className="w-full h-full transition-transform group-hover:scale-105 object-contain" 
+                itemProp="image" 
+              />
             </div>
           </div>
           
@@ -48,7 +53,12 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" alt="Construction materials being loaded into dump truck" className="w-full h-full object-contain transition-transform group-hover:scale-105" itemProp="image" />
+                <img 
+                  src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" 
+                  alt="Construction materials being loaded into Memphis Earth Movers dump truck for delivery" 
+                  className="w-full h-full object-contain transition-transform group-hover:scale-105" 
+                  itemProp="image" 
+                />
               </AspectRatio>
             </div>
           </div>
@@ -70,7 +80,12 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img alt="Excavator loading asphalt millings into dump truck" className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" itemProp="image" />
+                <img 
+                  alt="Excavator loading asphalt millings into Memphis dump truck for driveway installation" 
+                  className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" 
+                  src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" 
+                  itemProp="image" 
+                />
               </AspectRatio>
             </div>
           </div>
@@ -92,7 +107,12 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img alt="Landscaping project with dirt delivery" className="w-full h-full object-contain transition-transform group-hover:scale-105" src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" itemProp="image" />
+                <img 
+                  alt="Landscaping project with topsoil delivery by Memphis Earth Movers dump truck for residential yard" 
+                  className="w-full h-full object-contain transition-transform group-hover:scale-105" 
+                  src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" 
+                  itemProp="image" 
+                />
               </AspectRatio>
             </div>
           </div>
@@ -100,4 +120,5 @@ const ServicesSection = () => {
       </div>
     </section>;
 };
+
 export default ServicesSection;

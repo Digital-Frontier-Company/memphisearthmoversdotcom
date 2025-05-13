@@ -11,55 +11,7 @@ import FaqSection from "@/components/FaqSection";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTopButton";
-
-// Structured data for the homepage
-const HomePageSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Memphis Earth Movers",
-  "description": "Memphis Earth Movers provides reliable dump truck services, material hauling, and delivery for contractors, businesses, and homeowners throughout Memphis and DeSoto County.",
-  "url": "https://memphis-earthmovers.com/",
-  "telephone": "(901) 461-1011",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "",
-    "addressLocality": "Memphis",
-    "addressRegion": "TN",
-    "postalCode": "",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 35.1495,
-    "longitude": -90.0490
-  },
-  "sameAs": [
-    "https://www.facebook.com/memphisearthmovers",
-    "https://www.instagram.com/memphisearthmovers"
-  ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "07:00",
-      "closes": "17:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "08:00",
-      "closes": "15:00"
-    }
-  ],
-  "image": "/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png",
-  "priceRange": "$$$"
-};
+import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 
 // FAQ Schema
 const HomeFaqSchema = {
@@ -112,16 +64,8 @@ const HomeFaqSchema = {
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <LocalBusinessSchema url="https://memphis-earthmovers.com/" />
       <Helmet>
-        <title>Memphis Dump Truck Services & Rentals | Memphis Earth Movers</title>
-        <meta name="description" content="Memphis Earth Movers provides reliable dump truck rentals, material hauling, and delivery services for contractors and homeowners in Memphis and DeSoto County." />
-        <meta name="keywords" content="Memphis dump trucks, dump truck rental Memphis, material hauling Memphis, gravel delivery Memphis, Memphis construction hauling, Memphis Earth Movers" />
-        <meta name="geo.region" content="US-TN" />
-        <meta name="geo.placename" content="Memphis" />
-        <link rel="canonical" href="https://memphis-earthmovers.com/" />
-        <script type="application/ld+json">
-          {JSON.stringify(HomePageSchema)}
-        </script>
         <script type="application/ld+json">
           {JSON.stringify(HomeFaqSchema)}
         </script>

@@ -1,53 +1,32 @@
 
 import { Helmet } from "react-helmet-async";
+import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 
 const StructuredData = () => {
-  const structuredData = {
+  const aboutUsSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Memphis Earth Movers",
-    "description": "Reliable tri-axle dump truck rentals for contractors, builders, and business owners in Memphis.",
-    "url": window.location.href,
-    "telephone": "9014611011",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Memphis",
-      "addressRegion": "TN",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 35.1495,
-      "longitude": -90.0490
-    },
-    "priceRange": "$$",
-    "service": [
-      {
-        "@type": "Service",
-        "name": "Hourly Dump Truck Rentals",
-        "description": "Perfect for heavy-duty hauls, demolition support, and site material runs."
-      },
-      {
-        "@type": "Service",
-        "name": "Gravel Hauling & Delivery",
-        "description": "Asphalt millings or gravel delivered directly to your home, jobsite, or business."
-      },
-      {
-        "@type": "Service",
-        "name": "Heavy Hauling",
-        "description": "Heavy hauling services for the Greater Memphis Area."
-      }
-    ]
+    "@type": "AboutPage",
+    "name": "About Memphis Earth Movers",
+    "description": "Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors, builders, and business owners in Memphis who need dependable hauling services.",
+    "mainContentOfPage": {
+      "@type": "WebPageElement",
+      "cssSelector": ".main-content"
+    }
   };
 
   return (
-    <Helmet>
-      <title>About Memphis Earth Movers - Reliable Dump Truck Rentals</title>
-      <meta name="description" content="Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors, builders, and business owners in Memphis who need dependable hauling services." />
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-    </Helmet>
+    <>
+      <LocalBusinessSchema 
+        page="about"
+        pageSpecificDesc="Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors, builders, and business owners in Memphis who need dependable hauling services." 
+        url="https://memphis-earthmovers.com/about-us"
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(aboutUsSchema)}
+        </script>
+      </Helmet>
+    </>
   );
 };
 

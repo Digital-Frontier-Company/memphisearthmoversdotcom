@@ -8,6 +8,7 @@ import BlogPostBreadcrumbs from "@/components/blog/BlogPostBreadcrumbs";
 import { blogPosts } from "@/data/blogPosts";
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import FaqSchema from "@/components/shared/FaqSchema";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,12 +24,31 @@ const BlogPost = () => {
   if (!post) {
     return <Navigate to="/blog" />;
   }
+
+  // Blog post specific FAQs
+  const postFaqs = [
+    {
+      question: `What is the main topic of "${post.title}"?`,
+      answer: post.excerpt
+    },
+    {
+      question: "How can I learn more about this topic?",
+      answer: "You can contact Memphis Earth Movers for personalized advice about your specific project needs. Our team of experts can provide guidance tailored to your situation."
+    },
+    {
+      question: "Does Memphis Earth Movers provide services related to this topic?",
+      answer: "Yes, Memphis Earth Movers offers a range of services including material delivery, dump truck rentals, and expert consultation on construction and landscaping materials throughout Memphis and DeSoto County."
+    }
+  ];
+  
+  const canonicalUrl = `https://memphis-earthmovers.com/blog/${post.slug}`;
   
   return (
     <>
       <Helmet>
         <title>{post.title} | Memphis Earth Movers Blog</title>
         <meta name="description" content={post.excerpt} />
+        <link rel="canonical" href={canonicalUrl} />
         <script type="application/ld+json">
           {`
             {
@@ -82,6 +102,7 @@ const BlogPost = () => {
           `}
         </script>
       </Helmet>
+      <FaqSchema faqs={postFaqs} url={canonicalUrl} />
       <Header />
       <BlogPostBreadcrumbs title={post.title} />
       <main>

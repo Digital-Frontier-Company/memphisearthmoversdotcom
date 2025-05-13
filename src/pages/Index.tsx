@@ -64,7 +64,7 @@ const HomeFaqSchema = {
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <LocalBusinessSchema url="https://memphis-earthmovers.com/" />
+      <LocalBusinessSchema url="https://www.memphisearthmovers.com/" />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(HomeFaqSchema)}

@@ -8,12 +8,16 @@ interface LocalBusinessSchemaProps {
 }
 
 const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchemaProps) => {
+  // Format URL to ensure it uses www
+  const formattedUrl = url.replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
+                          .replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com");
+  
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Memphis Earth Movers",
     "description": pageSpecificDesc || "Memphis Earth Movers provides reliable dump truck services and material delivery for contractors and homeowners in Memphis, TN and DeSoto County.",
-    "url": url,
+    "url": formattedUrl,
     "telephone": "(901) 461-1011",
     "address": {
       "@type": "PostalAddress",
@@ -57,7 +61,7 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
     ]
   };
 
-  // Modify page title based on current page
+  // Modify page title based on current page - shortened to stay under 60 chars
   let title = "Dump Truck Rentals Memphis – 3-Hr Minimum | Memphis Earth Movers";
   let description = "Reliable dump truck rentals in Memphis from $125/hr. Local hauling, gravel delivery, and material transport with a 3-hour minimum. Memphis's trusted dump trucks.";
   
@@ -72,11 +76,11 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
         description = "Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors in Memphis. Local, dependable, and on time.";
         break;
       case "contact":
-        title = "Contact Our Memphis Dump Truck Rental Team | Memphis Earth Movers";
+        title = "Contact Memphis Dump Truck Rental Team | Memphis Earth Movers";
         description = "Need a dump truck in Memphis? Contact our team for quick quotes on dump truck rentals, material delivery, and hauling services.";
         break;
       case "calculator":
-        title = "Gravel Calculator for Memphis Projects | Memphis Earth Movers";
+        title = "Gravel Calculator - Memphis Projects | Memphis Earth Movers";
         description = "Calculate exactly how much gravel you need for your Memphis project. Then get it delivered with our reliable dump truck service.";
         break;
       case "blog":
@@ -94,7 +98,7 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
       {/* Updated metadata with optimized length and focused content */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={formattedUrl} />
       
       {/* LocalBusiness Schema */}
       <script type="application/ld+json">

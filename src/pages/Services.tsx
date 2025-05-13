@@ -20,13 +20,13 @@ const BreadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://memphis-earthmovers.com"
+      "item": "https://www.memphisearthmovers.com"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Memphis Dump Truck Services",
-      "item": "https://memphis-earthmovers.com/dump-truck-services"
+      "item": "https://www.memphisearthmovers.com/dump-truck-services"
     }
   ]
 };
@@ -77,7 +77,7 @@ const Services = () => {
       <LocalBusinessSchema 
         page="services"
         pageSpecificDesc="Professional dump truck services in Memphis, including hourly rentals, material hauling, and reliable delivery throughout Memphis and DeSoto County." 
-        url="https://memphis-earthmovers.com/dump-truck-services"
+        url="https://www.memphisearthmovers.com/dump-truck-services"
       />
       
       <Helmet>

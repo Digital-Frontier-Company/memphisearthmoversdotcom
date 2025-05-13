@@ -3,24 +3,46 @@
 User-agent: *
 Allow: /
 
+# Sitemap location
 Sitemap: https://memphis-earthmovers.com/sitemap.xml
 
+# Allow specific search engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Slurp
+Allow: /
+
+# Allow AI bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Bard
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Allow Social Media crawlers
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
 Allow: /
 
 # Delay between requests to reduce server load

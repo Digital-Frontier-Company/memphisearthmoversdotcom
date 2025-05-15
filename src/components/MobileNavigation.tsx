@@ -74,6 +74,19 @@ const MobileNavigation = () => {
               </Link>
               
               <Link 
+                to="/hourly-dump-truck-rental" 
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                  isActive('/hourly-dump-truck-rental') 
+                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
+                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                }`}
+                onClick={handleLinkClick}
+              >
+                <Clock className="h-4 w-4 ml-4" />
+                Hourly Truck Rental
+              </Link>
+              
+              <Link 
                 to="/gravel-calculator" 
                 className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
                   isActive('/gravel-calculator') 

@@ -1,6 +1,7 @@
 
-import { Truck, Package, Construction, TreePalm } from "lucide-react";
+import { Truck, Clock, Package, Construction, TreePalm } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
   return <section className="mem-section bg-mem-darkNavy relative" itemScope itemType="https://schema.org/Service">
@@ -16,23 +17,32 @@ const ServicesSection = () => {
             <div className="flex gap-4 relative z-10">
               <div className="flex-shrink-0">
                 <div className="p-3 bg-mem-blue text-white rounded-full">
-                  <Truck size={24} />
+                  <Clock size={24} />
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">Dump Truck Rental & Hauling</h3>
-                <p itemProp="description">Our fleet of well-maintained dump trucks is available for hourly or project-based hauling, complete with skilled drivers to ensure efficient operation and timely delivery.</p>
+                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">
+                  <Link to="/hourly-dump-truck-rental" className="hover:text-mem-babyBlue transition-colors">
+                    Hourly Dump Truck Rental
+                  </Link>
+                </h3>
+                <p itemProp="description">Our fleet of well-maintained dump trucks is available for hourly or project-based hauling, complete with skilled CDL drivers to ensure efficient operation and timely delivery.</p>
                 <meta itemProp="areaServed" content="Memphis, DeSoto County" />
+                <Link to="/hourly-dump-truck-rental" className="inline-block mt-2 text-mem-babyBlue hover:text-white transition-colors">
+                  Starting at $125/hr →
+                </Link>
               </div>
             </div>
             
             <div className="mt-4 h-44 overflow-hidden rounded-md">
-              <img 
-                alt="Memphis tri-axle dump truck ready for rental and hauling at a construction site" 
-                src="/lovable-uploads/00805ab4-523b-4bc1-895d-2ab713bd4905.jpg" 
-                className="w-full h-full transition-transform group-hover:scale-105 object-contain" 
-                itemProp="image" 
-              />
+              <Link to="/hourly-dump-truck-rental">
+                <img 
+                  alt="Memphis tri-axle dump truck ready for rental and hauling at a construction site" 
+                  src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
+                  className="w-full h-full transition-transform group-hover:scale-105 object-contain" 
+                  itemProp="image" 
+                />
+              </Link>
             </div>
           </div>
           
@@ -116,6 +126,15 @@ const ServicesSection = () => {
               </AspectRatio>
             </div>
           </div>
+        </div>
+        
+        <div className="mt-8 flex justify-center">
+          <Link to="/dump-truck-services" className="mem-btn-primary mr-4">
+            View All Services
+          </Link>
+          <Link to="/hourly-dump-truck-rental" className="mem-btn-secondary">
+            Hourly Truck Rental
+          </Link>
         </div>
       </div>
     </section>;

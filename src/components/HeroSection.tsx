@@ -1,5 +1,6 @@
 
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
 
 const HeroSection = () => {
@@ -39,6 +40,9 @@ const HeroSection = () => {
               <Link to="servicesSection" smooth={true} duration={500} offset={-100} className="mem-btn-primary">
                 Our Services
               </Link>
+              <RouterLink to="/hourly-dump-truck-rental" className="mem-btn-secondary">
+                Hourly Rental
+              </RouterLink>
               <a href="tel:9014611011" className="mem-btn-secondary">
                 Call Now
               </a>

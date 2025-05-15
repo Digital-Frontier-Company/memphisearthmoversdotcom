@@ -48,7 +48,7 @@ const Navigation = () => {
               </Link>
               <Link to="/hourly-dump-truck-rental" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
                 <div className="font-medium">Hourly Dump Truck Rental</div>
-                <div className="text-sm text-muted-foreground">Flexible hourly rates with professional drivers</div>
+                <div className="text-sm text-muted-foreground">Flexible hourly rates with professional CDL drivers</div>
               </Link>
             </div>
           </NavigationMenuContent>

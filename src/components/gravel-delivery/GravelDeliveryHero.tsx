@@ -25,8 +25,8 @@ const GravelDeliveryHero = () => {
           </h1>
           
           <p className="text-xl mb-4 max-w-3xl mx-auto">
-            Memphis Earth Movers drops <strong>15-ton truckloads of milled asphalt or stone anywhere
-            in the Mid-South for a flat $400*</strong>—then, if you need it leveled, our crew can spread
+            Memphis Earth Movers drops <strong>15-ton truckloads of milled asphalt
+            anywhere in the Mid-South for a flat $400*</strong>—then, if you need it leveled, our crew can spread
             it on-site for an additional fee after a quick walk-through.
           </p>
           

@@ -32,7 +32,7 @@ const HeroSection = () => {
             </p>
             
             <p className="mb-6 max-w-xl">
-              Memphis Earth Movers provides dump truck rental and material hauling services throughout Memphis and DeSoto County. Our fleet of 5 tri-axle dump trucks is available for hourly rental starting at $125/hr with a 3-hour minimum. USDOT #3241789.
+              Memphis Earth Movers provides dump truck rental and material hauling services throughout Memphis and DeSoto County. Our fleet of 5 tri-axle dump trucks is available for hourly rental starting at $125/hr with a 3-hour minimum.
             </p>
             
             <div className="flex flex-wrap gap-4">

@@ -6,23 +6,23 @@ import FaqSchema from "@/components/shared/FaqSchema";
 const faqs = [
   {
     question: "How much material can your trucks haul per hour?",
-    answer: "Our tri-axle fleet moves roughly 15 tons per trip; on short hauls (under 5 mi) that's up to 75 tons per truck per hour, weather and load-site queue permitting."
+    answer: "Our tri-axle fleet moves roughly 15 tons per trip; on short hauls under five miles, that equals up to 75 tons per truck per hour, depending on site conditions."
   },
   {
     question: "Do you supply operators or is it self-drive?",
-    answer: "We always supply CDL-certified drivers—no insurance nightmare for you and full OSHA compliance for the site."
+    answer: "We provide CDL-certified drivers with every rental to keep your project fully insured and OSHA-compliant."
   },
   {
     question: "Can I book night or weekend hours?",
-    answer: "Absolutely. A 20% after-hours premium applies for runs scheduled between 7 p.m. – 6 a.m. or on Sundays."
+    answer: "Yes. A 20 percent after-hours premium applies for work scheduled 7 p.m.–6 a.m. or on Sundays."
   },
   {
     question: "What if I need multiple trucks?",
-    answer: "We can scale to six concurrent trucks; simply note the quantity in your quote request and we'll confirm availability within 30 minutes."
+    answer: "We can dispatch up to six trucks simultaneously. Request the quantity in your quote form, and availability will be confirmed within 30 minutes."
   },
   {
     question: "Do your rates include fuel?",
-    answer: "Yes—our hourly rate is all-in. A fuel surcharge only applies if diesel exceeds the regional DOE baseline by 10¢/gal or more."
+    answer: "Fuel is included in our base hourly rate. A surcharge is added only if diesel exceeds the regional DOE baseline by ten cents per gallon or more."
   }
 ];
 

@@ -1,5 +1,7 @@
-import { Truck, Clock, MapPin } from "lucide-react";
+
+import { Truck, Clock, MapPin, Construction, Package, TreePalm } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const ServicesList = () => {
   return (

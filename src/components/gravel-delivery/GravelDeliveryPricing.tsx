@@ -1,4 +1,13 @@
 
+import { 
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "@/components/ui/table";
+
 const GravelDeliveryPricing = () => {
   return (
     <section id="pricing" className="mem-section bg-gray-100 text-mem-darkNavy">
@@ -35,7 +44,7 @@ const GravelDeliveryPricing = () => {
                   <p className="font-medium">Custom Hauling</p>
                   <p className="text-sm text-gray-500">(any pit you choose)</p>
                 </td>
-                <td className="px-6 py-4">$115 / hr*</td>
+                <td className="px-6 py-4">$125 / hr*</td>
                 <td className="px-6 py-4">Tri-axle dump with CDL driver. *Avg. Memphis rate.</td>
               </tr>
             </tbody>

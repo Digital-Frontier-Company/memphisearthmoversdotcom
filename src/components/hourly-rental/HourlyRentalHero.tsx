@@ -39,7 +39,7 @@ const HourlyRentalHero = () => {
           <div className="rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/20">
             <img 
               src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
-              alt="Memphis Earth Movers fleet of dump trucks ready for hourly rental" 
+              alt="Memphis dump truck rentals - tri-axle dump trucks for hourly rental with CDL drivers in Shelby County" 
               className="w-full object-cover h-auto lg:h-[450px]" 
             />
           </div>

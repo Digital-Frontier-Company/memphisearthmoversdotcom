@@ -16,6 +16,7 @@ import GravelDeliveryFaq from "@/components/gravel-delivery/GravelDeliveryFaq";
 import GravelDeliveryBreadcrumbs from "@/components/gravel-delivery/GravelDeliveryBreadcrumbs";
 import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 import GravelDeliveryRelatedServices from "@/components/gravel-delivery/GravelDeliveryRelatedServices";
+import FaqSchema from "@/components/shared/FaqSchema";
 
 // BreadcrumbList Schema
 const BreadcrumbSchema = {
@@ -43,53 +44,29 @@ const BreadcrumbSchema = {
   ]
 };
 
-// FAQ Schema
-const GravelDeliveryFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many square feet will 15 tons of milled asphalt cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At a 3-inch compacted depth, one 15-ton load covers about 1,350 sq ft (roughly a 15 ft × 90 ft driveway)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I order limestone or river rock instead?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes—choose any material from Memphis-area pits; we'll haul at our standard $115/hr rate plus pit ticket."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What does the spreading service include?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A skid-steer with 6-ft box blade plus operator; we laser-grade to ±½ inch and compact with the truck tires."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a fuel surcharge?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Fuel is baked into the $400 special. Surcharges only apply on custom hauls if diesel exceeds the DOE baseline by ≥10¢/gal."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I prep my site for delivery?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Clear overhead obstructions to 20 ft and grade a dump path at least 12 ft wide. We'll advise on the pre-haul call."
-      }
-    }
-  ]
-};
+// FAQ data
+const gravelFaqs = [
+  {
+    question: "How many square feet will 15 tons of milled asphalt cover?",
+    answer: "At a 3-inch compacted depth, one 15-ton load covers about 1,350 square feet—roughly a 15 by 90 foot driveway."
+  },
+  {
+    question: "Can I order limestone or river rock instead?",
+    answer: "Yes. Select any aggregate from local pits and we will haul it at our standard hourly truck rate plus the pit's ticket price."
+  },
+  {
+    question: "What does the spreading service include?",
+    answer: "Our spreading service provides a skid-steer with a 6-foot box blade and an experienced operator who laser grades to ±½ inch and compacts with the truck tires."
+  },
+  {
+    question: "Is there a fuel surcharge?",
+    answer: "Fuel is included in the $400 milled asphalt special. Surcharges apply only on custom hauls if regional diesel prices exceed the DOE baseline by ten cents per gallon or more."
+  },
+  {
+    question: "How do I prep my site for delivery?",
+    answer: "Ensure overhead clearance of 20 feet and a dump path at least 12 feet wide. Additional prep guidance is provided during the pre-haul confirmation call."
+  }
+];
 
 const GravelDelivery = () => {
   return (
@@ -97,6 +74,11 @@ const GravelDelivery = () => {
       <LocalBusinessSchema 
         page="gravel-delivery" 
         pageSpecificDesc="Memphis Earth Movers delivers 15-ton loads of gravel, milled asphalt, and stone to Memphis-area locations for a flat $400. Professional spreading services available." 
+        url="https://www.memphisearthmovers.com/memphis-gravel-delivery"
+      />
+      
+      <FaqSchema 
+        faqs={gravelFaqs}
         url="https://www.memphisearthmovers.com/memphis-gravel-delivery"
       />
       
@@ -119,9 +101,6 @@ const GravelDelivery = () => {
         
         <script type="application/ld+json">
           {JSON.stringify(BreadcrumbSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(GravelDeliveryFaqSchema)}
         </script>
       </Helmet>
       

@@ -21,16 +21,16 @@ const GravelDeliveryHero = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="mb-6 text-center">
             <span className="block text-mem-babyBlue mb-2">Memphis Gravel Delivery</span>
-            15-Ton Loads for Just $400
+            <span className="text-mem-babyBlue">15-Ton Loads for Just $400</span>
           </h1>
           
-          <p className="text-xl mb-4 max-w-3xl mx-auto">
+          <p className="text-xl mb-4 max-w-3xl mx-auto text-mem-babyBlue">
             Memphis Earth Movers drops <strong>15-ton truckloads of milled asphalt
             anywhere in the Mid-South for a flat $400*</strong>—then, if you need it leveled, our crew can spread
             it on-site for an additional fee after a quick walk-through.
           </p>
           
-          <p className="mb-8 text-sm opacity-80">
+          <p className="mb-8 text-sm opacity-80 text-mem-babyBlue">
             *Price covers a 15-ton load of milled asphalt within 25 road-miles of downtown Memphis.
           </p>
           

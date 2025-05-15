@@ -36,10 +36,22 @@ const Navigation = () => {
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <Link to="/dump-truck-services" className={`${navigationMenuTriggerStyle()} ${isActive('/dump-truck-services') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
+          <NavigationMenuTrigger className={`${isActive('/dump-truck-services') || isActive('/hourly-dump-truck-rental') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
             <Truck className="mr-1 h-4 w-4" />
             Services
-          </Link>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
+              <Link to="/dump-truck-services" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
+                <div className="font-medium">All Dump Truck Services</div>
+                <div className="text-sm text-muted-foreground">Overview of our material hauling services</div>
+              </Link>
+              <Link to="/hourly-dump-truck-rental" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
+                <div className="font-medium">Hourly Dump Truck Rental</div>
+                <div className="text-sm text-muted-foreground">Flexible hourly rates with professional drivers</div>
+              </Link>
+            </div>
+          </NavigationMenuContent>
         </NavigationMenuItem>
         
         <NavigationMenuItem>

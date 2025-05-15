@@ -10,6 +10,7 @@ import GravelCalculator from "./pages/GravelCalculator";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
+import HourlyDumpTruckRentals from "./pages/HourlyDumpTruckRentals";
 import NotFound from "./pages/NotFound";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/dump-truck-services" element={<Services />} />
+            <Route path="/hourly-dump-truck-rental" element={<HourlyDumpTruckRentals />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

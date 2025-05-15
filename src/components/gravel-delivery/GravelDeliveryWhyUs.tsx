@@ -1,14 +1,14 @@
 
 const GravelDeliveryWhyUs = () => {
   return (
-    <section id="why-us" className="mem-section bg-white text-mem-darkNavy">
+    <section id="why-us" className="mem-section bg-mem-babyBlue/10 text-mem-darkNavy">
       <div className="mem-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-mem-darkNavy">
           Why Contractors Pick Memphis Earth Movers
         </h2>
         
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="bg-gray-100 p-6 rounded-lg">
+          <div className="bg-mem-babyBlue/20 p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-mem-blue text-white flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -17,12 +17,12 @@ const GravelDeliveryWhyUs = () => {
               </div>
               <h3 className="text-xl font-bold">97% on-time arrival</h3>
             </div>
-            <p className="text-mem-darkGray">
+            <p className="text-mem-darkNavy">
               Supported by real-time GPS dispatch to ensure your materials arrive when promised.
             </p>
           </div>
           
-          <div className="bg-gray-100 p-6 rounded-lg">
+          <div className="bg-mem-babyBlue/20 p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-mem-blue text-white flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -31,12 +31,12 @@ const GravelDeliveryWhyUs = () => {
               </div>
               <h3 className="text-xl font-bold">DOT-compliant fleet</h3>
             </div>
-            <p className="text-mem-darkGray">
+            <p className="text-mem-darkNavy">
               With backup alarms &amp; tarp systems for safe, regulation-compliant material delivery.
             </p>
           </div>
           
-          <div className="bg-gray-100 p-6 rounded-lg">
+          <div className="bg-mem-babyBlue/20 p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-mem-blue text-white flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,12 +45,12 @@ const GravelDeliveryWhyUs = () => {
               </div>
               <h3 className="text-xl font-bold">Local know-how</h3>
             </div>
-            <p className="text-mem-darkGray">
+            <p className="text-mem-darkNavy">
               10 years hauling Mid-South aggregates; we navigate TDOT specs so you don't have to.
             </p>
           </div>
           
-          <div className="bg-gray-100 p-6 rounded-lg">
+          <div className="bg-mem-babyBlue/20 p-6 rounded-lg shadow-md">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-full bg-mem-blue text-white flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,7 +59,7 @@ const GravelDeliveryWhyUs = () => {
               </div>
               <h3 className="text-xl font-bold">Industry insight</h3>
             </div>
-            <p className="text-mem-darkGray">
+            <p className="text-mem-darkNavy">
               We track trucking trends to keep rates fair even as 2025 driver wages and fuel swing.
             </p>
           </div>

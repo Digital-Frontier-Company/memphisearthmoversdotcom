@@ -1,6 +1,7 @@
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Home, Calculator, Phone, Users, Truck, BookOpen, Clock } from "lucide-react";
+import { Menu, X, Home, Calculator, Phone, Users, Truck, BookOpen, Clock, Layers } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const MobileNavigation = () => {
@@ -83,6 +84,19 @@ const MobileNavigation = () => {
               >
                 <Clock className="h-4 w-4 ml-4" />
                 Hourly Truck Rental
+              </Link>
+              
+              <Link 
+                to="/memphis-gravel-delivery" 
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                  isActive('/memphis-gravel-delivery') 
+                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
+                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                }`}
+                onClick={handleLinkClick}
+              >
+                <Layers className="h-4 w-4 ml-4" />
+                Gravel Delivery
               </Link>
               
               <Link 

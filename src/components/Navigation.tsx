@@ -36,7 +36,13 @@ const Navigation = () => {
         </NavigationMenuItem>
         
         <NavigationMenuItem>
-          <NavigationMenuTrigger className={`${isActive('/dump-truck-services') || isActive('/hourly-dump-truck-rental') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
+          <NavigationMenuTrigger className={`${
+            isActive('/dump-truck-services') || 
+            isActive('/hourly-dump-truck-rental') || 
+            isActive('/memphis-gravel-delivery') 
+              ? 'bg-mem-babyBlue/20 text-mem-blue' 
+              : 'text-mem-darkNavy'
+          }`}>
             <Truck className="mr-1 h-4 w-4" />
             Services
           </NavigationMenuTrigger>
@@ -49,6 +55,10 @@ const Navigation = () => {
               <Link to="/hourly-dump-truck-rental" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
                 <div className="font-medium">Hourly Dump Truck Rental</div>
                 <div className="text-sm text-muted-foreground">Flexible hourly rates with professional CDL drivers</div>
+              </Link>
+              <Link to="/memphis-gravel-delivery" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
+                <div className="font-medium">Memphis Gravel Delivery</div>
+                <div className="text-sm text-muted-foreground">15-ton loads of gravel and milled asphalt for just $400</div>
               </Link>
             </div>
           </NavigationMenuContent>

@@ -43,6 +43,9 @@ const HeroSection = () => {
               <RouterLink to="/hourly-dump-truck-rental" className="mem-btn-secondary">
                 Hourly Rental
               </RouterLink>
+              <RouterLink to="/memphis-gravel-delivery" className="mem-btn-secondary">
+                Gravel Delivery
+              </RouterLink>
               <a href="tel:9014611011" className="mem-btn-secondary">
                 Call Now
               </a>

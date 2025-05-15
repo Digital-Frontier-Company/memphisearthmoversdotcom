@@ -38,8 +38,8 @@ const HourlyRentalHero = () => {
           
           <div className="rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/20">
             <img 
-              src="/lovable-uploads/3d2e0caa-8367-4da4-85ed-a7c9599175fb.png" 
-              alt="Memphis Earth Movers hourly dump truck rental service" 
+              src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
+              alt="Memphis Earth Movers fleet of dump trucks ready for hourly rental" 
               className="w-full object-cover h-auto lg:h-[450px]" 
             />
           </div>

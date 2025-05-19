@@ -6,7 +6,7 @@ const ContactHero = () => {
     <section className="relative bg-mem-darkNavy text-white py-16 md:py-24">
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
+          src="/lovable-uploads/5c31bd27-ead3-4cd3-880d-b43b999cebd1.png" 
           alt="Memphis Earth Movers dump truck services"
           className="w-full h-full object-cover object-center" 
         />

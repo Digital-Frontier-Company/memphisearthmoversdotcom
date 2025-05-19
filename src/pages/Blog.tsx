@@ -1,83 +1,73 @@
 
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogList from "@/components/blog/BlogList";
 import BlogBreadcrumbs from "@/components/blog/BlogBreadcrumbs";
+import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
+import BackToTopButton from "@/components/BackToTopButton";
+import FaqSchema from "@/components/shared/FaqSchema";
 
 const Blog = () => {
+  const faqs = [
+    {
+      question: "What materials does Memphis Earth Movers deliver?",
+      answer: "We deliver a wide range of construction materials including crushed stone, gravel, topsoil, sand, limestone, rip rap, and recycled concrete and asphalt for various Memphis construction and landscaping projects."
+    },
+    {
+      question: "How quickly can I get materials delivered in Memphis?",
+      answer: "Most Memphis area deliveries can be scheduled within 24-48 hours of order confirmation, with same-day emergency delivery options available when our schedule permits."
+    },
+    {
+      question: "Do you offer advice on material selection?",
+      answer: "Yes, our team provides expert guidance on selecting the right materials for your specific project needs in Memphis, considering local soil conditions, weather patterns, and application requirements."
+    },
+    {
+      question: "Can I find information about Memphis soil conditions on your blog?",
+      answer: "Yes, our blog covers topics specific to Memphis construction challenges including clay soil management, optimal gravel types for local driveways, and cost-effective material solutions for Memphis projects."
+    }
+  ];
+
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>Our Blog | Memphis Earth Movers | Dump Truck Services</title>
-        <meta 
-          name="description" 
-          content="Discover tips, guides, and insights about dump truck services, gravel, construction materials, and more on the Memphis Earth Movers blog."
-        />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://memphis-earthmovers.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Blog",
-                  "item": "https://memphis-earthmovers.com/blog"
-                }
-              ]
-            }
-          `}
-        </script>
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How often should I check for updates on the Memphis Earth Movers blog?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We recommend checking our blog monthly for new articles about construction materials, dump truck services, and helpful guides for your projects in the Memphis area."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I request a topic to be covered on your blog?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Absolutely! We welcome topic suggestions from our customers. Simply reach out through our contact page with your ideas, and we'll consider them for future blog posts."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Do you provide advice on specific construction projects through your blog?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Our blog provides general guidance and information. For specific project advice, we recommend contacting us directly for a consultation tailored to your unique needs."
-                  }
-                }
-              ]
-            }
-          `}
-        </script>
+        <title>Memphis Construction & Earthmoving Blog | Expert Tips & Solutions</title>
+        <meta name="description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions. Read our blog for tips specific to Memphis construction projects." />
+        <meta name="keywords" content="Memphis construction blog, earthmoving tips, Memphis soil solutions, gravel delivery Memphis, construction material advice, Memphis clay soil, dump truck services" />
+        <meta property="og:title" content="Memphis Construction & Earthmoving Blog | Memphis Earth Movers" />
+        <meta property="og:description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions. Read our blog for tips specific to Memphis construction projects." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.memphisearthmovers.com/blog" />
+        <meta property="og:image" content="https://www.memphisearthmovers.com/lovable-uploads/30d40068-7c8a-4348-b19b-c9a4094f24f1.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Memphis Construction & Earthmoving Blog" />
+        <meta name="twitter:description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions." />
+        <meta name="twitter:image" content="https://www.memphisearthmovers.com/lovable-uploads/30d40068-7c8a-4348-b19b-c9a4094f24f1.png" />
+        <link rel="canonical" href="https://www.memphisearthmovers.com/blog" />
       </Helmet>
+      
+      <LocalBusinessSchema 
+        page="blog" 
+        url="https://www.memphisearthmovers.com/blog" 
+        pageSpecificDesc="Expert advice on Memphis construction materials, dump truck services, and soil solutions from Memphis Earth Movers. Local tips for successful projects."
+      />
+      
+      <FaqSchema 
+        faqs={faqs}
+        url="https://www.memphisearthmovers.com/blog"
+      />
+      
       <Header />
-      <BlogBreadcrumbs />
+      
       <main>
+        <BlogBreadcrumbs />
         <BlogList />
       </main>
+      
       <Footer />
-    </>
+      <BackToTopButton />
+    </div>
   );
 };
 

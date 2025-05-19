@@ -45,6 +45,16 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+# Don't unnecessarily block resources - this avoids the robots.txt blocking issue
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.avif$
+
 # Delay between requests to reduce server load
 Crawl-delay: 10
 

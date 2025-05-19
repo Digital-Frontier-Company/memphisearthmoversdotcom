@@ -1,3 +1,4 @@
+
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
@@ -5,7 +6,14 @@ const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img src="/lovable-uploads/edb19aa6-8735-48cb-8854-e51964558b65.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-75" />
+        <img 
+          src="/lovable-uploads/edb19aa6-8735-48cb-8854-e51964558b65.png" 
+          alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" 
+          className="w-full h-full object-cover opacity-75" 
+          width="1920" 
+          height="1080"
+          fetchpriority="high" // High priority for LCP image
+        />
         <div className="absolute inset-0 bg-black/25"></div>
       </div>
       

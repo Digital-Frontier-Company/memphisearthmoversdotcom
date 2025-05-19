@@ -11,7 +11,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 19, 2025",
     readTime: 12,
     excerpt: "Why that sticky Delta dirt may be your project's biggest headache or secret weapon. Learn how to turn challenging Memphis clay into an asset on your next construction project.",
-    image: "/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg",
+    image: "/lovable-uploads/30d40068-7c8a-4348-b19b-c9a4094f24f1.png",
     content: memphisClayContent
   },
   {

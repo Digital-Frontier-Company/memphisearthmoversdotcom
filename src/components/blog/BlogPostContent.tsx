@@ -1,25 +1,25 @@
-
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BlogFaq from "@/components/blog/BlogFaq";
 import { Helmet } from "react-helmet-async";
-
-const BlogPostContent = ({ post }: { post: BlogPost }) => {
+const BlogPostContent = ({
+  post
+}: {
+  post: BlogPost;
+}) => {
   // Function to share the blog post
   const sharePost = () => {
     if (navigator.share) {
       navigator.share({
         title: post.title,
         text: post.excerpt,
-        url: window.location.href,
-      }).catch((error) => console.log('Error sharing', error));
+        url: window.location.href
+      }).catch(error => console.log('Error sharing', error));
     } else {
       // Fallback for browsers that don't support navigator.share
-      navigator.clipboard.writeText(window.location.href)
-        .then(() => alert('Link copied to clipboard!'))
-        .catch(err => console.error('Could not copy text: ', err));
+      navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!')).catch(err => console.error('Could not copy text: ', err));
     }
   };
 
@@ -56,30 +56,24 @@ const BlogPostContent = ({ post }: { post: BlogPost }) => {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://www.memphisearthmovers.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Blog",
-        "item": "https://www.memphisearthmovers.com/blog"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": post.title,
-        "item": `https://www.memphisearthmovers.com/blog/${post.slug}`
-      }
-    ]
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.memphisearthmovers.com/"
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.memphisearthmovers.com/blog"
+    }, {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.title,
+      "item": `https://www.memphisearthmovers.com/blog/${post.slug}`
+    }]
   };
-
-  return (
-    <>
+  return <>
       <Helmet>
         <title>{post.title} | Memphis Earth Movers Blog</title>
         <meta name="description" content={metaDescription} />
@@ -120,19 +114,16 @@ const BlogPostContent = ({ post }: { post: BlogPost }) => {
       <div className="mem-container py-12">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-mem-darkNavy mb-4">
+            <h1 className="text-3xl mb-4 text-slate-50 font-extrabold md:text-5xl">
               {post.title}
             </h1>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center text-mem-darkGray">
-                <span>{post.date}</span>
+                <span className="text-slate-50">{post.date}</span>
                 <span className="mx-2">•</span>
-                <span>{post.readTime} min read</span>
+                <span className="text-slate-50">{post.readTime} min read</span>
               </div>
-              <button
-                onClick={sharePost}
-                className="text-mem-blue hover:text-mem-darkBlue flex items-center gap-2"
-              >
+              <button onClick={sharePost} className="text-mem-blue hover:text-mem-darkBlue flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                 </svg>
@@ -140,11 +131,7 @@ const BlogPostContent = ({ post }: { post: BlogPost }) => {
               </button>
             </div>
             <div className="mb-8">
-              <img 
-                src={post.image} 
-                alt={post.title}
-                className="w-full h-auto rounded-lg shadow-md"
-              />
+              <img src={post.image} alt={post.title} className="w-full h-auto rounded-lg shadow-md" />
             </div>
             
             <div className="prose prose-lg max-w-none">
@@ -191,8 +178,6 @@ const BlogPostContent = ({ post }: { post: BlogPost }) => {
           <BlogFaq />
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default BlogPostContent;

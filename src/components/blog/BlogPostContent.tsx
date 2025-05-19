@@ -134,7 +134,7 @@ const BlogPostContent = ({
               <img src={post.image} alt={post.title} className="w-full h-auto rounded-lg shadow-md" />
             </div>
             
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none bg-mem-darkBlue">
               {post.content}
             </div>
           </div>

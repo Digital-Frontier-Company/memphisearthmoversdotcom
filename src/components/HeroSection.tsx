@@ -2,6 +2,7 @@
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
+
 const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
       {/* Background Image with Overlay */}
@@ -12,7 +13,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover opacity-75" 
           width="1920" 
           height="1080"
-          fetchpriority="high" // High priority for LCP image
+          fetchPriority="high" // Fixed: Changed from fetchpriority to fetchPriority
         />
         <div className="absolute inset-0 bg-black/25"></div>
       </div>
@@ -63,4 +64,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;

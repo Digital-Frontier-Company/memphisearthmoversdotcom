@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
@@ -26,7 +27,7 @@ const BlogPostContent = ({
   // Generate a proper meta description from the excerpt
   const metaDescription = post.excerpt || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving and construction services.";
 
-  // Create proper structured data for the blog post
+  // Create proper structured data for the blog post with corrected URL format
   const blogPostSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -48,11 +49,12 @@ const BlogPostContent = ({
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": window.location.href
+      "@id": window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
+                                .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
     }
   };
 
-  // Breadcrumb structured data
+  // Breadcrumb structured data with corrected URL format
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -83,7 +85,8 @@ const BlogPostContent = ({
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href} />
+        <meta property="og:url" content={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
+                                         .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
         <meta property="og:site_name" content="Memphis Earth Movers" />
         
         {/* Twitter Card Tags */}
@@ -98,7 +101,8 @@ const BlogPostContent = ({
         <meta property="article:tag" content="Memphis,construction,clay soil,earthmoving,soil stabilization" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href={window.location.href} />
+        <link rel="canonical" href={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
+                                    .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
 
         {/* Structured Data */}
         <script type="application/ld+json">

@@ -43,7 +43,7 @@ const BlogPost = () => {
     }
   ];
   
-  const canonicalUrl = `https://memphis-earthmovers.com/blog/${post.slug}`;
+  const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
   
   return (
     <>

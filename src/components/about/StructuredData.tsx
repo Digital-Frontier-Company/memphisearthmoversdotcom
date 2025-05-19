@@ -19,7 +19,7 @@ const StructuredData = () => {
       <LocalBusinessSchema 
         page="about"
         pageSpecificDesc="Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors, builders, and business owners in Memphis who need dependable hauling services." 
-        url="https://memphis-earthmovers.com/about-us"
+        url="https://www.memphisearthmovers.com/about-us"
       />
       <Helmet>
         <script type="application/ld+json">

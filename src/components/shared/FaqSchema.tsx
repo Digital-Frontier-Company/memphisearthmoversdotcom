@@ -12,6 +12,10 @@ interface FaqSchemaProps {
 }
 
 const FaqSchema = ({ faqs, url }: FaqSchemaProps) => {
+  // Ensure URL uses www format
+  const formattedUrl = url.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
+                         .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com");
+  
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -27,7 +31,7 @@ const FaqSchema = ({ faqs, url }: FaqSchemaProps) => {
 
   return (
     <Helmet>
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={formattedUrl} />
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>

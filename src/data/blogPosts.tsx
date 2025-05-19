@@ -1,3 +1,4 @@
+import React from "react";
 import { BlogPost } from "@/types/blog";
 
 // First blog post content as JSX
@@ -156,7 +157,7 @@ const gravelDrivewayContent = (
   </>
 );
 
-// New blog post content as JSX - Adding React import to fix the fragment error
+// Memphis clay content as JSX
 const memphisClayContent = (
   <>
     <h2>Why that sticky Delta dirt may be your project's biggest headache…or secret weapon</h2>

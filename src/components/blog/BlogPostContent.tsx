@@ -52,6 +52,32 @@ const BlogPostContent = ({ post }: { post: BlogPost }) => {
     }
   };
 
+  // Breadcrumb structured data
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.memphisearthmovers.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.memphisearthmovers.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://www.memphisearthmovers.com/blog/${post.slug}`
+      }
+    ]
+  };
+
   return (
     <>
       <Helmet>
@@ -83,6 +109,11 @@ const BlogPostContent = ({ post }: { post: BlogPost }) => {
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify(blogPostSchema)}
+        </script>
+        
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
         </script>
       </Helmet>
 

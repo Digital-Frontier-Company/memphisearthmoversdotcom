@@ -9,6 +9,8 @@ import { blogPosts } from "@/data/blogPosts";
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import FaqSchema from "@/components/shared/FaqSchema";
+import BlogFaqSchema from "@/components/blog/BlogFaqSchema";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -49,66 +51,16 @@ const BlogPost = () => {
         <title>{post.title} | Memphis Earth Movers Blog</title>
         <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={canonicalUrl} />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              "headline": "${post.title}",
-              "image": "${post.image}",
-              "author": {
-                "@type": "Organization",
-                "name": "Memphis Earth Movers"
-              },
-              "publisher": {
-                "@type": "Organization",
-                "name": "Memphis Earth Movers",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "/lovable-uploads/2815d7b7-489c-42c6-a5f2-45c7e47f6371.png"
-                }
-              },
-              "datePublished": "${post.date}",
-              "dateModified": "${post.date}"
-            }
-          `}
-        </script>
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://memphis-earthmovers.com/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Blog",
-                  "item": "https://memphis-earthmovers.com/blog"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "${post.title}",
-                  "item": "https://memphis-earthmovers.com/blog/${post.slug}"
-                }
-              ]
-            }
-          `}
-        </script>
       </Helmet>
       <FaqSchema faqs={postFaqs} url={canonicalUrl} />
+      <BlogFaqSchema />
       <Header />
       <BlogPostBreadcrumbs title={post.title} />
       <main>
         <BlogPostContent post={post} />
       </main>
       <Footer />
+      <BackToTopButton />
     </>
   );
 };

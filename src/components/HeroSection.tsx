@@ -8,10 +8,11 @@ const HeroSection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/634fd56f-943c-4130-b0ad-8a787bd48838.png" 
-          alt="Memphis Earth Movers tri-axle dump truck fleet serving Memphis and DeSoto County" 
-          className="w-full h-full object-cover opacity-25" 
+          src="/lovable-uploads/edb19aa6-8735-48cb-8854-e51964558b65.png" 
+          alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" 
+          className="w-full h-full object-cover opacity-75" 
         />
+        <div className="absolute inset-0 bg-black/25"></div>
       </div>
       
       {/* Glowing Baby Blue Light Effect */}

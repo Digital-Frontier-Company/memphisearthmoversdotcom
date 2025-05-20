@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
       </div>
       
       <div className="mem-container relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center text-blue-600">
           <Star className="h-10 w-10 inline-block mr-3 text-mem-blue" />
           What Our Clients Say
         </h2>

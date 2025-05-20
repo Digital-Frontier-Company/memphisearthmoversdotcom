@@ -52,15 +52,16 @@ const BlogList = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {blogPosts.map(post => (
             <Card key={post.slug} className="h-full flex flex-col border border-mem-gray hover:shadow-lg transition-shadow">
-              <Link to={`/blog/${post.slug}`} className="block overflow-hidden">
+              <Link to={`/blog/${post.slug}`} className="block overflow-hidden relative">
                 <img 
-                  src={post.image} 
+                  src={post.slug === "best-gravel-for-your-memphis-driveway" ? "/lovable-uploads/e3dc137e-c22d-4482-b5c5-3df712a8e827.png" : post.image} 
                   alt={`${post.title} - Memphis Earth Movers`} 
                   className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" 
                   width="400" 
                   height="225" 
                   loading="lazy" 
                 />
+                <div className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay" aria-hidden="true"></div>
               </Link>
               <CardHeader className="pb-2">
                 <div className="text-sm text-mem-darkGray mb-2">{post.date}</div>

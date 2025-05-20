@@ -1,9 +1,11 @@
+
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BlogFaq from "@/components/blog/BlogFaq";
 import { Helmet } from "react-helmet-async";
+
 const BlogPostContent = ({
   post
 }: {
@@ -95,7 +97,7 @@ const BlogPostContent = ({
         {/* Article Specific Tags */}
         <meta property="article:published_time" content={post.date} />
         <meta property="article:section" content="Construction" />
-        <meta property="article:tag" content="Memphis,construction,clay soil,earthmoving,soil stabilization" />
+        <meta property="article:tag" content="Memphis,construction,clay soil,earthmoving,soil stabilization,gravel driveways" />
         
         {/* Canonical URL */}
         <link rel="canonical" href={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
@@ -123,15 +125,23 @@ const BlogPostContent = ({
                 <span className="mx-2">•</span>
                 <span className="text-slate-50">{post.readTime} min read</span>
               </div>
-              <button onClick={sharePost} className="text-mem-blue hover:text-mem-darkBlue flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <button onClick={sharePost} className="text-mem-blue hover:text-mem-darkBlue flex items-center gap-2" aria-label="Share this article">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                 </svg>
                 Share
               </button>
             </div>
             <div className="mb-8 relative rounded-lg overflow-hidden shadow-md">
-              <img src="/lovable-uploads/3a8a425e-fd11-4cb2-bedc-fef569bc9282.png" alt={post.title} className="w-full h-auto" />
+              <img 
+                src={post.image} 
+                alt={`Featured image for ${post.title}`} 
+                className="w-full h-auto object-cover" 
+                width="1200" 
+                height="675" 
+                loading="eager" 
+                fetchPriority="high"
+              />
               <div className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay" aria-hidden="true"></div>
             </div>
             

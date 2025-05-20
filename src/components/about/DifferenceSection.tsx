@@ -1,9 +1,6 @@
-
 import { Check } from "lucide-react";
-
 const DifferenceSection = () => {
-  return (
-    <section className="mem-section bg-mem-darkNavy">
+  return <section className="mem-section bg-mem-darkNavy">
       <div className="mem-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">What Makes Us Different</h2>
         
@@ -36,16 +33,10 @@ const DifferenceSection = () => {
           </div>
           
           <div className="rounded-lg overflow-hidden shadow-lg">
-            <img 
-              src="/lovable-uploads/694accb7-2c29-4deb-8776-ea1be1341e00.png" 
-              alt="Aerial view of dump trucks at work site" 
-              className="w-full h-auto"
-            />
+            <img alt="Aerial view of dump trucks at work site" className="w-full h-auto" src="/lovable-uploads/6cad0f32-b0d8-4dbd-893b-03a3ac019cfe.png" />
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default DifferenceSection;

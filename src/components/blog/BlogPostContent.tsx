@@ -48,8 +48,7 @@ const BlogPostContent = ({
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
-                                .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
+      "@id": window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
     }
   };
 
@@ -84,8 +83,7 @@ const BlogPostContent = ({
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
-                                         .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
+        <meta property="og:url" content={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
         <meta property="og:site_name" content="Memphis Earth Movers" />
         
         {/* Twitter Card Tags */}
@@ -100,8 +98,7 @@ const BlogPostContent = ({
         <meta property="article:tag" content="Memphis,construction,clay soil,earthmoving,soil stabilization" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
-                                    .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
+        <link rel="canonical" href={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
 
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -116,7 +113,7 @@ const BlogPostContent = ({
 
       <div className="mem-container py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-8 rounded-sm">
             <h1 className="text-3xl mb-4 text-slate-50 font-extrabold md:text-5xl">
               {post.title}
             </h1>
@@ -134,15 +131,8 @@ const BlogPostContent = ({
               </button>
             </div>
             <div className="mb-8 relative rounded-lg overflow-hidden shadow-md">
-              <img 
-                src="/lovable-uploads/3a8a425e-fd11-4cb2-bedc-fef569bc9282.png" 
-                alt={post.title} 
-                className="w-full h-auto"
-              />
-              <div 
-                className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay"
-                aria-hidden="true"
-              ></div>
+              <img src="/lovable-uploads/3a8a425e-fd11-4cb2-bedc-fef569bc9282.png" alt={post.title} className="w-full h-auto" />
+              <div className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay" aria-hidden="true"></div>
             </div>
             
             <div className="prose prose-lg max-w-none bg-mem-darkBlue">

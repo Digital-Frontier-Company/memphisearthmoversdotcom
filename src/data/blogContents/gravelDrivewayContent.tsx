@@ -1,10 +1,7 @@
-
 import React from "react";
-
-const gravelDrivewayContent = (
-  <>
+const gravelDrivewayContent = <>
     <h2>Choosing the Right Gravel for Your Driveway in Memphis</h2>
-    <p>
+    <p className="text-slate-50">
       When it comes to creating a durable and attractive driveway in Memphis, selecting the right type of gravel is crucial. With our hot summers, occasional freezes, and varied precipitation, the right gravel can make the difference between a driveway that lasts decades and one that requires constant maintenance. At Memphis Earth Movers, we've installed countless driveways across the Mid-South region, and we're sharing our expertise to help you make an informed decision.
     </p>
 
@@ -153,7 +150,5 @@ const gravelDrivewayContent = (
     <p>
       Need help determining the right gravel for your specific situation? Contact Memphis Earth Movers today for a consultation and estimate. Our local expertise ensures you'll get a driveway perfectly suited to your property's conditions and your personal preferences.
     </p>
-  </>
-);
-
+  </>;
 export default gravelDrivewayContent;

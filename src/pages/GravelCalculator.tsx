@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -13,6 +12,7 @@ import CalculatorFaq from "@/components/calculator/CalculatorFaq";
 import { useToast } from "@/hooks/use-toast";
 import { sendLeadNotification } from "@/utils/mailchimpService";
 import { Link } from "react-router-dom";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 // Material data with densities in tons per cubic yard
 const MATERIALS = [
@@ -220,13 +220,19 @@ const GravelCalculator = () => {
                 Memphis Gravel Calculator
               </h1>
               
-              {/* Added Featured Image */}
+              {/* Featured Image with Blue Tint Overlay */}
               <div className="relative w-full rounded-lg overflow-hidden mb-8">
-                <img 
-                  src="/lovable-uploads/ec8dc559-f5dd-432a-8666-55a7a4f1491d.png" 
-                  alt="Memphis Earth Movers dump truck delivering materials" 
-                  className="w-full h-auto object-cover rounded-lg shadow-lg"
-                />
+                <AspectRatio ratio={16 / 9} className="bg-muted">
+                  <img 
+                    src="/lovable-uploads/ec8dc559-f5dd-432a-8666-55a7a4f1491d.png" 
+                    alt="Memphis Earth Movers dump truck delivering materials" 
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                  <div 
+                    className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay rounded-lg"
+                    aria-hidden="true"
+                  ></div>
+                </AspectRatio>
               </div>
               
               <p className="text-white/80 text-center mb-4">

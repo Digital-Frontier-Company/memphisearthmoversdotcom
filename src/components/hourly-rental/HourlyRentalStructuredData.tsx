@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 
@@ -124,6 +123,7 @@ const HourlyRentalStructuredData = () => {
   return (
     <>
       <LocalBusinessSchema 
+        page="hourly-rental"
         pageSpecificDesc="Hourly dump truck rental in Memphis, TN with licensed crews, flexible scheduling, and affordable rates. Book by the hour and save on construction hauling costs." 
         url="https://www.memphisearthmovers.com/hourly-dump-truck-rental"
       />

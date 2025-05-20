@@ -7,7 +7,7 @@ const AboutHero = () => {
     <section className="bg-gradient-to-b from-white to-gray-100 py-12 md:py-20 relative">
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/1f0df118-583e-4027-b4b3-d0b7e6c3992a.png" 
+          src="/lovable-uploads/9007ab70-c0de-4958-91c6-701bb4ebfd72.png" 
           alt="Memphis Earth Movers - Professional dump truck services in Memphis"
           className="w-full h-full object-cover object-center" 
           width="1500"

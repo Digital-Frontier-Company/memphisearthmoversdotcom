@@ -219,6 +219,16 @@ const GravelCalculator = () => {
               <h1 className="text-white text-center mb-8">
                 Memphis Gravel Calculator
               </h1>
+              
+              {/* Added Featured Image */}
+              <div className="relative w-full rounded-lg overflow-hidden mb-8">
+                <img 
+                  src="/lovable-uploads/ec8dc559-f5dd-432a-8666-55a7a4f1491d.png" 
+                  alt="Memphis Earth Movers dump truck delivering materials" 
+                  className="w-full h-auto object-cover rounded-lg shadow-lg"
+                />
+              </div>
+              
               <p className="text-white/80 text-center mb-4">
                 Draw your project area, adjust material and depth, and get an instant estimate of how much material you need. 
                 Perfect for planning Memphis driveways, pathways, and landscaping projects.

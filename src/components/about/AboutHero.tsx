@@ -24,7 +24,7 @@ const AboutHero = () => {
           <p className="text-xl md:text-2xl mb-8 text-white">
             Reliable tri-axle dump truck rentals for contractors, builders, and business owners who are tired of the usual BS.
           </p>
-          <Link to="/#contact" className="mem-btn-primary">
+          <Link to="/contact" className="mem-btn-primary">
             <Phone className="mr-2 inline h-5 w-5" />
             Book Your Truck Now
           </Link>

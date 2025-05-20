@@ -1,4 +1,3 @@
-
 import { Truck, Clock, Package, Construction, TreePalm } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Link } from "react-router-dom";

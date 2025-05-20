@@ -5,17 +5,17 @@ const HourlyRentalRelatedServices = () => {
   const relatedServices = [
     {
       title: "Gravel Delivery & Spreading",
-      path: "/gravel-delivery-memphis",
+      path: "/memphis-gravel-delivery",
       icon: "🪨"
     },
     {
       title: "Heavy Equipment Hauling",
-      path: "/heavy-hauling-memphis",
+      path: "/dump-truck-services",
       icon: "🚛"
     },
     {
       title: "Excavation & Land Clearing",
-      path: "/excavation-contractors-memphis",
+      path: "/dump-truck-services",
       icon: "🏗️"
     }
   ];
@@ -32,7 +32,7 @@ const HourlyRentalRelatedServices = () => {
                 <span className="text-4xl">{service.icon}</span>
                 <h4 className="text-lg font-semibold">{service.title}</h4>
                 <Link 
-                  to="/dump-truck-services" 
+                  to={service.path} 
                   className="text-mem-babyBlue hover:text-mem-babyBlue/80 underline"
                 >
                   Learn More

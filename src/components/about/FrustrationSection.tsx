@@ -1,9 +1,6 @@
-
 import { Clock, Wrench, Truck, Star } from "lucide-react";
-
 const FrustrationSection = () => {
-  return (
-    <section className="mem-section bg-mem-darkNavy">
+  return <section className="mem-section bg-mem-darkNavy">
       <div className="mem-container">
         <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Why You're Frustrated with Most Rentals</h2>
         
@@ -34,15 +31,9 @@ const FrustrationSection = () => {
         </div>
         
         <div className="mt-12 rounded-lg overflow-hidden shadow-lg">
-          <img 
-            src="/lovable-uploads/6b9fae30-0565-426c-b400-51dedb816ca0.png"
-            alt="Dump truck in action" 
-            className="w-full h-auto" 
-          />
+          <img alt="Dump truck in action" className="w-full h-auto object-scale-down" src="/lovable-uploads/9c7760a7-5a0e-41b7-9cdc-88d844d5a2df.png" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default FrustrationSection;

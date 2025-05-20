@@ -49,7 +49,7 @@ const BlogPost = () => {
     <>
       <Helmet>
         <title>{post.title.substring(0, 58)} | Memphis Earth Movers Blog</title>
-        <meta name="description" content={post.excerpt?.substring(0, 154) || "Memphis construction insights from the Memphis Earth Movers team."} />
+        <meta name="description" content={`Memphis construction insights: ${post.excerpt?.substring(0, 100) || "Expert advice on Memphis dump truck services, material selection, and local construction challenges."}`} />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       <FaqSchema faqs={postFaqs} url={canonicalUrl} />

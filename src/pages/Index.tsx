@@ -70,7 +70,7 @@ const Index = () => {
       />
       <Helmet>
         <title>Memphis Dump Trucks | Local Hauling & Gravel Delivery</title>
-        <meta name="description" content="Reliable dump truck services in Memphis. Local hauling, gravel delivery, and material transport from $125/hr with a 3-hour minimum." />
+        <meta name="description" content="Reliable Memphis dump trucks for rent with experienced drivers. Local hauling, gravel delivery, and construction material transport from $125/hr with Memphis' trusted hauling company." />
         <script type="application/ld+json">
           {JSON.stringify(HomeFaqSchema)}
         </script>

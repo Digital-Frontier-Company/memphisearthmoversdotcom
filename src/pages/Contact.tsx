@@ -96,7 +96,7 @@ const Contact = () => {
     <>
       <Helmet>
         <title>Contact Memphis Dump Truck Services | Get a Quote</title>
-        <meta name="description" content="Need a dump truck in Memphis? Contact us for reliable service. Call (901) 461-1011 or fill out our form for a quick quote." />
+        <meta name="description" content="Request Memphis dump trucks for rent within 24 hours. Quick quotes for hourly dump truck rentals in Memphis. Call (901) 461-1011 for same-day service when available." />
         <meta name="keywords" content="contact Memphis dump trucks, dump truck services Memphis, Memphis dump truck quote, Memphis material hauling contact" />
         <script type="application/ld+json">
           {JSON.stringify(ContactStructuredData)}

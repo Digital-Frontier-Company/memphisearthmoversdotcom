@@ -76,11 +76,13 @@ const Services = () => {
     <div className="min-h-screen flex flex-col">
       <LocalBusinessSchema 
         page="services"
-        pageSpecificDesc="Professional dump truck services in Memphis, including hourly rentals, material hauling, and reliable delivery throughout Memphis area." 
+        pageSpecificDesc="Affordable Memphis dump truck services with same-day availability. Hourly dump trucks for Memphis contractors and homeowners - fully licensed hauling for any size project." 
         url="https://www.memphisearthmovers.com/dump-truck-services"
       />
       
       <Helmet>
+        <title>Memphis Dump Truck Services | Hourly & Project Rates</title>
+        <meta name="description" content="Memphis dump trucks for rent with experienced drivers. Hourly rates from $125 with flexible scheduling for contractors and homeowners. Serving Memphis and DeSoto County." />
         <script type="application/ld+json">
           {JSON.stringify(BreadcrumbSchema)}
         </script>

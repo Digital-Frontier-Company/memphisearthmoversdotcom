@@ -79,7 +79,7 @@ const AboutUs = () => {
     <>
       <Helmet>
         <title>About Memphis Earth Movers | Local Dump Trucks</title>
-        <meta name="description" content="Learn about Memphis Earth Movers and our commitment to reliable dump truck services in Memphis and DeSoto County since 2010." />
+        <meta name="description" content="Memphis' trusted dump truck company with 10+ years experience. Memphis dump trucks for rent with experienced operators. Family-owned, fully insured, serving Shelby and DeSoto Counties." />
         <meta name="keywords" content="Memphis dump truck company, Memphis Earth Movers about, Memphis hauling company, Memphis material delivery company" />
         <script type="application/ld+json">
           {JSON.stringify(BreadcrumbSchema)}

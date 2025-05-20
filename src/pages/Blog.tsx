@@ -35,7 +35,7 @@ const Blog = () => {
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>Memphis Construction & Earthmoving Blog | Expert Tips</title>
-        <meta name="description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions for local contractors and homeowners." />
+        <meta name="description" content="Expert Memphis construction blog with tips for dump truck services and material selection. Memphis dump truck rental guides, local soil solutions, and contractor advice." />
         <meta name="keywords" content="Memphis construction blog, earthmoving tips, Memphis soil solutions, gravel delivery Memphis, construction material advice, Memphis clay soil, dump truck services" />
         
         <link rel="canonical" href={canonicalUrl} />
@@ -54,7 +54,7 @@ const Blog = () => {
       <LocalBusinessSchema 
         page="blog" 
         url={canonicalUrl}
-        pageSpecificDesc="Expert advice on Memphis construction materials, dump truck services, and soil solutions from Memphis Earth Movers."
+        pageSpecificDesc="Expert Memphis construction blog with tips for dump truck rentals, material selection, and local soil solutions. Memphis contractor guides and homeowner advice."
       />
       
       <FaqSchema 

@@ -21,7 +21,7 @@ const HourlyDumpTruckRentals = () => {
     <div className="min-h-screen flex flex-col">
       <Helmet>
         <title>Memphis Hourly Dump Truck Rental | From $125/hr</title>
-        <meta name="description" content="Rent dump trucks in Memphis from $125/hr with a 3-hour minimum. Professional drivers included. Serving Memphis and DeSoto County." />
+        <meta name="description" content="Hourly dump trucks Memphis - rent reliable dump trucks with CDL drivers from $125/hr. Fast availability throughout Memphis and DeSoto County. 3-hour minimum, flexible scheduling." />
       </Helmet>
       
       <HourlyRentalStructuredData />

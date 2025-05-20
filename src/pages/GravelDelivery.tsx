@@ -73,7 +73,7 @@ const GravelDelivery = () => {
     <div className="min-h-screen flex flex-col">
       <LocalBusinessSchema 
         page="gravel-delivery" 
-        pageSpecificDesc="Memphis Earth Movers delivers 15-ton loads of gravel, milled asphalt, and stone to Memphis-area locations for a flat $400." 
+        pageSpecificDesc="Memphis gravel delivery service - 15-ton loads of recycled asphalt, limestone, or gravel delivered anywhere in Memphis for just $400. Fast and reliable service." 
         url="https://www.memphisearthmovers.com/memphis-gravel-delivery"
       />
       
@@ -84,7 +84,7 @@ const GravelDelivery = () => {
       
       <Helmet>
         <title>Memphis Gravel Delivery | 15 Ton Loads for $400</title>
-        <meta name="description" content="Memphis Earth Movers delivers 15-ton loads of milled asphalt or stone anywhere in the Mid-South for a flat $400. Professional spreading available." />
+        <meta name="description" content="Affordable Memphis gravel delivery - 15-ton loads of crushed stone, limestone, or recycled asphalt delivered for $400. Memphis dump trucks with spreading service available." />
         <meta name="keywords" content="Memphis gravel delivery, milled asphalt Memphis, stone delivery Memphis, gravel spreading Memphis, recycled asphalt, $400 gravel delivery, 15-ton gravel load, Memphis Earth Movers" />
         
         {/* Open Graph / Facebook */}

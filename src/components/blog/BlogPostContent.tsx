@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
@@ -134,8 +133,16 @@ const BlogPostContent = ({
                 Share
               </button>
             </div>
-            <div className="mb-8">
-              <img src={post.image} alt={post.title} className="w-full h-auto rounded-lg shadow-md" />
+            <div className="mb-8 relative rounded-lg overflow-hidden shadow-md">
+              <img 
+                src="/lovable-uploads/3a8a425e-fd11-4cb2-bedc-fef569bc9282.png" 
+                alt={post.title} 
+                className="w-full h-auto"
+              />
+              <div 
+                className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay"
+                aria-hidden="true"
+              ></div>
             </div>
             
             <div className="prose prose-lg max-w-none bg-mem-darkBlue">

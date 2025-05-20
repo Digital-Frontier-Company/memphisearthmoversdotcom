@@ -68,9 +68,11 @@ Disallow: /private/
 Disallow: /temp/
 Disallow: /includes/
 
-# Memphis Keywords Optimization Path
+# Memphis Keywords Optimization Path - Explicitly allow important pages
 Allow: /dump-truck-services
 Allow: /contact
 Allow: /about-us
 Allow: /gravel-calculator
 Allow: /blog
+Allow: /hourly-dump-truck-rental
+Allow: /memphis-gravel-delivery

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
@@ -28,7 +27,7 @@ const BlogPostContent = ({
   // Generate a proper meta description from the excerpt
   const metaDescription = post.excerpt?.substring(0, 154) || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving services.";
 
-  // Create a single canonical URL
+  // Create a canonical URL - this is essential for blog posts to avoid duplicate content issues
   const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
 
   // Create proper structured data for the blog post with consistent URL format
@@ -83,7 +82,6 @@ const BlogPostContent = ({
         <title>{post.title.substring(0, 58)} | Memphis Earth Movers</title>
         <meta name="description" content={metaDescription} />
         
-        {/* Single canonical URL */}
         <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph Tags */}

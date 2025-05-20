@@ -35,7 +35,6 @@ const BlogList = () => {
   return (
     <>
       <Helmet>
-        <link rel="canonical" href={canonicalUrl} />
         <script type="application/ld+json">
           {JSON.stringify(blogListSchema)}
         </script>

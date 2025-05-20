@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 
 interface LocalBusinessSchemaProps {
@@ -102,7 +101,6 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
       {/* Updated metadata with optimized length and focused content */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={formattedUrl} />
       
       {/* LocalBusiness Schema */}
       <script type="application/ld+json">

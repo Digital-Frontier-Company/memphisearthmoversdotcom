@@ -31,7 +31,6 @@ const FaqSchema = ({ faqs, url }: FaqSchemaProps) => {
 
   return (
     <Helmet>
-      <link rel="canonical" href={formattedUrl} />
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>

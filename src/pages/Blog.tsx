@@ -38,7 +38,6 @@ const Blog = () => {
         <meta name="description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions for local contractors and homeowners." />
         <meta name="keywords" content="Memphis construction blog, earthmoving tips, Memphis soil solutions, gravel delivery Memphis, construction material advice, Memphis clay soil, dump truck services" />
         
-        {/* Single canonical URL */}
         <link rel="canonical" href={canonicalUrl} />
         
         <meta property="og:title" content="Memphis Construction & Earthmoving Blog | Expert Tips" />

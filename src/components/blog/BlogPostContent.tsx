@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
@@ -134,7 +133,7 @@ const BlogPostContent = ({
             </div>
             <div className="mb-8 relative rounded-lg overflow-hidden shadow-md">
               <img 
-                src={post.image} 
+                src={post.slug === "best-gravel-for-your-memphis-driveway" ? "/lovable-uploads/e3dc137e-c22d-4482-b5c5-3df712a8e827.png" : post.image} 
                 alt={`Featured image for ${post.title}`} 
                 className="w-full h-auto object-cover" 
                 width="1200" 

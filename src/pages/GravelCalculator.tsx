@@ -195,8 +195,8 @@ const GravelCalculator = () => {
   return (
     <>
       <Helmet>
-        <title>Memphis Gravel Calculator | Memphis Dump Truck Delivery</title>
-        <meta name="description" content="Calculate how much gravel you need for your Memphis project with our free gravel calculator. Memphis Earth Movers provides reliable delivery services throughout Memphis and DeSoto County." />
+        <title>Memphis Gravel Calculator | Free Material Estimator</title>
+        <meta name="description" content="Calculate how much gravel you need for your Memphis project with our free calculator. Memphis Earth Movers provides reliable delivery." />
         <meta name="keywords" content="Memphis gravel calculator, Memphis material calculator, Memphis dump truck delivery, gravel estimator Memphis, Memphis material delivery" />
         <link rel="canonical" href="https://memphis-earthmovers.com/gravel-calculator" />
         <script type="application/ld+json">
@@ -217,7 +217,7 @@ const GravelCalculator = () => {
           <section className="mem-section bg-mem-darkNavy">
             <div className="mem-container max-w-4xl">
               <h1 className="text-white text-center mb-8">
-                Memphis Dump Trucks - Gravel Calculator
+                Memphis Gravel Calculator
               </h1>
               <p className="text-white/80 text-center mb-4">
                 Draw your project area, adjust material and depth, and get an instant estimate of how much material you need. 

@@ -32,11 +32,11 @@ const Blog = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>Memphis Construction & Earthmoving Blog | Expert Tips & Solutions</title>
-        <meta name="description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions. Read our blog for tips specific to Memphis construction projects." />
+        <title>Memphis Construction & Earthmoving Blog | Expert Tips</title>
+        <meta name="description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions for local contractors and homeowners." />
         <meta name="keywords" content="Memphis construction blog, earthmoving tips, Memphis soil solutions, gravel delivery Memphis, construction material advice, Memphis clay soil, dump truck services" />
-        <meta property="og:title" content="Memphis Construction & Earthmoving Blog | Memphis Earth Movers" />
-        <meta property="og:description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions. Read our blog for tips specific to Memphis construction projects." />
+        <meta property="og:title" content="Memphis Construction & Earthmoving Blog | Expert Tips" />
+        <meta property="og:description" content="Expert advice on Memphis construction materials, dump truck services, and soil solutions for local contractors and homeowners." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.memphisearthmovers.com/blog" />
         <meta property="og:image" content="https://www.memphisearthmovers.com/lovable-uploads/30d40068-7c8a-4348-b19b-c9a4094f24f1.png" />
@@ -50,7 +50,7 @@ const Blog = () => {
       <LocalBusinessSchema 
         page="blog" 
         url="https://www.memphisearthmovers.com/blog" 
-        pageSpecificDesc="Expert advice on Memphis construction materials, dump truck services, and soil solutions from Memphis Earth Movers. Local tips for successful projects."
+        pageSpecificDesc="Expert advice on Memphis construction materials, dump truck services, and soil solutions from Memphis Earth Movers."
       />
       
       <FaqSchema 

@@ -62,30 +62,34 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
   };
 
   // Modify page title based on current page - shortened to stay under 60 chars
-  let title = "Dump Truck Rentals Memphis – 3-Hr Minimum | Memphis Earth Movers";
-  let description = "Reliable dump truck rentals in Memphis from $125/hr. Local hauling, gravel delivery, and material transport with a 3-hour minimum. Memphis's trusted dump trucks.";
+  let title = "Memphis Dump Trucks | From $125/hr";
+  let description = "Reliable dump truck rentals in Memphis. Local hauling, gravel delivery, and material transport throughout Memphis and DeSoto County.";
   
   if (page) {
     switch(page) {
       case "services":
-        title = "Dump Truck Services Memphis – From $125/hr | Memphis Earth Movers";
-        description = "Professional dump truck services in Memphis. Hourly rentals, material hauling, and reliable delivery throughout Memphis and DeSoto County.";
+        title = "Dump Truck Services Memphis | From $125/hr";
+        description = "Professional dump truck services in Memphis. Hourly rentals, material hauling, and reliable delivery throughout Memphis area.";
         break;
       case "about":
-        title = "About Our Memphis Dump Truck Company | Memphis Earth Movers";
+        title = "About Our Memphis Dump Truck Company";
         description = "Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors in Memphis. Local, dependable, and on time.";
         break;
       case "contact":
-        title = "Contact Memphis Dump Truck Rental Team | Memphis Earth Movers";
+        title = "Contact Memphis Dump Truck Services";
         description = "Need a dump truck in Memphis? Contact our team for quick quotes on dump truck rentals, material delivery, and hauling services.";
         break;
       case "calculator":
-        title = "Gravel Calculator - Memphis Projects | Memphis Earth Movers";
-        description = "Calculate exactly how much gravel you need for your Memphis project. Then get it delivered with our reliable dump truck service.";
+        title = "Gravel Calculator | Memphis Projects";
+        description = "Calculate exactly how much gravel you need for your Memphis project. Then get it delivered with our reliable dump trucks.";
         break;
       case "blog":
-        title = "Memphis Hauling & Construction Resources | Memphis Earth Movers";
-        description = "Tips and resources for Memphis contractors and homeowners about gravel types, dump truck services, and construction material delivery.";
+        title = "Memphis Hauling & Construction Resources";
+        description = "Tips and resources for Memphis contractors about gravel types, dump truck services, and construction material delivery.";
+        break;
+      case "gravel-delivery":
+        title = "Memphis Gravel Delivery | 15 Tons for $400";
+        description = "Quality gravel delivered in Memphis. 15-ton loads of milled asphalt or stone delivered to your Memphis location for a flat rate.";
         break;
       default:
         // Home page defaults set above

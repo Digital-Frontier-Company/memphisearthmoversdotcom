@@ -66,6 +66,8 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <LocalBusinessSchema url="https://www.memphisearthmovers.com/" />
       <Helmet>
+        <title>Memphis Dump Trucks | Local Hauling & Gravel Delivery</title>
+        <meta name="description" content="Reliable dump truck services in Memphis. Local hauling, gravel delivery, and material transport from $125/hr with a 3-hour minimum." />
         <script type="application/ld+json">
           {JSON.stringify(HomeFaqSchema)}
         </script>

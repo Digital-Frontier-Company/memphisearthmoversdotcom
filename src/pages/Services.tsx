@@ -76,7 +76,7 @@ const Services = () => {
     <div className="min-h-screen flex flex-col">
       <LocalBusinessSchema 
         page="services"
-        pageSpecificDesc="Professional dump truck services in Memphis, including hourly rentals, material hauling, and reliable delivery throughout Memphis and DeSoto County." 
+        pageSpecificDesc="Professional dump truck services in Memphis, including hourly rentals, material hauling, and reliable delivery throughout Memphis area." 
         url="https://www.memphisearthmovers.com/dump-truck-services"
       />
       

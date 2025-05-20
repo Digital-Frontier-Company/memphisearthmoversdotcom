@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -72,7 +73,7 @@ const GravelDelivery = () => {
     <div className="min-h-screen flex flex-col">
       <LocalBusinessSchema 
         page="gravel-delivery" 
-        pageSpecificDesc="Memphis Earth Movers delivers 15-ton loads of gravel, milled asphalt, and stone to Memphis-area locations for a flat $400. Professional spreading services available." 
+        pageSpecificDesc="Memphis Earth Movers delivers 15-ton loads of gravel, milled asphalt, and stone to Memphis-area locations for a flat $400." 
         url="https://www.memphisearthmovers.com/memphis-gravel-delivery"
       />
       
@@ -82,20 +83,20 @@ const GravelDelivery = () => {
       />
       
       <Helmet>
-        <title>Memphis Gravel Delivery - 15 Ton Loads for $400 | Memphis Earth Movers</title>
-        <meta name="description" content="Memphis Earth Movers delivers 15-ton truckloads of milled asphalt or stone anywhere in the Mid-South for a flat $400. Professional spreading services available." />
+        <title>Memphis Gravel Delivery | 15 Ton Loads for $400</title>
+        <meta name="description" content="Memphis Earth Movers delivers 15-ton loads of milled asphalt or stone anywhere in the Mid-South for a flat $400. Professional spreading available." />
         <meta name="keywords" content="Memphis gravel delivery, milled asphalt Memphis, stone delivery Memphis, gravel spreading Memphis, recycled asphalt, $400 gravel delivery, 15-ton gravel load, Memphis Earth Movers" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Memphis Gravel Delivery - 15 Ton Loads for $400 | Memphis Earth Movers" />
-        <meta property="og:description" content="Affordable gravel delivery in Memphis - 15-ton loads of milled asphalt or stone delivered for just $400. Professional spreading services available." />
+        <meta property="og:title" content="Memphis Gravel Delivery | 15 Ton Loads for $400" />
+        <meta property="og:description" content="Affordable gravel delivery in Memphis - 15-ton loads of milled asphalt or stone delivered for just $400. Professional spreading available." />
         <meta property="og:image" content="/lovable-uploads/202e6254-cec8-4b88-92cb-512591a16ed5.png" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Memphis Gravel Delivery - 15 Ton Loads for $400 | Memphis Earth Movers" />
-        <meta name="twitter:description" content="Affordable gravel delivery in Memphis - 15-ton loads of milled asphalt or stone delivered for just $400. Professional spreading services available." />
+        <meta name="twitter:title" content="Memphis Gravel Delivery | 15 Ton Loads for $400" />
+        <meta name="twitter:description" content="Affordable gravel delivery in Memphis - 15-ton loads of milled asphalt or stone delivered for just $400. Professional spreading available." />
         <meta name="twitter:image" content="/lovable-uploads/202e6254-cec8-4b88-92cb-512591a16ed5.png" />
         
         <script type="application/ld+json">

@@ -31,15 +31,15 @@ const BlogPost = () => {
   const postFaqs = [
     {
       question: `What is the main topic of "${post.title}"?`,
-      answer: post.excerpt
+      answer: post.excerpt?.substring(0, 154) || "This post covers Memphis construction topics and solutions."
     },
     {
       question: "How can I learn more about this topic?",
-      answer: "You can contact Memphis Earth Movers for personalized advice about your specific project needs. Our team of experts can provide guidance tailored to your situation."
+      answer: "You can contact Memphis Earth Movers for personalized advice about your specific project needs."
     },
     {
       question: "Does Memphis Earth Movers provide services related to this topic?",
-      answer: "Yes, Memphis Earth Movers offers a range of services including material delivery, dump truck rentals, and expert consultation on construction and landscaping materials throughout Memphis and DeSoto County."
+      answer: "Yes, Memphis Earth Movers offers material delivery, dump truck rentals, and expert consultation throughout Memphis."
     }
   ];
   
@@ -48,8 +48,8 @@ const BlogPost = () => {
   return (
     <>
       <Helmet>
-        <title>{post.title} | Memphis Earth Movers Blog</title>
-        <meta name="description" content={post.excerpt} />
+        <title>{post.title.substring(0, 58)} | Memphis Earth Movers Blog</title>
+        <meta name="description" content={post.excerpt?.substring(0, 154) || "Memphis construction insights from the Memphis Earth Movers team."} />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       <FaqSchema faqs={postFaqs} url={canonicalUrl} />

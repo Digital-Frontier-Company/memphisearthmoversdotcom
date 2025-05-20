@@ -25,7 +25,7 @@ const BlogPostContent = ({
   };
 
   // Generate a proper meta description from the excerpt
-  const metaDescription = post.excerpt || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving and construction services.";
+  const metaDescription = post.excerpt?.substring(0, 154) || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving services.";
 
   // Create proper structured data for the blog post with corrected URL format
   const blogPostSchema = {
@@ -77,11 +77,11 @@ const BlogPostContent = ({
   };
   return <>
       <Helmet>
-        <title>{post.title} | Memphis Earth Movers Blog</title>
+        <title>{post.title.substring(0, 58)} | Memphis Earth Movers</title>
         <meta name="description" content={metaDescription} />
         
         {/* Open Graph Tags */}
-        <meta property="og:title" content={post.title} />
+        <meta property="og:title" content={post.title.substring(0, 58)} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
@@ -91,7 +91,7 @@ const BlogPostContent = ({
         
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:title" content={post.title.substring(0, 58)} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={post.image} />
         

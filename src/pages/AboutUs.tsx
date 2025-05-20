@@ -78,8 +78,8 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
-        <title>About Memphis Earth Movers | Local Memphis Dump Truck Services</title>
-        <meta name="description" content="Learn about Memphis Earth Movers and our commitment to reliable dump truck services in Memphis and DeSoto County. Trusted by Memphis contractors since 2010." />
+        <title>About Memphis Earth Movers | Local Dump Trucks</title>
+        <meta name="description" content="Learn about Memphis Earth Movers and our commitment to reliable dump truck services in Memphis and DeSoto County since 2010." />
         <meta name="keywords" content="Memphis dump truck company, Memphis Earth Movers about, Memphis hauling company, Memphis material delivery company" />
         <link rel="canonical" href="https://memphis-earthmovers.com/about-us" />
         <script type="application/ld+json">

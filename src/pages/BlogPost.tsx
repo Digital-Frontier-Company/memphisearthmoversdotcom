@@ -45,8 +45,8 @@ const BlogPost = () => {
   
   const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
   
-  // Use the correct 'image' property from the BlogPost interface
-  const imageUrl = post.image || "/lovable-uploads/424d3eda-d37f-40d8-b639-aa7b135c6608.png";
+  // Add image metadata for SEO
+  const imageUrl = post.imageUrl || "/lovable-uploads/424d3eda-d37f-40d8-b639-aa7b135c6608.png";
   const imageAlt = post.imageAlt || "Memphis Earth Movers dump truck services - professional hauling and material delivery";
   
   return (

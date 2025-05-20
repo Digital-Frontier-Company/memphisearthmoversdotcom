@@ -4,7 +4,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BlogFaq from "@/components/blog/BlogFaq";
 import { Helmet } from "react-helmet-async";
-
 const BlogPostContent = ({
   post
 }: {
@@ -132,15 +131,7 @@ const BlogPostContent = ({
               </button>
             </div>
             <div className="mb-8 relative rounded-lg overflow-hidden shadow-md">
-              <img 
-                src={post.slug === "best-gravel-for-your-memphis-driveway" ? "/lovable-uploads/e3dc137e-c22d-4482-b5c5-3df712a8e827.png" : post.image} 
-                alt={`Featured image for ${post.title}`} 
-                className="w-full h-auto object-cover" 
-                width="1200" 
-                height="675" 
-                loading="eager" 
-                fetchPriority="high"
-              />
+              <img src={post.slug === "best-gravel-for-your-memphis-driveway" ? "/lovable-uploads/e3dc137e-c22d-4482-b5c5-3df712a8e827.png" : post.image} alt={`Featured image for ${post.title}`} className="w-full h-auto object-cover" width="1200" height="675" loading="eager" fetchPriority="high" />
               <div className="absolute inset-0 bg-mem-blue/30 mix-blend-overlay" aria-hidden="true"></div>
             </div>
             
@@ -150,7 +141,7 @@ const BlogPostContent = ({
           </div>
           
           <div className="my-12 py-8 border-t border-b border-gray-200">
-            <h3 className="text-xl font-bold text-mem-darkNavy mb-4">Need help with your project?</h3>
+            <h3 className="text-xl font-bold mb-4 text-zinc-50">Need help with your project?</h3>
             <p className="mb-4">
               Whether you need gravel delivery or dump truck services in Memphis, our team at Memphis Earth Movers is ready to assist with your project needs.
             </p>

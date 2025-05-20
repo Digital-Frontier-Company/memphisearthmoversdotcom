@@ -82,8 +82,6 @@ const BlogPostContent = ({
         <title>{post.title.substring(0, 58)} | Memphis Earth Movers</title>
         <meta name="description" content={metaDescription} />
         
-        <link rel="canonical" href={canonicalUrl} />
-        
         {/* Open Graph Tags */}
         <meta property="og:title" content={post.title.substring(0, 58)} />
         <meta property="og:description" content={metaDescription} />

@@ -98,7 +98,6 @@ const Contact = () => {
         <title>Contact Memphis Dump Truck Services | Get a Quote</title>
         <meta name="description" content="Need a dump truck in Memphis? Contact us for reliable service. Call (901) 461-1011 or fill out our form for a quick quote." />
         <meta name="keywords" content="contact Memphis dump trucks, dump truck services Memphis, Memphis dump truck quote, Memphis material hauling contact" />
-        <link rel="canonical" href="https://memphis-earthmovers.com/contact" />
         <script type="application/ld+json">
           {JSON.stringify(ContactStructuredData)}
         </script>

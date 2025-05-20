@@ -1,44 +1,76 @@
 import { Helmet } from "react-helmet-async";
 
 interface LocalBusinessSchemaProps {
-  page?: string;
+  page: string;
   pageSpecificDesc?: string;
-  url: string;
+  url?: string;
 }
 
 const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchemaProps) => {
-  // Format URL to ensure it uses www
-  const formattedUrl = url.replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
-                          .replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com");
+  // Ensure URL uses www format
+  const formattedUrl = url
+    ? url.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com")
+         .replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
+    : "https://www.memphisearthmovers.com/";
   
-  const baseSchema = {
+  // Default description if none provided
+  const description = pageSpecificDesc || "Memphis Earth Movers provides reliable dump truck services, material hauling, and delivery throughout Memphis and DeSoto County.";
+  
+  // Page-specific titles
+  let title = "Memphis Dump Truck Services | Local Hauling & Material Delivery";
+  switch (page) {
+    case "services":
+      title = "Memphis Dump Truck Services | $125/hr | Memphis Earth Movers";
+      break;
+    case "hourly-rental":
+      title = "Memphis Hourly Dump Truck Rental | From $125/hr";
+      break;
+    case "gravel-delivery":
+      title = "Memphis Gravel Delivery | 15 Ton Loads for $400";
+      break;
+    case "blog":
+      title = "Memphis Construction & Earthmoving Blog | Expert Tips";
+      break;
+    default:
+      // Default title remains unchanged
+      break;
+  }
+  
+  // LocalBusiness schema data
+  const businessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Memphis Earth Movers",
-    "description": pageSpecificDesc || "Memphis Earth Movers provides reliable dump truck services and material delivery for contractors and homeowners in Memphis, TN and DeSoto County.",
-    "url": formattedUrl,
+    "image": "https://www.memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png",
+    "logo": "https://www.memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png",
+    "description": description,
+    "url": "https://www.memphisearthmovers.com/",
     "telephone": "(901) 461-1011",
+    "email": "info@memphisearthmovers.com",
+    "currenciesAccepted": "USD",
+    "priceRange": "$$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "10255 Carnegie Club Dr",
-      "addressLocality": "Collierville",
+      "streetAddress": "2455 Corporate Ave",
+      "addressLocality": "Memphis",
       "addressRegion": "TN",
-      "postalCode": "38017",
+      "postalCode": "38132",
       "addressCountry": "US"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 35.1495,
-      "longitude": -90.0490
+      "latitude": 35.0664,
+      "longitude": -89.9311
     },
-    "areaServed": [
-      "Memphis", 
-      "Collierville", 
-      "Germantown", 
-      "Bartlett", 
-      "Cordova", 
-      "DeSoto County"
-    ],
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.0664,
+        "longitude": -89.9311
+      },
+      "geoRadius": 50000
+    },
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -50,51 +82,33 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
         "opens": "08:00",
-        "closes": "15:00"
+        "closes": "12:00"
       }
     ],
-    "priceRange": "$$$",
     "sameAs": [
-      "https://www.facebook.com/memphisearthmovers",
-      "https://www.instagram.com/memphisearthmovers"
-    ]
-  };
-
-  // Modify page title based on current page - shortened to stay under 60 chars
-  let title = "Memphis Dump Trucks | From $125/hr";
-  let description = "Reliable dump truck rentals in Memphis. Local hauling, gravel delivery, and material transport throughout Memphis and DeSoto County.";
-  
-  if (page) {
-    switch(page) {
-      case "services":
-        title = "Dump Truck Services Memphis | From $125/hr";
-        description = "Professional dump truck services in Memphis. Hourly rentals, material hauling, and reliable delivery throughout Memphis area.";
-        break;
-      case "about":
-        title = "About Our Memphis Dump Truck Company";
-        description = "Memphis Earth Movers provides reliable tri-axle dump truck rentals for contractors in Memphis. Local, dependable, and on time.";
-        break;
-      case "contact":
-        title = "Contact Memphis Dump Truck Services";
-        description = "Need a dump truck in Memphis? Contact our team for quick quotes on dump truck rentals, material delivery, and hauling services.";
-        break;
-      case "calculator":
-        title = "Gravel Calculator | Memphis Projects";
-        description = "Calculate exactly how much gravel you need for your Memphis project. Then get it delivered with our reliable dump trucks.";
-        break;
-      case "blog":
-        title = "Memphis Hauling & Construction Resources";
-        description = "Tips and resources for Memphis contractors about gravel types, dump truck services, and construction material delivery.";
-        break;
-      case "gravel-delivery":
-        title = "Memphis Gravel Delivery | 15 Tons for $400";
-        description = "Quality gravel delivered in Memphis. 15-ton loads of milled asphalt or stone delivered to your Memphis location for a flat rate.";
-        break;
-      default:
-        // Home page defaults set above
-        break;
+      "https://www.facebook.com/memphisearthmovers/",
+      "https://twitter.com/memphisearth",
+      "https://www.instagram.com/memphisearthmovers/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Dump Truck Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Hourly Dump Truck Rental",
+          "description": "Hourly dump truck rental services starting at $125/hr with experienced operators included.",
+          "url": "https://www.memphisearthmovers.com/hourly-dump-truck-rental"
+        },
+        {
+          "@type": "Offer",
+          "name": "Gravel Delivery",
+          "description": "15-ton load gravel and milled asphalt delivery anywhere in Memphis for a flat $400.",
+          "url": "https://www.memphisearthmovers.com/memphis-gravel-delivery"
+        }
+      ]
     }
-  }
+  };
 
   return (
     <Helmet>
@@ -104,7 +118,7 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
       
       {/* LocalBusiness Schema */}
       <script type="application/ld+json">
-        {JSON.stringify(baseSchema)}
+        {JSON.stringify(businessSchema)}
       </script>
     </Helmet>
   );

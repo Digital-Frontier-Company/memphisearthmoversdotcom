@@ -1,15 +1,8 @@
-
 import { Star } from "lucide-react";
-
 const TestimonialsSection = () => {
-  return (
-    <section className="mem-section bg-gray-100 relative">
+  return <section className="mem-section bg-gray-100 relative">
       <div className="absolute inset-0 opacity-10 z-0">
-        <img 
-          src="/lovable-uploads/17a03914-331b-4e10-82ea-af2d4e3d4ff3.png" 
-          alt="Dump trucks on a job site" 
-          className="w-full h-full object-cover"
-        />
+        <img alt="Dump trucks on a job site" className="w-full h-full object-cover" src="/lovable-uploads/1374cd3d-11c9-4b3a-a04f-387d9f09cae1.png" />
       </div>
       
       <div className="mem-container relative z-10">
@@ -30,8 +23,6 @@ const TestimonialsSection = () => {
           </blockquote>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default TestimonialsSection;

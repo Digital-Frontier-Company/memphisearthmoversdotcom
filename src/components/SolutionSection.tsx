@@ -16,17 +16,36 @@ const SolutionSection = () => {
           <div className="grid grid-cols-1 gap-8">
             <div className="rounded-lg overflow-hidden shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/20">
               <AspectRatio ratio={16 / 9}>
-                <img alt="Excavator loading a dump truck with dirt" src="/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg" className="w-full h-full object-cover" itemProp="image" />
+                <img 
+                  alt="Memphis Earth Movers tri-axle dump truck on highway providing reliable hauling services" 
+                  src="/lovable-uploads/5f5ed940-bb93-40f8-8281-aea0d6b01ee5.png" 
+                  className="w-full h-full object-cover"
+                  width="1200"
+                  height="800"
+                  itemProp="image" 
+                />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/20">
               <AspectRatio ratio={16 / 9}>
-                <img src="/lovable-uploads/cd9550e2-89af-4418-8ee9-79d50c4b551c.png" alt="Asphalt paving operation with dump trucks" className="w-full h-full object-cover" />
+                <img 
+                  src="/lovable-uploads/424d3eda-d37f-40d8-b639-aa7b135c6608.png" 
+                  alt="Memphis Earth Movers logo with tri-state stars and dump trucks on construction site background" 
+                  className="w-full h-full object-cover"
+                  width="1200"
+                  height="800"
+                />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/20">
               <AspectRatio ratio={16 / 9}>
-                <img src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" alt="Memphis Earth Movers dump trucks" className="w-full h-full object-contain" />
+                <img 
+                  src="/lovable-uploads/41664ffa-417f-40a0-b614-a41a9a9bb667.png" 
+                  alt="Memphis Earth Movers model dump truck with white cab and green dumping bed for precision material delivery" 
+                  className="w-full h-full object-contain"
+                  width="1200"
+                  height="800"
+                />
               </AspectRatio>
             </div>
           </div>
@@ -86,4 +105,5 @@ const SolutionSection = () => {
       </div>
     </section>;
 };
+
 export default SolutionSection;

@@ -81,6 +81,13 @@ const Services = () => {
       />
       
       <Helmet>
+        <title>Dump Truck Services Memphis | From $125/hr</title>
+        <meta name="description" content="Professional dump truck services in Memphis. Hourly rentals, material hauling, and reliable delivery throughout Memphis area." />
+        <meta property="og:title" content="Dump Truck Services Memphis | From $125/hr" />
+        <meta property="og:description" content="Professional dump truck services in Memphis from $125/hr. Reliable hauling throughout Memphis area." />
+        <meta property="og:image" content="/lovable-uploads/5f5ed940-bb93-40f8-8281-aea0d6b01ee5.png" />
+        <meta property="og:image:alt" content="Memphis Earth Movers tri-axle dump truck on highway - professional hauling services" />
+        <meta property="og:type" content="website" />
         <script type="application/ld+json">
           {JSON.stringify(BreadcrumbSchema)}
         </script>

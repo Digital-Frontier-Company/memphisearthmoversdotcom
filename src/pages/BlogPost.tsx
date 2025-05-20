@@ -45,12 +45,24 @@ const BlogPost = () => {
   
   const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
   
+  // Add image metadata for SEO
+  const imageUrl = post.imageUrl || "/lovable-uploads/424d3eda-d37f-40d8-b639-aa7b135c6608.png";
+  const imageAlt = post.imageAlt || "Memphis Earth Movers dump truck services - professional hauling and material delivery";
+  
   return (
     <>
       <Helmet>
         <title>{post.title.substring(0, 58)} | Memphis Earth Movers Blog</title>
         <meta name="description" content={post.excerpt?.substring(0, 154) || "Memphis construction insights from the Memphis Earth Movers team."} />
         <link rel="canonical" href={canonicalUrl} />
+        
+        {/* Open Graph / Social Media Meta Tags */}
+        <meta property="og:title" content={post.title.substring(0, 58)} />
+        <meta property="og:description" content={post.excerpt?.substring(0, 154) || "Memphis construction insights"} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:image:alt" content={imageAlt} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="article" />
       </Helmet>
       <FaqSchema faqs={postFaqs} url={canonicalUrl} />
       <BlogFaqSchema />

@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
@@ -27,7 +28,10 @@ const BlogPostContent = ({
   // Generate a proper meta description from the excerpt
   const metaDescription = post.excerpt?.substring(0, 154) || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving services.";
 
-  // Create proper structured data for the blog post with corrected URL format
+  // Create a single canonical URL
+  const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
+
+  // Create proper structured data for the blog post with consistent URL format
   const blogPostSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -49,11 +53,11 @@ const BlogPostContent = ({
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")
+      "@id": canonicalUrl
     }
   };
 
-  // Breadcrumb structured data with corrected URL format
+  // Breadcrumb structured data with consistent URL format
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -71,7 +75,7 @@ const BlogPostContent = ({
       "@type": "ListItem",
       "position": 3,
       "name": post.title,
-      "item": `https://www.memphisearthmovers.com/blog/${post.slug}`
+      "item": canonicalUrl
     }]
   };
   return <>
@@ -79,12 +83,15 @@ const BlogPostContent = ({
         <title>{post.title.substring(0, 58)} | Memphis Earth Movers</title>
         <meta name="description" content={metaDescription} />
         
+        {/* Single canonical URL */}
+        <link rel="canonical" href={canonicalUrl} />
+        
         {/* Open Graph Tags */}
         <meta property="og:title" content={post.title.substring(0, 58)} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Memphis Earth Movers" />
         
         {/* Twitter Card Tags */}
@@ -98,9 +105,6 @@ const BlogPostContent = ({
         <meta property="article:section" content="Construction" />
         <meta property="article:tag" content="Memphis,construction,clay soil,earthmoving,soil stabilization,gravel driveways" />
         
-        {/* Canonical URL */}
-        <link rel="canonical" href={window.location.href.replace("https://memphisearthmovers.com", "https://www.memphisearthmovers.com").replace("https://memphis-earthmovers.com", "https://www.memphisearthmovers.com")} />
-
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify(blogPostSchema)}

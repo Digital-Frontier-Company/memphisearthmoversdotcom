@@ -7,13 +7,15 @@ import FaqSchema from "@/components/shared/FaqSchema";
 import { Helmet } from "react-helmet-async";
 
 const BlogList = () => {
+  const canonicalUrl = "https://www.memphisearthmovers.com/blog";
+  
   // Define blog-specific structured data
   const blogListSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Memphis Earth Movers Blog",
     "description": "Expert advice, tips, and insights about dump truck services, construction materials, and project management in the Memphis area.",
-    "url": "https://www.memphisearthmovers.com/blog",
+    "url": canonicalUrl,
     "isPartOf": {
       "@type": "WebSite",
       "name": "Memphis Earth Movers",
@@ -33,6 +35,7 @@ const BlogList = () => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href={canonicalUrl} />
         <script type="application/ld+json">
           {JSON.stringify(blogListSchema)}
         </script>

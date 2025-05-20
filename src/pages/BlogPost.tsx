@@ -27,6 +27,8 @@ const BlogPost = () => {
     return <Navigate to="/blog" />;
   }
 
+  const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
+
   // Blog post specific FAQs
   const postFaqs = [
     {
@@ -42,8 +44,6 @@ const BlogPost = () => {
       answer: "Yes, Memphis Earth Movers offers material delivery, dump truck rentals, and expert consultation throughout Memphis."
     }
   ];
-  
-  const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
   
   return (
     <>

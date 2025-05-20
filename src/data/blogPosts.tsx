@@ -3,8 +3,18 @@ import React from "react";
 import { BlogPost } from "@/types/blog";
 import gravelDrivewayContent from "./blogContents/gravelDrivewayContent";
 import memphisClayContent from "./blogContents/memphisClayContent";
+import memphisConstructionBoomContent from "./blogContents/memphisConstructionBoomContent";
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "memphis-construction-boom-shelby-county",
+    title: "For Memphis Dump Truck Businesses - Memphis is on the Move, Shelby County's Construction Boom",
+    date: "May 20, 2025",
+    readTime: 14,
+    excerpt: "Explore Memphis's $16+ billion construction boom creating massive demand for dump trucks and earthmoving services. Learn how Shelby County projects are transforming the local economy.",
+    image: "/lovable-uploads/44a44049-2d22-45d1-bcae-9a11d428890c.png",
+    content: memphisConstructionBoomContent
+  },
   {
     slug: "memphis-clay-soil-challenges-solutions",
     title: "Memphis Clay Soil Solutions: Turning Challenging Gumbo Soil Into an Asset",

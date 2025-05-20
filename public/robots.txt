@@ -19,6 +19,10 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
+# Explicitly allow Ahrefs bots
+User-agent: AhrefsBot
+Allow: /
+
 # Allow AI bots
 User-agent: GPTBot
 Allow: /

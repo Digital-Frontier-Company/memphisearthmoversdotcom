@@ -8,5 +8,6 @@ export interface BlogPost {
   readTime: number;
   excerpt: string;
   image: string;
+  imageAlt?: string; // Optional image alt text
   content: ReactNode;
 }

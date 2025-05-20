@@ -14,11 +14,9 @@ const Header = () => {
             className="h-16 md:h-20"
           />
           <img 
-            src="/lovable-uploads/424d3eda-d37f-40d8-b639-aa7b135c6608.png" 
-            alt="Memphis Earth Movers Full Logo with Tri-Axle Dump Trucks and Tennessee Star" 
+            src="/lovable-uploads/7713a843-e930-4591-a487-959cb1eac6fe.png" 
+            alt="Memphis Earth Movers Alternative Logo" 
             className="hidden ml-4 h-12 md:h-16"
-            width="240"
-            height="80"
           />
         </div>
         

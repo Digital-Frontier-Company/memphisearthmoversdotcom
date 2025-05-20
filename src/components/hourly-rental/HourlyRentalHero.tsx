@@ -38,11 +38,9 @@ const HourlyRentalHero = () => {
           
           <div className="rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/20">
             <img 
-              src="/lovable-uploads/ae1fd2e2-bcfb-4c0b-92d1-5eae9367a0e8.png" 
-              alt="Memphis Earth Movers modern white tri-axle dump truck for hourly rental with professional CDL drivers in Memphis" 
-              className="w-full object-cover h-auto lg:h-[450px]"
-              width="1200"
-              height="800"
+              src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
+              alt="Memphis dump truck rentals - tri-axle dump trucks for hourly rental with CDL drivers in Shelby County" 
+              className="w-full object-cover h-auto lg:h-[450px]" 
             />
           </div>
         </div>

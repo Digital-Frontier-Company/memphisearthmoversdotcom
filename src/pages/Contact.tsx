@@ -16,7 +16,7 @@ const ContactStructuredData = {
   "@type": "ContactPage",
   "name": "Contact Memphis Earth Movers",
   "description": "Contact Memphis Earth Movers for reliable dump truck services in Memphis and DeSoto County. Request a quote for your project today.",
-  "url": "https://www.memphisearthmovers.com/contact",
+  "url": "https://memphis-earthmovers.com/contact",
   "mainEntity": {
     "@type": "LocalBusiness",
     "name": "Memphis Earth Movers",
@@ -27,8 +27,7 @@ const ContactStructuredData = {
       "addressLocality": "Memphis",
       "addressRegion": "TN",
       "addressCountry": "US"
-    },
-    "image": "/lovable-uploads/5f5ed940-bb93-40f8-8281-aea0d6b01ee5.png"
+    }
   }
 };
 
@@ -41,13 +40,13 @@ const BreadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://www.memphisearthmovers.com"
+      "item": "https://memphis-earthmovers.com"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Contact",
-      "item": "https://www.memphisearthmovers.com/contact"
+      "item": "https://memphis-earthmovers.com/contact"
     }
   ]
 };
@@ -97,18 +96,9 @@ const Contact = () => {
     <>
       <Helmet>
         <title>Contact Memphis Dump Truck Services | Get a Quote</title>
-        <meta name="description" content="Need a dump truck in Memphis? Contact us for reliable service. Call (901) 461-1011 for a quick quote." />
+        <meta name="description" content="Need a dump truck in Memphis? Contact us for reliable service. Call (901) 461-1011 or fill out our form for a quick quote." />
         <meta name="keywords" content="contact Memphis dump trucks, dump truck services Memphis, Memphis dump truck quote, Memphis material hauling contact" />
-        <link rel="canonical" href="https://www.memphisearthmovers.com/contact" />
-        
-        {/* Open Graph / Social Media Meta Tags */}
-        <meta property="og:title" content="Contact Memphis Dump Truck Services | Get a Quote" />
-        <meta property="og:description" content="Need a dump truck in Memphis? Contact us for reliable hauling service." />
-        <meta property="og:image" content="/lovable-uploads/5f5ed940-bb93-40f8-8281-aea0d6b01ee5.png" />
-        <meta property="og:image:alt" content="Memphis Earth Movers tri-axle dump truck on highway - professional dump truck services" />
-        <meta property="og:url" content="https://www.memphisearthmovers.com/contact" />
-        <meta property="og:type" content="website" />
-        
+        <link rel="canonical" href="https://memphis-earthmovers.com/contact" />
         <script type="application/ld+json">
           {JSON.stringify(ContactStructuredData)}
         </script>

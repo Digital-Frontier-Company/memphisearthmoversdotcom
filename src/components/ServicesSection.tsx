@@ -37,11 +37,9 @@ const ServicesSection = () => {
             <div className="mt-4 h-44 overflow-hidden rounded-md">
               <Link to="/hourly-dump-truck-rental">
                 <img 
-                  alt="Memphis tri-axle dump truck rental with MEM logo on side - hourly hauling service in Memphis" 
-                  src="/lovable-uploads/5f5ed940-bb93-40f8-8281-aea0d6b01ee5.png" 
-                  className="w-full h-full transition-transform group-hover:scale-105 object-cover object-center"
-                  width="800" 
-                  height="600"
+                  alt="Memphis tri-axle dump truck ready for rental and hauling at a construction site" 
+                  src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
+                  className="w-full h-full transition-transform group-hover:scale-105 object-contain" 
                   itemProp="image" 
                 />
               </Link>
@@ -66,11 +64,9 @@ const ServicesSection = () => {
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
                 <img 
-                  src="/lovable-uploads/41664ffa-417f-40a0-b614-a41a9a9bb667.png" 
-                  alt="Memphis Earth Movers model dump truck with green dumping bed - material delivery service in Memphis area" 
-                  className="w-full h-full object-contain transition-transform group-hover:scale-105"
-                  width="800"
-                  height="600" 
+                  src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" 
+                  alt="Construction materials being loaded into Memphis Earth Movers dump truck for delivery" 
+                  className="w-full h-full object-contain transition-transform group-hover:scale-105" 
                   itemProp="image" 
                 />
               </AspectRatio>
@@ -97,9 +93,7 @@ const ServicesSection = () => {
                 <img 
                   alt="Excavator loading asphalt millings into Memphis dump truck for driveway installation" 
                   className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" 
-                  src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg"
-                  width="800"
-                  height="600" 
+                  src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" 
                   itemProp="image" 
                 />
               </AspectRatio>
@@ -124,11 +118,9 @@ const ServicesSection = () => {
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
                 <img 
-                  alt="Memphis Earth Movers white dump truck with MEM logo for residential material delivery projects" 
-                  className="w-full h-full object-cover transition-transform group-hover:scale-105" 
-                  src="/lovable-uploads/ae1fd2e2-bcfb-4c0b-92d1-5eae9367a0e8.png"
-                  width="800"
-                  height="600"
+                  alt="Landscaping project with topsoil delivery by Memphis Earth Movers dump truck for residential yard" 
+                  className="w-full h-full object-contain transition-transform group-hover:scale-105" 
+                  src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" 
                   itemProp="image" 
                 />
               </AspectRatio>

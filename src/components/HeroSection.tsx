@@ -8,12 +8,12 @@ const HeroSection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/ae1fd2e2-bcfb-4c0b-92d1-5eae9367a0e8.png" 
-          alt="Memphis Earth Movers modern white tri-axle dump truck - professional hauling services in Memphis TN" 
+          src="/lovable-uploads/edb19aa6-8735-48cb-8854-e51964558b65.png" 
+          alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" 
           className="w-full h-full object-cover opacity-75" 
           width="1920" 
           height="1080"
-          fetchPriority="high"
+          fetchPriority="high" // Fixed: Changed from fetchpriority to fetchPriority
         />
         <div className="absolute inset-0 bg-black/25"></div>
       </div>

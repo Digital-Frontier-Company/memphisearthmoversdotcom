@@ -6,11 +6,9 @@ const ContactHero = () => {
     <section className="relative bg-mem-darkNavy text-white py-16 md:py-24">
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/5f5ed940-bb93-40f8-8281-aea0d6b01ee5.png" 
-          alt="Memphis Earth Movers tri-axle dump truck on highway - professional hauling services in Memphis and DeSoto County"
+          src="/lovable-uploads/5c31bd27-ead3-4cd3-880d-b43b999cebd1.png" 
+          alt="Memphis Earth Movers dump truck services"
           className="w-full h-full object-cover object-center" 
-          width="1200"
-          height="800"
         />
         <div className="absolute inset-0 bg-black/55"></div>
       </div>

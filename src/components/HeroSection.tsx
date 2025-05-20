@@ -13,7 +13,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover opacity-75" 
           width="1920" 
           height="1080"
-          fetchPriority="high" // Fixed: Changed from fetchpriority to fetchPriority
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-black/25"></div>
       </div>

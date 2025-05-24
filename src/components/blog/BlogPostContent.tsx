@@ -1,9 +1,11 @@
+
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/types/blog";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import BlogFaq from "@/components/blog/BlogFaq";
 import { Helmet } from "react-helmet-async";
+
 const BlogPostContent = ({
   post
 }: {
@@ -27,7 +29,7 @@ const BlogPostContent = ({
   const metaDescription = post.excerpt?.substring(0, 154) || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving services.";
 
   // Create a canonical URL - this is essential for blog posts to avoid duplicate content issues
-  const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
+  const canonicalUrl = `https://memphisearthmovers.com/blog/${post.slug}`;
 
   // Create proper structured data for the blog post with consistent URL format
   const blogPostSchema = {
@@ -46,7 +48,7 @@ const BlogPostContent = ({
       "name": "Memphis Earth Movers",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png"
+        "url": "https://memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png"
       }
     },
     "mainEntityOfPage": {
@@ -63,12 +65,12 @@ const BlogPostContent = ({
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://www.memphisearthmovers.com/"
+      "item": "https://memphisearthmovers.com/"
     }, {
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://www.memphisearthmovers.com/blog"
+      "item": "https://memphisearthmovers.com/blog"
     }, {
       "@type": "ListItem",
       "position": 3,
@@ -76,10 +78,12 @@ const BlogPostContent = ({
       "item": canonicalUrl
     }]
   };
+  
   return <>
       <Helmet>
         <title>{post.title.substring(0, 58)} | Memphis Earth Movers</title>
         <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph Tags */}
         <meta property="og:title" content={post.title.substring(0, 58)} />

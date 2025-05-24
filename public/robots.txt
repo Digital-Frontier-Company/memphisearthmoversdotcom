@@ -3,8 +3,11 @@
 User-agent: *
 Allow: /
 
+# Canonical domain
+host: memphisearthmovers.com
+
 # Sitemap location
-Sitemap: https://www.memphisearthmovers.com/sitemap.xml
+Sitemap: https://memphisearthmovers.com/sitemap.xml
 
 # Allow specific search engines
 User-agent: Googlebot

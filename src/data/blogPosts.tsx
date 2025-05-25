@@ -1,3 +1,4 @@
+
 import React from "react";
 import { BlogPost } from "@/types/blog";
 import gravelDrivewayContent from "./blogContents/gravelDrivewayContent";
@@ -12,7 +13,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 25, 2025",
     readTime: 15,
     excerpt: "Discover Memphis's construction boom opportunities for business professionals. Learn about dump truck rentals, strategic resources, and emerging development trends in the Mid-South.",
-    image: "/lovable-uploads/44a44049-2d22-45d1-bcae-9a11d428890c.png",
+    image: "/lovable-uploads/b3c002af-12aa-4066-b681-dcdfa0c9a297.png",
     content: React.createElement(memphisConstructionOpportunitiesContent)
   },
   {
@@ -29,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     title: "Memphis Clay Soil Solutions: Turning Challenging Gumbo Soil Into an Asset",
     date: "May 19, 2025",
     readTime: 12,
-    excerpt: "Learn how Memphis contractors transform challenging clay soil into stable foundations. Discover cost-effective soil stabilization techniques for Memphis construction projects.",
+    excerpt: "Learn how Memphis contractors transform challenging clay soil into stable foundations. Discover cost-effective soil stabilization techniques for Memphis projects.",
     image: "/lovable-uploads/30d40068-7c8a-4348-b19b-c9a4094f24f1.png",
     content: memphisClayContent
   },

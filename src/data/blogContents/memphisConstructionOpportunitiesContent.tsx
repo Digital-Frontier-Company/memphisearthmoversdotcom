@@ -59,8 +59,8 @@ const MemphisConstructionOpportunitiesContent = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
-              alt="Construction site in Memphis showing dump trucks and development" 
+              src="/lovable-uploads/328eedb4-8bf2-4a62-a610-91aac644af26.png" 
+              alt="Memphis Earth Movers dump truck on construction site with company logo overlay" 
               className="rounded-lg shadow-xl w-full h-auto" 
               width="735" 
               height="490"
@@ -124,8 +124,8 @@ const MemphisConstructionOpportunitiesContent = () => {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
               <img 
-                src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
-                alt="Memphis dump truck at construction site delivering materials" 
+                src="/lovable-uploads/f0459381-ce71-4da7-81a9-1cdbd46853b3.png" 
+                alt="Memphis Earth Movers dump truck model showcasing professional equipment and company branding" 
                 className="rounded-lg shadow-lg w-full h-auto" 
                 width="735" 
                 height="490"
@@ -213,53 +213,73 @@ const MemphisConstructionOpportunitiesContent = () => {
         </Card>
       </section>
 
-      {/* Future Prospects Section */}
+      {/* Equipment Showcase Section */}
       <section className="mb-20">
         <div className="bg-gradient-to-r from-mem-darkNavy to-mem-blue text-white rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">Future Prospects: Growth and Sustainability</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Professional Memphis Dump Truck Services</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-semibold text-mem-babyBlue mb-4">Sustainable Construction</h3>
-              <p className="mb-6">The road ahead for Memphis's construction scene is promising, with growth and sustainability at its core. Environmentally friendly construction practices are no longer just a trend but a necessity, weaving sustainability into the very fabric of new projects.</p>
-              <p>Professionals who keep an eye on such emerging trends and technologies will find themselves at the forefront of industry innovation.</p>
+              <img 
+                src="/lovable-uploads/d6fad9d8-ed3f-46cf-a624-6feedddc1656.png" 
+                alt="Memphis Earth Movers Mack dump truck at sunset on construction site" 
+                className="rounded-lg shadow-lg w-full h-auto" 
+                width="600" 
+                height="400"
+                loading="lazy"
+              />
             </div>
             
             <div>
-              <h3 className="text-2xl font-semibold text-mem-babyBlue mb-4">Mixed-Use Developments</h3>
-              <p className="mb-6">The city also boasts a rise in mixed-use developments, seamlessly blending residential, commercial, and recreational spaces.</p>
-              <p>These projects are a testament to Memphis's response to the increasing demand for urban living, opening doors to inventive construction solutions.</p>
+              <h3 className="text-2xl font-semibold text-mem-babyBlue mb-4">Industry-Leading Equipment</h3>
+              <p className="mb-6">Memphis Earth Movers operates a modern fleet of professional-grade dump trucks designed to handle Memphis's diverse construction challenges. Our equipment is maintained to the highest standards, ensuring reliability when your project demands it most.</p>
+              <p className="mb-6">From residential developments to major commercial projects, our trucks are equipped to handle materials ranging from crushed stone and gravel to topsoil and construction debris.</p>
+              
+              <div className="bg-white bg-opacity-10 rounded-lg p-6 border border-mem-babyBlue border-opacity-30">
+                <h4 className="text-xl font-semibold mb-4">Our Commitment</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center">
+                    <span className="text-mem-babyBlue mr-3">✓</span>
+                    <span>Professional operators</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-mem-babyBlue mr-3">✓</span>
+                    <span>Timely delivery</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-mem-babyBlue mr-3">✓</span>
+                    <span>Competitive pricing</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-mem-babyBlue mr-3">✓</span>
+                    <span>Local expertise</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Future Prospects Section */}
+      <section className="mb-20">
+        <div className="flex flex-col md:flex-row gap-8 items-center">
+          <div className="md:w-1/2">
+            <img 
+              src="/lovable-uploads/92f9b830-34cd-43a5-b5ff-bd786e11e357.png" 
+              alt="Heavy excavator with Memphis Earth Movers branding working on construction site" 
+              className="rounded-lg shadow-lg w-full h-auto" 
+              width="600" 
+              height="400"
+              loading="lazy"
+            />
+          </div>
           
-          <div className="mt-12 bg-white bg-opacity-10 rounded-lg p-6 border border-mem-babyBlue border-opacity-30">
-            <h3 className="text-xl font-semibold mb-4">Emerging Trends to Watch</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="flex items-center">
-                <span className="text-mem-babyBlue mr-3">🌱</span>
-                <span>Green building materials</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-mem-babyBlue mr-3">⚡</span>
-                <span>Energy-efficient designs</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-mem-babyBlue mr-3">📱</span>
-                <span>Smart building technology</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-mem-babyBlue mr-3">♻️</span>
-                <span>Waste reduction strategies</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-mem-babyBlue mr-3">💧</span>
-                <span>Water conservation systems</span>
-              </div>
-              <div className="flex items-center">
-                <span className="text-mem-babyBlue mr-3">☀️</span>
-                <span>Renewable energy integration</span>
-              </div>
-            </div>
+          <div className="md:w-1/2">
+            <h2 className="text-3xl font-bold text-slate-50 mb-6">Future Prospects: Growth and Sustainability</h2>
+            <p className="mb-6 text-slate-200">The road ahead for Memphis's construction scene is promising, with growth and sustainability at its core. Environmentally friendly construction practices are no longer just a trend but a necessity, weaving sustainability into the very fabric of new projects.</p>
+            <p className="mb-6 text-slate-200">Memphis Earth Movers stays ahead of industry trends by incorporating efficient equipment and sustainable practices into our operations. Our modern fleet and experienced operators help minimize environmental impact while maximizing project efficiency.</p>
+            <p className="text-slate-200">Professionals who keep an eye on such emerging trends and technologies will find themselves at the forefront of industry innovation.</p>
           </div>
         </div>
       </section>

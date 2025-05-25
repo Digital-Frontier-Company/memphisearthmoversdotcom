@@ -4,8 +4,18 @@ import { BlogPost } from "@/types/blog";
 import gravelDrivewayContent from "./blogContents/gravelDrivewayContent";
 import memphisClayContent from "./blogContents/memphisClayContent";
 import memphisConstructionBoomContent from "./blogContents/memphisConstructionBoomContent";
+import memphisConstructionOpportunitiesContent from "./blogContents/memphisConstructionOpportunitiesContent";
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "navigating-new-construction-memphis-opportunities",
+    title: "Navigating New Construction in Memphis, TN: Insights & Opportunities",
+    date: "May 25, 2025",
+    readTime: 15,
+    excerpt: "Discover Memphis's construction boom opportunities for business professionals. Learn about dump truck rentals, strategic resources, and emerging development trends in the Mid-South.",
+    image: "/lovable-uploads/44a44049-2d22-45d1-bcae-9a11d428890c.png",
+    content: memphisConstructionOpportunitiesContent
+  },
   {
     slug: "memphis-construction-boom-shelby-county",
     title: "For Memphis Dump Truck Businesses - Memphis is on the Move, Shelby County's Construction Boom",

@@ -46,12 +46,22 @@
   </url>
   <url>
     <loc>https://memphisearthmovers.com/blog</loc>
-    <lastmod>2025-05-20</lastmod>
+    <lastmod>2025-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://memphisearthmovers.com/lovable-uploads/30d40068-7c8a-4348-b19b-c9a4094f24f1.png</image:loc>
       <image:title>Memphis Earth Movers Blog</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://memphisearthmovers.com/blog/navigating-new-construction-memphis-opportunities</loc>
+    <lastmod>2025-05-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://memphisearthmovers.com/lovable-uploads/44a44049-2d22-45d1-bcae-9a11d428890c.png</image:loc>
+      <image:title>Navigating New Construction in Memphis, TN: Insights & Opportunities</image:title>
     </image:image>
   </url>
   <url>

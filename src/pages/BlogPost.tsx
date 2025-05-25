@@ -11,6 +11,7 @@ import { Navigate } from "react-router-dom";
 import FaqSchema from "@/components/shared/FaqSchema";
 import BlogFaqSchema from "@/components/blog/BlogFaqSchema";
 import ConstructionBoomFaqSchema from "@/components/blog/ConstructionBoomFaqSchema";
+import MemphisConstructionFaqSchema from "@/components/blog/MemphisConstructionFaqSchema";
 import BackToTopButton from "@/components/BackToTopButton";
 
 const BlogPost = () => {
@@ -52,6 +53,10 @@ const BlogPost = () => {
   if (post.slug === "memphis-construction-boom-shelby-county") {
     metaDescription = "Memphis dump truck services in high demand amid $16B construction boom. Learn how Shelby County projects need reliable earthmoving contractors for growing opportunities.";
   }
+
+  if (post.slug === "navigating-new-construction-memphis-opportunities") {
+    metaDescription = "Discover Memphis construction boom opportunities for business professionals. Learn about dump truck rentals, strategic resources, and emerging development trends.";
+  }
   
   return (
     <>
@@ -77,10 +82,22 @@ const BlogPost = () => {
             <meta property="article:tag" content="Memphis,construction,dump trucks,earthmoving,Shelby County,Blue Oval City" />
           </>
         )}
+
+        {/* Additional SEO tags for construction opportunities post */}
+        {post.slug === "navigating-new-construction-memphis-opportunities" && (
+          <>
+            <meta name="keywords" content="Memphis construction opportunities, Memphis dump truck rental, hourly dump truck rentals Memphis, Memphis construction boom, business opportunities Memphis, construction resources Memphis" />
+            <meta property="article:published_time" content="2025-05-25" />
+            <meta property="article:author" content="Memphis Earth Movers" />
+            <meta property="article:section" content="Construction" />
+            <meta property="article:tag" content="Memphis,construction,opportunities,dump trucks,business,development" />
+          </>
+        )}
       </Helmet>
       <FaqSchema faqs={postFaqs} url={canonicalUrl} />
       <BlogFaqSchema />
       {post.slug === "memphis-construction-boom-shelby-county" && <ConstructionBoomFaqSchema />}
+      {post.slug === "navigating-new-construction-memphis-opportunities" && <MemphisConstructionFaqSchema />}
       <Header />
       <BlogPostBreadcrumbs title={post.title} />
       <main>

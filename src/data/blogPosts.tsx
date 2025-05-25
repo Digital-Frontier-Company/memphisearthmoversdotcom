@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BlogPost } from "@/types/blog";
 import gravelDrivewayContent from "./blogContents/gravelDrivewayContent";
@@ -14,7 +13,7 @@ export const blogPosts: BlogPost[] = [
     readTime: 15,
     excerpt: "Discover Memphis's construction boom opportunities for business professionals. Learn about dump truck rentals, strategic resources, and emerging development trends in the Mid-South.",
     image: "/lovable-uploads/44a44049-2d22-45d1-bcae-9a11d428890c.png",
-    content: memphisConstructionOpportunitiesContent
+    content: React.createElement(memphisConstructionOpportunitiesContent)
   },
   {
     slug: "memphis-construction-boom-shelby-county",

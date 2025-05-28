@@ -1,4 +1,7 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
+
 const memphisConstructionBoomContent = <>
     <h2 className="text-2xl font-bold mb-4 text-neutral-50">Memphis on the Move: Shelby County's Construction Boom</h2>
     
@@ -9,6 +12,10 @@ const memphisConstructionBoomContent = <>
       
       <p className="mb-4 text-neutral-50">
         Memphis's recent construction surge is more than just a local phenomenon—it's an indicator of broader economic vitality and optimism. Investors and companies alike recognize the strategic advantages of Shelby County, thanks to its central location, strong logistical infrastructure, and vibrant workforce. The community is witnessing not just physical transformation, but an economic revival that reinforces Memphis's position as a critical regional hub. As major corporations invest heavily in the region, smaller businesses and entrepreneurs are also thriving, benefiting from increased economic activity and new market opportunities.
+      </p>
+      
+      <p className="mb-4 text-neutral-50">
+        With Memphis's construction boom creating high demand, flexible <Link to="/hourly-dump-truck-rental" className="text-mem-blue hover:text-mem-darkBlue underline">hourly dump truck rental</Link> options help contractors scale their operations efficiently to meet project demands.
       </p>
     </div>
     
@@ -25,6 +32,10 @@ const memphisConstructionBoomContent = <>
       
       <p className="mb-4 text-slate-50">
         Moreover, these projects aren't just isolated efforts—they represent broader strategic objectives aimed at sustainability, innovation, and community enrichment. The Blue Oval City, for instance, positions Memphis as a significant player in the growing electric vehicle industry, promising thousands of jobs and considerable economic ripple effects throughout the community. Similarly, Tom Lee Park's redevelopment enhances Memphis's appeal as a cultural and recreational destination, further attracting tourism and related investments.
+      </p>
+      
+      <p className="mb-4 text-slate-50">
+        Contractors can streamline project planning by using our <Link to="/gravel-calculator" className="text-mem-blue hover:text-mem-darkBlue underline">gravel calculator</Link> to accurately estimate material needs for Memphis construction projects.
       </p>
     </div>
     

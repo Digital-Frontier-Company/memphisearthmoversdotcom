@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -76,7 +75,7 @@ const MemphisConstructionOpportunitiesContent = () => {
               This surge is not just a boon for construction companies but also a goldmine of opportunities for real estate developers and business professionals eager to tap into this vibrant market.
             </p>
             <p className="text-lg text-slate-200">
-              Central to this boom are resources like <strong className="text-mem-blue">Memphis dump trucks</strong> and flexible <strong className="text-mem-blue">hourly dump truck rentals</strong>, which are the unsung heroes keeping project timelines on track and budgets in check.
+              Essential to Memphis's construction growth are reliable <Link to="/dump-truck-services" className="text-mem-blue hover:text-mem-darkBlue underline">dump truck services</Link> that keep projects moving on schedule and within budget, along with flexible <strong className="text-mem-blue">hourly dump truck rentals</strong> which are the unsung heroes keeping project timelines on track and budgets in check.
             </p>
           </div>
         </div>
@@ -135,7 +134,8 @@ const MemphisConstructionOpportunitiesContent = () => {
             <div className="md:w-1/2">
               <p className="mb-4 text-slate-200">Ever wonder how construction sites keep everything moving like a well-oiled machine? The key players here are dump trucks.</p>
               <p className="mb-4 text-slate-200">In Memphis, the availability of reliable <strong className="text-mem-blue">hourly dump truck rentals</strong> means projects can be completed not just efficiently, but also cost-effectively.</p>
-              <p className="text-slate-200">Picture a bustling downtown Memphis project: hourly dump truck rentals were pivotal, allowing project managers to precisely adjust resources, thus optimizing both timing and costs.</p>
+              <p className="mb-4 text-slate-200">Picture a bustling downtown Memphis project: hourly dump truck rentals were pivotal, allowing project managers to precisely adjust resources, thus optimizing both timing and costs.</p>
+              <p className="text-slate-200">Smart project planning starts with accurate estimates - our <Link to="/gravel-calculator" className="text-mem-blue hover:text-mem-darkBlue underline">gravel calculator</Link> helps Memphis professionals budget materials effectively.</p>
             </div>
           </div>
         </div>

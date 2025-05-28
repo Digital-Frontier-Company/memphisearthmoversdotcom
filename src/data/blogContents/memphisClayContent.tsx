@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const memphisClayContent = React.createElement(
   React.Fragment,
@@ -37,6 +38,13 @@ const memphisClayContent = React.createElement(
     null,
     React.createElement("strong", null, "Contrarian angle:"),
     " Contractors who default to \"haul it all off\" are leaving money (and soil) on the table. Often the cheapest, greenest move is re-engineering clay in place instead of trucking in pricey gravel."
+  ),
+  React.createElement(
+    "p",
+    null,
+    "For larger soil stabilization projects, professional ",
+    React.createElement(Link, { to: "/dump-truck-services", className: "text-mem-blue hover:text-mem-darkBlue underline" }, "Memphis dump truck services"),
+    " can transport materials efficiently to your site, ensuring proper equipment for clay remediation work."
   ),
   React.createElement("h3", null, "2. The Mainstream Playbook—And Its Blind Spots"),
   React.createElement("p", null, "Standard advice you'll hear:"),
@@ -273,7 +281,11 @@ const memphisClayContent = React.createElement(
   React.createElement(
     "p",
     null,
-    "Memphis gumbo can bankrupt a careless builder or bankroll a clever one. It's the same soil; outcomes hinge on knowledge, planning, and partners. At Memphis Earth Movers, we've stabilized over 4 million cubic yards of Delta clay without a single warranty call-back. If you'd like that peace of mind on your next project—whether it's a 20-acre distribution hub or a barndominium foundation—contact us today for a quote."
+    "Memphis gumbo can bankrupt a careless builder or bankroll a clever one. It's the same soil; outcomes hinge on knowledge, planning, and partners. ",
+    React.createElement(Link, { to: "/about-us", className: "text-mem-blue hover:text-mem-darkBlue underline" }, "Memphis Earth Movers understands local soil conditions"),
+    " - our specialized approach to Memphis construction challenges comes from years of working with Delta clay. If you'd like that peace of mind on your next project—whether it's a 20-acre distribution hub or a barndominium foundation—",
+    React.createElement(Link, { to: "/contact", className: "text-mem-blue hover:text-mem-darkBlue underline" }, "contact us today"),
+    " for a quote."
   ),
   React.createElement(
     "div",

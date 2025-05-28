@@ -1,4 +1,7 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
+
 const gravelDrivewayContent = <>
     <h2>Choosing the Right Gravel for Your Driveway in Memphis</h2>
     <p className="text-slate-50">
@@ -16,6 +19,8 @@ const gravelDrivewayContent = <>
       <li>Aesthetic appeal that complements many Memphis homes</li>
       <li>Flexibility with our expanding and contracting clay soils</li>
     </ul>
+
+    <p>Before ordering materials, use our <Link to="/gravel-calculator" className="text-mem-blue hover:text-mem-darkBlue underline">gravel calculator</Link> to determine exactly how much gravel you'll need for your Memphis driveway project.</p>
 
     <h3>The Layered Approach to Gravel Driveways</h3>
     <p>
@@ -137,7 +142,7 @@ const gravelDrivewayContent = <>
       <li>Time savings and potentially cost savings from doing the job right the first time</li>
     </ul>
     <p>
-      At Memphis Earth Movers, we specialize in professional gravel driveway installation and maintenance. Our dump trucks can deliver the exact materials you need, and our experienced team ensures proper installation from site preparation through final grading.
+      Once you've selected the right gravel type, <Link to="/memphis-gravel-delivery" className="text-mem-blue hover:text-mem-darkBlue underline">Memphis gravel delivery</Link> ensures professional transport and placement at your property. Our experienced team specializes in professional gravel driveway installation and maintenance, with dump trucks that can deliver the exact materials you need and proper installation from site preparation through final grading.
     </p>
 
     <h3>Conclusion</h3>
@@ -148,7 +153,7 @@ const gravelDrivewayContent = <>
       Whether you're installing a new driveway or refurbishing an existing one, investing in quality materials and proper installation techniques will save you money and hassle in the long run. With the right approach, your gravel driveway can be a beautiful, functional, and long-lasting addition to your Memphis property.
     </p>
     <p>
-      Need help determining the right gravel for your specific situation? Contact Memphis Earth Movers today for a consultation and estimate. Our local expertise ensures you'll get a driveway perfectly suited to your property's conditions and your personal preferences.
+      With over a decade of Memphis experience, we understand local conditions - <Link to="/about-us" className="text-mem-blue hover:text-mem-darkBlue underline">learn about us</Link> and our expertise in Memphis material solutions. Need help determining the right gravel for your specific situation? <Link to="/contact" className="text-mem-blue hover:text-mem-darkBlue underline">Contact Memphis Earth Movers today</Link> for a consultation and estimate. Our local expertise ensures you'll get a driveway perfectly suited to your property's conditions and your personal preferences.
     </p>
   </>;
 export default gravelDrivewayContent;

@@ -3,79 +3,25 @@
 User-agent: *
 Allow: /
 
-# Canonical domain
-host: memphisearthmovers.com
-
 # Sitemap location
 Sitemap: https://memphisearthmovers.com/sitemap.xml
 
-# Allow specific search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-# Explicitly allow Ahrefs bots
-User-agent: AhrefsBot
-Allow: /
-
-# Allow AI bots
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Bard
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Anthropic-AI
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-# Allow Social Media crawlers
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-# Don't unnecessarily block resources - this avoids the robots.txt blocking issue
+# Allow all file types
 Allow: /*.js$
 Allow: /*.css$
 Allow: /*.jpg$
+Allow: /*.jpeg$
 Allow: /*.png$
 Allow: /*.gif$
 Allow: /*.svg$
 Allow: /*.webp$
 Allow: /*.avif$
 
-# Delay between requests to reduce server load
-Crawl-delay: 10
-
-# Block certain directories we don't want indexed
+# Block sensitive directories
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 Disallow: /includes/
 
-# Memphis Keywords Optimization Path - Explicitly allow important pages
-Allow: /dump-truck-services
-Allow: /contact
-Allow: /about-us
-Allow: /gravel-calculator
-Allow: /blog
-Allow: /hourly-dump-truck-rental
-Allow: /memphis-gravel-delivery
+# Crawl delay to be respectful
+Crawl-delay: 1

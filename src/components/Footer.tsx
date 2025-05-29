@@ -32,13 +32,32 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-mem-babyBlue/20 pt-4 text-center">
-          <p className="text-white/60 text-sm">
-            © {new Date().getFullYear()} Memphis Earth Movers | 
-            <Link to="/blog" className="text-mem-babyBlue ml-1 hover:underline">
-              Blog
-            </Link>
-          </p>
+        <div className="border-t border-mem-babyBlue/20 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-white/60 text-sm">
+              © {new Date().getFullYear()} Memphis Earth Movers | 
+              <Link to="/blog" className="text-mem-babyBlue ml-1 hover:underline">
+                Blog
+              </Link>
+            </p>
+            
+            <div className="flex items-center gap-2">
+              <span className="text-white/60 text-xs">Website by</span>
+              <a 
+                href="https://digitalfrontier.app" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Website created by Digital Frontier"
+              >
+                <img 
+                  src="/lovable-uploads/cae5df3f-f8b9-4e67-b2cc-7fffa955342d.png" 
+                  alt="Digital Frontier" 
+                  className="h-6 w-auto"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

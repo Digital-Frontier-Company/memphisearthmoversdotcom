@@ -13,7 +13,7 @@ const dumpTruckGravelCapacityContent = <>
   </div>
 
   <div className="my-8 rounded-lg overflow-hidden shadow-lg">
-    <img src="/lovable-uploads/ac20e5c1-94a4-40ac-ba7c-2650a3defa51.png" alt="Memphis Earth Movers dump truck on highway with company branding" className="w-full h-auto" width="800" height="600" />
+    <img src="/lovable-uploads/1a037611-d312-407a-b1b7-d598476ba1bf.png" alt="Memphis Earth Movers logo on construction road with dump truck" className="w-full h-auto" width="800" height="600" />
   </div>
 
   <h2 className="text-2xl font-bold mb-4 text-slate-50">Quick-Look Capacity Chart</h2>
@@ -66,10 +66,6 @@ const dumpTruckGravelCapacityContent = <>
     <p className="mb-4 text-slate-50">
       For Memphis contractors and homeowners, proper capacity planning can save hundreds of dollars per project while ensuring materials arrive exactly when needed. Our <Link to="/hourly-dump-truck-rental" className="text-mem-blue hover:text-mem-darkBlue underline">hourly dump truck rental</Link> service provides the flexibility to scale operations based on your specific project requirements.
     </p>
-  </div>
-
-  <div className="my-8 rounded-lg overflow-hidden shadow-lg">
-    <img src="/lovable-uploads/1a037611-d312-407a-b1b7-d598476ba1bf.png" alt="Memphis Earth Movers logo on construction road with dump truck" className="w-full h-auto" width="800" height="600" />
   </div>
 
   <h2 className="text-2xl font-bold mb-4 text-neutral-50">Standard vs. Super vs. Articulated Dump Trucks</h2>

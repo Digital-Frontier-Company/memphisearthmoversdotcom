@@ -1,3 +1,4 @@
+
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
@@ -57,16 +58,24 @@ const BlogPost = () => {
   if (post.slug === "navigating-new-construction-memphis-opportunities") {
     metaDescription = "Discover Memphis construction boom opportunities for business professionals. Learn about dump truck rentals, strategic resources, and emerging development trends.";
   }
+
+  if (post.slug === "dump-truck-gravel-capacity-memphis") {
+    metaDescription = "Learn cubic-yard and ton capacities for Memphis dump trucks. Complete guide to choosing the right earth-mover truck, calculating materials, and comparing hauling services in Memphis area.";
+  }
+
+  // Generate SEO-optimized title (under 60 characters)
+  const seoTitle = post.title.length > 58 ? `${post.title.substring(0, 55)}...` : post.title;
   
   return (
     <>
       <Helmet>
-        <title>{post.title.substring(0, 58)} | Memphis Earth Movers Blog</title>
+        <title>{seoTitle} | Memphis Earth Movers Blog</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         
         {/* Social media meta tags */}
-        <meta property="og:title" content={post.title.substring(0, 70)} />
+        <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
@@ -91,6 +100,17 @@ const BlogPost = () => {
             <meta property="article:author" content="Memphis Earth Movers" />
             <meta property="article:section" content="Construction" />
             <meta property="article:tag" content="Memphis,construction,opportunities,dump trucks,business,development" />
+          </>
+        )}
+
+        {/* Additional SEO tags for dump truck capacity post */}
+        {post.slug === "dump-truck-gravel-capacity-memphis" && (
+          <>
+            <meta name="keywords" content="dump truck capacity Memphis, gravel delivery Memphis, Memphis dump truck rental, cubic yards gravel, dump truck loads Memphis, Memphis earthmoving services" />
+            <meta property="article:published_time" content="2025-05-28" />
+            <meta property="article:author" content="Memphis Earth Movers" />
+            <meta property="article:section" content="Construction" />
+            <meta property="article:tag" content="Memphis,dump trucks,gravel,capacity,earthmoving,construction materials" />
           </>
         )}
       </Helmet>

@@ -28,8 +28,8 @@ const BlogPostContent = ({
   // Generate a proper meta description from the excerpt
   const metaDescription = post.excerpt?.substring(0, 154) || "Learn about Memphis construction challenges and solutions from Memphis Earth Movers, your local experts in earth moving services.";
 
-  // Create a canonical URL - this is essential for blog posts to avoid duplicate content issues
-  const canonicalUrl = `https://memphisearthmovers.com/blog/${post.slug}`;
+  // Create a canonical URL with www subdomain for consistency
+  const canonicalUrl = `https://www.memphisearthmovers.com/blog/${post.slug}`;
 
   // Create proper structured data for the blog post with consistent URL format
   const blogPostSchema = {
@@ -38,23 +38,27 @@ const BlogPostContent = ({
     "headline": post.title,
     "description": metaDescription,
     "image": post.image,
-    "datePublished": post.date,
+    "datePublished": new Date(post.date).toISOString(),
+    "dateModified": new Date(post.date).toISOString(),
     "author": {
       "@type": "Organization",
-      "name": "Memphis Earth Movers"
+      "name": "Memphis Earth Movers",
+      "url": "https://www.memphisearthmovers.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Memphis Earth Movers",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png"
-      }
+        "url": "https://www.memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png"
+      },
+      "url": "https://www.memphisearthmovers.com"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": canonicalUrl
-    }
+    },
+    "keywords": "Memphis dump trucks, gravel delivery Memphis, dump truck capacity, Memphis construction, earthmoving services"
   };
 
   // Breadcrumb structured data with consistent URL format
@@ -65,12 +69,12 @@ const BlogPostContent = ({
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://memphisearthmovers.com/"
+      "item": "https://www.memphisearthmovers.com/"
     }, {
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://memphisearthmovers.com/blog"
+      "item": "https://www.memphisearthmovers.com/blog"
     }, {
       "@type": "ListItem",
       "position": 3,
@@ -78,31 +82,49 @@ const BlogPostContent = ({
       "item": canonicalUrl
     }]
   };
+
+  // Generate SEO-optimized title (under 60 characters)
+  const seoTitle = post.title.length > 58 ? `${post.title.substring(0, 55)}...` : post.title;
   
   return <>
       <Helmet>
-        <title>{post.title.substring(0, 58)} | Memphis Earth Movers</title>
+        <title>{seoTitle} | Memphis Earth Movers</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
         
-        {/* Open Graph Tags */}
-        <meta property="og:title" content={post.title.substring(0, 58)} />
+        {/* Article-specific keywords */}
+        <meta name="keywords" content="Memphis dump trucks, gravel delivery Memphis, dump truck capacity, Memphis construction, earthmoving services, dump truck rental Memphis" />
+        
+        {/* Open Graph Tags - Enhanced */}
+        <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Memphis Earth Movers" />
+        <meta property="og:locale" content="en_US" />
         
-        {/* Twitter Card Tags */}
+        {/* Twitter Card Tags - Enhanced */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title.substring(0, 58)} />
+        <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={post.image} />
+        <meta name="twitter:image:alt" content={`Featured image for ${post.title}`} />
         
         {/* Article Specific Tags */}
-        <meta property="article:published_time" content={post.date} />
+        <meta property="article:published_time" content={new Date(post.date).toISOString()} />
+        <meta property="article:modified_time" content={new Date(post.date).toISOString()} />
         <meta property="article:section" content="Construction" />
-        <meta property="article:tag" content="Memphis,construction,clay soil,earthmoving,soil stabilization,gravel driveways" />
+        <meta property="article:tag" content="Memphis" />
+        <meta property="article:tag" content="construction" />
+        <meta property="article:tag" content="dump trucks" />
+        <meta property="article:tag" content="gravel delivery" />
+        <meta property="article:tag" content="earthmoving" />
+        <meta property="article:author" content="Memphis Earth Movers" />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -146,7 +168,7 @@ const BlogPostContent = ({
           
           <div className="my-12 py-8 border-t border-b border-gray-200">
             <h3 className="text-xl font-bold mb-4 text-zinc-50">Need help with your project?</h3>
-            <p className="mb-4">
+            <p className="mb-4 text-zinc-50">
               Whether you need gravel delivery or dump truck services in Memphis, our team at Memphis Earth Movers is ready to assist with your project needs.
             </p>
             <div className="flex gap-4">

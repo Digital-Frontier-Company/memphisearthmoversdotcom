@@ -1,12 +1,21 @@
-
 import React from "react";
 import { BlogPost } from "@/types/blog";
 import gravelDrivewayContent from "./blogContents/gravelDrivewayContent";
 import memphisClayContent from "./blogContents/memphisClayContent";
 import memphisConstructionBoomContent from "./blogContents/memphisConstructionBoomContent";
 import memphisConstructionOpportunitiesContent from "./blogContents/memphisConstructionOpportunitiesContent";
+import dumpTruckGravelCapacityContent from "./blogContents/dumpTruckGravelCapacityContent";
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "dump-truck-gravel-capacity-memphis",
+    title: "How Much Gravel Fits in a Dump Truck? Memphis Earthmovers Guide",
+    date: "May 28, 2025",
+    readTime: 12,
+    excerpt: "Learn cubic-yard and ton capacities for Memphis dump trucks. Complete guide to choosing the right earth-mover truck, calculating materials, and comparing hauling services.",
+    image: "/lovable-uploads/928bf533-c7fe-42eb-91b7-1d6a75d62f77.png",
+    content: dumpTruckGravelCapacityContent
+  },
   {
     slug: "navigating-new-construction-memphis-opportunities",
     title: "Navigating New Construction in Memphis, TN: Insights & Opportunities",

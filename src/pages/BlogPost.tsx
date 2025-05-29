@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
@@ -12,6 +11,7 @@ import FaqSchema from "@/components/shared/FaqSchema";
 import BlogFaqSchema from "@/components/blog/BlogFaqSchema";
 import ConstructionBoomFaqSchema from "@/components/blog/ConstructionBoomFaqSchema";
 import MemphisConstructionFaqSchema from "@/components/blog/MemphisConstructionFaqSchema";
+import DumpTruckCapacityFaqSchema from "@/components/blog/DumpTruckCapacityFaqSchema";
 import BackToTopButton from "@/components/BackToTopButton";
 
 const BlogPost = () => {
@@ -98,6 +98,7 @@ const BlogPost = () => {
       <BlogFaqSchema />
       {post.slug === "memphis-construction-boom-shelby-county" && <ConstructionBoomFaqSchema />}
       {post.slug === "navigating-new-construction-memphis-opportunities" && <MemphisConstructionFaqSchema />}
+      {post.slug === "dump-truck-gravel-capacity-memphis" && <DumpTruckCapacityFaqSchema />}
       <Header />
       <BlogPostBreadcrumbs title={post.title} />
       <main>

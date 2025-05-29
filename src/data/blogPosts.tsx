@@ -1,3 +1,4 @@
+
 import React from "react";
 import { BlogPost } from "@/types/blog";
 import gravelDrivewayContent from "./blogContents/gravelDrivewayContent";
@@ -13,7 +14,7 @@ export const blogPosts: BlogPost[] = [
     date: "May 28, 2025",
     readTime: 12,
     excerpt: "Learn cubic-yard and ton capacities for Memphis dump trucks. Complete guide to choosing the right earth-mover truck, calculating materials, and comparing hauling services.",
-    image: "/lovable-uploads/928bf533-c7fe-42eb-91b7-1d6a75d62f77.png",
+    image: "/lovable-uploads/ac20e5c1-94a4-40ac-ba7c-2650a3defa51.png",
     content: dumpTruckGravelCapacityContent
   },
   {

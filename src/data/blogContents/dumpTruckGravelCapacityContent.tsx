@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -14,7 +13,7 @@ const dumpTruckGravelCapacityContent = <>
   </div>
 
   <div className="my-8 rounded-lg overflow-hidden shadow-lg">
-    <img src="/lovable-uploads/928bf533-c7fe-42eb-91b7-1d6a75d62f77.png" alt="Memphis Earth Movers logo with dump trucks and scenic Memphis background" className="w-full h-auto" width="800" height="600" />
+    <img src="/lovable-uploads/ac20e5c1-94a4-40ac-ba7c-2650a3defa51.png" alt="Memphis Earth Movers dump truck on highway with company branding" className="w-full h-auto" width="800" height="600" />
   </div>
 
   <h2 className="text-2xl font-bold mb-4 text-slate-50">Quick-Look Capacity Chart</h2>

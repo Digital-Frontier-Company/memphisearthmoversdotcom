@@ -3,10 +3,10 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://memphisearthmovers.com/sitemap.xml
+# Sitemap location - using canonical www version
+Sitemap: https://www.memphisearthmovers.com/sitemap.xml
 
-# Allow all file types
+# Allow all common file types
 Allow: /*.js$
 Allow: /*.css$
 Allow: /*.jpg$
@@ -16,12 +16,15 @@ Allow: /*.gif$
 Allow: /*.svg$
 Allow: /*.webp$
 Allow: /*.avif$
+Allow: /*.pdf$
 
 # Block sensitive directories
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 Disallow: /includes/
+Disallow: /.git/
+Disallow: /node_modules/
 
 # Crawl delay to be respectful
 Crawl-delay: 1

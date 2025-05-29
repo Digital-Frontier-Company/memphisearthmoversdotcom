@@ -68,6 +68,10 @@ const dumpTruckGravelCapacityContent = <>
     </p>
   </div>
 
+  <div className="my-6 rounded-lg overflow-hidden shadow-md max-w-md mx-auto">
+    <img src="/lovable-uploads/14920e24-964a-4d67-a698-51829e34c965.png" alt="Memphis dump truck unloading dirt at construction site" className="w-full h-auto" width="400" height="300" />
+  </div>
+
   <h2 className="text-2xl font-bold mb-4 text-neutral-50">Standard vs. Super vs. Articulated Dump Trucks</h2>
   
   <div className="mb-6">

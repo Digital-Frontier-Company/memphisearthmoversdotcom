@@ -1,9 +1,21 @@
 
+import { useState, useEffect } from "react";
 import { Phone } from "lucide-react";
 import Navigation from "./Navigation";
 import MobileNavigation from "./MobileNavigation";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="mem-container py-2 flex justify-between items-center">
@@ -21,7 +33,7 @@ const Header = () => {
         </div>
         
         <div className="flex items-center gap-4">
-          <Navigation />
+          <Navigation isScrolled={isScrolled} />
           <a 
             href="tel:9014611011" 
             className="flex items-center gap-2 text-mem-darkNavy hover:text-mem-blue transition-colors"

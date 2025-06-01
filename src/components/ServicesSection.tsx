@@ -1,3 +1,4 @@
+
 import { Truck, Clock, Package, Construction, TreePalm } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Link } from "react-router-dom";
@@ -54,7 +55,11 @@ const ServicesSection = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">Construction Material Delivery</h3>
+                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">
+                  <Link to="/memphis-gravel-delivery" className="hover:text-mem-babyBlue transition-colors">
+                    Construction Material Delivery
+                  </Link>
+                </h3>
                 <p itemProp="description">We supply and deliver high-quality materials including dirt, sand, and gravel exactly when you need them, helping to keep your project running smoothly without delays.</p>
                 <meta itemProp="areaServed" content="Memphis, DeSoto County" />
               </div>
@@ -62,12 +67,14 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img 
-                  src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" 
-                  alt="Construction materials being loaded into Memphis Earth Movers dump truck for delivery" 
-                  className="w-full h-full object-contain transition-transform group-hover:scale-105" 
-                  itemProp="image" 
-                />
+                <Link to="/memphis-gravel-delivery">
+                  <img 
+                    src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" 
+                    alt="Construction materials being loaded into Memphis Earth Movers dump truck for delivery" 
+                    className="w-full h-full object-contain transition-transform group-hover:scale-105" 
+                    itemProp="image" 
+                  />
+                </Link>
               </AspectRatio>
             </div>
           </div>
@@ -81,7 +88,11 @@ const ServicesSection = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">Asphalt Millings Sales</h3>
+                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">
+                  <Link to="/memphis-gravel-delivery" className="hover:text-mem-babyBlue transition-colors">
+                    Asphalt Millings Sales
+                  </Link>
+                </h3>
                 <p itemProp="description">Our cost-effective, eco-friendly asphalt millings are perfect for creating stable driveways and lots. We can deliver and spread on-site for a complete solution.</p>
                 <meta itemProp="areaServed" content="Memphis, DeSoto County" />
               </div>
@@ -89,12 +100,14 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img 
-                  alt="Excavator loading asphalt millings into Memphis dump truck for driveway installation" 
-                  className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" 
-                  src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" 
-                  itemProp="image" 
-                />
+                <Link to="/memphis-gravel-delivery">
+                  <img 
+                    alt="Excavator loading asphalt millings into Memphis dump truck for driveway installation" 
+                    className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" 
+                    src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" 
+                    itemProp="image" 
+                  />
+                </Link>
               </AspectRatio>
             </div>
           </div>
@@ -108,7 +121,11 @@ const ServicesSection = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">Landscaping & DIY Projects</h3>
+                <h3 className="text-xl font-bold mb-2 text-white" itemProp="name">
+                  <Link to="/dump-truck-services" className="hover:text-mem-babyBlue transition-colors">
+                    Landscaping & DIY Projects
+                  </Link>
+                </h3>
                 <p itemProp="description">No job is too small. We cater to homeowners and landscapers with the same level of professionalism, delivering materials for your residential projects on schedule.</p>
                 <meta itemProp="areaServed" content="Memphis, DeSoto County" />
               </div>
@@ -116,12 +133,14 @@ const ServicesSection = () => {
             
             <div className="mt-4 h-64 overflow-hidden rounded-md">
               <AspectRatio ratio={16 / 9} className="h-full">
-                <img 
-                  alt="Landscaping project with topsoil delivery by Memphis Earth Movers dump truck for residential yard" 
-                  className="w-full h-full object-contain transition-transform group-hover:scale-105" 
-                  src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" 
-                  itemProp="image" 
-                />
+                <Link to="/dump-truck-services">
+                  <img 
+                    alt="Landscaping project with topsoil delivery by Memphis Earth Movers dump truck for residential yard" 
+                    className="w-full h-full object-contain transition-transform group-hover:scale-105" 
+                    src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" 
+                    itemProp="image" 
+                  />
+                </Link>
               </AspectRatio>
             </div>
           </div>

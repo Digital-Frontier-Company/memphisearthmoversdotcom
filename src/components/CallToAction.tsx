@@ -38,9 +38,9 @@ const CallToAction = () => {
         </button>
         
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-6">
-          <a href="tel:9014611011" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">
+          <a href="tel:9015476442" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">
             <Phone size={20} />
-            <span className="font-semibold">Call: (901)461-1011</span>
+            <span className="font-semibold">Call: 901-547-6442</span>
           </a>
           
           <a href="mailto:David@memphisearthmovers.com" className="flex items-center gap-2 text-white hover:text-mem-offWhite transition-colors">

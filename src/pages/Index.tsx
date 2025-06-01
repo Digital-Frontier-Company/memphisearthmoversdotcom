@@ -1,4 +1,3 @@
-
 import { Element } from "react-scroll";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
@@ -74,7 +73,7 @@ const Index = () => {
     "logo": "https://www.memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png",
     "description": "Memphis Earth Movers provides professional dump truck services, hourly rentals, gravel delivery, and construction material hauling throughout Memphis, TN and DeSoto County, MS.",
     "url": "https://www.memphisearthmovers.com/",
-    "telephone": "(901) 461-1011",
+    "telephone": "901-547-6442",
     "email": "info@memphisearthmovers.com",
     "address": {
       "@type": "PostalAddress",

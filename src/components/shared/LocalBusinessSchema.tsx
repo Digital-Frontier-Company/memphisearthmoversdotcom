@@ -45,7 +45,7 @@ const LocalBusinessSchema = ({ page, pageSpecificDesc, url }: LocalBusinessSchem
     "logo": "https://www.memphisearthmovers.com/lovable-uploads/2da56faa-05bd-417c-a73f-07299e0eff7f.png",
     "description": description,
     "url": "https://www.memphisearthmovers.com/",
-    "telephone": "(901) 461-1011",
+    "telephone": "901-547-6442",
     "email": "info@memphisearthmovers.com",
     "currenciesAccepted": "USD",
     "priceRange": "$$$",

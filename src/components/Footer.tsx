@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -49,7 +48,7 @@ const Footer = () => {
             <div className="space-y-2 text-white/70 text-sm">
               <p>
                 <span className="font-semibold">Phone:</span> 
-                <span itemProp="telephone"> (901) 461-1011</span>
+                <span itemProp="telephone"> 901-547-6442</span>
               </p>
               <div>
                 <p className="font-semibold mb-1">Address:</p>

@@ -35,11 +35,11 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Navigation isScrolled={isScrolled} />
           <a 
-            href="tel:9014611011" 
+            href="tel:9015476442" 
             className="flex items-center gap-2 text-mem-darkNavy hover:text-mem-blue transition-colors"
           >
             <Phone size={20} />
-            <span className="font-semibold hidden sm:inline">Call Now: (901) 461-1011</span>
+            <span className="font-semibold hidden sm:inline">Call Now: 901-547-6442</span>
             <span className="font-semibold sm:hidden">Call Now</span>
           </a>
           <MobileNavigation />

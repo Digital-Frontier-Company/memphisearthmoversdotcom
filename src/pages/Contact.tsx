@@ -20,7 +20,7 @@ const ContactStructuredData = {
   "mainEntity": {
     "@type": "LocalBusiness",
     "name": "Memphis Earth Movers",
-    "telephone": "(901) 461-1011",
+    "telephone": "901-547-6442",
     "email": "info@memphis-earthmovers.com",
     "address": {
       "@type": "PostalAddress",
@@ -61,7 +61,7 @@ const ContactFaqSchema = {
       "name": "How can I request a quote for dump truck services in Memphis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can request a quote for Memphis dump truck services by filling out our online form, calling us at (901) 461-1011, or sending an email. We'll get back to you within 1 business day with pricing for your specific project needs."
+        "text": "You can request a quote for Memphis dump truck services by filling out our online form, calling us at 901-547-6442, or sending an email. We'll get back to you within 1 business day with pricing for your specific project needs."
       }
     },
     {
@@ -85,7 +85,7 @@ const ContactFaqSchema = {
       "name": "Do you provide emergency dump truck services in Memphis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, we understand that urgent situations arise and offer emergency dump truck services throughout Memphis when available. Please call us directly at (901) 461-1011 for immediate assistance with urgent hauling needs."
+        "text": "Yes, we understand that urgent situations arise and offer emergency dump truck services throughout Memphis when available. Please call us directly at 901-547-6442 for immediate assistance with urgent hauling needs."
       }
     }
   ]
@@ -96,7 +96,7 @@ const Contact = () => {
     <>
       <Helmet>
         <title>Contact Memphis Dump Truck Services | Get a Quote</title>
-        <meta name="description" content="Request Memphis dump trucks for rent within 24 hours. Quick quotes for hourly dump truck rentals in Memphis. Call (901) 461-1011 for same-day service when available." />
+        <meta name="description" content="Request Memphis dump trucks for rent within 24 hours. Quick quotes for hourly dump truck rentals in Memphis. Call 901-547-6442 for same-day service when available." />
         <meta name="keywords" content="contact Memphis dump trucks, dump truck services Memphis, Memphis dump truck quote, Memphis material hauling contact" />
         <script type="application/ld+json">
           {JSON.stringify(ContactStructuredData)}

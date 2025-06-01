@@ -1,4 +1,3 @@
-
 import { Mail, Phone, Clock, MapPin } from "lucide-react";
 
 const ContactInfo = () => {
@@ -16,8 +15,8 @@ const ContactInfo = () => {
             </div>
             <h3 className="text-lg font-bold mb-2 text-white">Phone</h3>
             <p className="text-white/90">
-              <a href="tel:9014611011" className="hover:text-mem-babyBlue transition-colors">
-                (901) 461-1011
+              <a href="tel:9015476442" className="hover:text-mem-babyBlue transition-colors">
+                901-547-6442
               </a>
             </p>
           </div>

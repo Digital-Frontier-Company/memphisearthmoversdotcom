@@ -13,7 +13,7 @@ const Footer = () => {
               Professional dump truck services and material hauling in Memphis and DeSoto County.
             </p>
             <img 
-              src="/lovable-uploads/0fa41318-0d81-4882-a703-45c09d1349ff.png" 
+              src="/lovable-uploads/5851e506-bd41-4c07-aa03-472ffceb9fc1.png" 
               alt="Memphis Earth Movers Logo" 
               className="h-16 md:h-20 w-auto"
             />

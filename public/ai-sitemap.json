@@ -1,0 +1,110 @@
+
+{
+  "sitemap": {
+    "domain": "https://www.memphisearthmovers.com",
+    "generatedAt": "2025-06-01T00:00:00Z",
+    "pages": [
+      {
+        "url": "https://www.memphisearthmovers.com/",
+        "title": "Memphis Dump Trucks | Local Hauling & Gravel Delivery",
+        "description": "Memphis Earth Movers provides professional dump truck services, hourly rentals, gravel delivery, and construction material hauling throughout Memphis and DeSoto County.",
+        "type": "homepage",
+        "priority": 1.0
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/dump-truck-services",
+        "title": "Memphis Dump Truck Services | Hourly & Project Rates",
+        "description": "Comprehensive dump truck services in Memphis including hourly rentals, material hauling, and debris removal with experienced CDL drivers.",
+        "type": "service-overview",
+        "priority": 0.9
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/services/dump-truck-hauling",
+        "title": "Dump Truck Hauling | Memphis Earth Movers",
+        "description": "Professional dump truck hauling services for construction materials, debris removal, and aggregate transport with experienced CDL drivers.",
+        "type": "service-detail",
+        "priority": 0.9
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/services/site-clearing",
+        "title": "Site Clearing Services | Memphis Earth Movers",
+        "description": "Complete land clearing and site preparation services including tree removal, brush clearing, and grading for construction projects.",
+        "type": "service-detail",
+        "priority": 0.9
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/services/aggregate-delivery",
+        "title": "Aggregate Delivery | Memphis Earth Movers",
+        "description": "Fast delivery of premium construction aggregates including gravel, sand, crushed stone, and asphalt millings throughout Memphis.",
+        "type": "service-detail",
+        "priority": 0.9
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/hourly-dump-truck-rental",
+        "title": "Memphis Hourly Dump Truck Rental | From $125/hr",
+        "description": "Hourly dump truck rentals with CDL drivers starting at $125/hr, flexible scheduling for Memphis construction projects.",
+        "type": "service-detail",
+        "priority": 0.8
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/memphis-gravel-delivery",
+        "title": "Memphis Gravel Delivery | 15 Ton Loads for $400",
+        "description": "Affordable gravel delivery service with 15-ton loads of recycled asphalt or stone delivered for flat $400 rate.",
+        "type": "service-detail",
+        "priority": 0.8
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/gravel-calculator",
+        "title": "Memphis Gravel Calculator | Calculate Material Needs",
+        "description": "Free gravel calculator tool to estimate material quantities for Memphis construction and landscaping projects.",
+        "type": "tool",
+        "priority": 0.9
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/about-us",
+        "title": "About Memphis Earth Movers | Local Dump Truck Company",
+        "description": "Learn about Memphis Earth Movers' history, team, and commitment to reliable dump truck services in Memphis and DeSoto County.",
+        "type": "about",
+        "priority": 0.8
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/contact",
+        "title": "Contact Memphis Earth Movers | Get Your Quote",
+        "description": "Contact Memphis Earth Movers for dump truck services, material delivery, and construction hauling quotes in Memphis area.",
+        "type": "contact",
+        "priority": 0.8
+      },
+      {
+        "url": "https://www.memphisearthmovers.com/blog",
+        "title": "Memphis Construction & Earthmoving Blog | Expert Tips",
+        "description": "Construction industry insights, earthmoving tips, and Memphis area development news from dump truck professionals.",
+        "type": "blog-index",
+        "priority": 0.7
+      }
+    ],
+    "services": [
+      "Dump Truck Hauling",
+      "Site Clearing", 
+      "Aggregate Delivery",
+      "Hourly Truck Rental",
+      "Gravel Delivery",
+      "Construction Material Transport"
+    ],
+    "serviceAreas": [
+      "Memphis, TN",
+      "DeSoto County, MS", 
+      "Shelby County, TN",
+      "Germantown, TN",
+      "Collierville, TN",
+      "Bartlett, TN",
+      "Millington, TN",
+      "Olive Branch, MS",
+      "Southaven, MS"
+    ],
+    "contact": {
+      "phone": "(901) 461-1011",
+      "address": "2455 Corporate Ave, Memphis, TN 38132",
+      "serviceRadius": "50 miles from Memphis"
+    }
+  }
+}

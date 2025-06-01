@@ -12,6 +12,9 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import HourlyDumpTruckRentals from "./pages/HourlyDumpTruckRentals";
 import GravelDelivery from "./pages/GravelDelivery";
+import DumpTruckHauling from "./pages/DumpTruckHauling";
+import SiteClearing from "./pages/SiteClearing";
+import AggregateDelivery from "./pages/AggregateDelivery";
 import NotFound from "./pages/NotFound";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -33,6 +36,9 @@ const App = () => (
             <Route path="/dump-truck-services" element={<Services />} />
             <Route path="/hourly-dump-truck-rental" element={<HourlyDumpTruckRentals />} />
             <Route path="/memphis-gravel-delivery" element={<GravelDelivery />} />
+            <Route path="/services/dump-truck-hauling" element={<DumpTruckHauling />} />
+            <Route path="/services/site-clearing" element={<SiteClearing />} />
+            <Route path="/services/aggregate-delivery" element={<AggregateDelivery />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

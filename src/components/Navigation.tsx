@@ -1,91 +1,74 @@
+import { Link } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 
-import { Link, useLocation } from "react-router-dom";
-import { Home, Calculator, Phone, Users, Truck, BookOpen } from "lucide-react";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+interface NavigationProps {
+  isScrolled: boolean;
+}
 
-const Navigation = () => {
-  const location = useLocation();
-  
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
-  
+const Navigation = ({ isScrolled }: NavigationProps) => {
   return (
-    <NavigationMenu className="hidden md:flex">
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link to="/" className={`${navigationMenuTriggerStyle()} ${isActive('/') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
-            <Home className="mr-1 h-4 w-4" />
-            Home
+    <nav className="hidden lg:flex items-center space-x-8">
+      <Link to="/" className="text-white hover:text-mem-babyBlue transition-colors">
+        Home
+      </Link>
+      
+      <div className="relative group">
+        <button className="text-white hover:text-mem-babyBlue transition-colors flex items-center">
+          Services <ChevronDown size={16} className="ml-1" />
+        </button>
+        <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <Link 
+            to="/dump-truck-services" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            All Services
           </Link>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <Link to="/about-us" className={`${navigationMenuTriggerStyle()} ${isActive('/about-us') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
-            <Users className="mr-1 h-4 w-4" />
-            About Us
+          <Link 
+            to="/services/dump-truck-hauling" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Dump Truck Hauling
           </Link>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className={`${
-            isActive('/dump-truck-services') || 
-            isActive('/hourly-dump-truck-rental') || 
-            isActive('/memphis-gravel-delivery') 
-              ? 'bg-mem-babyBlue/20 text-mem-blue' 
-              : 'text-mem-darkNavy'
-          }`}>
-            <Truck className="mr-1 h-4 w-4" />
-            Services
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
-              <Link to="/dump-truck-services" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
-                <div className="font-medium">All Dump Truck Services</div>
-                <div className="text-sm text-muted-foreground">Overview of our material hauling services</div>
-              </Link>
-              <Link to="/hourly-dump-truck-rental" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
-                <div className="font-medium">Hourly Dump Truck Rental</div>
-                <div className="text-sm text-muted-foreground">Flexible hourly rates with professional CDL drivers</div>
-              </Link>
-              <Link to="/memphis-gravel-delivery" className="block p-3 space-y-1 rounded-md hover:bg-slate-100">
-                <div className="font-medium">Memphis Gravel Delivery</div>
-                <div className="text-sm text-muted-foreground">15-ton loads of gravel and milled asphalt for just $400</div>
-              </Link>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <Link to="/gravel-calculator" className={`${navigationMenuTriggerStyle()} ${isActive('/gravel-calculator') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
-            <Calculator className="mr-1 h-4 w-4" />
-            Gravel Calculator
+          <Link 
+            to="/services/site-clearing" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Site Clearing
           </Link>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <Link to="/blog" className={`${navigationMenuTriggerStyle()} ${isActive('/blog') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
-            <BookOpen className="mr-1 h-4 w-4" />
-            Blog
+          <Link 
+            to="/services/aggregate-delivery" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Aggregate Delivery
           </Link>
-        </NavigationMenuItem>
-        
-        <NavigationMenuItem>
-          <Link to="/contact" className={`${navigationMenuTriggerStyle()} ${isActive('/contact') ? 'bg-mem-babyBlue/20 text-mem-blue' : 'text-mem-darkNavy'}`}>
-            <Phone className="mr-1 h-4 w-4" />
-            Contact
+          <Link 
+            to="/hourly-dump-truck-rental" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Hourly Rentals
           </Link>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+          <Link 
+            to="/memphis-gravel-delivery" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Gravel Delivery
+          </Link>
+        </div>
+      </div>
+      
+      <Link to="/gravel-calculator" className="text-white hover:text-mem-babyBlue transition-colors">
+        Calculator
+      </Link>
+      <Link to="/about-us" className="text-white hover:text-mem-babyBlue transition-colors">
+        About
+      </Link>
+      <Link to="/blog" className="text-white hover:text-mem-babyBlue transition-colors">
+        Blog
+      </Link>
+      <Link to="/contact" className="text-white hover:text-mem-babyBlue transition-colors">
+        Contact
+      </Link>
+    </nav>
   );
 };
 

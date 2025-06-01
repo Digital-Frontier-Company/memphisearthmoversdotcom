@@ -29,6 +29,36 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.memphisearthmovers.com/services/dump-truck-hauling</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.memphisearthmovers.com/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png</image:loc>
+      <image:title>Professional dump truck hauling services in Memphis</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.memphisearthmovers.com/services/site-clearing</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.memphisearthmovers.com/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg</image:loc>
+      <image:title>Site clearing and land preparation services in Memphis</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.memphisearthmovers.com/services/aggregate-delivery</loc>
+    <lastmod>2025-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.memphisearthmovers.com/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png</image:loc>
+      <image:title>Aggregate delivery services in Memphis</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.memphisearthmovers.com/gravel-calculator</loc>
     <lastmod>2025-05-20</lastmod>
     <changefreq>weekly</changefreq>

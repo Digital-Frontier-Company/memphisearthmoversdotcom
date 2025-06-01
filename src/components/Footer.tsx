@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -7,7 +6,14 @@ const Footer = () => {
       <div className="mem-container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
           <div>
-            <h3 className="text-mem-babyBlue text-lg font-bold mb-3">Memphis Earth Movers</h3>
+            <div className="flex items-center gap-3 mb-3">
+              <img 
+                src="/lovable-uploads/0fa41318-0d81-4882-a703-45c09d1349ff.png" 
+                alt="Memphis Earth Movers Logo" 
+                className="h-12 w-auto"
+              />
+              <h3 className="text-mem-babyBlue text-lg font-bold">Memphis Earth Movers</h3>
+            </div>
             <p className="text-white/70 text-sm">
               Professional dump truck services and material hauling in Memphis and DeSoto County.
             </p>

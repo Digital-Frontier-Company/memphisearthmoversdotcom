@@ -2,6 +2,7 @@
 import React from 'react';
 import { CheckCircle, Truck, ThumbsUp, MapPin } from "lucide-react";
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const SolutionSection = () => {
@@ -79,9 +80,9 @@ const SolutionSection = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <Link to="quoteForm" smooth={true} duration={500} className="mem-btn-primary shadow-[0_0_10px_rgba(77,210,255,0.4)]">
+          <RouterLink to="/contact" className="mem-btn-primary shadow-[0_0_10px_rgba(77,210,255,0.4)]">
             Request Your Quote Now
-          </Link>
+          </RouterLink>
         </div>
       </div>
     </section>;

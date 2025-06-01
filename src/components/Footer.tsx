@@ -15,7 +15,7 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/0fa41318-0d81-4882-a703-45c09d1349ff.png" 
               alt="Memphis Earth Movers Logo" 
-              className="h-20 w-auto"
+              className="h-16 md:h-20 w-auto"
             />
           </div>
           

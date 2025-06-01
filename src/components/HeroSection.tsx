@@ -61,6 +61,28 @@ const HeroSection = () => {
             <QuoteForm />
           </div>
         </div>
+        
+        {/* Video Section */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-white mb-4">See Our Fleet in Action</h2>
+            <p className="text-white/90 text-lg">Watch how Memphis Earth Movers delivers reliable dump truck services</p>
+          </div>
+          
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/30">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/MR7iQp242f0"
+              title="Memphis Earth Movers - Dump Truck Services"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </section>;
 };

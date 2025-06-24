@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from "react";
-import { Users, DollarSign, Clock, Eye } from "lucide-react";
+import { Users, DollarSign, Clock, Eye, Download } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface Driver {
   id: string;
@@ -22,6 +23,8 @@ interface DriverData {
   hourly_rate: number;
   totalHours: number;
   totalEarnings: number;
+  regularHours: number;
+  overtimeHours: number;
   lastActivity: string;
 }
 
@@ -29,6 +32,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
   const [driversData, setDriversData] = useState<DriverData[]>([]);
   const [selectedDriver, setSelectedDriver] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [exportLoading, setExportLoading] = useState(false);
 
   useEffect(() => {
     fetchAllDriversData();
@@ -82,6 +86,8 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
         hourly_rate: driverRecord.hourly_rate || 0,
         totalHours: earnings?.total_hours || 0,
         totalEarnings: earnings?.total_earnings || 0,
+        regularHours: earnings?.regular_hours || 0,
+        overtimeHours: earnings?.overtime_hours || 0,
         lastActivity: lastEntry?.created_at || "No activity"
       });
     }
@@ -101,6 +107,66 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
     };
   };
 
+  const exportToCSV = async () => {
+    setExportLoading(true);
+    try {
+      const { start } = getWeekDates();
+      const weekEnd = new Date(start);
+      weekEnd.setDate(weekEnd.getDate() + 6);
+      
+      // Create CSV headers
+      const headers = [
+        'Driver Name',
+        'Hourly Rate',
+        'Regular Hours',
+        'Overtime Hours',
+        'Total Hours',
+        'Regular Pay',
+        'Overtime Pay',
+        'Total Earnings',
+        'Week Start',
+        'Week End'
+      ];
+
+      // Create CSV rows
+      const rows = driversData.map(driver => [
+        driver.name,
+        `$${driver.hourly_rate.toFixed(2)}`,
+        driver.regularHours.toFixed(2),
+        driver.overtimeHours.toFixed(2),
+        driver.totalHours.toFixed(2),
+        `$${(driver.regularHours * driver.hourly_rate).toFixed(2)}`,
+        `$${(driver.overtimeHours * driver.hourly_rate * 1.5).toFixed(2)}`,
+        `$${driver.totalEarnings.toFixed(2)}`,
+        start,
+        weekEnd.toISOString().split('T')[0]
+      ]);
+
+      // Combine headers and rows
+      const csvContent = [headers, ...rows]
+        .map(row => row.map(field => `"${field}"`).join(','))
+        .join('\n');
+
+      // Create and download file
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `payroll_week_${start}.csv`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      toast.success("Payroll data exported successfully!");
+    } catch (error) {
+      console.error("Export error:", error);
+      toast.error("Failed to export payroll data");
+    } finally {
+      setExportLoading(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="mem-card text-center">
@@ -117,9 +183,19 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
             <h1 className="text-2xl font-bold text-white">Admin Dashboard - {driver.name}</h1>
             <p className="text-mem-babyBlue">Overview of all drivers and their earnings</p>
           </div>
-          <Button onClick={onLogout} variant="outline" className="bg-mem-gray text-white hover:bg-mem-darkNavy">
-            Logout
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              onClick={exportToCSV}
+              disabled={exportLoading || driversData.length === 0}
+              className="bg-green-600 text-white hover:bg-green-700"
+            >
+              <Download size={16} className="mr-2" />
+              {exportLoading ? "Exporting..." : "Export CSV"}
+            </Button>
+            <Button onClick={onLogout} variant="outline" className="bg-mem-gray text-white hover:bg-mem-darkNavy">
+              Logout
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -135,8 +211,10 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
               <tr className="border-b border-mem-babyBlue/30">
                 <th className="text-left py-3 px-4">Driver Name</th>
                 <th className="text-left py-3 px-4">Hourly Rate</th>
-                <th className="text-left py-3 px-4">This Week Hours</th>
-                <th className="text-left py-3 px-4">This Week Earnings</th>
+                <th className="text-left py-3 px-4">Regular Hours</th>
+                <th className="text-left py-3 px-4">Overtime Hours</th>
+                <th className="text-left py-3 px-4">Total Hours</th>
+                <th className="text-left py-3 px-4">Total Earnings</th>
                 <th className="text-left py-3 px-4">Last Activity</th>
                 <th className="text-left py-3 px-4">Actions</th>
               </tr>
@@ -147,6 +225,18 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
                   <td className="py-3 px-4 font-semibold">{driverData.name}</td>
                   <td className="py-3 px-4">
                     <span className="text-green-400">${driverData.hourly_rate.toFixed(2)}/hr</span>
+                  </td>
+                  <td className="py-3 px-4">
+                    <div className="flex items-center gap-1">
+                      <Clock size={16} className="text-mem-babyBlue" />
+                      {driverData.regularHours.toFixed(2)}h
+                    </div>
+                  </td>
+                  <td className="py-3 px-4">
+                    <div className="flex items-center gap-1">
+                      <Clock size={16} className="text-yellow-400" />
+                      {driverData.overtimeHours.toFixed(2)}h
+                    </div>
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-1">

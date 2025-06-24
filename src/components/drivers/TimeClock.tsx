@@ -32,6 +32,7 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
       .insert({
         driver_id: driver.id,
         job_address: jobAddress.trim() || null,
+        job_site_id: null,
         truck_number: truckNumber.trim(),
         clock_in_time: new Date().toISOString(),
       });

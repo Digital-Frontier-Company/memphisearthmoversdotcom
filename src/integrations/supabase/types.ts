@@ -81,7 +81,8 @@ export type Database = {
           driver_id: string
           hours_worked: number | null
           id: string
-          job_site_id: string
+          job_address: string | null
+          job_site_id: string | null
           truck_number: string
         }
         Insert: {
@@ -92,7 +93,8 @@ export type Database = {
           driver_id: string
           hours_worked?: number | null
           id?: string
-          job_site_id: string
+          job_address?: string | null
+          job_site_id?: string | null
           truck_number: string
         }
         Update: {
@@ -103,7 +105,8 @@ export type Database = {
           driver_id?: string
           hours_worked?: number | null
           id?: string
-          job_site_id?: string
+          job_address?: string | null
+          job_site_id?: string | null
           truck_number?: string
         }
         Relationships: [

@@ -16,10 +16,7 @@ interface TimeEntry {
   clock_out_time: string | null;
   hours_worked: number | null;
   truck_number: string;
-  job_sites: {
-    site_name: string;
-    site_code: string;
-  };
+  job_address: string | null;
 }
 
 interface TimeLogProps {
@@ -53,18 +50,7 @@ const TimeLog = ({ driver }: TimeLogProps) => {
     
     const { data, error } = await supabase
       .from("time_entries")
-      .select(`
-        id,
-        date,
-        clock_in_time,
-        clock_out_time,
-        hours_worked,
-        truck_number,
-        job_sites (
-          site_name,
-          site_code
-        )
-      `)
+      .select("*")
       .eq("driver_id", driver.id)
       .gte("date", start)
       .lte("date", end)
@@ -83,10 +69,10 @@ const TimeLog = ({ driver }: TimeLogProps) => {
 
   const exportToCSV = () => {
     const csvContent = [
-      ["Date", "Job Site", "Truck", "Clock In", "Clock Out", "Hours"],
+      ["Date", "Job Address", "Truck", "Clock In", "Clock Out", "Hours"],
       ...timeEntries.map(entry => [
         entry.date,
-        `${entry.job_sites.site_name} (${entry.job_sites.site_code})`,
+        entry.job_address || "Not specified",
         entry.truck_number,
         new Date(entry.clock_in_time).toLocaleTimeString(),
         entry.clock_out_time ? new Date(entry.clock_out_time).toLocaleTimeString() : "Not clocked out",
@@ -140,7 +126,7 @@ const TimeLog = ({ driver }: TimeLogProps) => {
             <thead>
               <tr className="border-b border-mem-babyBlue/30">
                 <th className="text-left py-3 px-2">Date</th>
-                <th className="text-left py-3 px-2">Job Site</th>
+                <th className="text-left py-3 px-2">Job Address</th>
                 <th className="text-left py-3 px-2">Truck</th>
                 <th className="text-left py-3 px-2">Clock In</th>
                 <th className="text-left py-3 px-2">Clock Out</th>
@@ -154,10 +140,9 @@ const TimeLog = ({ driver }: TimeLogProps) => {
                     {new Date(entry.date).toLocaleDateString()}
                   </td>
                   <td className="py-3 px-2">
-                    {entry.job_sites.site_name}
-                    <div className="text-sm text-white/70">
-                      {entry.job_sites.site_code}
-                    </div>
+                    {entry.job_address || (
+                      <span className="text-white/50 italic">Not specified</span>
+                    )}
                   </td>
                   <td className="py-3 px-2">{entry.truck_number}</td>
                   <td className="py-3 px-2">

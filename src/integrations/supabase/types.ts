@@ -9,7 +9,114 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      drivers: {
+        Row: {
+          active: boolean | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          phone: string | null
+          pin: string
+          truck_assigned: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          pin: string
+          truck_assigned?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          pin?: string
+          truck_assigned?: string | null
+        }
+        Relationships: []
+      }
+      job_sites: {
+        Row: {
+          active: boolean | null
+          created_at: string
+          id: string
+          site_code: string
+          site_name: string
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string
+          id?: string
+          site_code: string
+          site_name: string
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string
+          id?: string
+          site_code?: string
+          site_name?: string
+        }
+        Relationships: []
+      }
+      time_entries: {
+        Row: {
+          clock_in_time: string
+          clock_out_time: string | null
+          created_at: string
+          date: string
+          driver_id: string
+          hours_worked: number | null
+          id: string
+          job_site_id: string
+          truck_number: string
+        }
+        Insert: {
+          clock_in_time: string
+          clock_out_time?: string | null
+          created_at?: string
+          date?: string
+          driver_id: string
+          hours_worked?: number | null
+          id?: string
+          job_site_id: string
+          truck_number: string
+        }
+        Update: {
+          clock_in_time?: string
+          clock_out_time?: string | null
+          created_at?: string
+          date?: string
+          driver_id?: string
+          hours_worked?: number | null
+          id?: string
+          job_site_id?: string
+          truck_number?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "time_entries_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "time_entries_job_site_id_fkey"
+            columns: ["job_site_id"]
+            isOneToOne: false
+            referencedRelation: "job_sites"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

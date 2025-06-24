@@ -69,6 +69,9 @@ const Navigation = ({ isScrolled }: NavigationProps) => {
       <Link to="/contact" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
         Contact
       </Link>
+      <Link to="/drivers" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
+        Drivers
+      </Link>
     </nav>
   );
 };

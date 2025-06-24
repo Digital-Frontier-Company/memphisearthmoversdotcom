@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Clock, MapPin, Truck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -9,12 +9,6 @@ interface Driver {
   name: string;
 }
 
-interface JobSite {
-  id: string;
-  site_name: string;
-  site_code: string;
-}
-
 interface TimeClockProps {
   driver: Driver;
   isClocked: boolean;
@@ -22,33 +16,13 @@ interface TimeClockProps {
 }
 
 const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
-  const [jobSites, setJobSites] = useState<JobSite[]>([]);
-  const [selectedJobSite, setSelectedJobSite] = useState("");
+  const [jobAddress, setJobAddress] = useState("");
   const [truckNumber, setTruckNumber] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetchJobSites();
-  }, []);
-
-  const fetchJobSites = async () => {
-    const { data, error } = await supabase
-      .from("job_sites")
-      .select("*")
-      .eq("active", true)
-      .order("site_name");
-
-    if (error) {
-      toast.error("Failed to load job sites");
-      return;
-    }
-
-    setJobSites(data || []);
-  };
-
   const handleClockIn = async () => {
-    if (!selectedJobSite || !truckNumber.trim()) {
-      toast.error("Please select a job site and enter truck number");
+    if (!truckNumber.trim()) {
+      toast.error("Please enter truck number");
       return;
     }
 
@@ -57,7 +31,7 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
       .from("time_entries")
       .insert({
         driver_id: driver.id,
-        job_site_id: selectedJobSite,
+        job_address: jobAddress.trim() || null,
         truck_number: truckNumber.trim(),
         clock_in_time: new Date().toISOString(),
       });
@@ -67,7 +41,7 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
     } else {
       toast.success("Clocked in successfully!");
       onStatusChange(true);
-      setSelectedJobSite("");
+      setJobAddress("");
       setTruckNumber("");
     }
     setLoading(false);
@@ -125,21 +99,15 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
           <div>
             <label className="block text-white/90 mb-2">
               <MapPin className="inline mr-2" size={16} />
-              Job Site
+              Job Address (Optional)
             </label>
-            <select
-              value={selectedJobSite}
-              onChange={(e) => setSelectedJobSite(e.target.value)}
-              className="w-full px-4 py-3 rounded-md bg-white/10 border border-mem-babyBlue/30 text-white focus:outline-none focus:ring-2 focus:ring-mem-babyBlue"
-              required
-            >
-              <option value="">Select job site...</option>
-              {jobSites.map((site) => (
-                <option key={site.id} value={site.id} className="text-gray-800">
-                  {site.site_name} ({site.site_code})
-                </option>
-              ))}
-            </select>
+            <input
+              type="text"
+              value={jobAddress}
+              onChange={(e) => setJobAddress(e.target.value)}
+              className="w-full px-4 py-3 rounded-md bg-white/10 border border-mem-babyBlue/30 text-white focus:outline-none focus:ring-2 focus:ring-mem-babyBlue placeholder:text-white/50"
+              placeholder="Enter job site address..."
+            />
           </div>
 
           <div>
@@ -151,7 +119,7 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
               type="text"
               value={truckNumber}
               onChange={(e) => setTruckNumber(e.target.value)}
-              className="w-full px-4 py-3 rounded-md bg-white/10 border border-mem-babyBlue/30 text-white focus:outline-none focus:ring-2 focus:ring-mem-babyBlue"
+              className="w-full px-4 py-3 rounded-md bg-white/10 border border-mem-babyBlue/30 text-white focus:outline-none focus:ring-2 focus:ring-mem-babyBlue placeholder:text-white/50"
               placeholder="Enter truck number..."
               required
             />

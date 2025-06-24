@@ -14,30 +14,36 @@ export type Database = {
           active: boolean | null
           created_at: string
           email: string | null
+          hourly_rate: number | null
           id: string
           name: string
           phone: string | null
           pin: string
+          role: Database["public"]["Enums"]["user_role"] | null
           truck_assigned: string | null
         }
         Insert: {
           active?: boolean | null
           created_at?: string
           email?: string | null
+          hourly_rate?: number | null
           id?: string
           name: string
           phone?: string | null
           pin: string
+          role?: Database["public"]["Enums"]["user_role"] | null
           truck_assigned?: string | null
         }
         Update: {
           active?: boolean | null
           created_at?: string
           email?: string | null
+          hourly_rate?: number | null
           id?: string
           name?: string
           phone?: string | null
           pin?: string
+          role?: Database["public"]["Enums"]["user_role"] | null
           truck_assigned?: string | null
         }
         Relationships: []
@@ -117,15 +123,65 @@ export type Database = {
           },
         ]
       }
+      weekly_earnings: {
+        Row: {
+          created_at: string
+          driver_id: string
+          id: string
+          overtime_hours: number
+          regular_hours: number
+          total_earnings: number
+          total_hours: number
+          updated_at: string
+          week_end_date: string
+          week_start_date: string
+        }
+        Insert: {
+          created_at?: string
+          driver_id: string
+          id?: string
+          overtime_hours?: number
+          regular_hours?: number
+          total_earnings?: number
+          total_hours?: number
+          updated_at?: string
+          week_end_date: string
+          week_start_date: string
+        }
+        Update: {
+          created_at?: string
+          driver_id?: string
+          id?: string
+          overtime_hours?: number
+          regular_hours?: number
+          total_earnings?: number
+          total_hours?: number
+          updated_at?: string
+          week_end_date?: string
+          week_start_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "weekly_earnings_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      calculate_weekly_earnings: {
+        Args: { p_driver_id: string; p_week_start: string }
+        Returns: undefined
+      }
     }
     Enums: {
-      [_ in never]: never
+      user_role: "driver" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -240,6 +296,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      user_role: ["driver", "admin"],
+    },
   },
 } as const

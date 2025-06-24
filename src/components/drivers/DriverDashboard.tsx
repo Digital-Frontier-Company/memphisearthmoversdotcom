@@ -1,15 +1,18 @@
 
 import { useState, useEffect } from "react";
-import { Clock, LogOut, FileText, Calendar } from "lucide-react";
+import { Clock, LogOut, FileText, Calendar, DollarSign } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import TimeClock from "./TimeClock";
-import WeeklyHours from "./WeeklyHours";
+import WeeklyEarnings from "./WeeklyEarnings";
 import TimeLog from "./TimeLog";
+import AdminDashboard from "./AdminDashboard";
 
 interface Driver {
   id: string;
   name: string;
+  hourly_rate: number;
+  role: string;
 }
 
 interface DriverDashboardProps {
@@ -19,14 +22,16 @@ interface DriverDashboardProps {
 
 const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [activeTab, setActiveTab] = useState("clock");
+  const [activeTab, setActiveTab] = useState("earnings");
   const [isClocked, setIsClocked] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    checkClockStatus();
+    if (driver.role === 'driver') {
+      checkClockStatus();
+    }
     return () => clearInterval(timer);
-  }, [driver.id]);
+  }, [driver.id, driver.role]);
 
   const checkClockStatus = async () => {
     const today = new Date().toISOString().split('T')[0];
@@ -40,6 +45,11 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
 
     setIsClocked(!!data);
   };
+
+  // If admin user, show admin dashboard
+  if (driver.role === 'admin') {
+    return <AdminDashboard driver={driver} onLogout={onLogout} />;
+  }
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -58,6 +68,9 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
                 day: 'numeric' 
               })}
             </div>
+            <div className="text-green-400 font-semibold mt-2">
+              Rate: ${driver.hourly_rate}/hour
+            </div>
           </div>
           <button
             onClick={onLogout}
@@ -70,6 +83,17 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
 
         <div className="flex flex-wrap gap-2 mb-6">
           <button
+            onClick={() => setActiveTab("earnings")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
+              activeTab === "earnings" 
+                ? "bg-mem-blue text-white" 
+                : "bg-white/10 text-white/70 hover:text-white"
+            }`}
+          >
+            <DollarSign size={16} />
+            Earnings
+          </button>
+          <button
             onClick={() => setActiveTab("clock")}
             className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
               activeTab === "clock" 
@@ -79,17 +103,6 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
           >
             <Clock size={16} />
             Time Clock
-          </button>
-          <button
-            onClick={() => setActiveTab("hours")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md transition-colors ${
-              activeTab === "hours" 
-                ? "bg-mem-blue text-white" 
-                : "bg-white/10 text-white/70 hover:text-white"
-            }`}
-          >
-            <Calendar size={16} />
-            Weekly Hours
           </button>
           <button
             onClick={() => setActiveTab("log")}
@@ -113,6 +126,7 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
         )}
       </div>
 
+      {activeTab === "earnings" && <WeeklyEarnings driver={driver} />}
       {activeTab === "clock" && (
         <TimeClock 
           driver={driver} 
@@ -120,7 +134,6 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
           onStatusChange={setIsClocked} 
         />
       )}
-      {activeTab === "hours" && <WeeklyHours driver={driver} />}
       {activeTab === "log" && <TimeLog driver={driver} />}
     </div>
   );

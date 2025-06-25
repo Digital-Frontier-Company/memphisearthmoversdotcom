@@ -23,12 +23,12 @@ interface DriverDashboardProps {
 }
 
 const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
-  // Show admin dashboard immediately for David T with admin role
-  if (driver.role === 'admin' && driver.name === 'David T') {
+  // Show admin dashboard for ANY user with admin role
+  if (driver.role === 'admin') {
     return <AdminDashboard driver={driver} onLogout={onLogout} />;
   }
 
-  // For all other users (regular drivers), show the regular driver interface
+  // For regular drivers only, show the regular driver interface
   const [activeTab, setActiveTab] = useState("clock");
   const [isClocked, setIsClocked] = useState(false);
 

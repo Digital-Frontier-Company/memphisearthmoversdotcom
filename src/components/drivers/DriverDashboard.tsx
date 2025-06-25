@@ -6,6 +6,7 @@ import TimeLog from "./TimeLog";
 import WeeklyHours from "./WeeklyHours";
 import WeeklyEarnings from "./WeeklyEarnings";
 import EditHours from "./EditHours";
+import AdminDashboard from "./AdminDashboard";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Driver {
@@ -25,8 +26,10 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   const [isClocked, setIsClocked] = useState(false);
 
   useEffect(() => {
-    checkClockStatus();
-  }, [driver.id]);
+    if (driver.role !== 'admin') {
+      checkClockStatus();
+    }
+  }, [driver.id, driver.role]);
 
   const checkClockStatus = async () => {
     const today = new Date().toISOString().split('T')[0];
@@ -41,6 +44,11 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
 
     setIsClocked(!!data);
   };
+
+  // If the user is an admin, show the admin dashboard
+  if (driver.role === 'admin') {
+    return <AdminDashboard driver={driver} onLogout={onLogout} />;
+  }
 
   const tabs = [
     { id: "clock", label: "Time Clock", component: TimeClock },

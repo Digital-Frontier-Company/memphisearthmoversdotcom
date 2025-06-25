@@ -114,6 +114,13 @@ export type Database = {
             foreignKeyName: "time_entries_driver_id_fkey"
             columns: ["driver_id"]
             isOneToOne: false
+            referencedRelation: "admin_driver_overview"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "time_entries_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
             referencedRelation: "drivers"
             referencedColumns: ["id"]
           },
@@ -168,6 +175,13 @@ export type Database = {
             foreignKeyName: "weekly_earnings_driver_id_fkey"
             columns: ["driver_id"]
             isOneToOne: false
+            referencedRelation: "admin_driver_overview"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "weekly_earnings_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
             referencedRelation: "drivers"
             referencedColumns: ["id"]
           },
@@ -175,7 +189,25 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      admin_driver_overview: {
+        Row: {
+          active: boolean | null
+          all_time_earnings: number | null
+          all_time_hours: number | null
+          created_at: string | null
+          current_week_earnings: number | null
+          current_week_hours: number | null
+          email: string | null
+          hourly_rate: number | null
+          id: string | null
+          last_activity: string | null
+          name: string | null
+          phone: string | null
+          pin: string | null
+          truck_assigned: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       calculate_weekly_earnings: {

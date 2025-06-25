@@ -69,9 +69,26 @@ const Navigation = ({ isScrolled }: NavigationProps) => {
       <Link to="/contact" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
         Contact
       </Link>
-      <Link to="/drivers" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
-        Drivers
-      </Link>
+      
+      <div className="relative group">
+        <button className="text-mem-darkNavy hover:text-mem-blue transition-colors flex items-center">
+          Drivers <ChevronDown size={16} className="ml-1" />
+        </button>
+        <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <Link 
+            to="/drivers" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Driver Login
+          </Link>
+          <Link 
+            to="/admin" 
+            className="block px-4 py-2 text-mem-darkNavy hover:bg-mem-gray transition-colors"
+          >
+            Admin Dashboard
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 };

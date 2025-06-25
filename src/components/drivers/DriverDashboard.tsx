@@ -23,15 +23,18 @@ interface DriverDashboardProps {
 }
 
 const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
+  // Show admin dashboard immediately for David T with admin role
+  if (driver.role === 'admin' && driver.name === 'David T') {
+    return <AdminDashboard driver={driver} onLogout={onLogout} />;
+  }
+
+  // For all other users (regular drivers), show the regular driver interface
   const [activeTab, setActiveTab] = useState("clock");
   const [isClocked, setIsClocked] = useState(false);
 
   useEffect(() => {
-    // Only check clock status for drivers (not David T admin)
-    if (!(driver.role === 'admin' && driver.name === 'David T')) {
-      checkClockStatus();
-    }
-  }, [driver.id, driver.role, driver.name]);
+    checkClockStatus();
+  }, [driver.id]);
 
   const checkClockStatus = async () => {
     const today = new Date().toISOString().split('T')[0];
@@ -47,12 +50,6 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
     setIsClocked(!!data);
   };
 
-  // Show admin dashboard ONLY if user is David T with admin role
-  if (driver.role === 'admin' && driver.name === 'David T') {
-    return <AdminDashboard driver={driver} onLogout={onLogout} />;
-  }
-
-  // For all other users (including other admins if any), show regular driver interface
   const tabs = [
     { id: "clock", label: "Time Clock", component: TimeClock },
     { id: "edit", label: "Edit Hours", component: EditHours },

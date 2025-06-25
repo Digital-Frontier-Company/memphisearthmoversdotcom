@@ -14,6 +14,7 @@ interface Driver {
   name: string;
   role: string;
   hourly_rate: number;
+  active: boolean;
 }
 
 interface DriverDashboardProps {

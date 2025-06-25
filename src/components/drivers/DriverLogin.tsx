@@ -8,6 +8,7 @@ interface Driver {
   id: string;
   name: string;
   pin: string;
+  role: string;
 }
 
 interface DriverLoginProps {
@@ -29,30 +30,30 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
   }, []);
 
   const fetchDrivers = async () => {
-    console.log("Fetching drivers...");
+    console.log("Fetching drivers and admins...");
     setLoadingDrivers(true);
     
     try {
       const { data, error } = await supabase
         .from("drivers")
-        .select("id, name, pin")
+        .select("id, name, pin, role")
         .eq("active", true)
         .order("name");
 
-      console.log("Drivers data:", data);
-      console.log("Drivers error:", error);
+      console.log("Drivers and admins data:", data);
+      console.log("Drivers and admins error:", error);
 
       if (error) {
-        console.error("Error fetching drivers:", error);
-        toast.error("Failed to load drivers: " + error.message);
+        console.error("Error fetching drivers and admins:", error);
+        toast.error("Failed to load users: " + error.message);
         return;
       }
 
       setDrivers(data || []);
-      console.log("Set drivers:", data?.length || 0, "drivers");
+      console.log("Set drivers and admins:", data?.length || 0, "users");
     } catch (err) {
       console.error("Unexpected error:", err);
-      toast.error("Unexpected error loading drivers");
+      toast.error("Unexpected error loading users");
     } finally {
       setLoadingDrivers(false);
     }
@@ -61,7 +62,7 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDriver || !pin) {
-      toast.error("Please select a driver and enter PIN");
+      toast.error("Please select a user and enter PIN");
       return;
     }
 
@@ -105,11 +106,11 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
           <div>
             <label className="block text-white/90 mb-2 text-left">
               <User className="inline mr-2" size={16} />
-              Select Driver
+              Select User
             </label>
             {loadingDrivers ? (
               <div className="w-full px-4 py-3 rounded-md bg-white/10 border border-mem-babyBlue/30 text-white/70">
-                Loading drivers...
+                Loading users...
               </div>
             ) : (
               <select
@@ -129,16 +130,16 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
                 <option value="">Choose your name...</option>
                 {drivers.map((driver) => (
                   <option key={driver.id} value={driver.id}>
-                    {driver.name}
+                    {driver.name} {driver.role === 'admin' ? '(Admin)' : ''}
                   </option>
                 ))}
               </select>
             )}
             {!loadingDrivers && drivers.length === 0 && (
-              <p className="text-red-400 text-sm mt-1">No active drivers found. Please contact administrator.</p>
+              <p className="text-red-400 text-sm mt-1">No active users found. Please contact administrator.</p>
             )}
             {!loadingDrivers && drivers.length > 0 && (
-              <p className="text-white/60 text-sm mt-1">{drivers.length} driver(s) available</p>
+              <p className="text-white/60 text-sm mt-1">{drivers.length} user(s) available</p>
             )}
           </div>
 
@@ -169,7 +170,7 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
 
         {/* Debug info for development */}
         <div className="mt-4 text-xs text-white/50">
-          Debug: {drivers.length} drivers loaded
+          Debug: {drivers.length} users loaded (including {drivers.filter(d => d.role === 'admin').length} admin(s))
         </div>
       </div>
     </div>

@@ -27,8 +27,8 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   const [isClocked, setIsClocked] = useState(false);
 
   useEffect(() => {
-    // Only check clock status for non-admin drivers or if not David T
-    if (driver.role !== 'admin' || driver.name !== 'David T') {
+    // Only check clock status for drivers (not David T admin)
+    if (!(driver.role === 'admin' && driver.name === 'David T')) {
       checkClockStatus();
     }
   }, [driver.id, driver.role, driver.name]);

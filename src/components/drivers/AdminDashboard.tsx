@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { User, LogOut, Clock, FileText, Edit3, Archive } from "lucide-react";
 import TimeClock from "./TimeClock";
@@ -11,7 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 interface Driver {
   id: string;
   name: string;
-  role?: string;
+  role: string;
   hourly_rate: number;
 }
 

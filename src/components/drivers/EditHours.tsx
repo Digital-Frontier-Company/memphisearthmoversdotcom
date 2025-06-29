@@ -137,6 +137,13 @@ const EditHours = ({ driver }: EditHoursProps) => {
     return Math.max(0, Math.round(diffHours * 100) / 100);
   };
 
+  // Fixed function to create datetime strings without timezone issues
+  const createDateTimeString = (date: string, time: string) => {
+    // Create datetime string by directly combining date and time
+    // This avoids timezone conversion issues
+    return `${date}T${time}:00.000Z`;
+  };
+
   const saveEntry = async (entryId: string) => {
     if (!editForm.clockIn || !editForm.truckNumber) {
       toast.error("Please fill in clock in time and truck number");
@@ -151,11 +158,11 @@ const EditHours = ({ driver }: EditHoursProps) => {
       calculateHours(editForm.clockIn, editForm.clockOut) : 
       parseFloat(editForm.hoursWorked) || null;
 
-    // Create full datetime strings
+    // Use the entry date and create proper datetime strings
     const entryDate = entry.date;
-    const clockInDateTime = new Date(`${entryDate}T${editForm.clockIn}:00`).toISOString();
+    const clockInDateTime = createDateTimeString(entryDate, editForm.clockIn);
     const clockOutDateTime = editForm.clockOut ? 
-      new Date(`${entryDate}T${editForm.clockOut}:00`).toISOString() : null;
+      createDateTimeString(entryDate, editForm.clockOut) : null;
 
     const { error } = await supabase
       .from("time_entries")
@@ -189,11 +196,11 @@ const EditHours = ({ driver }: EditHoursProps) => {
       calculateHours(editForm.clockIn, editForm.clockOut) : 
       parseFloat(editForm.hoursWorked) || null;
 
-    // Create full datetime strings
+    // Use selected date and create proper datetime strings
     const entryDate = selectedDate.toISOString().split('T')[0];
-    const clockInDateTime = new Date(`${entryDate}T${editForm.clockIn}:00`).toISOString();
+    const clockInDateTime = createDateTimeString(entryDate, editForm.clockIn);
     const clockOutDateTime = editForm.clockOut ? 
-      new Date(`${entryDate}T${editForm.clockOut}:00`).toISOString() : null;
+      createDateTimeString(entryDate, editForm.clockOut) : null;
 
     const { error } = await supabase
       .from("time_entries")

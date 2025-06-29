@@ -133,6 +133,60 @@ export type Database = {
           },
         ]
       }
+      time_entries_archive: {
+        Row: {
+          archived_at: string
+          clock_in_time: string
+          clock_out_time: string | null
+          created_at: string
+          date: string
+          driver_id: string
+          driver_name: string
+          hours_worked: number | null
+          id: string
+          job_address: string | null
+          job_site_id: string | null
+          original_entry_id: string
+          truck_number: string
+          week_end_date: string
+          week_start_date: string
+        }
+        Insert: {
+          archived_at?: string
+          clock_in_time: string
+          clock_out_time?: string | null
+          created_at: string
+          date: string
+          driver_id: string
+          driver_name: string
+          hours_worked?: number | null
+          id?: string
+          job_address?: string | null
+          job_site_id?: string | null
+          original_entry_id: string
+          truck_number: string
+          week_end_date: string
+          week_start_date: string
+        }
+        Update: {
+          archived_at?: string
+          clock_in_time?: string
+          clock_out_time?: string | null
+          created_at?: string
+          date?: string
+          driver_id?: string
+          driver_name?: string
+          hours_worked?: number | null
+          id?: string
+          job_address?: string | null
+          job_site_id?: string | null
+          original_entry_id?: string
+          truck_number?: string
+          week_end_date?: string
+          week_start_date?: string
+        }
+        Relationships: []
+      }
       weekly_earnings: {
         Row: {
           created_at: string
@@ -187,6 +241,57 @@ export type Database = {
           },
         ]
       }
+      weekly_earnings_archive: {
+        Row: {
+          archived_at: string
+          driver_id: string
+          driver_name: string
+          hourly_rate: number
+          id: string
+          original_created_at: string
+          original_earnings_id: string
+          original_updated_at: string
+          overtime_hours: number
+          regular_hours: number
+          total_earnings: number
+          total_hours: number
+          week_end_date: string
+          week_start_date: string
+        }
+        Insert: {
+          archived_at?: string
+          driver_id: string
+          driver_name: string
+          hourly_rate: number
+          id?: string
+          original_created_at: string
+          original_earnings_id: string
+          original_updated_at: string
+          overtime_hours?: number
+          regular_hours?: number
+          total_earnings?: number
+          total_hours?: number
+          week_end_date: string
+          week_start_date: string
+        }
+        Update: {
+          archived_at?: string
+          driver_id?: string
+          driver_name?: string
+          hourly_rate?: number
+          id?: string
+          original_created_at?: string
+          original_earnings_id?: string
+          original_updated_at?: string
+          overtime_hours?: number
+          regular_hours?: number
+          total_earnings?: number
+          total_hours?: number
+          week_end_date?: string
+          week_start_date?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       admin_driver_overview: {
@@ -210,6 +315,10 @@ export type Database = {
       }
     }
     Functions: {
+      archive_completed_weeks: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       calculate_weekly_earnings: {
         Args: { p_driver_id: string; p_week_start: string }
         Returns: undefined

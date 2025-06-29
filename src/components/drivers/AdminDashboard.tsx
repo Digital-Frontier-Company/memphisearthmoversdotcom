@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { User, LogOut, Clock, FileText, Edit3, Archive } from "lucide-react";
 import TimeClock from "./TimeClock";
 import TimeLog from "./TimeLog";
@@ -7,11 +6,13 @@ import WeeklyHours from "./WeeklyHours";
 import WeeklyEarnings from "./WeeklyEarnings";
 import EditHours from "./EditHours";
 import ArchivedData from "./ArchivedData";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Driver {
   id: string;
   name: string;
   role?: string;
+  hourly_rate: number;
 }
 
 interface AdminDashboardProps {
@@ -21,11 +22,30 @@ interface AdminDashboardProps {
 
 const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
   const [activeTab, setActiveTab] = useState<'clock' | 'log' | 'hours' | 'earnings' | 'edit' | 'archive'>('clock');
+  const [isClocked, setIsClocked] = useState(false);
+
+  useEffect(() => {
+    checkClockStatus();
+  }, [driver.id]);
+
+  const checkClockStatus = async () => {
+    const today = new Date().toISOString().split('T')[0];
+    
+    const { data } = await supabase
+      .from("time_entries")
+      .select("*")
+      .eq("driver_id", driver.id)
+      .eq("date", today)
+      .is("clock_out_time", null)
+      .single();
+
+    setIsClocked(!!data);
+  };
 
   const renderActiveComponent = () => {
     switch (activeTab) {
       case 'clock':
-        return <TimeClock driver={driver} />;
+        return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={setIsClocked} />;
       case 'log':
         return <TimeLog driver={driver} />;
       case 'hours':
@@ -37,7 +57,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
       case 'archive':
         return <ArchivedData />;
       default:
-        return <TimeClock driver={driver} />;
+        return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={setIsClocked} />;
     }
   };
 

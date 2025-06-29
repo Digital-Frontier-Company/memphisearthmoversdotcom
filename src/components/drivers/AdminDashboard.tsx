@@ -6,8 +6,9 @@ import TimeLog from "./TimeLog";
 import WeeklyHours from "./WeeklyHours";
 import WeeklyEarnings from "./WeeklyEarnings";
 import EditHours from "./EditHours";
-import ArchivedData from "./ArchivedData";
 import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 interface Driver {
   id: string;
@@ -22,8 +23,9 @@ interface AdminDashboardProps {
 }
 
 const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
-  const [activeTab, setActiveTab] = useState<'clock' | 'log' | 'hours' | 'earnings' | 'edit' | 'archive'>('clock');
+  const [activeTab, setActiveTab] = useState<'clock' | 'log' | 'hours' | 'earnings' | 'edit'>('clock');
   const [isClocked, setIsClocked] = useState(false);
+  const [isArchiving, setIsArchiving] = useState(false);
 
   useEffect(() => {
     checkClockStatus();
@@ -43,6 +45,22 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
     setIsClocked(!!data);
   };
 
+  const handleArchiveData = async () => {
+    setIsArchiving(true);
+    try {
+      const { error } = await supabase.rpc('archive_completed_weeks');
+      
+      if (error) throw error;
+      
+      toast.success("Data archived successfully! All old records have been preserved in the archive.");
+    } catch (error) {
+      console.error("Error archiving data:", error);
+      toast.error("Failed to archive data. Please try again.");
+    } finally {
+      setIsArchiving(false);
+    }
+  };
+
   const renderActiveComponent = () => {
     switch (activeTab) {
       case 'clock':
@@ -55,8 +73,6 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
         return <WeeklyEarnings driver={driver} />;
       case 'edit':
         return <EditHours driver={driver} />;
-      case 'archive':
-        return <ArchivedData />;
       default:
         return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={setIsClocked} />;
     }
@@ -74,13 +90,23 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
               <p className="text-white/80">Welcome back, {driver.name}</p>
             </div>
           </div>
-          <button
-            onClick={onLogout}
-            className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
-          >
-            <LogOut size={16} />
-            <span>Logout</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <Button
+              onClick={handleArchiveData}
+              disabled={isArchiving}
+              className="bg-mem-blue text-white hover:bg-mem-darkBlue flex items-center gap-2"
+            >
+              <Archive size={16} />
+              {isArchiving ? 'Archiving...' : 'Archive Old Data'}
+            </Button>
+            <button
+              onClick={onLogout}
+              className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
+            >
+              <LogOut size={16} />
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -141,17 +167,6 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
           >
             <Edit3 size={16} />
             <span>Edit Hours</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('archive')}
-            className={`flex items-center space-x-2 px-4 py-2 rounded transition-colors ${
-              activeTab === 'archive'
-                ? 'bg-mem-babyBlue text-white'
-                : 'bg-white/10 text-white hover:bg-white/20'
-            }`}
-          >
-            <Archive size={16} />
-            <span>Archive</span>
           </button>
         </div>
       </div>

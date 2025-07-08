@@ -139,9 +139,11 @@ const EditHours = ({ driver }: EditHoursProps) => {
 
   // Fixed function to create datetime strings without timezone issues
   const createDateTimeString = (date: string, time: string) => {
-    // Create datetime string by directly combining date and time
-    // This avoids timezone conversion issues
-    return `${date}T${time}:00.000Z`;
+    // Create datetime string by directly combining date and time as local time
+    // Convert to UTC by adjusting for timezone offset to store exact local time
+    const localDateTime = new Date(`${date}T${time}:00`);
+    const utcDateTime = new Date(localDateTime.getTime() - (localDateTime.getTimezoneOffset() * 60000));
+    return utcDateTime.toISOString();
   };
 
   const saveEntry = async (entryId: string) => {

@@ -14,8 +14,6 @@ interface WeeklyHoursProps {
 
 const WeeklyHours = ({ driver }: WeeklyHoursProps) => {
   const [weeklyHours, setWeeklyHours] = useState(0);
-  const [regularHours, setRegularHours] = useState(0);
-  const [overtimeHours, setOvertimeHours] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -54,12 +52,8 @@ const WeeklyHours = ({ driver }: WeeklyHoursProps) => {
     }
 
     const total = data?.reduce((sum, entry) => sum + (entry.hours_worked || 0), 0) || 0;
-    const regular = Math.min(total, 40);
-    const overtime = Math.max(total - 40, 0);
 
     setWeeklyHours(total);
-    setRegularHours(regular);
-    setOvertimeHours(overtime);
     setLoading(false);
   };
 
@@ -79,7 +73,7 @@ const WeeklyHours = ({ driver }: WeeklyHoursProps) => {
         <p className="text-white/90">Current week totals</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         <div className="bg-mem-blue/20 rounded-lg p-6 text-center">
           <Clock className="mx-auto mb-2 text-mem-babyBlue" size={32} />
           <div className="text-3xl font-bold text-white mb-1">
@@ -87,31 +81,7 @@ const WeeklyHours = ({ driver }: WeeklyHoursProps) => {
           </div>
           <div className="text-white/90">Total Hours</div>
         </div>
-
-        <div className="bg-green-500/20 rounded-lg p-6 text-center">
-          <Clock className="mx-auto mb-2 text-green-400" size={32} />
-          <div className="text-3xl font-bold text-white mb-1">
-            {regularHours.toFixed(2)}
-          </div>
-          <div className="text-white/90">Regular Hours</div>
-        </div>
-
-        <div className="bg-orange-500/20 rounded-lg p-6 text-center">
-          <Clock className="mx-auto mb-2 text-orange-400" size={32} />
-          <div className="text-3xl font-bold text-white mb-1">
-            {overtimeHours.toFixed(2)}
-          </div>
-          <div className="text-white/90">Overtime Hours</div>
-        </div>
       </div>
-
-      {overtimeHours > 0 && (
-        <div className="mt-6 p-4 bg-orange-500/20 border border-orange-500/50 rounded-lg">
-          <div className="text-orange-400 font-semibold text-center">
-            ⚠️ You have {overtimeHours.toFixed(2)} overtime hours this week
-          </div>
-        </div>
-      )}
     </div>
   );
 };

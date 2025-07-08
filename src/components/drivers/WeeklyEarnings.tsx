@@ -17,8 +17,6 @@ interface WeeklyEarningsProps {
 const WeeklyEarnings = ({ driver }: WeeklyEarningsProps) => {
   const [weeklyData, setWeeklyData] = useState({
     totalHours: 0,
-    regularHours: 0,
-    overtimeHours: 0,
     totalEarnings: 0
   });
   const [loading, setLoading] = useState(true);
@@ -71,8 +69,6 @@ const WeeklyEarnings = ({ driver }: WeeklyEarningsProps) => {
     if (data) {
       setWeeklyData({
         totalHours: data.total_hours || 0,
-        regularHours: data.regular_hours || 0,
-        overtimeHours: data.overtime_hours || 0,
         totalEarnings: data.total_earnings || 0
       });
     }
@@ -99,29 +95,13 @@ const WeeklyEarnings = ({ driver }: WeeklyEarningsProps) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-mem-blue/20 rounded-lg p-6 text-center">
           <Clock className="mx-auto mb-2 text-mem-babyBlue" size={32} />
           <div className="text-3xl font-bold text-white mb-1">
             {weeklyData.totalHours.toFixed(2)}
           </div>
           <div className="text-white/90">Total Hours</div>
-        </div>
-
-        <div className="bg-green-500/20 rounded-lg p-6 text-center">
-          <Clock className="mx-auto mb-2 text-green-400" size={32} />
-          <div className="text-3xl font-bold text-white mb-1">
-            {weeklyData.regularHours.toFixed(2)}
-          </div>
-          <div className="text-white/90">Regular Hours</div>
-        </div>
-
-        <div className="bg-orange-500/20 rounded-lg p-6 text-center">
-          <Clock className="mx-auto mb-2 text-orange-400" size={32} />
-          <div className="text-3xl font-bold text-white mb-1">
-            {weeklyData.overtimeHours.toFixed(2)}
-          </div>
-          <div className="text-white/90">Overtime Hours</div>
         </div>
 
         <div className="bg-purple-500/20 rounded-lg p-6 text-center">
@@ -132,14 +112,6 @@ const WeeklyEarnings = ({ driver }: WeeklyEarningsProps) => {
           <div className="text-white/90">Total Earnings</div>
         </div>
       </div>
-
-      {weeklyData.overtimeHours > 0 && (
-        <div className="mt-6 p-4 bg-orange-500/20 border border-orange-500/50 rounded-lg">
-          <div className="text-orange-400 font-semibold text-center">
-            ⚠️ You have {weeklyData.overtimeHours.toFixed(2)} overtime hours this week (1.5x rate)
-          </div>
-        </div>
-      )}
     </div>
   );
 };

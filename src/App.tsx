@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import SEOImagePreloader from "@/components/SEOImagePreloader";
 import Index from "./pages/Index";
 import GravelCalculator from "./pages/GravelCalculator";
 import AboutUs from "./pages/AboutUs";
@@ -27,6 +28,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
+        <SEOImagePreloader />
         <Toaster />
         <Sonner />
         <BrowserRouter>

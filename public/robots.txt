@@ -4,12 +4,14 @@ User-agent: *
 Allow: /
 
 # Block staging and development URLs
-Disallow: /lovable-uploads/
 Disallow: /*.lovable.app$
 Disallow: /*.lovable.dev$
 Disallow: /staging/
 Disallow: /dev/
 Disallow: /test/
+
+# Allow image directories for SEO crawlers
+Allow: /lovable-uploads/
 
 # Sitemaps
 Sitemap: https://www.memphisearthmovers.com/sitemap.xml

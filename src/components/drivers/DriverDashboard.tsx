@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { LogOut, User, Clock, Plus, Edit, DollarSign, Home, Settings } from "lucide-react";
 import TimeClock from "./TimeClock";
@@ -39,13 +38,17 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   }, [driver.id]);
 
   const checkClockStatus = async () => {
-    const today = new Date().toISOString().split('T')[0];
+    // Get local date in YYYY-MM-DD format (not UTC)
+    const now = new Date();
+    const localDate = now.getFullYear() + '-' + 
+      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+      String(now.getDate()).padStart(2, '0');
     
     const { data } = await supabase
       .from("time_entries")
       .select("*")
       .eq("driver_id", driver.id)
-      .eq("date", today)
+      .eq("date", localDate) // Fixed: Use local date instead of UTC date
       .is("clock_out_time", null)
       .single();
 

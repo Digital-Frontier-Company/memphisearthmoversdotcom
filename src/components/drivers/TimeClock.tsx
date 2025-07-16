@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Clock, MapPin, Truck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -27,8 +26,12 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
     }
 
     setLoading(true);
-    // Use current local time directly - let database handle timezone conversion
     const now = new Date();
+    
+    // Get local date in YYYY-MM-DD format (not UTC)
+    const localDate = now.getFullYear() + '-' + 
+      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+      String(now.getDate()).padStart(2, '0');
     
     const { error } = await supabase
       .from("time_entries")
@@ -38,6 +41,7 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
         job_site_id: null,
         truck_number: truckNumber.trim(),
         clock_in_time: now.toISOString(),
+        date: localDate, // Fixed: Now explicitly sets the local date
       });
 
     if (error) {
@@ -53,14 +57,19 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
 
   const handleClockOut = async () => {
     setLoading(true);
-    const today = new Date().toISOString().split('T')[0];
     
-    // Find the active time entry
+    // Get local date in YYYY-MM-DD format (not UTC)
+    const now = new Date();
+    const localDate = now.getFullYear() + '-' + 
+      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+      String(now.getDate()).padStart(2, '0');
+    
+    // Find the active time entry using LOCAL date
     const { data: activeEntry } = await supabase
       .from("time_entries")
       .select("*")
       .eq("driver_id", driver.id)
-      .eq("date", today)
+      .eq("date", localDate) // Fixed: Use local date instead of UTC date
       .is("clock_out_time", null)
       .single();
 
@@ -70,8 +79,6 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
       return;
     }
 
-    // Use current local time directly - let database handle timezone conversion
-    const now = new Date();
     const clockInTime = new Date(activeEntry.clock_in_time);
     const hoursWorked = (now.getTime() - clockInTime.getTime()) / (1000 * 60 * 60);
 

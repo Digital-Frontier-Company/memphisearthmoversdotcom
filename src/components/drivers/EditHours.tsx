@@ -50,13 +50,14 @@ const EditHours = ({ driver }: EditHoursProps) => {
     const now = new Date();
     const dayOfWeek = now.getDay();
     const diff = now.getDate() - dayOfWeek;
-    const sunday = new Date(now.setDate(diff));
-    const saturday = new Date(sunday);
-    saturday.setDate(sunday.getDate() + 6);
+    
+    // Create new Date objects instead of mutating the original
+    const sunday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - dayOfWeek);
+    const saturday = new Date(sunday.getFullYear(), sunday.getMonth(), sunday.getDate() + 6);
     
     return {
-      start: sunday.toISOString().split('T')[0],
-      end: saturday.toISOString().split('T')[0]
+      start: format(sunday, 'yyyy-MM-dd'),
+      end: format(saturday, 'yyyy-MM-dd')
     };
   };
 
@@ -78,14 +79,13 @@ const EditHours = ({ driver }: EditHoursProps) => {
       return;
     }
 
-    console.log('DEBUG fetchWeekEntries:', { data });
     setTimeEntries(data || []);
     setLoading(false);
   };
 
   const isDateInCurrentWeek = (date: Date) => {
     const { start, end } = getWeekDates();
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = format(date, 'yyyy-MM-dd');
     return dateStr >= start && dateStr <= end;
   };
 
@@ -138,11 +138,9 @@ const EditHours = ({ driver }: EditHoursProps) => {
     return Math.max(0, Math.round(diffHours * 100) / 100);
   };
 
-  // DEBUG: Create datetime strings without any timezone conversion
+  // Create datetime strings without any timezone conversion
   const createDateTimeString = (date: string, time: string) => {
-    const result = `${date}T${time}:00`;
-    console.log('DEBUG createDateTimeString:', { date, time, result });
-    return result;
+    return `${date}T${time}:00`;
   };
 
   const saveEntry = async (entryId: string) => {
@@ -198,7 +196,7 @@ const EditHours = ({ driver }: EditHoursProps) => {
       parseFloat(editForm.hoursWorked) || null;
 
     // Use selected date and create proper datetime strings
-    const entryDate = selectedDate.toISOString().split('T')[0];
+    const entryDate = format(selectedDate, 'yyyy-MM-dd');
     const clockInDateTime = createDateTimeString(entryDate, editForm.clockIn);
     const clockOutDateTime = editForm.clockOut ? 
       createDateTimeString(entryDate, editForm.clockOut) : null;

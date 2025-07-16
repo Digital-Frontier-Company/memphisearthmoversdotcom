@@ -78,6 +78,7 @@ const EditHours = ({ driver }: EditHoursProps) => {
       return;
     }
 
+    console.log('DEBUG fetchWeekEntries:', { data });
     setTimeEntries(data || []);
     setLoading(false);
   };
@@ -137,10 +138,11 @@ const EditHours = ({ driver }: EditHoursProps) => {
     return Math.max(0, Math.round(diffHours * 100) / 100);
   };
 
-  // Create datetime strings without any timezone conversion - exact input
+  // DEBUG: Create datetime strings without any timezone conversion
   const createDateTimeString = (date: string, time: string) => {
-    // Simply combine date and time as-is, no conversion needed
-    return `${date}T${time}:00`;
+    const result = `${date}T${time}:00`;
+    console.log('DEBUG createDateTimeString:', { date, time, result });
+    return result;
   };
 
   const saveEntry = async (entryId: string) => {

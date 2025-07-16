@@ -137,12 +137,10 @@ const EditHours = ({ driver }: EditHoursProps) => {
     return Math.max(0, Math.round(diffHours * 100) / 100);
   };
 
-  // Create datetime strings properly for local time storage
+  // Create datetime strings without any timezone conversion - exact input
   const createDateTimeString = (date: string, time: string) => {
-    // Create datetime string by directly combining date and time as local time
-    // Let the database handle timezone conversion properly
-    const localDateTime = new Date(`${date}T${time}:00`);
-    return localDateTime.toISOString();
+    // Simply combine date and time as-is, no conversion needed
+    return `${date}T${time}:00`;
   };
 
   const saveEntry = async (entryId: string) => {

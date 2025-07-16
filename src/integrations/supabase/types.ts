@@ -192,6 +192,30 @@ export type Database = {
         }
         Relationships: []
       }
+      todos: {
+        Row: {
+          id: number
+          inserted_at: string
+          is_complete: boolean | null
+          task: string | null
+          user_id: string
+        }
+        Insert: {
+          id?: number
+          inserted_at?: string
+          is_complete?: boolean | null
+          task?: string | null
+          user_id: string
+        }
+        Update: {
+          id?: number
+          inserted_at?: string
+          is_complete?: boolean | null
+          task?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       weekly_earnings: {
         Row: {
           created_at: string
@@ -325,8 +349,10 @@ export type Database = {
         Returns: undefined
       }
       calculate_weekly_earnings: {
-        Args: { p_driver_id: string; p_week_start: string }
-        Returns: undefined
+        Args:
+          | Record<PropertyKey, never>
+          | { p_driver_id: string; p_week_start: string }
+        Returns: number
       }
     }
     Enums: {

@@ -27,9 +27,8 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
     }
 
     setLoading(true);
-    // Create datetime without timezone conversion - store exact local time
+    // Use current local time directly - let database handle timezone conversion
     const now = new Date();
-    const localDateTime = new Date(now.getTime() - (now.getTimezoneOffset() * 60000));
     
     const { error } = await supabase
       .from("time_entries")
@@ -38,7 +37,7 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
         job_address: jobAddress.trim() || null,
         job_site_id: null,
         truck_number: truckNumber.trim(),
-        clock_in_time: localDateTime.toISOString(),
+        clock_in_time: now.toISOString(),
       });
 
     if (error) {
@@ -71,16 +70,15 @@ const TimeClock = ({ driver, isClocked, onStatusChange }: TimeClockProps) => {
       return;
     }
 
-    // Create datetime without timezone conversion - store exact local time
+    // Use current local time directly - let database handle timezone conversion
     const now = new Date();
-    const clockOutTime = new Date(now.getTime() - (now.getTimezoneOffset() * 60000));
     const clockInTime = new Date(activeEntry.clock_in_time);
-    const hoursWorked = (clockOutTime.getTime() - clockInTime.getTime()) / (1000 * 60 * 60);
+    const hoursWorked = (now.getTime() - clockInTime.getTime()) / (1000 * 60 * 60);
 
     const { error } = await supabase
       .from("time_entries")
       .update({
-        clock_out_time: clockOutTime.toISOString(),
+        clock_out_time: now.toISOString(),
         hours_worked: Math.round(hoursWorked * 100) / 100,
       })
       .eq("id", activeEntry.id);

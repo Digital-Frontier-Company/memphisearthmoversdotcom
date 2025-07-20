@@ -53,6 +53,48 @@ export type Database = {
         }
         Relationships: []
       }
+      gravel_orders: {
+        Row: {
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          location: string
+          phone: string
+          pickup_delivery: string
+          quantity: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          location: string
+          phone: string
+          pickup_delivery: string
+          quantity: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          location?: string
+          phone?: string
+          pickup_delivery?: string
+          quantity?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       job_sites: {
         Row: {
           active: boolean | null
@@ -213,6 +255,48 @@ export type Database = {
           is_complete?: boolean | null
           task?: string | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      truck_requests: {
+        Row: {
+          created_at: string
+          desired_date: string
+          desired_time: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          location: string
+          phone: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          desired_date: string
+          desired_time: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          location: string
+          phone: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          desired_date?: string
+          desired_time?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          location?: string
+          phone?: string
+          status?: string | null
+          updated_at?: string
         }
         Relationships: []
       }

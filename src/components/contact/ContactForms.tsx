@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForms = () => {
   const { toast } = useToast();
@@ -56,9 +57,22 @@ const ContactForms = () => {
     setIsSubmittingTruck(true);
     
     try {
-      // Email submission would go here in production
-      // For now, simulate sending email
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { error } = await supabase.functions.invoke('submit-contact-form', {
+        body: {
+          type: 'truck-request',
+          data: {
+            firstName: truckForm.firstName,
+            lastName: truckForm.lastName,
+            phone: truckForm.phone,
+            email: truckForm.email,
+            location: truckForm.location,
+            desiredDate: truckForm.date,
+            desiredTime: truckForm.time,
+          }
+        }
+      });
+
+      if (error) throw error;
       
       toast({
         title: "Truck request submitted!",
@@ -76,6 +90,7 @@ const ContactForms = () => {
         time: ""
       });
     } catch (error) {
+      console.error('Error submitting truck request:', error);
       toast({
         title: "Error submitting request",
         description: "Please try again or call us directly.",
@@ -91,9 +106,22 @@ const ContactForms = () => {
     setIsSubmittingGravel(true);
     
     try {
-      // Email submission would go here in production  
-      // For now, simulate sending email
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { error } = await supabase.functions.invoke('submit-contact-form', {
+        body: {
+          type: 'gravel-order',
+          data: {
+            firstName: gravelForm.firstName,
+            lastName: gravelForm.lastName,
+            phone: gravelForm.phone,
+            email: gravelForm.email,
+            location: gravelForm.location,
+            quantity: gravelForm.quantity,
+            pickupDelivery: gravelForm.pickupDelivery,
+          }
+        }
+      });
+
+      if (error) throw error;
       
       toast({
         title: "Gravel order submitted!",
@@ -111,6 +139,7 @@ const ContactForms = () => {
         pickupDelivery: "delivery"
       });
     } catch (error) {
+      console.error('Error submitting gravel order:', error);
       toast({
         title: "Error submitting order",
         description: "Please try again or call us directly.",

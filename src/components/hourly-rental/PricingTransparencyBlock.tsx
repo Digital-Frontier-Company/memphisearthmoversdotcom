@@ -1,16 +1,99 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calculator, DollarSign } from "lucide-react";
 
 const PricingTransparencyBlock = () => {
   const [hours, setHours] = useState<number>(4);
+  const [statsVisible, setStatsVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const ourRate = 125;
   const competitorRate = 225;
   const savings = (competitorRate - ourRate) * hours;
   const totalCost = ourRate * hours;
   const competitorCost = competitorRate * hours;
+
+  // Number counter animation
+  const animateCounter = (element: HTMLElement, target: number, prefix = '', suffix = '') => {
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+
+    const updateCounter = () => {
+      current += step;
+      if (current < target) {
+        element.textContent = prefix + Math.floor(current) + suffix;
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = prefix + target + suffix;
+      }
+    };
+    updateCounter();
+  };
+
+  // Intersection Observer for stats
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsVisible) {
+            setStatsVisible(true);
+            
+            // Animate counters
+            const statsElements = entry.target.querySelectorAll('.mem-counter');
+            statsElements.forEach((stat, index) => {
+              const target = parseInt(stat.getAttribute('data-target') || '0');
+              const prefix = stat.getAttribute('data-prefix') || '';
+              const suffix = stat.getAttribute('data-suffix') || '';
+              
+              setTimeout(() => {
+                animateCounter(stat as HTMLElement, target, prefix, suffix);
+              }, index * 200);
+            });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [statsVisible]);
+
+  // Magnetic button effect
+  useEffect(() => {
+    const button = buttonRef.current;
+    if (!button) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      const distance = Math.sqrt(x * x + y * y);
+      if (distance < 100) {
+        const factor = (100 - distance) / 100;
+        button.style.transform = `translate(${x * 0.3 * factor}px, ${y * 0.3 * factor}px) scale(${1 + 0.05 * factor})`;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      button.style.transform = 'translate(0, 0) scale(1)';
+    };
+
+    button.addEventListener('mousemove', handleMouseMove);
+    button.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      button.removeEventListener('mousemove', handleMouseMove);
+      button.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   return (
     <section className="mem-section bg-mem-darkNavy">
@@ -22,6 +105,26 @@ const PricingTransparencyBlock = () => {
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
             See exactly how much you save with transparent hourly pricing
           </p>
+        </div>
+
+        {/* Animated Stats Section */}
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="text-center mem-stagger-fade">
+            <div className="mem-counter text-white" data-target="125" data-prefix="$" data-suffix="/hr">$0/hr</div>
+            <div className="text-white/70 text-sm">Starting Rate</div>
+          </div>
+          <div className="text-center mem-stagger-fade">
+            <div className="mem-counter text-white" data-target="43" data-suffix="%">0%</div>
+            <div className="text-white/70 text-sm">Average Savings</div>
+          </div>
+          <div className="text-center mem-stagger-fade">
+            <div className="mem-counter text-white" data-target="127">0</div>
+            <div className="text-white/70 text-sm">Trucks Rented This Month</div>
+          </div>
+          <div className="text-center mem-stagger-fade">
+            <div className="mem-counter text-white" data-target="4" data-suffix=" hrs">0 hrs</div>
+            <div className="text-white/70 text-sm">Minimum Rental</div>
+          </div>
         </div>
 
         {/* Pricing Comparison Table */}
@@ -116,7 +219,10 @@ const PricingTransparencyBlock = () => {
             </div>
 
             <div className="text-center">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 text-lg transform hover:scale-105 transition-all duration-200 hover:shadow-lg">
+              <Button 
+                ref={buttonRef}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 text-lg mem-magnetic-button"
+              >
                 Lock In This ${ourRate}/Hour Rate
               </Button>
             </div>

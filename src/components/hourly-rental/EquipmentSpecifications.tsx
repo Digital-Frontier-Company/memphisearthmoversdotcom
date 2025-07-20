@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +6,8 @@ import { Truck, Weight, Users, DollarSign, ChevronDown, ChevronUp } from "lucide
 
 const EquipmentSpecifications = () => {
   const [expandedCard, setExpandedCard] = useState<string | null>("10-yard");
+  const [cardsVisible, setCardsVisible] = useState(false);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   const truckSpecs = [
     {
@@ -86,6 +88,67 @@ const EquipmentSpecifications = () => {
     setExpandedCard(expandedCard === id ? null : id);
   };
 
+  // Intersection observer for staggered fade-in
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !cardsVisible) {
+            setCardsVisible(true);
+            
+            // Add visible class to cards with stagger
+            const cards = entry.target.querySelectorAll('.mem-stagger-fade');
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('visible');
+              }, index * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardsRef.current) {
+      observer.observe(cardsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [cardsVisible]);
+
+  // Magnetic button effect for main buttons
+  useEffect(() => {
+    const buttons = document.querySelectorAll('.mem-magnetic-button');
+    
+    buttons.forEach(button => {
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        const distance = Math.sqrt(x * x + y * y);
+        if (distance < 100) {
+          const factor = (100 - distance) / 100;
+          (button as HTMLElement).style.transform = `translate(${x * 0.3 * factor}px, ${y * 0.3 * factor}px) scale(${1 + 0.05 * factor})`;
+        }
+      };
+
+      const handleMouseLeave = () => {
+        (button as HTMLElement).style.transform = 'translate(0, 0) scale(1)';
+      };
+
+      button.addEventListener('mousemove', handleMouseMove);
+      button.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    return () => {
+      buttons.forEach(button => {
+        button.removeEventListener('mousemove', () => {});
+        button.removeEventListener('mouseleave', () => {});
+      });
+    };
+  }, []);
+
   return (
     <section className="mem-section bg-mem-blue/80">
       <div className="mem-container">
@@ -98,14 +161,13 @@ const EquipmentSpecifications = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div ref={cardsRef} className="grid md:grid-cols-3 gap-8">
           {truckSpecs.map((truck, index) => (
             <Card 
               key={truck.id} 
-              className={`bg-white/95 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 animate-fade-in ${
+              className={`mem-stagger-fade bg-white/95 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 ${
                 expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''
               }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
               onClick={() => toggleExpanded(truck.id)}
             >
               <CardHeader className="text-center pb-4">
@@ -130,7 +192,7 @@ const EquipmentSpecifications = () => {
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className="h-5 w-5 text-mem-babyBlue" />
                     <span className="text-3xl font-bold text-mem-babyBlue">${truck.hourlyRate}</span>
-                    <span className="text-white/70">/hour</span>
+                    <span className="text-mem-darkNavy/70">/hour</span>
                   </div>
                   <p className="text-mem-darkNavy/80 text-sm mb-2">{truck.bestFor}</p>
                   <div className="space-y-1">
@@ -187,7 +249,7 @@ const EquipmentSpecifications = () => {
                   </div>
                 )}
 
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold transform hover:scale-105 transition-all duration-200 hover:shadow-lg">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold mem-magnetic-button">
                   Reserve This Truck
                 </Button>
               </CardContent>
@@ -199,7 +261,7 @@ const EquipmentSpecifications = () => {
           <p className="text-white/90 text-lg mb-4">
             All trucks include professional CDL drivers, fuel, and insurance
           </p>
-          <Button className="bg-mem-babyBlue hover:bg-mem-babyBlue/80 text-mem-darkNavy font-bold px-8 py-4 text-lg">
+          <Button className="bg-mem-babyBlue hover:bg-mem-babyBlue/80 text-mem-darkNavy font-bold px-8 py-4 text-lg mem-magnetic-button">
             Get Custom Quote for Multiple Trucks
           </Button>
         </div>

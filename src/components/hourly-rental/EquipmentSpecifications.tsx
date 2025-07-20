@@ -99,12 +99,13 @@ const EquipmentSpecifications = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {truckSpecs.map((truck) => (
+          {truckSpecs.map((truck, index) => (
             <Card 
               key={truck.id} 
-              className={`mem-card transition-all duration-300 cursor-pointer ${
-                expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue' : ''
+              className={`bg-white/95 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 animate-fade-in ${
+                expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''
               }`}
+              style={{ animationDelay: `${index * 0.2}s` }}
               onClick={() => toggleExpanded(truck.id)}
             >
               <CardHeader className="text-center pb-4">
@@ -113,13 +114,12 @@ const EquipmentSpecifications = () => {
                     <Truck className="h-12 w-12 text-mem-babyBlue" />
                   </div>
                 </div>
-                <CardTitle className="text-xl text-white mb-2">{truck.name}</CardTitle>
-                <CardDescription className="text-white/80">
+                <CardTitle className="text-xl text-mem-darkNavy mb-2">{truck.name}</CardTitle>
+                <CardDescription className="text-mem-darkNavy/80">
                   {truck.payload} payload capacity
                 </CardDescription>
                 <div className="flex justify-center mt-2">
-                  <Badge variant={truck.cdlRequired.includes("No") ? "secondary" : "default"} 
-                         className="bg-mem-babyBlue/20 text-mem-babyBlue border-mem-babyBlue/30">
+                  <Badge variant="outline" className="bg-mem-blue/10 text-mem-blue border-mem-blue/30 hover:bg-mem-blue/20 transition-colors">
                     CDL Required
                   </Badge>
                 </div>
@@ -132,19 +132,19 @@ const EquipmentSpecifications = () => {
                     <span className="text-3xl font-bold text-mem-babyBlue">${truck.hourlyRate}</span>
                     <span className="text-white/70">/hour</span>
                   </div>
-                  <p className="text-white/80 text-sm mb-2">{truck.bestFor}</p>
+                  <p className="text-mem-darkNavy/80 text-sm mb-2">{truck.bestFor}</p>
                   <div className="space-y-1">
-                    <div className="text-mem-babyBlue font-medium text-sm">{truck.minHours}</div>
-                    <div className="text-white/70 text-xs">{truck.serviceArea}</div>
-                    <div className="text-white/80 text-sm font-medium">{truck.truckType}</div>
+                    <div className="text-mem-blue font-medium text-sm">{truck.minHours}</div>
+                    <div className="text-mem-darkNavy/60 text-xs">{truck.serviceArea}</div>
+                    <div className="text-mem-darkNavy/80 text-sm font-medium">{truck.truckType}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center text-white/70">
+                <div className="flex items-center justify-center text-mem-darkNavy/70 hover:text-mem-blue transition-colors">
                   {expandedCard === truck.id ? (
-                    <ChevronUp className="h-5 w-5" />
+                    <ChevronUp className="h-5 w-5 transition-transform duration-200" />
                   ) : (
-                    <ChevronDown className="h-5 w-5" />
+                    <ChevronDown className="h-5 w-5 transition-transform duration-200" />
                   )}
                   <span className="ml-1 text-sm">
                     {expandedCard === truck.id ? "Less Details" : "More Details"}
@@ -152,16 +152,16 @@ const EquipmentSpecifications = () => {
                 </div>
 
                 {expandedCard === truck.id && (
-                  <div className="mt-6 space-y-4 animate-fade-in">
+                  <div className="mt-6 space-y-4 animate-fade-in opacity-0 animate-scale-in">
                     <div>
-                      <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
-                        <Weight className="h-4 w-4 text-mem-babyBlue" />
+                      <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
+                        <Weight className="h-4 w-4 text-mem-blue" />
                         Key Features
                       </h4>
                       <ul className="space-y-1">
                         {truck.features.map((feature, index) => (
-                          <li key={index} className="text-white/80 text-sm flex items-start gap-2">
-                            <span className="text-mem-babyBlue mt-1">•</span>
+                          <li key={index} className="text-mem-darkNavy/80 text-sm flex items-start gap-2">
+                            <span className="text-mem-blue mt-1">•</span>
                             {feature}
                           </li>
                         ))}
@@ -169,25 +169,25 @@ const EquipmentSpecifications = () => {
                     </div>
 
                     <div>
-                      <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
-                        <Users className="h-4 w-4 text-mem-babyBlue" />
+                      <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
+                        <Users className="h-4 w-4 text-mem-blue" />
                         Specifications
                       </h4>
                       <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="text-white/70">Length:</div>
-                        <div className="text-white">{truck.specs.length}</div>
-                        <div className="text-white/70">Width:</div>
-                        <div className="text-white">{truck.specs.width}</div>
-                        <div className="text-white/70">Capacity:</div>
-                        <div className="text-white">{truck.specs.capacity}</div>
-                        <div className="text-white/70">GVWR:</div>
-                        <div className="text-white">{truck.specs.weight}</div>
+                        <div className="text-mem-darkNavy/60">Length:</div>
+                        <div className="text-mem-darkNavy">{truck.specs.length}</div>
+                        <div className="text-mem-darkNavy/60">Width:</div>
+                        <div className="text-mem-darkNavy">{truck.specs.width}</div>
+                        <div className="text-mem-darkNavy/60">Capacity:</div>
+                        <div className="text-mem-darkNavy">{truck.specs.capacity}</div>
+                        <div className="text-mem-darkNavy/60">GVWR:</div>
+                        <div className="text-mem-darkNavy">{truck.specs.weight}</div>
                       </div>
                     </div>
                   </div>
                 )}
 
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold transform hover:scale-105 transition-all duration-200 hover:shadow-lg">
                   Reserve This Truck
                 </Button>
               </CardContent>

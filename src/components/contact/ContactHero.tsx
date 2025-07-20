@@ -6,11 +6,15 @@ const ContactHero = () => {
   return (
     <section className="relative bg-mem-darkNavy text-white py-16 md:py-24">
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/ecf66b55-6999-4f2f-bf6d-68900d94d35e.png" 
-          alt="Memphis Earth Movers dump truck services"
-          className="w-full h-full object-cover object-center" 
-        />
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="w-full h-full object-cover object-center"
+        >
+          <source src="https://cdn.midjourney.com/video/c9427689-1d50-4676-801a-4837ce53ec32/0.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/55"></div>
       </div>
       <div className="mem-container relative z-10">

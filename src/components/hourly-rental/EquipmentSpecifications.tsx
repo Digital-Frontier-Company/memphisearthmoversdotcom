@@ -13,11 +13,14 @@ const EquipmentSpecifications = () => {
       name: "10-Yard Dump Truck",
       payload: "10-12 tons",
       bestFor: "Residential projects, small excavations",
-      cdlRequired: "No (under 26,000 lbs)",
+      cdlRequired: "Yes (CDL Required)",
       hourlyRate: 125,
+      minHours: "4 hour minimum",
+      serviceArea: "Within 30 miles of Memphis",
+      truckType: "Tri-axle dump truck",
       features: [
         "Perfect for driveways and small sites",
-        "Backup camera and safety equipment",
+        "Backup camera and safety equipment", 
         "GPS tracking for accurate timing",
         "Professional CDL driver included"
       ],
@@ -36,6 +39,9 @@ const EquipmentSpecifications = () => {
       bestFor: "Commercial sites, road construction",
       cdlRequired: "Yes (Class B)",
       hourlyRate: 145,
+      minHours: "3 hour minimum",
+      serviceArea: "Memphis metro area",
+      truckType: "Tri-axle or quad axle dump truck available",
       features: [
         "Ideal for medium commercial projects",
         "Enhanced hydraulic system",
@@ -57,6 +63,9 @@ const EquipmentSpecifications = () => {
       bestFor: "Major excavation, quarry work",
       cdlRequired: "Yes (Class B)",
       hourlyRate: 165,
+      minHours: "No hourly minimum",
+      serviceArea: "Within 40 miles of Memphis",
+      truckType: "Tractor trailers dump trucks also available",
       features: [
         "Heavy-duty for large projects",
         "Reinforced hydraulic systems",
@@ -65,7 +74,7 @@ const EquipmentSpecifications = () => {
       ],
       specs: {
         length: "28 feet",
-        width: "8.5 feet",
+        width: "8.5 feet", 
         height: "13 feet",
         capacity: "20 cubic yards",
         weight: "46,000 lbs GVWR"
@@ -111,7 +120,7 @@ const EquipmentSpecifications = () => {
                 <div className="flex justify-center mt-2">
                   <Badge variant={truck.cdlRequired.includes("No") ? "secondary" : "default"} 
                          className="bg-mem-babyBlue/20 text-mem-babyBlue border-mem-babyBlue/30">
-                    {truck.cdlRequired.includes("No") ? "No CDL Required" : "CDL Required"}
+                    CDL Required
                   </Badge>
                 </div>
               </CardHeader>
@@ -123,7 +132,12 @@ const EquipmentSpecifications = () => {
                     <span className="text-3xl font-bold text-mem-babyBlue">${truck.hourlyRate}</span>
                     <span className="text-white/70">/hour</span>
                   </div>
-                  <p className="text-white/80 text-sm mb-4">{truck.bestFor}</p>
+                  <p className="text-white/80 text-sm mb-2">{truck.bestFor}</p>
+                  <div className="space-y-1">
+                    <div className="text-mem-babyBlue font-medium text-sm">{truck.minHours}</div>
+                    <div className="text-white/70 text-xs">{truck.serviceArea}</div>
+                    <div className="text-white/80 text-sm font-medium">{truck.truckType}</div>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-center text-white/70">

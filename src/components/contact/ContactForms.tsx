@@ -122,8 +122,21 @@ const ContactForms = () => {
   };
   
   return (
-    <section className="mem-section bg-white">
-      <div className="mem-container">
+    <section className="mem-section relative bg-white overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="https://cdn.midjourney.com/video/c9427689-1d50-4676-801a-4837ce53ec32/0.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-white/85"></div>
+      </div>
+      <div className="mem-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           {/* Truck Request Form */}
           <Card className="border-mem-blue/20 shadow-lg">

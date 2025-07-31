@@ -24,6 +24,8 @@ export type Database = {
           name: string
           phone: string | null
           pin: string
+          pin_hash: string | null
+          pin_reset_required: boolean | null
           role: Database["public"]["Enums"]["user_role"] | null
           truck_assigned: string | null
         }
@@ -36,6 +38,8 @@ export type Database = {
           name: string
           phone?: string | null
           pin: string
+          pin_hash?: string | null
+          pin_reset_required?: boolean | null
           role?: Database["public"]["Enums"]["user_role"] | null
           truck_assigned?: string | null
         }
@@ -48,6 +52,8 @@ export type Database = {
           name?: string
           phone?: string | null
           pin?: string
+          pin_hash?: string | null
+          pin_reset_required?: boolean | null
           role?: Database["public"]["Enums"]["user_role"] | null
           truck_assigned?: string | null
         }
@@ -119,6 +125,38 @@ export type Database = {
         }
         Relationships: []
       }
+      login_attempts: {
+        Row: {
+          attempted_at: string | null
+          driver_id: string | null
+          id: string
+          ip_address: unknown | null
+          success: boolean | null
+        }
+        Insert: {
+          attempted_at?: string | null
+          driver_id?: string | null
+          id?: string
+          ip_address?: unknown | null
+          success?: boolean | null
+        }
+        Update: {
+          attempted_at?: string | null
+          driver_id?: string | null
+          id?: string
+          ip_address?: unknown | null
+          success?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "login_attempts_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       time_entries: {
         Row: {
           clock_in_time: string
@@ -157,13 +195,6 @@ export type Database = {
           truck_number?: string
         }
         Relationships: [
-          {
-            foreignKeyName: "time_entries_driver_id_fkey"
-            columns: ["driver_id"]
-            isOneToOne: false
-            referencedRelation: "admin_driver_overview"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "time_entries_driver_id_fkey"
             columns: ["driver_id"]
@@ -342,13 +373,6 @@ export type Database = {
             foreignKeyName: "weekly_earnings_driver_id_fkey"
             columns: ["driver_id"]
             isOneToOne: false
-            referencedRelation: "admin_driver_overview"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "weekly_earnings_driver_id_fkey"
-            columns: ["driver_id"]
-            isOneToOne: false
             referencedRelation: "drivers"
             referencedColumns: ["id"]
           },
@@ -407,25 +431,7 @@ export type Database = {
       }
     }
     Views: {
-      admin_driver_overview: {
-        Row: {
-          active: boolean | null
-          all_time_earnings: number | null
-          all_time_hours: number | null
-          created_at: string | null
-          current_week_earnings: number | null
-          current_week_hours: number | null
-          email: string | null
-          hourly_rate: number | null
-          id: string | null
-          last_activity: string | null
-          name: string | null
-          phone: string | null
-          pin: string | null
-          truck_assigned: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       archive_completed_weeks: {
@@ -437,6 +443,45 @@ export type Database = {
           | Record<PropertyKey, never>
           | { p_driver_id: string; p_week_start: string }
         Returns: number
+      }
+      check_rate_limit: {
+        Args: { p_driver_id: string; p_ip_address: unknown }
+        Returns: boolean
+      }
+      get_admin_driver_overview: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          id: string
+          name: string
+          phone: string
+          email: string
+          pin: string
+          truck_assigned: string
+          hourly_rate: number
+          active: boolean
+          created_at: string
+          current_week_hours: number
+          current_week_earnings: number
+          all_time_hours: number
+          all_time_earnings: number
+          last_activity: string
+        }[]
+      }
+      hash_pin: {
+        Args: { pin_text: string }
+        Returns: string
+      }
+      is_current_user_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      log_login_attempt: {
+        Args: { p_driver_id: string; p_ip_address: unknown; p_success: boolean }
+        Returns: undefined
+      }
+      verify_pin: {
+        Args: { pin_text: string; pin_hash: string }
+        Returns: boolean
       }
     }
     Enums: {

@@ -8,6 +8,13 @@ import EditHours from "./EditHours";
 import AdminDashboard from "./AdminDashboard";
 import { supabase } from "@/integrations/supabase/client";
 
+// --- START OF FIXES ---
+
+// FIX 1: Define a constant for the target timezone for consistency.
+const TIME_ZONE = 'America/Chicago';
+
+// --- END OF FIXES ---
+
 interface Driver {
   id: string;
   name: string;
@@ -22,12 +29,10 @@ interface DriverDashboardProps {
 }
 
 const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
-  // Show admin dashboard for ANY user with admin role
   if (driver.role === 'admin') {
     return <AdminDashboard driver={driver} onLogout={onLogout} />;
   }
 
-  // For regular drivers only, show the regular driver interface
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isClocked, setIsClocked] = useState(false);
   const [weeklyData, setWeeklyData] = useState({ totalHours: 0, totalEarnings: 0 });
@@ -38,17 +43,15 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   }, [driver.id]);
 
   const checkClockStatus = async () => {
-    // Get local date in YYYY-MM-DD format (not UTC)
-    const now = new Date();
-    const localDate = now.getFullYear() + '-' + 
-      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-      String(now.getDate()).padStart(2, '0');
+    // FIX 2: Determine the current date in the specified timezone to prevent errors across different user timezones.
+    // The 'en-CA' locale reliably gives a YYYY-MM-DD format.
+    const todayInCentralTz = new Date().toLocaleDateString('en-CA', { timeZone: TIME_ZONE });
     
     const { data } = await supabase
       .from("time_entries")
       .select("*")
       .eq("driver_id", driver.id)
-      .eq("date", localDate) // Fixed: Use local date instead of UTC date
+      .eq("date", todayInCentralTz) // Check against the correct, timezone-aware date.
       .is("clock_out_time", null)
       .single();
 
@@ -56,13 +59,18 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   };
 
   const fetchWeeklyData = async () => {
+    // FIX 3: Calculate the start of the week based on the current date in the US Central timezone.
     const now = new Date();
-    const dayOfWeek = now.getDay();
-    const diff = now.getDate() - dayOfWeek;
-    const sunday = new Date(now.setDate(diff));
+    // Create a new Date object that reflects the "wall time" in the target timezone.
+    const centralNow = new Date(now.toLocaleString('en-US', { timeZone: TIME_ZONE }));
+    
+    const dayOfWeek = centralNow.getDay(); // 0=Sunday, 1=Monday, etc.
+    const diff = centralNow.getDate() - dayOfWeek;
+    const sunday = new Date(centralNow.setDate(diff));
+    
+    // Format the date into YYYY-MM-DD for the database query.
     const start = sunday.toISOString().split('T')[0];
     
-    // Calculate and fetch weekly earnings
     await supabase.rpc('calculate_weekly_earnings', {
       p_driver_id: driver.id,
       p_week_start: start
@@ -92,13 +100,17 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   ];
 
   const getCurrentDate = () => {
+    // FIX 4: Display the current date in the header using the US Central timezone.
     return new Date().toLocaleDateString('en-US', { 
       weekday: 'long', 
       year: 'numeric', 
       month: 'long', 
-      day: 'numeric' 
+      day: 'numeric',
+      timeZone: TIME_ZONE, 
     });
   };
+  
+  // --- The rest of the component remains unchanged ---
 
   const renderDashboardView = () => (
     <div className="space-y-6">
@@ -172,7 +184,8 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
       case "dashboard":
         return renderDashboardView();
       case "clock":
-        return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={setIsClocked} />;
+        // Pass the corrected checkClockStatus and fetchWeeklyData to update status and data after clocking in/out
+        return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={() => { checkClockStatus(); fetchWeeklyData(); }} />;
       case "edit":
         return <EditHours driver={driver} />;
       case "earnings":
@@ -220,7 +233,7 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
         </nav>
 
         {/* User Info */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700">
+        <div className="absolute bottom-0 left-0 w-64 p-4 border-t border-slate-700 bg-slate-800">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center">
               <User size={16} className="text-slate-300" />

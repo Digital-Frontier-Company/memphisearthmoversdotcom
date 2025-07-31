@@ -228,7 +228,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
 
     // FIX 2: When populating the form for editing, convert the UTC time from the database
     // into the local time string for the US Central timezone.
-    const commonTimeOptions = { hour12: false, hour: '2-digit', minute: '2-digit' };
+    const commonTimeOptions = { hour12: false, hour: '2-digit' as const, minute: '2-digit' as const };
     const formatInCentralTime = (dateString) => {
         if (!dateString) return "";
         return new Date(dateString).toLocaleTimeString('en-US', { ...commonTimeOptions, timeZone: TIME_ZONE });
@@ -392,18 +392,81 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
                 <span className="text-yellow-400">In Progress</span>
               }
             </TableCell>
-            {/* ... other cells ... */}
+            <TableCell className="text-white">{entry.hours_worked || 0}</TableCell>
+            <TableCell className="text-white">{entry.truck_number}</TableCell>
+            <TableCell className="text-white">{entry.job_address}</TableCell>
+            <TableCell>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => startEditingTimeEntry(entry)}
+                className="text-white border-white/20 hover:bg-white/10"
+              >
+                Edit
+              </Button>
+            </TableCell>
           </>
         )}
       </TableRow>
     ))}
   </TableBody>
-  // ...
+
+  return (
+    <div className="min-h-screen bg-mem-darkNavy p-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
+          <Button 
+            onClick={onLogout} 
+            variant="outline"
+            className="text-white border-white hover:bg-white hover:text-mem-darkNavy"
+          >
+            Logout
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-mem-navy/50 p-6 rounded-lg border border-mem-babyBlue/20">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-white/80 text-sm">Total Drivers</p>
+                <p className="text-2xl font-bold text-white">{driversData.length}</p>
+              </div>
+              <Users className="h-8 w-8 text-mem-babyBlue" />
+            </div>
+          </div>
+          
+          <div className="bg-mem-navy/50 p-6 rounded-lg border border-mem-babyBlue/20">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-white/80 text-sm">Weekly Earnings</p>
+                <p className="text-2xl font-bold text-white">
+                  ${driversData.reduce((sum, driver) => sum + driver.totalEarnings, 0).toFixed(2)}
+                </p>
+              </div>
+              <DollarSign className="h-8 w-8 text-mem-babyBlue" />
+            </div>
+          </div>
+          
+          <div className="bg-mem-navy/50 p-6 rounded-lg border border-mem-babyBlue/20">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-white/80 text-sm">Weekly Hours</p>
+                <p className="text-2xl font-bold text-white">
+                  {driversData.reduce((sum, driver) => sum + driver.totalHours, 0).toFixed(1)}
+                </p>
+              </div>
+              <Clock className="h-8 w-8 text-mem-babyBlue" />
+            </div>
+          </div>
+        </div>
+
+        <div className="text-white">
+          <p>Admin functionality placeholder</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AdminDashboard;
-
-// NOTE: The full component code was long, so I've only shown the functions that needed changes
-// and the specific lines within the JSX that required updates. You should replace the corresponding
-// functions and JSX snippets in your original file with these corrected versions. The overall
-// structure, state management, and other functions like `deleteDriver` remain the same.

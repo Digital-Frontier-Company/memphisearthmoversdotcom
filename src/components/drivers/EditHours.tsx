@@ -116,7 +116,7 @@ const EditHours = ({ driver }: EditHoursProps) => {
   // FIX 2: When editing, display times converted to the Central timezone.
   const startEditing = (entry: TimeEntry) => {
     setEditingEntry(entry.id);
-    const commonTimeOptions = { hour12: false, hour: '2-digit', minute: '2-digit', timeZone: TIME_ZONE };
+    const commonTimeOptions = { hour12: false, hour: '2-digit' as const, minute: '2-digit' as const, timeZone: TIME_ZONE };
     
     setEditForm({
       clockIn: new Date(entry.clock_in_time).toLocaleTimeString('en-US', commonTimeOptions),

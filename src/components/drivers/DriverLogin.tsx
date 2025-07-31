@@ -67,15 +67,32 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
     }
 
     setLoading(true);
-    const driver = drivers.find(d => d.id === selectedDriver);
     
-    if (driver && driver.pin === pin) {
-      toast.success(`Welcome, ${driver.name}!`);
-      onLogin(driver);
-    } else {
-      toast.error("Invalid PIN. Please try again.");
+    try {
+      // Use secure authentication edge function
+      const { data: response, error } = await supabase.functions.invoke('secure-driver-auth', {
+        body: {
+          driverId: selectedDriver,
+          pin: pin
+        }
+      });
+
+      if (error || !response?.success) {
+        const errorMessage = response?.error || error?.message || "Authentication failed";
+        toast.error(errorMessage);
+        setPin("");
+        setLoading(false);
+        return;
+      }
+
+      toast.success(response.message);
+      onLogin(response.driver);
+    } catch (err) {
+      console.error("Authentication error:", err);
+      toast.error("Authentication service error. Please try again.");
       setPin("");
     }
+    
     setLoading(false);
   };
 

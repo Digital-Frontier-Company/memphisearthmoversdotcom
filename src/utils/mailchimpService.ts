@@ -1,9 +1,5 @@
 
-import { toast } from "@/hooks/use-toast";
-
-const API_KEY = "9f98d0d03dac170b104b47ad65786fe6-us18";
-const SERVER_PREFIX = "us18";
-const LIST_ID = ""; // You'll need to add your list ID here
+import { supabase } from "@/integrations/supabase/client";
 
 interface SubscriberData {
   email: string;
@@ -15,32 +11,17 @@ interface SubscriberData {
 
 export async function addSubscriberToMailchimp(data: SubscriberData): Promise<boolean> {
   try {
-    // Prepare the data for Mailchimp API
-    const subscriber = {
-      email_address: data.email,
-      status: "subscribed",
-      merge_fields: data.mergeFields || {},
-      tags: data.tags || []
-    };
-
-    // Call Mailchimp API
-    const response = await fetch(`https://${SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `apikey ${API_KEY}`
-      },
-      body: JSON.stringify(subscriber)
+    // Use secure edge function instead of direct API call
+    const { data: response, error } = await supabase.functions.invoke('mailchimp-subscribe', {
+      body: data
     });
 
-    const result = await response.json();
-    
-    if (!response.ok) {
-      console.error("Mailchimp API error:", result);
+    if (error) {
+      console.error("Mailchimp subscription error:", error);
       return false;
     }
-    
-    return true;
+
+    return response?.success || false;
   } catch (error) {
     console.error("Error adding subscriber to Mailchimp:", error);
     return false;
@@ -49,10 +30,26 @@ export async function addSubscriberToMailchimp(data: SubscriberData): Promise<bo
 
 export async function sendLeadNotification(email: string, calculationData: any, materialName: string): Promise<boolean> {
   try {
-    // For now, we'll use a simpler approach that doesn't rely on server-side functions
-    // We'll log the lead in localStorage and rely on the embedded Mailchimp script
-    
-    // Store in localStorage for tracking
+    // Use secure edge function for lead notification
+    const { data: response, error } = await supabase.functions.invoke('mailchimp-subscribe', {
+      body: {
+        email,
+        calculationData,
+        materialName,
+        tags: ['calculator-lead'],
+        mergeFields: {
+          MATERIAL: materialName,
+          CALC_DATE: new Date().toISOString()
+        }
+      }
+    });
+
+    if (error) {
+      console.error("Error sending lead notification:", error);
+      return false;
+    }
+
+    // Still store in localStorage for backup tracking
     const savedEmails = JSON.parse(localStorage.getItem('calculatorEmails') || '[]');
     savedEmails.push({
       email,
@@ -63,9 +60,7 @@ export async function sendLeadNotification(email: string, calculationData: any, 
     });
     localStorage.setItem('calculatorEmails', JSON.stringify(savedEmails));
     
-    // Return success - the Mailchimp embedded script will handle subscription
-    // When the form is properly configured in Mailchimp
-    return true;
+    return response?.success || false;
   } catch (error) {
     console.error("Error sending lead notification:", error);
     return false;

@@ -203,7 +203,7 @@ const DriverDashboard = ({
         {/* Logo and Company Name */}
         <div className="p-6">
           <div className="justify-center ">
-            <img src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" alt="Memphis Earth Movers Logo" className="24-w-24-h-object-contain " />
+            <img src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" alt="Memphis Earth Movers Logo" className="h-16 md:h-20 " />
             <span className="text-white font-semibold">Memphis EM</span>
           </div>
         </div>

@@ -24,8 +24,8 @@ Deno.serve(async (req) => {
 
     const { driverId, pin }: AuthRequest = await req.json();
     
-    // Get client IP for rate limiting
-    const clientIP = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
+    // Get client IP for rate limiting (handle comma-separated IPs)
+    const clientIP = (req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1').split(',')[0].trim();
     
     console.log(`Authentication attempt for driver ${driverId} from IP ${clientIP}`);
 

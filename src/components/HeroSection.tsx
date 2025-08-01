@@ -2,6 +2,7 @@
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
+import TypewriterEffect from "./TypewriterEffect";
 
 const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
@@ -28,7 +29,19 @@ const HeroSection = () => {
           <div>
             <h1 className="mb-6 text-xl py-[47px]">
               <span className="block text-mem-babyBlue mb-2 font-extrabold mx-0 text-center text-5xl py-[17px]">Memphis Earth Movers</span>
-              Dump Trucks When You Need Them
+              <span className="bg-gradient-to-r from-mem-darkNavy via-mem-blue to-mem-babyBlue bg-clip-text text-transparent font-bold text-4xl md:text-5xl drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] filter">
+                <TypewriterEffect 
+                  texts={[
+                    "Dump Trucks When You Need Them",
+                    "Reliable Hauling Services",
+                    "Memphis Construction Support",
+                    "On-Time Delivery Guaranteed"
+                  ]}
+                  speed={80}
+                  deleteSpeed={40}
+                  pauseTime={3000}
+                />
+              </span>
             </h1>
             
             {/* Added clear service summary for LLMs per SEO report recommendation */}
@@ -42,16 +55,31 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 px-[7px] mx-0 my-[6px] rounded">
-              <Link to="servicesSection" smooth={true} duration={500} offset={-100} className="mem-btn-primary">
+              <Link 
+                to="servicesSection" 
+                smooth={true} 
+                duration={500} 
+                offset={-100} 
+                className="mem-btn-primary hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] transition-all duration-300"
+              >
                 Our Services
               </Link>
-              <RouterLink to="/hourly-dump-truck-rental" className="mem-btn-secondary">
+              <RouterLink 
+                to="/hourly-dump-truck-rental" 
+                className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300"
+              >
                 Hourly Rental
               </RouterLink>
-              <RouterLink to="/memphis-gravel-delivery" className="mem-btn-secondary">
+              <RouterLink 
+                to="/memphis-gravel-delivery" 
+                className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300"
+              >
                 Gravel Delivery
               </RouterLink>
-              <a href="tel:9014611011" className="mem-btn-secondary">
+              <a 
+                href="tel:9014611011" 
+                className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300"
+              >
                 Call Now
               </a>
             </div>

@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     date: "August 1, 2025",
     readTime: 15,
     excerpt: "Stop dealing with dump truck breakdowns, driver no-shows, and maintenance costs. Learn why Memphis contractors are switching to hourly dump truck rentals for flexible, cost-effective hauling solutions.",
-    image: "/lovable-uploads/456a8f77-2454-4dc4-b659-2c327057f3fe.png",
+    image: "/lovable-uploads/30fad43b-82f9-4e13-9677-726047059638.png",
     content: hourlyDumpTruckRentalContent
   },
   {

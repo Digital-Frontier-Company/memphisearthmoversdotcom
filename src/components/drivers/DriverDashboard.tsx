@@ -254,7 +254,7 @@ const DriverDashboard = ({
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-6 overflow-auto">
+        <main className="flex-1 p-6 pt-8 overflow-auto">
           {renderContent()}
         </main>
       </div>

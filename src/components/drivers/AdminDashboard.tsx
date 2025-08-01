@@ -579,7 +579,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-8 max-w-none">
+        <main className="flex-1 p-8 pt-12 max-w-none">
           {activeTab === 'dashboard' && <DashboardContent />}
           {activeTab !== 'dashboard' && (
             <div className="flex items-center justify-center h-64">

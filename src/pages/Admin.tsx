@@ -33,27 +33,27 @@ const Admin = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       
-      <Header />
-      
-      <main className="min-h-screen bg-mem-darkNavy">
-        <div className="py-16">
-          <div className="mem-container">
-            {!loggedInAdmin ? (
-              <div className="max-w-md mx-auto">
-                <div className="text-center mb-8">
-                  <h1 className="text-3xl font-bold text-white mb-4">Admin Access</h1>
-                  <p className="text-white/80">Please log in with admin credentials to access the management dashboard.</p>
+      {!loggedInAdmin ? (
+        <>
+          <Header />
+          <main className="min-h-screen bg-mem-darkNavy">
+            <div className="py-16">
+              <div className="mem-container">
+                <div className="max-w-md mx-auto">
+                  <div className="text-center mb-8">
+                    <h1 className="text-3xl font-bold text-white mb-4">Admin Access</h1>
+                    <p className="text-white/80">Please log in with admin credentials to access the management dashboard.</p>
+                  </div>
+                  <DriverLogin onLogin={handleLogin} />
                 </div>
-                <DriverLogin onLogin={handleLogin} />
               </div>
-            ) : (
-              <AdminDashboard driver={loggedInAdmin} onLogout={handleLogout} />
-            )}
-          </div>
-        </div>
-      </main>
-      
-      <Footer />
+            </div>
+          </main>
+          <Footer />
+        </>
+      ) : (
+        <AdminDashboard driver={loggedInAdmin} onLogout={handleLogout} />
+      )}
     </>
   );
 };

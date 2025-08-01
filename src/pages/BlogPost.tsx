@@ -13,6 +13,7 @@ import BlogFaqSchema from "@/components/blog/BlogFaqSchema";
 import ConstructionBoomFaqSchema from "@/components/blog/ConstructionBoomFaqSchema";
 import MemphisConstructionFaqSchema from "@/components/blog/MemphisConstructionFaqSchema";
 import DumpTruckCapacityFaqSchema from "@/components/blog/DumpTruckCapacityFaqSchema";
+import HourlyDumpTruckRentalFaqSchema from "@/components/blog/HourlyDumpTruckRentalFaqSchema";
 import BackToTopButton from "@/components/BackToTopButton";
 
 const BlogPost = () => {
@@ -63,6 +64,10 @@ const BlogPost = () => {
     metaDescription = "Learn cubic-yard and ton capacities for Memphis dump trucks. Complete guide to choosing the right earth-mover truck, calculating materials, and comparing hauling services in Memphis area.";
   }
 
+  if (post.slug === "dump-truck-headaches-rent-by-hour-memphis") {
+    metaDescription = "Stop dealing with dump truck breakdowns, driver no-shows, and maintenance costs. Learn why Memphis contractors are switching to hourly dump truck rentals for flexible, cost-effective hauling solutions.";
+  }
+
   // Generate SEO-optimized title (under 60 characters)
   const seoTitle = post.title.length > 58 ? `${post.title.substring(0, 55)}...` : post.title;
   
@@ -110,12 +115,24 @@ const BlogPost = () => {
             <meta property="article:tag" content="Memphis,dump truck,capacity,gravel,materials" />
           </>
         )}
+
+        {/* Additional SEO tags for hourly dump truck rental post */}
+        {post.slug === "dump-truck-headaches-rent-by-hour-memphis" && (
+          <>
+            <meta name="keywords" content="hourly dump truck rental Memphis, Memphis dump truck rental, dump truck headaches, dump truck rental by hour, Memphis construction rentals, dump truck services Memphis" />
+            <meta property="article:published_time" content="2025-08-01" />
+            <meta property="article:author" content="Memphis Earth Movers" />
+            <meta property="article:section" content="Equipment Rental" />
+            <meta property="article:tag" content="Memphis,dump truck rental,hourly rental,construction equipment,cost savings" />
+          </>
+        )}
       </Helmet>
       <FaqSchema faqs={postFaqs} url={canonicalUrl} />
       <BlogFaqSchema />
       {post.slug === "memphis-construction-boom-shelby-county" && <ConstructionBoomFaqSchema />}
       {post.slug === "navigating-new-construction-memphis-opportunities" && <MemphisConstructionFaqSchema />}
       {post.slug === "dump-truck-gravel-capacity-memphis" && <DumpTruckCapacityFaqSchema />}
+      {post.slug === "dump-truck-headaches-rent-by-hour-memphis" && <HourlyDumpTruckRentalFaqSchema />}
       <Header />
       <BlogPostBreadcrumbs title={post.title} />
       <main className="flex-grow">

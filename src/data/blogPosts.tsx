@@ -6,8 +6,18 @@ import memphisClayContent from "./blogContents/memphisClayContent";
 import memphisConstructionBoomContent from "./blogContents/memphisConstructionBoomContent";
 import memphisConstructionOpportunitiesContent from "./blogContents/memphisConstructionOpportunitiesContent";
 import dumpTruckGravelCapacityContent from "./blogContents/dumpTruckGravelCapacityContent";
+import hourlyDumpTruckRentalContent from "./blogContents/hourlyDumpTruckRentalContent";
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "dump-truck-headaches-rent-by-hour-memphis",
+    title: "Dump-Truck Headaches? Rent by the Hour and Keep Your Memphis Projects Rolling",
+    date: "August 1, 2025",
+    readTime: 15,
+    excerpt: "Stop dealing with dump truck breakdowns, driver no-shows, and maintenance costs. Learn why Memphis contractors are switching to hourly dump truck rentals for flexible, cost-effective hauling solutions.",
+    image: "/lovable-uploads/456a8f77-2454-4dc4-b659-2c327057f3fe.png",
+    content: hourlyDumpTruckRentalContent
+  },
   {
     slug: "dump-truck-gravel-capacity-memphis",
     title: "How Much Gravel Fits in a Dump Truck? Memphis Earthmovers Guide",

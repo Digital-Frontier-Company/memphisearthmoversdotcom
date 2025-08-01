@@ -5,17 +5,18 @@ import QuoteForm from "./QuoteForm";
 
 const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Overlay and Gradient Morphing */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/lovable-uploads/edb19aa6-8735-48cb-8854-e51964558b65.png" 
+          src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" 
           alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" 
           className="w-full h-full object-cover opacity-75" 
           width="1920" 
           height="1080"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-black/25"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-mem-blue/20 via-mem-babyBlue/30 to-mem-darkNavy/40 animate-gradient-morph"></div>
+        <div className="absolute inset-0 bg-black/15"></div>
       </div>
       
       {/* Glowing Baby Blue Light Effect */}

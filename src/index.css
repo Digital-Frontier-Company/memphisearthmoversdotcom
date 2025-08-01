@@ -185,4 +185,38 @@
   .mem-stagger-fade:nth-child(4).visible { transition-delay: 0.3s; }
   .mem-stagger-fade:nth-child(5).visible { transition-delay: 0.4s; }
   .mem-stagger-fade:nth-child(6).visible { transition-delay: 0.5s; }
+
+  /* Gradient Morphing Animation */
+  @keyframes gradient-morph {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient-morph {
+    background-size: 400% 400%;
+    animation: gradient-morph 8s ease-in-out infinite;
+  }
+
+  /* Fade-in Animation for Page Transitions */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
 }

@@ -304,24 +304,12 @@
 
   .morphing-grid-bg {
     position: relative;
-    background: #000;
-  }
-
-  .morphing-grid-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: linear-gradient(45deg, 
       #1a1a2e 0%, 
       #16213e 25%, 
       #0f3460 50%, 
       #1a1a2e 75%, 
       #000 100%);
-    animation: morphBackground 8s ease-in-out infinite;
-    z-index: 0;
   }
 
   .morphing-grid-bg::after {
@@ -348,12 +336,6 @@
       150px 150px, 
       80px 80px;
     filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.6));
-    animation: 
-      gridPulse 3s ease-in-out infinite, 
-      gridWave 10s linear infinite,
-      gridFloat 6s ease-in-out infinite alternate,
-      accentFloat 8s ease-in-out infinite,
-      particleFloat 12s linear infinite;
     z-index: 1;
   }
 

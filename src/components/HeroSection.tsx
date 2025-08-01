@@ -27,22 +27,24 @@ const HeroSection = () => {
       <div className="mem-container relative z-10 py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
-            <h1 className="mb-6 text-xl py-[47px]">
-              <span className="block text-mem-babyBlue mb-2 font-extrabold mx-0 text-center text-5xl py-[17px]">Memphis Earth Movers</span>
-              <span className="bg-gradient-to-r from-mem-darkNavy via-mem-blue to-mem-babyBlue bg-clip-text text-transparent font-bold text-4xl md:text-5xl drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] filter">
-                <TypewriterEffect 
-                  texts={[
-                    "Dump Trucks When You Need Them",
-                    "Reliable Hauling Services",
-                    "Memphis Construction Support",
-                    "On-Time Delivery Guaranteed"
-                  ]}
-                  speed={80}
-                  deleteSpeed={40}
-                  pauseTime={3000}
-                />
-              </span>
-            </h1>
+            <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 mb-6">
+              <h1 className="mb-6 text-xl py-[47px]">
+                <span className="block text-mem-babyBlue mb-2 font-extrabold mx-0 text-center text-5xl py-[17px]">Memphis Earth Movers</span>
+                <span className="bg-gradient-to-r from-mem-darkNavy via-mem-blue to-mem-babyBlue bg-clip-text text-transparent font-bold text-4xl md:text-5xl drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] filter">
+                  <TypewriterEffect 
+                    texts={[
+                      "Dump Trucks When You Need Them",
+                      "Reliable Hauling Services",
+                      "Memphis Construction Support",
+                      "On-Time Delivery Guaranteed"
+                    ]}
+                    speed={80}
+                    deleteSpeed={40}
+                    pauseTime={3000}
+                  />
+                </span>
+              </h1>
+            </div>
             
             {/* Added clear service summary for LLMs per SEO report recommendation */}
             <p className="text-xl mb-4 max-w-xl">
@@ -87,6 +89,15 @@ const HeroSection = () => {
           
           <div className="mem-card">
             <h2 className="text-2xl font-bold mb-4">Get a Free Quote</h2>
+            <div className="text-center mb-4">
+              <RouterLink 
+                to="/contact" 
+                className="mem-btn-primary hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] transition-all duration-300 inline-block"
+              >
+                Request Quote Now
+              </RouterLink>
+            </div>
+            <div className="text-white/70 text-sm mb-4">or fill out the form below:</div>
             <QuoteForm />
           </div>
         </div>

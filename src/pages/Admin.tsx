@@ -36,7 +36,7 @@ const Admin = () => {
       {!loggedInAdmin ? (
         <>
           <Header />
-          <main className="min-h-screen mesh-gradient-bg">
+          <main className="min-h-screen morphing-grid-bg">
             <div className="py-16">
               <div className="mem-container">
                 <div className="max-w-md mx-auto">

@@ -94,7 +94,7 @@ const AggregateDelivery = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col mesh-gradient-bg">
+    <div className="min-h-screen flex flex-col morphing-grid-bg">
       <Helmet>
         <title>Aggregate Delivery | Memphis Earth Movers</title>
         <meta name="description" content="Fast aggregate delivery in Memphis, TN. Quality gravel, sand, crushed stone, and construction materials delivered by experienced professionals. $400 per 15-ton load." />

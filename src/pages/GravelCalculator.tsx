@@ -211,7 +211,7 @@ const GravelCalculator = () => {
         </script>
       </Helmet>
       
-      <div className="min-h-screen flex flex-col mesh-gradient-bg">
+      <div className="min-h-screen flex flex-col morphing-grid-bg">
         <Header />
         
         <main className="flex-grow">

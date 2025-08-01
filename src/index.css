@@ -204,37 +204,162 @@
     animation: gradient-morph 8s ease-in-out infinite;
   }
 
-  /* Mesh Grid Morphing Animation */
-  @keyframes mesh-grid-morph {
-    0% {
-      background-position: 0% 0%, 0% 0%;
-      opacity: 0.3;
+  /* Morphing Grid Background Animations */
+  @keyframes morphBackground {
+    0%, 100% {
+      background: linear-gradient(45deg, 
+        #1a1a2e 0%, 
+        #16213e 25%, 
+        #0f3460 50%, 
+        #1a1a2e 75%, 
+        #000 100%);
+      transform: scale(1);
     }
     25% {
-      background-position: 25% 25%, 25% 25%;
-      opacity: 0.5;
+      background: linear-gradient(135deg, 
+        #0f3460 0%, 
+        #1a1a2e 25%, 
+        #16213e 50%, 
+        #000 75%, 
+        #1a1a2e 100%);
+      transform: scale(1.02);
     }
     50% {
-      background-position: 50% 50%, 50% 50%;
-      opacity: 0.7;
+      background: linear-gradient(225deg, 
+        #16213e 0%, 
+        #0f3460 25%, 
+        #000 50%, 
+        #1a1a2e 75%, 
+        #16213e 100%);
+      transform: scale(1.01);
     }
     75% {
-      background-position: 75% 75%, 75% 75%;
-      opacity: 0.5;
-    }
-    100% {
-      background-position: 100% 100%, 100% 100%;
-      opacity: 0.3;
+      background: linear-gradient(315deg, 
+        #000 0%, 
+        #1a1a2e 25%, 
+        #0f3460 50%, 
+        #16213e 75%, 
+        #1a1a2e 100%);
+      transform: scale(1.03);
     }
   }
 
-  .mesh-gradient-bg {
-    background: 
-      linear-gradient(135deg, #1e3a8a 0%, #000000 50%, #1e3a8a 100%),
-      linear-gradient(45deg, transparent 40%, cyan 50%, transparent 60%),
-      linear-gradient(-45deg, transparent 40%, cyan 50%, transparent 60%);
-    background-size: 200% 200%, 60px 60px, 60px 60px;
-    animation: mesh-grid-morph 12s ease-in-out infinite;
+  @keyframes gridFloat {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes gridPulse {
+    0%, 100% {
+      opacity: 0.7;
+      filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.6));
+    }
+    50% {
+      opacity: 0.9;
+      filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.8));
+    }
+  }
+
+  @keyframes gridWave {
+    0% {
+      transform: translateX(0) translateY(0) rotateZ(0deg);
+    }
+    25% {
+      transform: translateX(10px) translateY(-5px) rotateZ(1deg);
+    }
+    50% {
+      transform: translateX(0) translateY(-10px) rotateZ(0deg);
+    }
+    75% {
+      transform: translateX(-10px) translateY(-5px) rotateZ(-1deg);
+    }
+    100% {
+      transform: translateX(0) translateY(0) rotateZ(0deg);
+    }
+  }
+
+  @keyframes accentFloat {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.02) rotate(1deg);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(0) rotateX(0deg);
+    }
+    100% {
+      transform: translateY(-100px) rotateX(360deg);
+    }
+  }
+
+  .morphing-grid-bg {
+    position: relative;
+    background: #000;
+  }
+
+  .morphing-grid-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+      #1a1a2e 0%, 
+      #16213e 25%, 
+      #0f3460 50%, 
+      #1a1a2e 75%, 
+      #000 100%);
+    animation: morphBackground 8s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  .morphing-grid-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 255, 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 255, 0.5) 1px, transparent 1px),
+      linear-gradient(to right, rgba(0, 255, 255, 0.7) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(0, 255, 255, 0.7) 2px, transparent 2px),
+      radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.3) 2px, transparent 2px),
+      radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+      radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.4) 1.5px, transparent 1.5px);
+    background-size: 
+      50px 50px, 
+      50px 50px,
+      200px 200px,
+      200px 200px,
+      100px 100px, 
+      150px 150px, 
+      80px 80px;
+    filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.6));
+    animation: 
+      gridPulse 3s ease-in-out infinite, 
+      gridWave 10s linear infinite,
+      gridFloat 6s ease-in-out infinite alternate,
+      accentFloat 8s ease-in-out infinite,
+      particleFloat 12s linear infinite;
+    z-index: 1;
+  }
+
+  .morphing-grid-bg > * {
+    position: relative;
+    z-index: 2;
   }
 
   /* Fade-in Animation for Page Transitions */

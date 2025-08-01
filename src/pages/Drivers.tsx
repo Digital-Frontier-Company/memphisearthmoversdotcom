@@ -18,7 +18,7 @@ const Drivers = () => {
       
       <Header />
       
-      <main className="min-h-screen mesh-gradient-bg">
+      <main className="min-h-screen morphing-grid-bg">
         <div className="py-[5px]">
           <div className="mem-container px-0 mx-[480px]">
             {!loggedInDriver ? <DriverLogin onLogin={setLoggedInDriver} /> : <DriverDashboard driver={loggedInDriver} onLogout={handleLogout} />}

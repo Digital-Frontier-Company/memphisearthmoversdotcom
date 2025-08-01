@@ -21,7 +21,7 @@ import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 
 const HourlyDumpTruckRentals = () => {
   return (
-    <div className="min-h-screen flex flex-col mesh-gradient-bg">
+    <div className="min-h-screen flex flex-col morphing-grid-bg">
       <Helmet>
         <title>Hourly Dump Truck Rental Memphis - Starting at $125/Hour | Memphis Earth Movers</title>
         <meta name="description" content="Save 43% on hourly dump truck rentals in Memphis. $125/hour with same-day availability for contractors. CDL drivers, insurance included. Call (901) 461-1011 for instant quotes." />

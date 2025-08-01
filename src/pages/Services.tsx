@@ -73,7 +73,7 @@ const ServicesFaqSchema = {
 
 const Services = () => {
   return (
-    <div className="min-h-screen flex flex-col mesh-gradient-bg">
+    <div className="min-h-screen flex flex-col morphing-grid-bg">
       <LocalBusinessSchema 
         page="services"
         pageSpecificDesc="Affordable Memphis dump truck services with same-day availability. Hourly dump trucks for Memphis contractors and homeowners - fully licensed hauling for any size project." 

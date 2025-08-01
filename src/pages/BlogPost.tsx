@@ -67,7 +67,7 @@ const BlogPost = () => {
   const seoTitle = post.title.length > 58 ? `${post.title.substring(0, 55)}...` : post.title;
   
   return (
-    <div className="min-h-screen flex flex-col mesh-gradient-bg">
+    <div className="min-h-screen flex flex-col morphing-grid-bg">
       <Helmet>
         <title>{`${seoTitle} | Memphis Earth Movers`}</title>
         <meta name="description" content={metaDescription} />

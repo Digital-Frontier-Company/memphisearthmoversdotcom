@@ -1,41 +1,61 @@
 import { useState, useEffect } from "react";
-import { Users, DollarSign, Clock, Eye, Download, Edit3, Plus, Trash2, Save, X } from "lucide-react";
+import { 
+  Users, 
+  DollarSign, 
+  Clock, 
+  Eye, 
+  Download, 
+  Edit3, 
+  Plus, 
+  Trash2, 
+  Save, 
+  X,
+  BarChart3,
+  PieChart,
+  Activity,
+  Settings,
+  FileText,
+  Calendar,
+  TrendingUp,
+  Search,
+  Bell,
+  ChevronDown,
+  MoreHorizontal
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { 
+  BarChart, 
+  Bar, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  PieChart as RechartsPieChart,
+  Pie,
+  Cell,
+  Legend
+} from 'recharts';
+import { toast } from "sonner";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 
-// --- START OF FIXES ---
-
-// FIX 1: Define a constant for the target timezone for consistency and maintainability.
+// Timezone helper
 const TIME_ZONE = 'America/Chicago';
-
-/**
- * Helper function to create a Date object from form inputs, assuming the inputs are in a specific timezone.
- * It works by finding the correct offset from UTC for that timezone on that specific date.
- * @param {string} dateStr - The date string, e.g., "2024-07-04".
- * @param {string} timeStr - The time string, e.g., "10:30".
- * @returns {Date | null} A timezone-correct Date object or null if inputs are invalid.
- */
-const createDateInTimeZone = (dateStr, timeStr) => {
-  if (!dateStr || !timeStr) return null;
-
-  // Create a naive Date object by combining the date and time and treating it as a UTC value.
-  // This avoids any interference from the browser's local timezone.
-  const naiveDate = new Date(`${dateStr}T${timeStr}:00.000Z`);
-
-  // A trick to find the offset: compare the time in UTC vs. the target timezone.
-  const utcTime = new Date(naiveDate.toLocaleString('en-US', { timeZone: 'UTC' })).getTime();
-  const tzTime = new Date(naiveDate.toLocaleString('en-US', { timeZone: TIME_ZONE })).getTime();
-  const offsetMilliseconds = utcTime - tzTime;
-
-  // Apply the offset to the naive UTC date to get the true UTC equivalent of the wall time.
-  return new Date(naiveDate.getTime() - offsetMilliseconds);
-};
-
-// --- END OF FIXES ---
 
 interface Driver {
   id: string;
@@ -66,6 +86,9 @@ interface DriverData {
   regularHours: number;
   overtimeHours: number;
   lastActivity: string;
+  status: 'Active' | 'Inactive' | 'On Break';
+  tasks: number;
+  performance: number;
 }
 
 interface TimeEntry {
@@ -83,33 +106,33 @@ interface TimeEntry {
 const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
   const [driversData, setDriversData] = useState<DriverData[]>([]);
   const [timeEntries, setTimeEntries] = useState<TimeEntry[]>([]);
-  const [selectedDriver, setSelectedDriver] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [exportLoading, setExportLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState<'overview' | 'drivers' | 'timeentries'>('overview');
-  const [editingDriver, setEditingDriver] = useState<string | null>(null);
-  const [editingTimeEntry, setEditingTimeEntry] = useState<string | null>(null);
-  const [isCreatingDriver, setIsCreatingDriver] = useState(false);
-  const [isCreatingTimeEntry, setIsCreatingTimeEntry] = useState(false);
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'drivers' | 'time-tracking' | 'tasks' | 'earnings' | 'reports' | 'settings'>('dashboard');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [weeklyData, setWeeklyData] = useState([
+    { day: 'Mon', hours: 42 },
+    { day: 'Tue', hours: 38 },
+    { day: 'Wed', hours: 45 },
+    { day: 'Thu', hours: 40 },
+    { day: 'Fri', hours: 43 },
+    { day: 'Sat', hours: 28 },
+    { day: 'Sun', hours: 15 }
+  ]);
 
-  const [driverForm, setDriverForm] = useState({
-    name: "",
-    hourly_rate: "",
-    phone: "",
-    email: "",
-    truck_assigned: "",
-    pin: ""
-  });
+  const pieData = [
+    { name: 'Active Driving', value: 65, color: '#3B82F6' },
+    { name: 'Loading/Unloading', value: 20, color: '#10B981' },
+    { name: 'Breaks', value: 10, color: '#F59E0B' },
+    { name: 'Maintenance', value: 3, color: '#F97316' },
+    { name: 'Other', value: 2, color: '#EC4899' }
+  ];
 
-  const [timeEntryForm, setTimeEntryForm] = useState({
-    driver_id: "",
-    date: "",
-    clock_in_time: "",
-    clock_out_time: "",
-    hours_worked: "",
-    truck_number: "",
-    job_address: ""
-  });
+  const recentActivities = [
+    { id: 1, driver: 'Michael Johnson', action: 'clocked in', time: 'Today, 8:05 AM', type: 'clock-in' },
+    { id: 2, task: 'Task #1042', action: 'completed', time: 'Today, 10:23 AM', type: 'task' },
+    { id: 3, driver: 'Sarah Williams', action: 'clocked out', time: 'Today, 5:15 PM', type: 'clock-out' },
+    { id: 4, task: 'Task #1043', action: 'started', time: 'Today, 2:30 PM', type: 'task' }
+  ];
 
   useEffect(() => {
     fetchAllData();
@@ -169,7 +192,10 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
         totalEarnings: earnings?.total_earnings || 0,
         regularHours: earnings?.regular_hours || 0,
         overtimeHours: earnings?.overtime_hours || 0,
-        lastActivity: lastEntry?.created_at || "No activity"
+        lastActivity: lastEntry?.created_at || "No activity",
+        status: 'Active',
+        tasks: Math.floor(Math.random() * 15) + 5,
+        performance: Math.floor(Math.random() * 30) + 70
       });
     }
 
@@ -211,259 +237,359 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
     };
   };
 
-  const startEditingDriver = (driverData: DriverData) => {
-    setEditingDriver(driverData.id);
-    setDriverForm({
-      name: driverData.name,
-      hourly_rate: driverData.hourly_rate.toString(),
-      phone: driverData.phone || "",
-      email: driverData.email || "",
-      truck_assigned: driverData.truck_assigned || "",
-      pin: ""
-    });
-  };
+  const totalDrivers = driversData.length;
+  const totalHours = driversData.reduce((sum, driver) => sum + driver.totalHours, 0);
+  const totalEarnings = driversData.reduce((sum, driver) => sum + driver.totalEarnings, 0);
+  const activeTasks = driversData.reduce((sum, driver) => sum + driver.tasks, 0);
 
-  const startEditingTimeEntry = (entry: TimeEntry) => {
-    setEditingTimeEntry(entry.id);
+  const sidebarItems = [
+    { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
+    { id: 'drivers', label: 'Drivers', icon: Users },
+    { id: 'time-tracking', label: 'Time Tracking', icon: Clock },
+    { id: 'tasks', label: 'Tasks', icon: FileText },
+    { id: 'earnings', label: 'Earnings', icon: DollarSign },
+    { id: 'reports', label: 'Reports', icon: TrendingUp },
+    { id: 'settings', label: 'Settings', icon: Settings }
+  ];
 
-    // FIX 2: When populating the form for editing, convert the UTC time from the database
-    // into the local time string for the US Central timezone.
-    const commonTimeOptions = { hour12: false, hour: '2-digit' as const, minute: '2-digit' as const };
-    const formatInCentralTime = (dateString) => {
-        if (!dateString) return "";
-        return new Date(dateString).toLocaleTimeString('en-US', { ...commonTimeOptions, timeZone: TIME_ZONE });
-    };
-    
-    setTimeEntryForm({
-      driver_id: entry.driver_id,
-      date: entry.date,
-      clock_in_time: formatInCentralTime(entry.clock_in_time),
-      clock_out_time: formatInCentralTime(entry.clock_out_time),
-      hours_worked: entry.hours_worked?.toString() || "",
-      truck_number: entry.truck_number,
-      job_address: entry.job_address || ""
-    });
-  };
+  const DashboardContent = () => (
+    <div className="space-y-6">
+      {/* Metrics Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 text-white">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-blue-100 text-sm font-medium">Total Drivers</p>
+                <p className="text-3xl font-bold">{totalDrivers}</p>
+                <p className="text-xs text-blue-100 mt-1">↗ +4 this month</p>
+              </div>
+              <div className="bg-white/20 p-3 rounded-lg">
+                <Users className="h-6 w-6" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-  const saveDriver = async (driverId?: string) => {
-    if (!driverForm.name || !driverForm.hourly_rate) {
-      toast.error("Please fill in name and hourly rate");
-      return;
-    }
+        <Card className="bg-gradient-to-br from-green-500 to-green-600 border-0 text-white">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-green-100 text-sm font-medium">Total Hours</p>
+                <p className="text-3xl font-bold">{totalHours.toFixed(0)}</p>
+                <p className="text-xs text-green-100 mt-1">↗ +87 this week</p>
+              </div>
+              <div className="bg-white/20 p-3 rounded-lg">
+                <Clock className="h-6 w-6" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-    const driverData = {
-      name: driverForm.name,
-      hourly_rate: parseFloat(driverForm.hourly_rate),
-      phone: driverForm.phone || null,
-      email: driverForm.email || null,
-      truck_assigned: driverForm.truck_assigned || null,
-      ...(driverForm.pin && { pin: driverForm.pin })
-    };
+        <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 text-white">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-orange-100 text-sm font-medium">Active Tasks</p>
+                <p className="text-3xl font-bold">{activeTasks}</p>
+                <p className="text-xs text-orange-100 mt-1">⚠ 2 overdue</p>
+              </div>
+              <div className="bg-white/20 p-3 rounded-lg">
+                <FileText className="h-6 w-6" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-    let error;
-    
-    if (driverId) {
-      const { error: updateError } = await supabase
-        .from("drivers")
-        .update(driverData)
-        .eq("id", driverId);
-      error = updateError;
-    } else {
-      const { error: insertError } = await supabase
-        .from("drivers")
-        .insert({
-          ...driverData,
-          pin: driverForm.pin || '0000',
-          role: 'driver',
-          active: true
-        });
-      error = insertError;
-    }
+        <Card className="bg-gradient-to-br from-emerald-500 to-emerald-600 border-0 text-white">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-emerald-100 text-sm font-medium">Total Earnings</p>
+                <p className="text-3xl font-bold">${totalEarnings.toFixed(0)}</p>
+                <p className="text-xs text-emerald-100 mt-1">↗ +12% this month</p>
+              </div>
+              <div className="bg-white/20 p-3 rounded-lg">
+                <DollarSign className="h-6 w-6" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
-    if (error) {
-      toast.error(`Failed to ${driverId ? 'update' : 'create'} driver`);
-      return;
-    }
+      {/* Charts Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-lg font-semibold">Hours Tracked (Weekly)</CardTitle>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" className="bg-blue-500 text-white border-blue-500">Week</Button>
+              <Button variant="outline" size="sm">Month</Button>
+              <Button variant="outline" size="sm">Year</Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={weeklyData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <XAxis dataKey="day" stroke="#9CA3AF" />
+                <YAxis stroke="#9CA3AF" />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: '#1F2937', 
+                    border: '1px solid #374151',
+                    borderRadius: '8px',
+                    color: '#F3F4F6'
+                  }} 
+                />
+                <Bar dataKey="hours" fill="#3B82F6" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
 
-    toast.success(`Driver ${driverId ? 'updated' : 'created'} successfully!`);
-    setEditingDriver(null);
-    setIsCreatingDriver(false);
-    setDriverForm({ name: "", hourly_rate: "", phone: "", email: "", truck_assigned: "", pin: "" });
-    fetchAllDriversData();
-  };
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-lg font-semibold">Driver Activity Distribution</CardTitle>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" className="bg-blue-500 text-white border-blue-500">Week</Button>
+              <Button variant="outline" size="sm">Month</Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <RechartsPieChart>
+                <Pie
+                  data={pieData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={120}
+                  dataKey="value"
+                  strokeWidth={0}
+                >
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: '#1F2937', 
+                    border: '1px solid #374151',
+                    borderRadius: '8px'
+                  }} 
+                />
+                <Legend 
+                  verticalAlign="bottom" 
+                  height={36}
+                  formatter={(value) => <span style={{ color: '#374151' }}>{value}</span>}
+                />
+              </RechartsPieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
 
-  const saveTimeEntry = async (entryId?: string) => {
-    if (!timeEntryForm.driver_id || !timeEntryForm.date || !timeEntryForm.clock_in_time || !timeEntryForm.truck_number) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
+      {/* Bottom Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-lg font-semibold">Driver Performance</CardTitle>
+            <Select defaultValue="hours">
+              <SelectTrigger className="w-40">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="hours">Hours (High to Low)</SelectItem>
+                <SelectItem value="earnings">Earnings</SelectItem>
+                <SelectItem value="performance">Performance</SelectItem>
+              </SelectContent>
+            </Select>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {driversData.slice(0, 5).map((driver) => (
+                <div key={driver.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <Avatar className="h-8 w-8">
+                      <AvatarFallback className="bg-blue-500 text-white text-xs">
+                        {driver.name.split(' ').map(n => n[0]).join('')}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-medium text-sm">{driver.name}</p>
+                      <p className="text-xs text-gray-500">ID: DRV-{driver.id.slice(-4)}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="text-right">
+                      <p className="text-sm font-medium">{driver.totalHours.toFixed(1)}h</p>
+                      <p className="text-xs text-gray-500">{driver.tasks}/10</p>
+                    </div>
+                    <Badge variant={driver.status === 'Active' ? 'default' : 'secondary'} className="text-xs">
+                      {driver.status}
+                    </Badge>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                        <div 
+                          className="bg-green-500 h-2 rounded-full" 
+                          style={{ width: `${driver.performance}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-gray-500">{driver.performance}%</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-    // FIX 3: Convert form inputs (assumed to be Central Time) into correct UTC Date objects.
-    const clockInDate = createDateInTimeZone(timeEntryForm.date, timeEntryForm.clock_in_time);
-    const clockOutDate = createDateInTimeZone(timeEntryForm.date, timeEntryForm.clock_out_time);
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
+            <Button variant="ghost" size="sm">
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {recentActivities.map((activity) => (
+                <div key={activity.id} className="flex items-center space-x-3">
+                  <div className={`w-2 h-2 rounded-full ${
+                    activity.type === 'clock-in' ? 'bg-green-500' : 
+                    activity.type === 'clock-out' ? 'bg-red-500' : 'bg-blue-500'
+                  }`} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm">
+                      <span className="font-medium">
+                        {activity.driver || activity.task}
+                      </span>
+                      {' '}{activity.action}
+                    </p>
+                    <p className="text-xs text-gray-500">{activity.time}</p>
+                  </div>
+                  {activity.type === 'clock-in' && (
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
 
-    if (!clockInDate) {
-      toast.error("Invalid clock-in time provided.");
-      return;
-    }
-    
-    // FIX 4: Calculate hours worked using the accurate, timezone-aware Date objects.
-    const calculateHours = (start, end) => {
-      if (!start || !end) return 0;
-      const diffMs = end.getTime() - start.getTime();
-      const diffHours = diffMs / (1000 * 60 * 60);
-      return Math.max(0, Math.round(diffHours * 100) / 100);
-    };
-
-    const calculatedHours = clockOutDate ? 
-      calculateHours(clockInDate, clockOutDate) : 
-      parseFloat(timeEntryForm.hours_worked) || null;
-
-    const entryData = {
-      driver_id: timeEntryForm.driver_id,
-      date: timeEntryForm.date,
-      // Convert the timezone-correct Date object to an ISO string for database storage.
-      clock_in_time: clockInDate.toISOString(),
-      clock_out_time: clockOutDate ? clockOutDate.toISOString() : null,
-      hours_worked: calculatedHours,
-      truck_number: timeEntryForm.truck_number,
-      job_address: timeEntryForm.job_address || null
-    };
-
-    let error;
-    
-    if (entryId) {
-      const { error: updateError } = await supabase
-        .from("time_entries")
-        .update(entryData)
-        .eq("id", entryId);
-      error = updateError;
-    } else {
-      const { error: insertError } = await supabase
-        .from("time_entries")
-        .insert(entryData);
-      error = insertError;
-    }
-
-    if (error) {
-      toast.error(`Failed to ${entryId ? 'update' : 'create'} time entry: ${error.message}`);
-      return;
-    }
-
-    toast.success(`Time entry ${entryId ? 'updated' : 'created'} successfully!`);
-    setEditingTimeEntry(null);
-    setIsCreatingTimeEntry(false);
-    setTimeEntryForm({ driver_id: "", date: "", clock_in_time: "", clock_out_time: "", hours_worked: "", truck_number: "", job_address: "" });
-    fetchAllTimeEntries();
-  };
-  
-  // ... (rest of the component is unchanged until the table rendering)
-
-  // Omitted unchanged code for brevity (deleteDriver, exportToCSV, main layout...)
-  
-  // Inside the returned JSX for the `timeentries` tab:
-  // ...
-  <TableBody>
-    {timeEntries.map((entry) => (
-      <TableRow key={entry.id} className="border-b border-mem-babyBlue/10">
-        {editingTimeEntry === entry.id ? (
-          <>
-          {/* Editing row remains the same, as startEditingTimeEntry handles the conversion */}
-          </>
-        ) : (
-          <>
-            <TableCell className="text-white font-semibold">{entry.driver_name}</TableCell>
-            <TableCell className="text-white">
-              {
-                // FIX 5: Display the date by parsing it as UTC to avoid off-by-one-day errors.
-                new Date(entry.date + 'T00:00:00Z').toLocaleDateString('en-US', { timeZone: TIME_ZONE })
-              }
-            </TableCell>
-            <TableCell className="text-white">
-              {
-                // FIX 6: Display the clock-in time converted to the correct Central timezone.
-                new Date(entry.clock_in_time).toLocaleTimeString('en-US', { timeZone: TIME_ZONE })
-              }
-            </TableCell>
-            <TableCell className="text-white">
-              {entry.clock_out_time ? 
-                // FIX 7: Display the clock-out time converted to the correct Central timezone.
-                new Date(entry.clock_out_time).toLocaleTimeString('en-US', { timeZone: TIME_ZONE }) : 
-                <span className="text-yellow-400">In Progress</span>
-              }
-            </TableCell>
-            <TableCell className="text-white">{entry.hours_worked || 0}</TableCell>
-            <TableCell className="text-white">{entry.truck_number}</TableCell>
-            <TableCell className="text-white">{entry.job_address}</TableCell>
-            <TableCell>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                onClick={() => startEditingTimeEntry(entry)}
-                className="text-white border-white/20 hover:bg-white/10"
-              >
-                Edit
-              </Button>
-            </TableCell>
-          </>
-        )}
-      </TableRow>
-    ))}
-  </TableBody>
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500" />
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-mem-darkNavy p-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
-          <Button 
-            onClick={onLogout} 
-            variant="outline"
-            className="text-white border-white hover:bg-white hover:text-mem-darkNavy"
-          >
-            Logout
-          </Button>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex">
+      {/* Sidebar */}
+      <div className="w-64 bg-white dark:bg-gray-800 shadow-lg">
+        <div className="p-6">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">M.E.</span>
+            </div>
+            <span className="text-lg font-semibold text-gray-900 dark:text-white">Memphis Earth Movers</span>
+          </div>
         </div>
+        
+        <nav className="mt-6">
+          {sidebarItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id as any)}
+                className={`w-full flex items-center space-x-3 px-6 py-3 text-left transition-colors ${
+                  isActive 
+                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-r-2 border-blue-600' 
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                }`}
+              >
+                <Icon className="h-5 w-5" />
+                <span className="font-medium">{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-mem-navy/50 p-6 rounded-lg border border-mem-babyBlue/20">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white/80 text-sm">Total Drivers</p>
-                <p className="text-2xl font-bold text-white">{driversData.length}</p>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Header */}
+        <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-between px-6 py-4">
+            <div className="flex items-center space-x-4">
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Admin Dashboard</h1>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Input 
+                  placeholder="Search..." 
+                  className="pl-10 w-64"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
               </div>
-              <Users className="h-8 w-8 text-mem-babyBlue" />
+              
+              <Button variant="ghost" size="sm" className="relative">
+                <Bell className="h-5 w-5" />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+              </Button>
+              
+              <div className="flex items-center space-x-3">
+                <Avatar className="h-8 w-8">
+                  <AvatarFallback className="bg-blue-500 text-white">
+                    {driver.name.split(' ').map(n => n[0]).join('')}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="hidden md:block">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">{driver.name}</p>
+                  <p className="text-xs text-gray-500">Administrator</p>
+                </div>
+                <Button variant="ghost" size="sm" onClick={onLogout}>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
-          
-          <div className="bg-mem-navy/50 p-6 rounded-lg border border-mem-babyBlue/20">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white/80 text-sm">Weekly Earnings</p>
-                <p className="text-2xl font-bold text-white">
-                  ${driversData.reduce((sum, driver) => sum + driver.totalEarnings, 0).toFixed(2)}
-                </p>
-              </div>
-              <DollarSign className="h-8 w-8 text-mem-babyBlue" />
-            </div>
-          </div>
-          
-          <div className="bg-mem-navy/50 p-6 rounded-lg border border-mem-babyBlue/20">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white/80 text-sm">Weekly Hours</p>
-                <p className="text-2xl font-bold text-white">
-                  {driversData.reduce((sum, driver) => sum + driver.totalHours, 0).toFixed(1)}
-                </p>
-              </div>
-              <Clock className="h-8 w-8 text-mem-babyBlue" />
-            </div>
-          </div>
-        </div>
+        </header>
 
-        <div className="text-white">
-          <p>Admin functionality placeholder</p>
-        </div>
+        {/* Page Content */}
+        <main className="flex-1 p-6">
+          {activeTab === 'dashboard' && <DashboardContent />}
+          {activeTab !== 'dashboard' && (
+            <div className="flex items-center justify-center h-64">
+              <div className="text-center">
+                <p className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {sidebarItems.find(item => item.id === activeTab)?.label} Section
+                </p>
+                <p className="text-gray-500">This section is under development</p>
+              </div>
+            </div>
+          )}
+        </main>
       </div>
     </div>
   );

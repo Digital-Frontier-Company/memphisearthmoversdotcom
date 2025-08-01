@@ -32,7 +32,7 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col mesh-gradient-bg">
       <Helmet>
         <title>Memphis Construction & Earthmoving Blog | Expert Tips</title>
         <meta name="description" content="Expert Memphis construction blog with tips for dump truck services and material selection. Memphis dump truck rental guides, local soil solutions, and contractor advice." />

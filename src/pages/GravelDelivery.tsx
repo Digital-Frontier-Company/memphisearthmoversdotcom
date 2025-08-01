@@ -70,7 +70,7 @@ const gravelFaqs = [
 
 const GravelDelivery = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col mesh-gradient-bg">
       <LocalBusinessSchema 
         page="gravel-delivery" 
         pageSpecificDesc="Memphis gravel delivery service - 15-ton loads of recycled asphalt, limestone, or gravel delivered anywhere in Memphis for just $400. Fast and reliable service." 

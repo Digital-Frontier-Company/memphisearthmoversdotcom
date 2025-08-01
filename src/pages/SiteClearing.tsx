@@ -85,7 +85,7 @@ const SiteClearing = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col mesh-gradient-bg">
       <Helmet>
         <title>Site Clearing Services | Memphis Earth Movers</title>
         <meta name="description" content="Professional land clearing and site preparation in Memphis, TN. Expert tree removal, brush clearing, and grading services for construction and development projects." />

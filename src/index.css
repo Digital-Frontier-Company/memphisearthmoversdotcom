@@ -204,6 +204,39 @@
     animation: gradient-morph 8s ease-in-out infinite;
   }
 
+  /* Mesh Grid Morphing Animation */
+  @keyframes mesh-grid-morph {
+    0% {
+      background-position: 0% 0%, 0% 0%;
+      opacity: 0.3;
+    }
+    25% {
+      background-position: 25% 25%, 25% 25%;
+      opacity: 0.5;
+    }
+    50% {
+      background-position: 50% 50%, 50% 50%;
+      opacity: 0.7;
+    }
+    75% {
+      background-position: 75% 75%, 75% 75%;
+      opacity: 0.5;
+    }
+    100% {
+      background-position: 100% 100%, 100% 100%;
+      opacity: 0.3;
+    }
+  }
+
+  .mesh-gradient-bg {
+    background: 
+      linear-gradient(135deg, #1e3a8a 0%, #000000 50%, #1e3a8a 100%),
+      linear-gradient(45deg, transparent 40%, cyan 50%, transparent 60%),
+      linear-gradient(-45deg, transparent 40%, cyan 50%, transparent 60%);
+    background-size: 200% 200%, 60px 60px, 60px 60px;
+    animation: mesh-grid-morph 12s ease-in-out infinite;
+  }
+
   /* Fade-in Animation for Page Transitions */
   @keyframes fade-in {
     0% {

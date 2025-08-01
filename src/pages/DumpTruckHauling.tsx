@@ -95,7 +95,7 @@ const DumpTruckHauling = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col mesh-gradient-bg">
       <Helmet>
         <title>Dump Truck Hauling | Memphis Earth Movers</title>
         <meta name="description" content="Professional dump truck hauling services in Memphis, TN. Reliable material transport, debris removal, and aggregate delivery with experienced CDL drivers from $125/hr." />

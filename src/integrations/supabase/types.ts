@@ -14,6 +14,53 @@ export type Database = {
   }
   public: {
     Tables: {
+      activity_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          actor_name: string
+          created_at: string
+          description: string | null
+          id: string
+          metadata: Json | null
+          target_id: string | null
+          target_name: string | null
+          target_type: string
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          actor_name: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          metadata?: Json | null
+          target_id?: string | null
+          target_name?: string | null
+          target_type: string
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          actor_name?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          metadata?: Json | null
+          target_id?: string | null
+          target_name?: string | null
+          target_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "activity_logs_actor_id_fkey"
+            columns: ["actor_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       drivers: {
         Row: {
           active: boolean | null
@@ -153,6 +200,88 @@ export type Database = {
             columns: ["driver_id"]
             isOneToOne: false
             referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tasks: {
+        Row: {
+          actual_hours: number | null
+          assigned_driver_id: string | null
+          completed_at: string | null
+          created_at: string
+          created_by_id: string | null
+          description: string | null
+          due_date: string | null
+          estimated_hours: number | null
+          id: string
+          job_address: string | null
+          job_site_id: string | null
+          notes: string | null
+          priority: string | null
+          status: string | null
+          title: string
+          truck_number: string | null
+          updated_at: string
+        }
+        Insert: {
+          actual_hours?: number | null
+          assigned_driver_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by_id?: string | null
+          description?: string | null
+          due_date?: string | null
+          estimated_hours?: number | null
+          id?: string
+          job_address?: string | null
+          job_site_id?: string | null
+          notes?: string | null
+          priority?: string | null
+          status?: string | null
+          title: string
+          truck_number?: string | null
+          updated_at?: string
+        }
+        Update: {
+          actual_hours?: number | null
+          assigned_driver_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by_id?: string | null
+          description?: string | null
+          due_date?: string | null
+          estimated_hours?: number | null
+          id?: string
+          job_address?: string | null
+          job_site_id?: string | null
+          notes?: string | null
+          priority?: string | null
+          status?: string | null
+          title?: string
+          truck_number?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_assigned_driver_id_fkey"
+            columns: ["assigned_driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tasks_created_by_id_fkey"
+            columns: ["created_by_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tasks_job_site_id_fkey"
+            columns: ["job_site_id"]
+            isOneToOne: false
+            referencedRelation: "job_sites"
             referencedColumns: ["id"]
           },
         ]
@@ -474,6 +603,19 @@ export type Database = {
       is_current_user_admin: {
         Args: Record<PropertyKey, never>
         Returns: boolean
+      }
+      log_activity: {
+        Args: {
+          p_actor_id: string
+          p_actor_name: string
+          p_action: string
+          p_target_type: string
+          p_target_id?: string
+          p_target_name?: string
+          p_description?: string
+          p_metadata?: Json
+        }
+        Returns: undefined
       }
       log_login_attempt: {
         Args: { p_driver_id: string; p_ip_address: unknown; p_success: boolean }

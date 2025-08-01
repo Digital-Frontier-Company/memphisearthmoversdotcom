@@ -20,14 +20,14 @@ const MobileNavigation = () => {
     <div className="md:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <button className="p-2 text-mem-darkNavy hover:text-mem-blue transition-colors">
+          <button className="p-2 text-blue-600 hover:text-blue-700 transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
             <Menu size={24} />
           </button>
         </SheetTrigger>
         <SheetContent side="right" className="bg-white w-[250px] p-0">
           <div className="flex flex-col h-full">
             <div className="p-4 border-b flex justify-between items-center">
-              <span className="font-bold text-mem-darkNavy">Menu</span>
+              <span className="font-bold text-blue-600 drop-shadow-[1px_1px_1px_rgb(30,58,138)]">Menu</span>
               <button onClick={() => setOpen(false)}>
                 <X size={20} className="text-mem-darkGray" />
               </button>
@@ -36,10 +36,10 @@ const MobileNavigation = () => {
             <nav className="flex flex-col p-4 gap-2">
               <Link 
                 to="/" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -49,10 +49,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/about-us" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/about-us') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -62,10 +62,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/dump-truck-services" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/dump-truck-services') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -75,10 +75,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/hourly-dump-truck-rental" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/hourly-dump-truck-rental') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -88,10 +88,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/memphis-gravel-delivery" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/memphis-gravel-delivery') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -101,10 +101,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/gravel-calculator" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/gravel-calculator') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -114,10 +114,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/blog" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/blog') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -127,10 +127,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/contact" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/contact') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >
@@ -140,10 +140,10 @@ const MobileNavigation = () => {
               
               <Link 
                 to="/drivers" 
-                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)] ${
                   isActive('/drivers') 
-                    ? 'bg-mem-babyBlue/20 text-mem-blue' 
-                    : 'text-mem-darkNavy hover:bg-mem-babyBlue/10'
+                    ? 'bg-mem-babyBlue/20 text-blue-700' 
+                    : 'text-blue-600 hover:bg-mem-babyBlue/10'
                 }`}
                 onClick={handleLinkClick}
               >

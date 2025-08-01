@@ -7,12 +7,12 @@ const Navigation = ({
   isScrolled
 }: NavigationProps) => {
   return <nav className="hidden lg:flex items-center space-x-8">
-      <Link to="/" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
+      <Link to="/" className="text-blue-600 hover:text-blue-700 transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
         Home
       </Link>
       
       <div className="relative group">
-        <button className="text-mem-darkNavy hover:text-mem-blue transition-colors flex items-center">
+        <button className="text-blue-600 hover:text-blue-700 transition-colors flex items-center font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
           Services <ChevronDown size={16} className="ml-1" />
         </button>
         <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -37,21 +37,21 @@ const Navigation = ({
         </div>
       </div>
       
-      <Link to="/gravel-calculator" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
+      <Link to="/gravel-calculator" className="text-blue-600 hover:text-blue-700 transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
         Calculator
       </Link>
-      <Link to="/about-us" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
+      <Link to="/about-us" className="text-blue-600 hover:text-blue-700 transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
         About
       </Link>
-      <Link to="/blog" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
+      <Link to="/blog" className="text-blue-600 hover:text-blue-700 transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
         Blog
       </Link>
-      <Link to="/contact" className="text-mem-darkNavy hover:text-mem-blue transition-colors">
+      <Link to="/contact" className="text-blue-600 hover:text-blue-700 transition-colors font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
         Contact
       </Link>
       
       <div className="relative group">
-        <button className="text-mem-darkNavy hover:text-mem-blue transition-colors flex items-center">
+        <button className="text-blue-600 hover:text-blue-700 transition-colors flex items-center font-bold drop-shadow-[1px_1px_1px_rgb(30,58,138)]">
           Drivers <ChevronDown size={16} className="ml-1" />
         </button>
         <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">

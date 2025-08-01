@@ -199,7 +199,7 @@ const DriverDashboard = ({
   };
   return <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-900 to-black flex">
       {/* Sidebar */}
-      <div className="w-64 bg-black/60 backdrop-blur-sm border-r border-white/10">
+      <div className="w-64 lg:w-64 md:w-56 sm:w-48 bg-black/60 backdrop-blur-sm border-r border-white/10 fixed lg:relative z-50 lg:z-auto h-full lg:block hidden" id="sidebar">
         {/* Logo and Company Name */}
         <div className="p-6">
           <div className="flex items-center justify-center gap-2">
@@ -221,7 +221,7 @@ const DriverDashboard = ({
         </nav>
 
         {/* User Info */}
-        <div className="absolute bottom-0 left-0 w-64 p-4 border-t border-white/10 bg-black/60 backdrop-blur-sm">
+        <div className="absolute bottom-0 left-0 w-full p-4 border-t border-white/10 bg-black/60 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
               <User size={16} className="text-white" />
@@ -238,23 +238,38 @@ const DriverDashboard = ({
         </div>
       </div>
 
+      {/* Mobile Menu Button */}
+      <button 
+        className="lg:hidden fixed top-4 left-4 z-50 bg-black/60 backdrop-blur-sm text-white p-2 rounded-lg border border-white/10"
+        onClick={() => {
+          const sidebar = document.getElementById('sidebar');
+          if (sidebar) {
+            sidebar.classList.toggle('hidden');
+          }
+        }}
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col lg:ml-0">
         {/* Header */}
-        <header className="bg-black/60 backdrop-blur-sm border-b border-white/10 p-6">
+        <header className="bg-black/60 backdrop-blur-sm border-b border-white/10 p-4 lg:p-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-white">Employee Time Tracker</h1>
-              <p className="text-white/60">{getCurrentDate()}</p>
+            <div className="ml-12 lg:ml-0">
+              <h1 className="text-xl lg:text-2xl font-bold text-white">Employee Time Tracker</h1>
+              <p className="text-white/60 text-sm lg:text-base">{getCurrentDate()}</p>
             </div>
-            <button onClick={() => setActiveTab("clock")} className={`px-4 py-2 rounded-lg font-medium transition-colors ${isClocked ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"}`}>
+            <button onClick={() => setActiveTab("clock")} className={`px-3 lg:px-4 py-2 rounded-lg font-medium transition-colors text-sm lg:text-base ${isClocked ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"}`}>
               {isClocked ? "Clock Out" : "Clock In"}
             </button>
           </div>
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-6 pt-8 overflow-auto">
+        <main className="flex-1 p-4 lg:p-6 pt-6 lg:pt-8 overflow-auto">
           {renderContent()}
         </main>
       </div>

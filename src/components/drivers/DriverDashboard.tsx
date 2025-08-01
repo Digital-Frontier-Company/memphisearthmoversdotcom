@@ -22,67 +22,59 @@ interface Driver {
   hourly_rate: number;
   active: boolean;
 }
-
 interface DriverDashboardProps {
   driver: Driver;
   onLogout: () => void;
 }
-
-const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
+const DriverDashboard = ({
+  driver,
+  onLogout
+}: DriverDashboardProps) => {
   if (driver.role === 'admin') {
     return <AdminDashboard driver={driver} onLogout={onLogout} />;
   }
-
   const [activeTab, setActiveTab] = useState("dashboard");
   const [isClocked, setIsClocked] = useState(false);
-  const [weeklyData, setWeeklyData] = useState({ totalHours: 0, totalEarnings: 0 });
-
+  const [weeklyData, setWeeklyData] = useState({
+    totalHours: 0,
+    totalEarnings: 0
+  });
   useEffect(() => {
     checkClockStatus();
     fetchWeeklyData();
   }, [driver.id]);
-
   const checkClockStatus = async () => {
     // FIX 2: Determine the current date in the specified timezone to prevent errors across different user timezones.
     // The 'en-CA' locale reliably gives a YYYY-MM-DD format.
-    const todayInCentralTz = new Date().toLocaleDateString('en-CA', { timeZone: TIME_ZONE });
-    
-    const { data } = await supabase
-      .from("time_entries")
-      .select("*")
-      .eq("driver_id", driver.id)
-      .eq("date", todayInCentralTz) // Check against the correct, timezone-aware date.
-      .is("clock_out_time", null)
-      .single();
-
+    const todayInCentralTz = new Date().toLocaleDateString('en-CA', {
+      timeZone: TIME_ZONE
+    });
+    const {
+      data
+    } = await supabase.from("time_entries").select("*").eq("driver_id", driver.id).eq("date", todayInCentralTz) // Check against the correct, timezone-aware date.
+    .is("clock_out_time", null).single();
     setIsClocked(!!data);
   };
-
   const fetchWeeklyData = async () => {
     // FIX 3: Calculate the start of the week based on the current date in the US Central timezone.
     const now = new Date();
     // Create a new Date object that reflects the "wall time" in the target timezone.
-    const centralNow = new Date(now.toLocaleString('en-US', { timeZone: TIME_ZONE }));
-    
+    const centralNow = new Date(now.toLocaleString('en-US', {
+      timeZone: TIME_ZONE
+    }));
     const dayOfWeek = centralNow.getDay(); // 0=Sunday, 1=Monday, etc.
     const diff = centralNow.getDate() - dayOfWeek;
     const sunday = new Date(centralNow.setDate(diff));
-    
+
     // Format the date into YYYY-MM-DD for the database query.
     const start = sunday.toISOString().split('T')[0];
-    
     await supabase.rpc('calculate_weekly_earnings', {
       p_driver_id: driver.id,
       p_week_start: start
     });
-
-    const { data } = await supabase
-      .from("weekly_earnings")
-      .select("*")
-      .eq("driver_id", driver.id)
-      .eq("week_start_date", start)
-      .single();
-
+    const {
+      data
+    } = await supabase.from("weekly_earnings").select("*").eq("driver_id", driver.id).eq("week_start_date", start).single();
     if (data) {
       setWeeklyData({
         totalHours: data.total_hours || 0,
@@ -90,30 +82,41 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
       });
     }
   };
-
-  const menuItems = [
-    { id: "dashboard", label: "Dashboard", icon: Home },
-    { id: "clock", label: "Clock In/Out", icon: Clock },
-    { id: "edit", label: "Edit Time", icon: Edit },
-    { id: "earnings", label: "Earnings", icon: DollarSign },
-    { id: "log", label: "Time Log", icon: Plus },
-  ];
-
+  const menuItems = [{
+    id: "dashboard",
+    label: "Dashboard",
+    icon: Home
+  }, {
+    id: "clock",
+    label: "Clock In/Out",
+    icon: Clock
+  }, {
+    id: "edit",
+    label: "Edit Time",
+    icon: Edit
+  }, {
+    id: "earnings",
+    label: "Earnings",
+    icon: DollarSign
+  }, {
+    id: "log",
+    label: "Time Log",
+    icon: Plus
+  }];
   const getCurrentDate = () => {
     // FIX 4: Display the current date in the header using the US Central timezone.
-    return new Date().toLocaleDateString('en-US', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
+    return new Date().toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
       day: 'numeric',
-      timeZone: TIME_ZONE, 
+      timeZone: TIME_ZONE
     });
   };
-  
+
   // --- The rest of the component remains unchanged ---
 
-  const renderDashboardView = () => (
-    <div className="space-y-6">
+  const renderDashboardView = () => <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
@@ -167,25 +170,23 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
       <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-white">Recent Time Entries</h3>
-          <button 
-            onClick={() => setActiveTab("log")}
-            className="text-blue-400 hover:text-blue-300 text-sm"
-          >
+          <button onClick={() => setActiveTab("log")} className="text-blue-400 hover:text-blue-300 text-sm">
             View All →
           </button>
         </div>
         <TimeLog driver={driver} />
       </div>
-    </div>
-  );
-
+    </div>;
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":
         return renderDashboardView();
       case "clock":
         // Pass the corrected checkClockStatus and fetchWeeklyData to update status and data after clocking in/out
-        return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={() => { checkClockStatus(); fetchWeeklyData(); }} />;
+        return <TimeClock driver={driver} isClocked={isClocked} onStatusChange={() => {
+          checkClockStatus();
+          fetchWeeklyData();
+        }} />;
       case "edit":
         return <EditHours driver={driver} />;
       case "earnings":
@@ -196,19 +197,13 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
         return renderDashboardView();
     }
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-900 to-black flex">
+  return <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-900 to-black flex">
       {/* Sidebar */}
       <div className="w-64 bg-black/60 backdrop-blur-sm border-r border-white/10">
         {/* Logo and Company Name */}
-        <div className="p-6 border-b border-white/10">
-          <div className="flex items-center gap-3">
-            <img 
-              src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" 
-              alt="Memphis Earth Movers Logo" 
-              className="w-10 h-10 object-contain"
-            />
+        <div className="p-6">
+          <div className="justify-center ">
+            <img src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" alt="Memphis Earth Movers Logo" className="24-w-24-h-object-contain " />
             <span className="text-white font-semibold">Memphis EM</span>
           </div>
         </div>
@@ -216,21 +211,12 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
         {/* Navigation Menu */}
         <nav className="p-4">
           <ul className="space-y-2">
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  onClick={() => setActiveTab(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
-                    activeTab === item.id
-                      ? "bg-white/20 backdrop-blur-sm text-white"
-                      : "text-white/80 hover:bg-white/10 hover:text-white"
-                  }`}
-                >
+            {menuItems.map(item => <li key={item.id}>
+                <button onClick={() => setActiveTab(item.id)} className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${activeTab === item.id ? "bg-white/20 backdrop-blur-sm text-white" : "text-white/80 hover:bg-white/10 hover:text-white"}`}>
                   <item.icon size={18} />
                   {item.label}
                 </button>
-              </li>
-            ))}
+              </li>)}
           </ul>
         </nav>
 
@@ -245,10 +231,7 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
               <p className="text-xs text-white/60 capitalize">{driver.role}</p>
             </div>
           </div>
-          <button
-            onClick={onLogout}
-            className="w-full flex items-center gap-2 text-white/80 hover:text-white text-sm"
-          >
+          <button onClick={onLogout} className="w-full flex items-center gap-2 text-white/80 hover:text-white text-sm">
             <LogOut size={16} />
             Logout
           </button>
@@ -264,14 +247,7 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
               <h1 className="text-2xl font-bold text-white">Employee Time Tracker</h1>
               <p className="text-white/60">{getCurrentDate()}</p>
             </div>
-            <button
-              onClick={() => setActiveTab("clock")}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                isClocked
-                  ? "bg-red-600 hover:bg-red-700 text-white"
-                  : "bg-green-600 hover:bg-green-700 text-white"
-              }`}
-            >
+            <button onClick={() => setActiveTab("clock")} className={`px-4 py-2 rounded-lg font-medium transition-colors ${isClocked ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"}`}>
               {isClocked ? "Clock Out" : "Clock In"}
             </button>
           </div>
@@ -282,8 +258,6 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
           {renderContent()}
         </main>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default DriverDashboard;

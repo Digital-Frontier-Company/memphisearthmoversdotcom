@@ -502,7 +502,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
       {/* Sidebar */}
       <div className="w-64 bg-black/60 backdrop-blur-sm shadow-lg border-r border-white/10">
         <div className="p-6">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center space-x-3">
             <img 
               src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" 
               alt="Memphis Earth Movers Logo" 

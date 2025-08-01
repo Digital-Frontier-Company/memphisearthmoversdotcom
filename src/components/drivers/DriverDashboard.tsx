@@ -116,60 +116,60 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+        <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-700 text-sm">Total Hours This Week</p>
-              <p className="text-2xl font-bold text-gray-900">{weeklyData.totalHours.toFixed(1)}</p>
-              <p className="text-green-600 text-sm">↑ 4.2% from last week</p>
+              <p className="text-slate-300 text-sm">Total Hours This Week</p>
+              <p className="text-2xl font-bold text-white">{weeklyData.totalHours.toFixed(1)}</p>
+              <p className="text-green-400 text-sm">↑ 4.2% from last week</p>
             </div>
-            <Clock className="text-blue-600" size={24} />
+            <Clock className="text-blue-400" size={24} />
           </div>
         </div>
 
-        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+        <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-700 text-sm">Weekly Earnings</p>
-              <p className="text-2xl font-bold text-gray-900">${weeklyData.totalEarnings.toFixed(2)}</p>
-              <p className="text-green-600 text-sm">↑ $125 from last week</p>
+              <p className="text-slate-300 text-sm">Weekly Earnings</p>
+              <p className="text-2xl font-bold text-white">${weeklyData.totalEarnings.toFixed(2)}</p>
+              <p className="text-green-400 text-sm">↑ $125 from last week</p>
             </div>
-            <DollarSign className="text-green-600" size={24} />
+            <DollarSign className="text-green-400" size={24} />
           </div>
         </div>
 
-        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+        <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-700 text-sm">Clock Status</p>
-              <p className="text-2xl font-bold text-gray-900">{isClocked ? "Clocked In" : "Clocked Out"}</p>
-              <p className={`text-sm ${isClocked ? "text-green-600" : "text-gray-600"}`}>
+              <p className="text-slate-300 text-sm">Clock Status</p>
+              <p className="text-2xl font-bold text-white">{isClocked ? "Clocked In" : "Clocked Out"}</p>
+              <p className={`text-sm ${isClocked ? "text-green-400" : "text-slate-400"}`}>
                 {isClocked ? "Currently working" : "Ready to start"}
               </p>
             </div>
-            <div className={`w-3 h-3 rounded-full ${isClocked ? "bg-green-500" : "bg-gray-400"}`} />
+            <div className={`w-3 h-3 rounded-full ${isClocked ? "bg-green-400" : "bg-slate-400"}`} />
           </div>
         </div>
 
-        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+        <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-700 text-sm">Hourly Rate</p>
-              <p className="text-2xl font-bold text-gray-900">${driver.hourly_rate}</p>
-              <p className="text-gray-600 text-sm">Per hour</p>
+              <p className="text-slate-300 text-sm">Hourly Rate</p>
+              <p className="text-2xl font-bold text-white">${driver.hourly_rate}</p>
+              <p className="text-slate-400 text-sm">Per hour</p>
             </div>
-            <Settings className="text-purple-600" size={24} />
+            <Settings className="text-purple-400" size={24} />
           </div>
         </div>
       </div>
 
       {/* Recent Time Entries */}
-      <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <div className="bg-slate-800/95 backdrop-blur-sm rounded-lg p-6 border border-slate-700/50">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">Recent Time Entries</h3>
+          <h3 className="text-lg font-semibold text-white">Recent Time Entries</h3>
           <button 
             onClick={() => setActiveTab("log")}
-            className="text-blue-600 hover:text-blue-700 text-sm"
+            className="text-blue-400 hover:text-blue-300 text-sm"
           >
             View All →
           </button>

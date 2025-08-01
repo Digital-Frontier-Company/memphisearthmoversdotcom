@@ -256,61 +256,61 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
     <div className="space-y-6">
       {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50 text-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-700 text-sm font-medium">Total Drivers</p>
-                <p className="text-3xl font-bold text-gray-900">{totalDrivers}</p>
-                <p className="text-xs text-green-600 mt-1">↗ +4 this month</p>
+                <p className="text-slate-300 text-sm font-medium">Total Drivers</p>
+                <p className="text-3xl font-bold text-white">{totalDrivers}</p>
+                <p className="text-xs text-green-400 mt-1">↗ +4 this month</p>
               </div>
-              <div className="bg-blue-500/20 p-3 rounded-lg">
-                <Users className="h-6 w-6 text-blue-600" />
+              <div className="bg-blue-500/30 p-3 rounded-lg">
+                <Users className="h-6 w-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50 text-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-700 text-sm font-medium">Total Hours</p>
-                <p className="text-3xl font-bold text-gray-900">{totalHours.toFixed(0)}</p>
-                <p className="text-xs text-green-600 mt-1">↗ +87 this week</p>
+                <p className="text-slate-300 text-sm font-medium">Total Hours</p>
+                <p className="text-3xl font-bold text-white">{totalHours.toFixed(0)}</p>
+                <p className="text-xs text-green-400 mt-1">↗ +87 this week</p>
               </div>
-              <div className="bg-green-500/20 p-3 rounded-lg">
-                <Clock className="h-6 w-6 text-green-600" />
+              <div className="bg-green-500/30 p-3 rounded-lg">
+                <Clock className="h-6 w-6 text-green-400" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50 text-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-700 text-sm font-medium">Active Tasks</p>
-                <p className="text-3xl font-bold text-gray-900">{activeTasks}</p>
-                <p className="text-xs text-orange-600 mt-1">⚠ 2 overdue</p>
+                <p className="text-slate-300 text-sm font-medium">Active Tasks</p>
+                <p className="text-3xl font-bold text-white">{activeTasks}</p>
+                <p className="text-xs text-orange-400 mt-1">⚠ 2 overdue</p>
               </div>
-              <div className="bg-orange-500/20 p-3 rounded-lg">
-                <FileText className="h-6 w-6 text-orange-600" />
+              <div className="bg-orange-500/30 p-3 rounded-lg">
+                <FileText className="h-6 w-6 text-orange-400" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50 text-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-700 text-sm font-medium">Total Earnings</p>
-                <p className="text-3xl font-bold text-gray-900">${totalEarnings.toFixed(0)}</p>
-                <p className="text-xs text-green-600 mt-1">↗ +12% this month</p>
+                <p className="text-slate-300 text-sm font-medium">Total Earnings</p>
+                <p className="text-3xl font-bold text-white">${totalEarnings.toFixed(0)}</p>
+                <p className="text-xs text-green-400 mt-1">↗ +12% this month</p>
               </div>
-              <div className="bg-emerald-500/20 p-3 rounded-lg">
-                <DollarSign className="h-6 w-6 text-emerald-600" />
+              <div className="bg-emerald-500/30 p-3 rounded-lg">
+                <DollarSign className="h-6 w-6 text-emerald-400" />
               </div>
             </div>
           </CardContent>
@@ -319,7 +319,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Hours Tracked (Weekly)</CardTitle>
             <div className="flex gap-2">
@@ -348,7 +348,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Driver Activity Distribution</CardTitle>
             <div className="flex gap-2">
@@ -392,7 +392,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
 
       {/* Bottom Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Driver Performance</CardTitle>
             <Select defaultValue="hours">
@@ -453,7 +453,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
+        <Card className="bg-slate-800/95 backdrop-blur-sm border border-slate-700/50">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
             <Button variant="ghost" size="sm">
@@ -579,7 +579,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-8 max-w-none">
           {activeTab === 'dashboard' && <DashboardContent />}
           {activeTab !== 'dashboard' && (
             <div className="flex items-center justify-center h-64">

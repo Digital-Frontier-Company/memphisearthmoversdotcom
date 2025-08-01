@@ -116,60 +116,60 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
     <div className="space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">Total Hours This Week</p>
-              <p className="text-2xl font-bold text-white">{weeklyData.totalHours.toFixed(1)}</p>
-              <p className="text-green-400 text-sm">↑ 4.2% from last week</p>
+              <p className="text-gray-700 text-sm">Total Hours This Week</p>
+              <p className="text-2xl font-bold text-gray-900">{weeklyData.totalHours.toFixed(1)}</p>
+              <p className="text-green-600 text-sm">↑ 4.2% from last week</p>
             </div>
-            <Clock className="text-blue-400" size={24} />
+            <Clock className="text-blue-600" size={24} />
           </div>
         </div>
 
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">Weekly Earnings</p>
-              <p className="text-2xl font-bold text-white">${weeklyData.totalEarnings.toFixed(2)}</p>
-              <p className="text-green-400 text-sm">↑ $125 from last week</p>
+              <p className="text-gray-700 text-sm">Weekly Earnings</p>
+              <p className="text-2xl font-bold text-gray-900">${weeklyData.totalEarnings.toFixed(2)}</p>
+              <p className="text-green-600 text-sm">↑ $125 from last week</p>
             </div>
-            <DollarSign className="text-green-400" size={24} />
+            <DollarSign className="text-green-600" size={24} />
           </div>
         </div>
 
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">Clock Status</p>
-              <p className="text-2xl font-bold text-white">{isClocked ? "Clocked In" : "Clocked Out"}</p>
-              <p className={`text-sm ${isClocked ? "text-green-400" : "text-slate-400"}`}>
+              <p className="text-gray-700 text-sm">Clock Status</p>
+              <p className="text-2xl font-bold text-gray-900">{isClocked ? "Clocked In" : "Clocked Out"}</p>
+              <p className={`text-sm ${isClocked ? "text-green-600" : "text-gray-600"}`}>
                 {isClocked ? "Currently working" : "Ready to start"}
               </p>
             </div>
-            <div className={`w-3 h-3 rounded-full ${isClocked ? "bg-green-400" : "bg-slate-600"}`} />
+            <div className={`w-3 h-3 rounded-full ${isClocked ? "bg-green-500" : "bg-gray-400"}`} />
           </div>
         </div>
 
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+        <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-slate-400 text-sm">Hourly Rate</p>
-              <p className="text-2xl font-bold text-white">${driver.hourly_rate}</p>
-              <p className="text-slate-400 text-sm">Per hour</p>
+              <p className="text-gray-700 text-sm">Hourly Rate</p>
+              <p className="text-2xl font-bold text-gray-900">${driver.hourly_rate}</p>
+              <p className="text-gray-600 text-sm">Per hour</p>
             </div>
-            <Settings className="text-purple-400" size={24} />
+            <Settings className="text-purple-600" size={24} />
           </div>
         </div>
       </div>
 
       {/* Recent Time Entries */}
-      <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+      <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-white/20">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-white">Recent Time Entries</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Recent Time Entries</h3>
           <button 
             onClick={() => setActiveTab("log")}
-            className="text-blue-400 hover:text-blue-300 text-sm"
+            className="text-blue-600 hover:text-blue-700 text-sm"
           >
             View All →
           </button>
@@ -198,15 +198,17 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 flex">
+    <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-900 to-black flex">
       {/* Sidebar */}
-      <div className="w-64 bg-slate-800 border-r border-slate-700">
+      <div className="w-64 bg-black/60 backdrop-blur-sm border-r border-white/10">
         {/* Logo and Company Name */}
-        <div className="p-6 border-b border-slate-700">
+        <div className="p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">MEM</span>
-            </div>
+            <img 
+              src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" 
+              alt="Memphis Earth Movers Logo" 
+              className="w-10 h-10 object-contain"
+            />
             <span className="text-white font-semibold">Memphis EM</span>
           </div>
         </div>
@@ -220,8 +222,8 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
                   onClick={() => setActiveTab(item.id)}
                   className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
                     activeTab === item.id
-                      ? "bg-blue-600 text-white"
-                      : "text-slate-300 hover:bg-slate-700 hover:text-white"
+                      ? "bg-white/20 backdrop-blur-sm text-white"
+                      : "text-white/80 hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   <item.icon size={18} />
@@ -233,19 +235,19 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
         </nav>
 
         {/* User Info */}
-        <div className="absolute bottom-0 left-0 w-64 p-4 border-t border-slate-700 bg-slate-800">
+        <div className="absolute bottom-0 left-0 w-64 p-4 border-t border-white/10 bg-black/60 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center">
-              <User size={16} className="text-slate-300" />
+            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+              <User size={16} className="text-white" />
             </div>
             <div>
               <p className="text-sm font-medium text-white">{driver.name}</p>
-              <p className="text-xs text-slate-400 capitalize">{driver.role}</p>
+              <p className="text-xs text-white/60 capitalize">{driver.role}</p>
             </div>
           </div>
           <button
             onClick={onLogout}
-            className="w-full flex items-center gap-2 text-slate-300 hover:text-white text-sm"
+            className="w-full flex items-center gap-2 text-white/80 hover:text-white text-sm"
           >
             <LogOut size={16} />
             Logout
@@ -256,11 +258,11 @@ const DriverDashboard = ({ driver, onLogout }: DriverDashboardProps) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}
-        <header className="bg-slate-800 border-b border-slate-700 p-6">
+        <header className="bg-black/60 backdrop-blur-sm border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-white">Employee Time Tracker</h1>
-              <p className="text-slate-400">{getCurrentDate()}</p>
+              <p className="text-white/60">{getCurrentDate()}</p>
             </div>
             <button
               onClick={() => setActiveTab("clock")}

@@ -256,61 +256,61 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
     <div className="space-y-6">
       {/* Metrics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="bg-gradient-to-br from-blue-500 to-blue-600 border-0 text-white">
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-blue-100 text-sm font-medium">Total Drivers</p>
-                <p className="text-3xl font-bold">{totalDrivers}</p>
-                <p className="text-xs text-blue-100 mt-1">↗ +4 this month</p>
+                <p className="text-gray-700 text-sm font-medium">Total Drivers</p>
+                <p className="text-3xl font-bold text-gray-900">{totalDrivers}</p>
+                <p className="text-xs text-green-600 mt-1">↗ +4 this month</p>
               </div>
-              <div className="bg-white/20 p-3 rounded-lg">
-                <Users className="h-6 w-6" />
+              <div className="bg-blue-500/20 p-3 rounded-lg">
+                <Users className="h-6 w-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-green-500 to-green-600 border-0 text-white">
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-green-100 text-sm font-medium">Total Hours</p>
-                <p className="text-3xl font-bold">{totalHours.toFixed(0)}</p>
-                <p className="text-xs text-green-100 mt-1">↗ +87 this week</p>
+                <p className="text-gray-700 text-sm font-medium">Total Hours</p>
+                <p className="text-3xl font-bold text-gray-900">{totalHours.toFixed(0)}</p>
+                <p className="text-xs text-green-600 mt-1">↗ +87 this week</p>
               </div>
-              <div className="bg-white/20 p-3 rounded-lg">
-                <Clock className="h-6 w-6" />
+              <div className="bg-green-500/20 p-3 rounded-lg">
+                <Clock className="h-6 w-6 text-green-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0 text-white">
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-orange-100 text-sm font-medium">Active Tasks</p>
-                <p className="text-3xl font-bold">{activeTasks}</p>
-                <p className="text-xs text-orange-100 mt-1">⚠ 2 overdue</p>
+                <p className="text-gray-700 text-sm font-medium">Active Tasks</p>
+                <p className="text-3xl font-bold text-gray-900">{activeTasks}</p>
+                <p className="text-xs text-orange-600 mt-1">⚠ 2 overdue</p>
               </div>
-              <div className="bg-white/20 p-3 rounded-lg">
-                <FileText className="h-6 w-6" />
+              <div className="bg-orange-500/20 p-3 rounded-lg">
+                <FileText className="h-6 w-6 text-orange-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-emerald-500 to-emerald-600 border-0 text-white">
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20 text-gray-900">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-emerald-100 text-sm font-medium">Total Earnings</p>
-                <p className="text-3xl font-bold">${totalEarnings.toFixed(0)}</p>
-                <p className="text-xs text-emerald-100 mt-1">↗ +12% this month</p>
+                <p className="text-gray-700 text-sm font-medium">Total Earnings</p>
+                <p className="text-3xl font-bold text-gray-900">${totalEarnings.toFixed(0)}</p>
+                <p className="text-xs text-green-600 mt-1">↗ +12% this month</p>
               </div>
-              <div className="bg-white/20 p-3 rounded-lg">
-                <DollarSign className="h-6 w-6" />
+              <div className="bg-emerald-500/20 p-3 rounded-lg">
+                <DollarSign className="h-6 w-6 text-emerald-600" />
               </div>
             </div>
           </CardContent>
@@ -319,7 +319,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
 
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Hours Tracked (Weekly)</CardTitle>
             <div className="flex gap-2">
@@ -348,7 +348,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Driver Activity Distribution</CardTitle>
             <div className="flex gap-2">
@@ -392,7 +392,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
 
       {/* Bottom Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Driver Performance</CardTitle>
             <Select defaultValue="hours">
@@ -453,7 +453,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white/60 backdrop-blur-sm border border-white/20">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg font-semibold">Recent Activity</CardTitle>
             <Button variant="ghost" size="sm">
@@ -498,15 +498,17 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex">
+    <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-900 to-black flex">
       {/* Sidebar */}
-      <div className="w-64 bg-white dark:bg-gray-800 shadow-lg">
+      <div className="w-64 bg-black/60 backdrop-blur-sm shadow-lg border-r border-white/10">
         <div className="p-6">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">M.E.</span>
-            </div>
-            <span className="text-lg font-semibold text-gray-900 dark:text-white">Memphis Earth Movers</span>
+            <img 
+              src="/lovable-uploads/8a4a7666-576c-423b-9b3e-9575ae58754f.png" 
+              alt="Memphis Earth Movers Logo" 
+              className="w-10 h-10 object-contain"
+            />
+            <span className="text-lg font-semibold text-white">Memphis Earth Movers</span>
           </div>
         </div>
         
@@ -521,8 +523,8 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
                 onClick={() => setActiveTab(item.id as any)}
                 className={`w-full flex items-center space-x-3 px-6 py-3 text-left transition-colors ${
                   isActive 
-                    ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-r-2 border-blue-600' 
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    ? 'bg-white/20 backdrop-blur-sm text-white border-r-2 border-blue-400' 
+                    : 'text-white/80 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 <Icon className="h-5 w-5" />
@@ -536,10 +538,10 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Top Header */}
-        <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <header className="bg-black/60 backdrop-blur-sm shadow-sm border-b border-white/10">
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Admin Dashboard</h1>
+              <h1 className="text-2xl font-semibold text-white">Admin Dashboard</h1>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -565,8 +567,8 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
                   </AvatarFallback>
                 </Avatar>
                 <div className="hidden md:block">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">{driver.name}</p>
-                  <p className="text-xs text-gray-500">Administrator</p>
+                  <p className="text-sm font-medium text-white">{driver.name}</p>
+                  <p className="text-xs text-white/60">Administrator</p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={onLogout}>
                   <ChevronDown className="h-4 w-4" />
@@ -581,11 +583,11 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
           {activeTab === 'dashboard' && <DashboardContent />}
           {activeTab !== 'dashboard' && (
             <div className="flex items-center justify-center h-64">
-              <div className="text-center">
-                <p className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {sidebarItems.find(item => item.id === activeTab)?.label} Section
-                </p>
-                <p className="text-gray-500">This section is under development</p>
+            <div className="text-center">
+              <p className="text-xl font-semibold text-white mb-2">
+                {sidebarItems.find(item => item.id === activeTab)?.label} Section
+              </p>
+              <p className="text-white/60">This section is under development</p>
               </div>
             </div>
           )}

@@ -21,7 +21,7 @@ const HeroSection = () => {
             <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 mb-6 py-0 px-0">
               <h1 className="mb-6 text-xl py-[47px]">
                 <span className="block text-mem-babyBlue mb-2 font-extrabold mx-0 text-center text-5xl py-[17px]">Memphis Earth Movers</span>
-                <span className="bg-gradient-to-r from-mem-darkNavy via-mem-blue to-mem-babyBlue bg-clip-text text-transparent font-bold text-4xl md:text-5xl drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] filter">
+                <span className="bg-gradient-to-r from-black to-mem-babyBlue bg-clip-text text-transparent font-bold text-4xl md:text-5xl drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] filter">
                   <TypewriterEffect texts={["Dump Trucks When You Need Them", "Reliable Hauling Services", "Memphis Construction Support", "On-Time Delivery Guaranteed"]} speed={80} deleteSpeed={40} pauseTime={3000} />
                 </span>
               </h1>

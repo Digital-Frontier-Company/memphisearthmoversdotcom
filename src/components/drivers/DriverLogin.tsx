@@ -97,8 +97,8 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
   };
 
   return (
-    <div className="max-w-md mx-auto px-4">
-      <div className="mem-card text-center">
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="mem-card text-center max-w-md w-full">
         <div className="mb-8">
           <Clock className="mx-auto mb-4 text-mem-babyBlue" size={48} />
           <h1 className="text-3xl font-bold text-white mb-2">Driver Login</h1>

@@ -1,21 +1,12 @@
-
 import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
 import TypewriterEffect from "./TypewriterEffect";
-
 const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
       {/* Background Image with Overlay and Gradient Morphing */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" 
-          alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" 
-          className="w-full h-full object-cover opacity-75" 
-          width="1920" 
-          height="1080"
-          fetchPriority="high"
-        />
+        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-75" width="1920" height="1080" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-br from-mem-blue/20 via-mem-babyBlue/30 to-mem-darkNavy/40 animate-gradient-morph"></div>
         <div className="absolute inset-0 bg-black/15"></div>
       </div>
@@ -27,21 +18,11 @@ const HeroSection = () => {
       <div className="mem-container relative z-10 py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
-            <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 mb-6">
+            <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 mb-6 py-0 px-0">
               <h1 className="mb-6 text-xl py-[47px]">
                 <span className="block text-mem-babyBlue mb-2 font-extrabold mx-0 text-center text-5xl py-[17px]">Memphis Earth Movers</span>
                 <span className="bg-gradient-to-r from-mem-darkNavy via-mem-blue to-mem-babyBlue bg-clip-text text-transparent font-bold text-4xl md:text-5xl drop-shadow-[0_0_20px_rgba(96,165,250,0.8)] filter">
-                  <TypewriterEffect 
-                    texts={[
-                      "Dump Trucks When You Need Them",
-                      "Reliable Hauling Services",
-                      "Memphis Construction Support",
-                      "On-Time Delivery Guaranteed"
-                    ]}
-                    speed={80}
-                    deleteSpeed={40}
-                    pauseTime={3000}
-                  />
+                  <TypewriterEffect texts={["Dump Trucks When You Need Them", "Reliable Hauling Services", "Memphis Construction Support", "On-Time Delivery Guaranteed"]} speed={80} deleteSpeed={40} pauseTime={3000} />
                 </span>
               </h1>
             </div>
@@ -57,31 +38,16 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 px-[7px] mx-0 my-[6px] rounded">
-              <Link 
-                to="servicesSection" 
-                smooth={true} 
-                duration={500} 
-                offset={-100} 
-                className="mem-btn-primary hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] transition-all duration-300"
-              >
+              <Link to="servicesSection" smooth={true} duration={500} offset={-100} className="mem-btn-primary hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] transition-all duration-300">
                 Our Services
               </Link>
-              <RouterLink 
-                to="/hourly-dump-truck-rental" 
-                className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300"
-              >
+              <RouterLink to="/hourly-dump-truck-rental" className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300">
                 Hourly Rental
               </RouterLink>
-              <RouterLink 
-                to="/memphis-gravel-delivery" 
-                className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300"
-              >
+              <RouterLink to="/memphis-gravel-delivery" className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300">
                 Gravel Delivery
               </RouterLink>
-              <a 
-                href="tel:9014611011" 
-                className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300"
-              >
+              <a href="tel:9014611011" className="mem-btn-secondary hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all duration-300">
                 Call Now
               </a>
             </div>
@@ -90,10 +56,7 @@ const HeroSection = () => {
           <div className="mem-card">
             <h2 className="text-2xl font-bold mb-4">Get a Free Quote</h2>
             <div className="text-center mb-4">
-              <RouterLink 
-                to="/contact" 
-                className="mem-btn-primary hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] transition-all duration-300 inline-block"
-              >
+              <RouterLink to="/contact" className="mem-btn-primary hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] transition-all duration-300 inline-block">
                 Request Quote Now
               </RouterLink>
             </div>
@@ -110,21 +73,10 @@ const HeroSection = () => {
           </div>
           
           <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl border border-mem-babyBlue/30">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/MR7iQp242f0"
-              title="Memphis Earth Movers - Dump Truck Services"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/MR7iQp242f0" title="Memphis Earth Movers - Dump Truck Services" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-full h-full"></iframe>
           </div>
         </div>
       </div>
     </section>;
 };
-
 export default HeroSection;

@@ -130,7 +130,7 @@ const EquipmentSpecifications = () => {
         </div>
 
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-8">
-          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-white/95 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
+          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-gradient-to-br from-blue-600 to-navy-900 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
               <CardHeader className="text-center pb-4 bg-blue-700">
                 <div className="flex justify-center mb-4">
                   <div className="p-3 rounded-full bg-mem-babyBlue/20">

@@ -70,8 +70,9 @@ const EnhancedHero = () => {
               <Button 
                 size="lg" 
                 className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 text-lg shadow-lg"
+                asChild
               >
-                Get Instant Quote
+                <Link to="/contact">Get Instant Quote</Link>
               </Button>
               
               <Button 

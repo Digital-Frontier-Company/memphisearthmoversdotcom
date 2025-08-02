@@ -37,13 +37,9 @@ const Admin = () => {
         <>
           <Header />
           <main className="min-h-screen morphing-grid-bg">
-            <div className="py-16">
-              <div className="mem-container">
-                <div className="max-w-md mx-auto">
-                  <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-white mb-4">Admin Access</h1>
-                    <p className="text-white/80">Please log in with admin credentials to access the management dashboard.</p>
-                  </div>
+            <div className="py-0">
+              <div className="w-full px-0">
+                <div className="w-full">
                   <DriverLogin onLogin={handleLogin} />
                 </div>
               </div>

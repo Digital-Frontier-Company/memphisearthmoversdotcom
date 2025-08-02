@@ -97,25 +97,25 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-8">
-      <div className="mem-card text-center max-w-md w-full">
+    <div className="min-h-screen flex items-center justify-center px-3 py-4">
+      <div className="mem-card text-center w-full max-w-[360px] mx-auto">
         {/* Header */}
-        <div className="mb-6">
-          <div className="flex justify-center mb-4">
-            <div className="bg-mem-blue/20 p-3 rounded-full">
-              <Clock className="text-mem-babyBlue" size={32} />
+        <div className="mb-5">
+          <div className="flex justify-center mb-3">
+            <div className="bg-mem-blue/20 p-2.5 rounded-full">
+              <Clock className="text-mem-babyBlue" size={28} />
             </div>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Employee Login</h1>
-          <p className="text-white/80 text-sm md:text-base">Memphis Earth Movers Time Clock</p>
+          <h1 className="text-xl font-bold text-white mb-1.5">Employee Login</h1>
+          <p className="text-white/80 text-sm">Memphis Earth Movers Time Clock</p>
         </div>
 
         {/* Live Clock */}
-        <div className="mb-6 p-4 bg-mem-blue/20 rounded-lg border border-mem-babyBlue/30">
-          <div className="text-xl md:text-2xl font-bold text-mem-babyBlue font-mono">
+        <div className="mb-5 p-3 bg-mem-blue/20 rounded-lg border border-mem-babyBlue/30">
+          <div className="text-lg font-bold text-mem-babyBlue font-mono">
             {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
           </div>
-          <div className="text-white/80 text-xs md:text-sm mt-1">
+          <div className="text-white/80 text-xs mt-0.5">
             {currentTime.toLocaleDateString('en-US', { 
               weekday: 'short', 
               month: 'short', 
@@ -126,16 +126,16 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
         </div>
 
         {/* Login Form */}
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-4">
           {/* Driver Selection */}
           <div>
-            <label className="flex items-center text-white/90 mb-3 text-left text-sm md:text-base">
-              <User className="mr-2 flex-shrink-0" size={18} />
+            <label className="flex items-center text-white/90 mb-2 text-left text-sm">
+              <User className="mr-2 flex-shrink-0" size={16} />
               Select Your Name
             </label>
             {loadingDrivers ? (
-              <div className="w-full px-4 py-4 rounded-lg bg-white/10 border border-mem-babyBlue/30 text-white/70 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-mem-babyBlue mr-3"></div>
+              <div className="w-full px-3 py-3.5 rounded-lg bg-white/10 border border-mem-babyBlue/30 text-white/70 flex items-center justify-center min-h-[56px]">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-mem-babyBlue mr-2"></div>
                 Loading...
               </div>
             ) : (
@@ -143,14 +143,14 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
                 <select
                   value={selectedDriver}
                   onChange={(e) => setSelectedDriver(e.target.value)}
-                  className="w-full px-4 py-4 rounded-lg bg-white/95 border-2 border-mem-babyBlue/30 text-gray-800 focus:outline-none focus:ring-2 focus:ring-mem-babyBlue focus:border-mem-babyBlue appearance-none text-base transition-all duration-200"
+                  className="w-full px-3 py-3.5 rounded-lg bg-white/95 border-2 border-mem-babyBlue/30 text-gray-800 focus:outline-none focus:ring-2 focus:ring-mem-babyBlue focus:border-mem-babyBlue appearance-none text-base transition-all duration-200 min-h-[56px]"
                   style={{ 
                     WebkitAppearance: 'none',
                     MozAppearance: 'none',
                     backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e")`,
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right 1rem center',
-                    backgroundSize: '1.2em'
+                    backgroundPosition: 'right 0.75rem center',
+                    backgroundSize: '1.1em'
                   }}
                   required
                 >
@@ -162,12 +162,12 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
                   ))}
                 </select>
                 {drivers.length === 0 && (
-                  <div className="mt-2 p-3 bg-red-500/20 border border-red-400/30 rounded-lg">
-                    <p className="text-red-400 text-sm">No active users found. Please contact administrator.</p>
+                  <div className="mt-2 p-2.5 bg-red-500/20 border border-red-400/30 rounded-lg">
+                    <p className="text-red-400 text-xs">No active users found. Please contact administrator.</p>
                   </div>
                 )}
                 {drivers.length > 0 && (
-                  <p className="text-white/60 text-xs mt-2">{drivers.length} employee{drivers.length !== 1 ? 's' : ''} available</p>
+                  <p className="text-white/60 text-xs mt-1.5">{drivers.length} employee{drivers.length !== 1 ? 's' : ''} available</p>
                 )}
               </>
             )}
@@ -175,8 +175,8 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
 
           {/* PIN Input */}
           <div>
-            <label className="flex items-center text-white/90 mb-3 text-left text-sm md:text-base">
-              <Lock className="mr-2 flex-shrink-0" size={18} />
+            <label className="flex items-center text-white/90 mb-2 text-left text-sm">
+              <Lock className="mr-2 flex-shrink-0" size={16} />
               Enter Your 4-Digit PIN
             </label>
             <input
@@ -189,32 +189,34 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
               maxLength={4}
               inputMode="numeric"
               pattern="[0-9]*"
-              className="w-full px-4 py-4 rounded-lg bg-white/95 border-2 border-mem-babyBlue/30 text-gray-800 text-center text-2xl md:text-3xl tracking-[0.5em] focus:outline-none focus:ring-2 focus:ring-mem-babyBlue focus:border-mem-babyBlue transition-all duration-200 font-mono"
+              className="w-full px-3 py-4 rounded-lg bg-white/95 border-2 border-mem-babyBlue/30 text-gray-800 text-center text-2xl tracking-[0.4em] focus:outline-none focus:ring-2 focus:ring-mem-babyBlue focus:border-mem-babyBlue transition-all duration-200 font-mono min-h-[56px]"
               placeholder="••••"
               autoComplete="off"
               required
             />
-            <p className="text-white/50 text-xs mt-2">Enter the 4-digit PIN provided by your supervisor</p>
+            <p className="text-white/50 text-xs mt-1.5">Enter the 4-digit PIN provided by your supervisor</p>
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading || loadingDrivers || !selectedDriver || pin.length !== 4}
-            className="w-full bg-mem-blue text-white font-bold py-4 px-6 rounded-lg hover:bg-mem-darkBlue transition-all duration-300 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-mem-blue shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
-          >
-            {loading ? (
-              <span className="flex items-center justify-center">
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                Logging in...
-              </span>
-            ) : (
-              <span className="flex items-center justify-center">
-                <Lock className="mr-2" size={20} />
-                Clock In
-              </span>
-            )}
-          </button>
+          <div className="pt-1">
+            <button
+              type="submit"
+              disabled={loading || loadingDrivers || !selectedDriver || pin.length !== 4}
+              className="w-full bg-mem-blue text-white font-bold py-4 px-4 rounded-lg hover:bg-mem-darkBlue transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-mem-blue shadow-lg hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99] min-h-[56px]"
+            >
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Logging in...
+                </span>
+              ) : (
+                <span className="flex items-center justify-center">
+                  <Lock className="mr-2" size={18} />
+                  Clock In
+                </span>
+              )}
+            </button>
+          </div>
         </form>
 
         {/* Status Indicator */}

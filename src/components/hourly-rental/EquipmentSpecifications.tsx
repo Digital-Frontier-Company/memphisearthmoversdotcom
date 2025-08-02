@@ -130,8 +130,8 @@ const EquipmentSpecifications = () => {
         </div>
 
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-8">
-          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-gradient-to-br from-blue-600 to-navy-900 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
-              <CardHeader className="text-center pb-4 bg-blue-700">
+          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-gradient-to-br from-blue-600 to-slate-900 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 animate-fade-in ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
+              <CardHeader className="text-center pb-4 bg-gradient-to-br from-blue-600 to-slate-900">
                 <div className="flex justify-center mb-4">
                   <div className="p-3 rounded-full bg-mem-babyBlue/20">
                     <Truck className="h-12 w-12 text-mem-babyBlue" />
@@ -148,7 +148,7 @@ const EquipmentSpecifications = () => {
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-4 bg-gradient-to-br from-blue-700 to-blue-900">
+              <CardContent className="space-y-4 bg-gradient-to-br from-blue-600 to-slate-900">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className="h-5 w-5 text-mem-babyBlue" />

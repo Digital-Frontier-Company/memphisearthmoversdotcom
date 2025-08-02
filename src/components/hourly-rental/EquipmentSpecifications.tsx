@@ -130,8 +130,8 @@ const EquipmentSpecifications = () => {
         </div>
 
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-8">
-          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-gradient-to-br from-blue-600 to-slate-900 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 animate-fade-in ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
-              <CardContent className="p-6 space-y-4 bg-gradient-to-br from-blue-600 to-slate-900">
+          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-gradient-to-br from-blue-600 to-slate-900 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 animate-fade-in h-full ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
+              <CardContent className="p-6 space-y-4 bg-gradient-to-br from-blue-600 to-slate-900 h-full flex flex-col">
                 <div className="text-center">
                   <div className="flex justify-center mb-4">
                     <div className="p-3 rounded-full bg-mem-babyBlue/20">
@@ -149,7 +149,7 @@ const EquipmentSpecifications = () => {
                   </div>
                 </div>
 
-                <div className="text-center">
+                <div className="text-center flex-grow">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className="h-5 w-5 text-mem-babyBlue" />
                     <span className="text-3xl font-bold text-mem-babyBlue">${truck.hourlyRate}</span>
@@ -161,48 +161,48 @@ const EquipmentSpecifications = () => {
                     <div className="text-mem-darkNavy/60 text-xs">{truck.serviceArea}</div>
                     <div className="text-mem-darkNavy/80 text-sm font-medium">{truck.truckType}</div>
                   </div>
-                </div>
 
-                <div className="flex items-center justify-center text-mem-darkNavy/70 hover:text-mem-blue transition-colors">
-                  {expandedCard === truck.id ? <ChevronUp className="h-5 w-5 transition-transform duration-200" /> : <ChevronDown className="h-5 w-5 transition-transform duration-200" />}
-                  <span className="ml-1 text-sm">
-                    {expandedCard === truck.id ? "Less Details" : "More Details"}
-                  </span>
-                </div>
+                  <div className="flex items-center justify-center text-mem-darkNavy/70 hover:text-mem-blue transition-colors mt-4">
+                    {expandedCard === truck.id ? <ChevronUp className="h-5 w-5 transition-transform duration-200" /> : <ChevronDown className="h-5 w-5 transition-transform duration-200" />}
+                    <span className="ml-1 text-sm">
+                      {expandedCard === truck.id ? "Less Details" : "More Details"}
+                    </span>
+                  </div>
 
-                {expandedCard === truck.id && <div className="mt-6 space-y-4 animate-fade-in opacity-0 animate-scale-in">
-                    <div>
-                      <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
-                        <Weight className="h-4 w-4 text-mem-blue" />
-                        Key Features
-                      </h4>
-                      <ul className="space-y-1">
-                        {truck.features.map((feature, index) => <li key={index} className="text-mem-darkNavy/80 text-sm flex items-start gap-2">
-                            <span className="text-mem-blue mt-1">•</span>
-                            {feature}
-                          </li>)}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
-                        <Users className="h-4 w-4 text-mem-blue" />
-                        Specifications
-                      </h4>
-                      <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="text-mem-darkNavy/60">Length:</div>
-                        <div className="text-mem-darkNavy">{truck.specs.length}</div>
-                        <div className="text-mem-darkNavy/60">Width:</div>
-                        <div className="text-mem-darkNavy">{truck.specs.width}</div>
-                        <div className="text-mem-darkNavy/60">Capacity:</div>
-                        <div className="text-mem-darkNavy">{truck.specs.capacity}</div>
-                        <div className="text-mem-darkNavy/60">GVWR:</div>
-                        <div className="text-mem-darkNavy">{truck.specs.weight}</div>
+                  {expandedCard === truck.id && <div className="mt-6 space-y-4 animate-fade-in opacity-0 animate-scale-in">
+                      <div>
+                        <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
+                          <Weight className="h-4 w-4 text-mem-blue" />
+                          Key Features
+                        </h4>
+                        <ul className="space-y-1">
+                          {truck.features.map((feature, index) => <li key={index} className="text-mem-darkNavy/80 text-sm flex items-start gap-2">
+                              <span className="text-mem-blue mt-1">•</span>
+                              {feature}
+                            </li>)}
+                        </ul>
                       </div>
-                    </div>
-                  </div>}
 
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold mem-magnetic-button">
+                      <div>
+                        <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
+                          <Users className="h-4 w-4 text-mem-blue" />
+                          Specifications
+                        </h4>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          <div className="text-mem-darkNavy/60">Length:</div>
+                          <div className="text-mem-darkNavy">{truck.specs.length}</div>
+                          <div className="text-mem-darkNavy/60">Width:</div>
+                          <div className="text-mem-darkNavy">{truck.specs.width}</div>
+                          <div className="text-mem-darkNavy/60">Capacity:</div>
+                          <div className="text-mem-darkNavy">{truck.specs.capacity}</div>
+                          <div className="text-mem-darkNavy/60">GVWR:</div>
+                          <div className="text-mem-darkNavy">{truck.specs.weight}</div>
+                        </div>
+                      </div>
+                    </div>}
+                </div>
+
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold mem-magnetic-button mt-auto">
                   Reserve This Truck
                 </Button>
               </CardContent>

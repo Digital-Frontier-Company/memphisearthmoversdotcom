@@ -77,7 +77,7 @@ const EnhancedHero = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-mem-darkNavy font-semibold px-8 py-4 text-lg"
+                className="border-2 border-white bg-gradient-to-r from-blue-700 to-cyan-400 text-white hover:from-blue-800 hover:to-cyan-500 font-semibold px-8 py-4 text-lg"
                 asChild
               >
                 <a href="tel:9014611011" className="flex items-center gap-2">

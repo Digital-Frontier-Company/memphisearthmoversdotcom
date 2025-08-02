@@ -3,144 +3,114 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Truck, Weight, Users, DollarSign, ChevronDown, ChevronUp } from "lucide-react";
-
 const EquipmentSpecifications = () => {
   const [expandedCard, setExpandedCard] = useState<string | null>("10-yard");
   const [cardsVisible, setCardsVisible] = useState(false);
   const cardsRef = useRef<HTMLDivElement>(null);
-
-  const truckSpecs = [
-    {
-      id: "10-yard",
-      name: "10-Yard Dump Truck",
-      payload: "10-12 tons",
-      bestFor: "Residential projects, small excavations",
-      cdlRequired: "Yes (CDL Required)",
-      hourlyRate: 125,
-      minHours: "4 hour minimum",
-      serviceArea: "Within 30 miles of Memphis",
-      truckType: "Tri-axle dump truck",
-      features: [
-        "Perfect for driveways and small sites",
-        "Backup camera and safety equipment", 
-        "GPS tracking for accurate timing",
-        "Professional CDL driver included"
-      ],
-      specs: {
-        length: "22 feet",
-        width: "8 feet",
-        height: "11 feet",
-        capacity: "10 cubic yards",
-        weight: "23,000 lbs GVWR"
-      }
-    },
-    {
-      id: "15-yard",
-      name: "15-Yard Dump Truck",
-      payload: "15-18 tons",
-      bestFor: "Commercial sites, road construction",
-      cdlRequired: "Yes (Class B)",
-      hourlyRate: 145,
-      minHours: "3 hour minimum",
-      serviceArea: "Memphis metro area",
-      truckType: "Tri-axle or quad axle dump truck available",
-      features: [
-        "Ideal for medium commercial projects",
-        "Enhanced hydraulic system",
-        "DOT compliant for highway use",
-        "Experienced Class B CDL driver"
-      ],
-      specs: {
-        length: "26 feet",
-        width: "8.5 feet",
-        height: "12 feet",
-        capacity: "15 cubic yards",
-        weight: "33,000 lbs GVWR"
-      }
-    },
-    {
-      id: "20-yard",
-      name: "20-Yard Dump Truck",
-      payload: "20-25 tons",
-      bestFor: "Major excavation, quarry work",
-      cdlRequired: "Yes (Class B)",
-      hourlyRate: 165,
-      minHours: "No hourly minimum",
-      serviceArea: "Within 40 miles of Memphis",
-      truckType: "Tractor trailers dump trucks also available",
-      features: [
-        "Heavy-duty for large projects",
-        "Reinforced hydraulic systems",
-        "Multiple safety features",
-        "Veteran CDL driver with 10+ years"
-      ],
-      specs: {
-        length: "28 feet",
-        width: "8.5 feet", 
-        height: "13 feet",
-        capacity: "20 cubic yards",
-        weight: "46,000 lbs GVWR"
-      }
+  const truckSpecs = [{
+    id: "10-yard",
+    name: "10-Yard Dump Truck",
+    payload: "10-12 tons",
+    bestFor: "Residential projects, small excavations",
+    cdlRequired: "Yes (CDL Required)",
+    hourlyRate: 125,
+    minHours: "4 hour minimum",
+    serviceArea: "Within 30 miles of Memphis",
+    truckType: "Tri-axle dump truck",
+    features: ["Perfect for driveways and small sites", "Backup camera and safety equipment", "GPS tracking for accurate timing", "Professional CDL driver included"],
+    specs: {
+      length: "22 feet",
+      width: "8 feet",
+      height: "11 feet",
+      capacity: "10 cubic yards",
+      weight: "23,000 lbs GVWR"
     }
-  ];
-
+  }, {
+    id: "15-yard",
+    name: "15-Yard Dump Truck",
+    payload: "15-18 tons",
+    bestFor: "Commercial sites, road construction",
+    cdlRequired: "Yes (Class B)",
+    hourlyRate: 145,
+    minHours: "3 hour minimum",
+    serviceArea: "Memphis metro area",
+    truckType: "Tri-axle or quad axle dump truck available",
+    features: ["Ideal for medium commercial projects", "Enhanced hydraulic system", "DOT compliant for highway use", "Experienced Class B CDL driver"],
+    specs: {
+      length: "26 feet",
+      width: "8.5 feet",
+      height: "12 feet",
+      capacity: "15 cubic yards",
+      weight: "33,000 lbs GVWR"
+    }
+  }, {
+    id: "20-yard",
+    name: "20-Yard Dump Truck",
+    payload: "20-25 tons",
+    bestFor: "Major excavation, quarry work",
+    cdlRequired: "Yes (Class B)",
+    hourlyRate: 165,
+    minHours: "No hourly minimum",
+    serviceArea: "Within 40 miles of Memphis",
+    truckType: "Tractor trailers dump trucks also available",
+    features: ["Heavy-duty for large projects", "Reinforced hydraulic systems", "Multiple safety features", "Veteran CDL driver with 10+ years"],
+    specs: {
+      length: "28 feet",
+      width: "8.5 feet",
+      height: "13 feet",
+      capacity: "20 cubic yards",
+      weight: "46,000 lbs GVWR"
+    }
+  }];
   const toggleExpanded = (id: string) => {
     setExpandedCard(expandedCard === id ? null : id);
   };
 
   // Intersection observer for staggered fade-in
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !cardsVisible) {
-            setCardsVisible(true);
-            
-            // Add visible class to cards with stagger
-            const cards = entry.target.querySelectorAll('.mem-stagger-fade');
-            cards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add('visible');
-              }, index * 150);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !cardsVisible) {
+          setCardsVisible(true);
 
+          // Add visible class to cards with stagger
+          const cards = entry.target.querySelectorAll('.mem-stagger-fade');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, index * 150);
+          });
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
     if (cardsRef.current) {
       observer.observe(cardsRef.current);
     }
-
     return () => observer.disconnect();
   }, [cardsVisible]);
 
   // Magnetic button effect for main buttons
   useEffect(() => {
     const buttons = document.querySelectorAll('.mem-magnetic-button');
-    
     buttons.forEach(button => {
       const handleMouseMove = (e: MouseEvent) => {
         const rect = button.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        
         const distance = Math.sqrt(x * x + y * y);
         if (distance < 100) {
           const factor = (100 - distance) / 100;
           (button as HTMLElement).style.transform = `translate(${x * 0.3 * factor}px, ${y * 0.3 * factor}px) scale(${1 + 0.05 * factor})`;
         }
       };
-
       const handleMouseLeave = () => {
         (button as HTMLElement).style.transform = 'translate(0, 0) scale(1)';
       };
-
       button.addEventListener('mousemove', handleMouseMove);
       button.addEventListener('mouseleave', handleMouseLeave);
     });
-
     return () => {
       buttons.forEach(button => {
         button.removeEventListener('mousemove', () => {});
@@ -148,9 +118,7 @@ const EquipmentSpecifications = () => {
       });
     };
   }, []);
-
-  return (
-    <section className="mem-section bg-mem-blue/80">
+  return <section className="mem-section bg-mem-blue/80">
       <div className="mem-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
@@ -162,22 +130,15 @@ const EquipmentSpecifications = () => {
         </div>
 
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-8">
-          {truckSpecs.map((truck, index) => (
-            <Card 
-              key={truck.id} 
-              className={`mem-stagger-fade bg-white/95 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 ${
-                expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''
-              }`}
-              onClick={() => toggleExpanded(truck.id)}
-            >
-              <CardHeader className="text-center pb-4">
+          {truckSpecs.map((truck, index) => <Card key={truck.id} className={`mem-stagger-fade bg-white/95 backdrop-blur-sm border border-mem-babyBlue/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 hover:border-mem-babyBlue/60 ${expandedCard === truck.id ? 'ring-2 ring-mem-babyBlue scale-105' : ''}`} onClick={() => toggleExpanded(truck.id)}>
+              <CardHeader className="text-center pb-4 bg-blue-700">
                 <div className="flex justify-center mb-4">
                   <div className="p-3 rounded-full bg-mem-babyBlue/20">
                     <Truck className="h-12 w-12 text-mem-babyBlue" />
                   </div>
                 </div>
-                <CardTitle className="text-xl text-mem-darkNavy mb-2">{truck.name}</CardTitle>
-                <CardDescription className="text-mem-darkNavy/80">
+                <CardTitle className="text-xl mb-2 text-slate-50 font-extrabold">{truck.name}</CardTitle>
+                <CardDescription className="text-slate-50 font-bold">
                   {truck.payload} payload capacity
                 </CardDescription>
                 <div className="flex justify-center mt-2">
@@ -192,41 +153,34 @@ const EquipmentSpecifications = () => {
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className="h-5 w-5 text-mem-babyBlue" />
                     <span className="text-3xl font-bold text-mem-babyBlue">${truck.hourlyRate}</span>
-                    <span className="text-mem-darkNavy/70">/hour</span>
+                    <span className="text-slate-50">/hour</span>
                   </div>
-                  <p className="text-mem-darkNavy/80 text-sm mb-2">{truck.bestFor}</p>
+                  <p className="text-sm mb-2 text-slate-50">{truck.bestFor}</p>
                   <div className="space-y-1">
-                    <div className="text-mem-blue font-medium text-sm">{truck.minHours}</div>
+                    <div className="text-mem-blue font-medium text-sm bg-slate-950">{truck.minHours}</div>
                     <div className="text-mem-darkNavy/60 text-xs">{truck.serviceArea}</div>
                     <div className="text-mem-darkNavy/80 text-sm font-medium">{truck.truckType}</div>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-center text-mem-darkNavy/70 hover:text-mem-blue transition-colors">
-                  {expandedCard === truck.id ? (
-                    <ChevronUp className="h-5 w-5 transition-transform duration-200" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 transition-transform duration-200" />
-                  )}
+                  {expandedCard === truck.id ? <ChevronUp className="h-5 w-5 transition-transform duration-200" /> : <ChevronDown className="h-5 w-5 transition-transform duration-200" />}
                   <span className="ml-1 text-sm">
                     {expandedCard === truck.id ? "Less Details" : "More Details"}
                   </span>
                 </div>
 
-                {expandedCard === truck.id && (
-                  <div className="mt-6 space-y-4 animate-fade-in opacity-0 animate-scale-in">
+                {expandedCard === truck.id && <div className="mt-6 space-y-4 animate-fade-in opacity-0 animate-scale-in">
                     <div>
                       <h4 className="text-mem-darkNavy font-semibold mb-2 flex items-center gap-2">
                         <Weight className="h-4 w-4 text-mem-blue" />
                         Key Features
                       </h4>
                       <ul className="space-y-1">
-                        {truck.features.map((feature, index) => (
-                          <li key={index} className="text-mem-darkNavy/80 text-sm flex items-start gap-2">
+                        {truck.features.map((feature, index) => <li key={index} className="text-mem-darkNavy/80 text-sm flex items-start gap-2">
                             <span className="text-mem-blue mt-1">•</span>
                             {feature}
-                          </li>
-                        ))}
+                          </li>)}
                       </ul>
                     </div>
 
@@ -246,15 +200,13 @@ const EquipmentSpecifications = () => {
                         <div className="text-mem-darkNavy">{truck.specs.weight}</div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div>}
 
                 <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold mem-magnetic-button">
                   Reserve This Truck
                 </Button>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
 
         <div className="text-center mt-12">
@@ -266,8 +218,6 @@ const EquipmentSpecifications = () => {
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default EquipmentSpecifications;

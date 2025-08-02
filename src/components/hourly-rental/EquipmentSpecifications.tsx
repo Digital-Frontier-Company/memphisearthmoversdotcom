@@ -187,7 +187,7 @@ const EquipmentSpecifications = () => {
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 bg-gradient-to-br from-blue-700 to-blue-900">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <DollarSign className="h-5 w-5 text-mem-babyBlue" />

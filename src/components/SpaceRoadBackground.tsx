@@ -11,15 +11,18 @@ const SpaceRoadBackground = () => {
       </div>
       
       {/* Highway perspective */}
-      <div className="absolute inset-0 perspective-container">
-        {/* Left road edge */}
-        <div className="road-edge-line left"></div>
+<div className="absolute inset-0">
+        {/* Multiple road edge lines for continuous effect */}
+        <div className="road-edge-line left" style={{ animationDelay: '0s' }}></div>
+        <div className="road-edge-line left" style={{ animationDelay: '2s' }}></div>
+        <div className="road-edge-line right" style={{ animationDelay: '0s' }}></div>
+        <div className="road-edge-line right" style={{ animationDelay: '2s' }}></div>
         
-        {/* Right road edge */}
-        <div className="road-edge-line right"></div>
-        
-        {/* Center dotted line */}
-        <div className="center-dotted-line"></div>
+        {/* Multiple center dashed lines for continuous effect */}
+        <div className="center-dash" style={{ animationDelay: '0s' }}></div>
+        <div className="center-dash" style={{ animationDelay: '1s' }}></div>
+        <div className="center-dash" style={{ animationDelay: '2s' }}></div>
+        <div className="center-dash" style={{ animationDelay: '3s' }}></div>
       </div>
       
       {/* Atmospheric glow */}

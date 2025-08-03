@@ -81,6 +81,101 @@
   animation-delay: 500ms;
 }
 
+/* Space Road Animations */
+@keyframes roadFlow {
+  0% {
+    stroke-dashoffset: 0;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    stroke-dashoffset: 200;
+    transform: translateY(50px) scale(1.1);
+  }
+}
+
+@keyframes dashFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 35;
+  }
+}
+
+@keyframes starField {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-road-flow {
+  animation: roadFlow 3s linear infinite;
+}
+
+.animate-dash-flow {
+  animation: dashFlow 1s linear infinite;
+}
+
+.perspective-road {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.road-svg {
+  transform: rotateX(60deg) translateZ(-100px);
+  animation: roadFlow 4s ease-in-out infinite alternate;
+}
+
+/* Stars */
+.stars {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    178px 156px hsl(var(--mem-babyBlue)), 
+    25px 169px hsl(var(--mem-babyBlue)), 
+    152px 55px hsl(var(--mem-babyBlue)),
+    75px 197px hsl(var(--mem-babyBlue)),
+    25px 25px hsl(var(--mem-babyBlue)),
+    200px 120px hsl(var(--mem-babyBlue)),
+    305px 85px hsl(var(--mem-babyBlue)),
+    125px 300px hsl(var(--mem-babyBlue));
+  animation: starField 50s linear infinite;
+}
+
+.stars2 {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 
+    178px 256px hsl(var(--mem-babyBlue)), 
+    325px 169px hsl(var(--mem-babyBlue)), 
+    52px 155px hsl(var(--mem-babyBlue)),
+    175px 97px hsl(var(--mem-babyBlue)),
+    225px 225px hsl(var(--mem-babyBlue)),
+    100px 320px hsl(var(--mem-babyBlue)),
+    405px 185px hsl(var(--mem-babyBlue)),
+    25px 400px hsl(var(--mem-babyBlue));
+  animation: starField 100s linear infinite;
+}
+
+.stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 
+    78px 356px hsl(var(--mem-babyBlue)), 
+    125px 69px hsl(var(--mem-babyBlue)), 
+    352px 255px hsl(var(--mem-babyBlue)),
+    75px 397px hsl(var(--mem-babyBlue)),
+    325px 125px hsl(var(--mem-babyBlue)),
+    200px 220px hsl(var(--mem-babyBlue));
+  animation: starField 150s linear infinite;
+}
+
 /* Hover effects */
 .hover-scale {
   transition: transform 0.3s ease;

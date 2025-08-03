@@ -16,7 +16,7 @@ import GravelDeliveryFaq from "@/components/gravel-delivery/GravelDeliveryFaq";
 import GravelDeliveryBreadcrumbs from "@/components/gravel-delivery/GravelDeliveryBreadcrumbs";
 import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 import GravelDeliveryRelatedServices from "@/components/gravel-delivery/GravelDeliveryRelatedServices";
-import FaqSchema from "@/components/shared/FaqSchema";
+import GravelDeliveryFaqSchema from "@/components/gravel-delivery/GravelDeliveryFaqSchema";
 
 // BreadcrumbList Schema
 const BreadcrumbSchema = {
@@ -44,29 +44,6 @@ const BreadcrumbSchema = {
   ]
 };
 
-// FAQ data
-const gravelFaqs = [
-  {
-    question: "How many square feet will 15 tons of milled asphalt cover?",
-    answer: "At a 3-inch compacted depth, one 15-ton load covers about 1,350 square feet—roughly a 15 by 90 foot driveway."
-  },
-  {
-    question: "Can I order limestone or river rock instead?",
-    answer: "Yes. Select any aggregate from local pits and we will haul it at our standard hourly truck rate plus the pit's ticket price."
-  },
-  {
-    question: "What does the spreading service include?",
-    answer: "Our spreading service provides a skid-steer with a 6-foot box blade and an experienced operator who laser grades to ±½ inch and compacts with the truck tires."
-  },
-  {
-    question: "Is there a fuel surcharge?",
-    answer: "Fuel is included in the $400 milled asphalt special. Surcharges apply only on custom hauls if regional diesel prices exceed the DOE baseline by ten cents per gallon or more."
-  },
-  {
-    question: "How do I prep my site for delivery?",
-    answer: "Ensure overhead clearance of 20 feet and a dump path at least 12 feet wide. Additional prep guidance is provided during the pre-haul confirmation call."
-  }
-];
 
 const GravelDelivery = () => {
   return (
@@ -77,10 +54,7 @@ const GravelDelivery = () => {
         url="https://www.memphisearthmovers.com/memphis-gravel-delivery"
       />
       
-      <FaqSchema 
-        faqs={gravelFaqs}
-        url="https://www.memphisearthmovers.com/memphis-gravel-delivery"
-      />
+      <GravelDeliveryFaqSchema />
       
       <Helmet>
         <title>Memphis Gravel Delivery | 15 Ton Loads for $400</title>

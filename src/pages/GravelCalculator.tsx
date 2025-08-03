@@ -204,7 +204,28 @@ const GravelCalculator = () => {
           {JSON.stringify(CalculatorSchema)}
         </script>
         <script type="application/ld+json">
-          {JSON.stringify(BreadcrumbSchema)}
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://www.memphisearthmovers.com/",
+                  "name": "Home"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@id": "https://www.memphisearthmovers.com/gravel-calculator",
+                  "name": "Gravel Calculator"
+                }
+              }
+            ]
+          })}
         </script>
         <script type="application/ld+json">
           {JSON.stringify(CalculatorFaqSchema)}

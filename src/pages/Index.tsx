@@ -235,6 +235,40 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(improvedStructuredData)}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Memphis Dump Trucks | Local Hauling & Gravel Delivery",
+            "image": "https://www.memphisearthmovers.com/images/opengraph-main.png",
+            "author": "Memphis Earth Movers",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Memphis Earth Movers",
+              "logo": "https://www.memphisearthmovers.com/images/opengraph-main.png"
+            },
+            "datePublished": "2022-01-01",
+            "dateModified": "2022-01-01"
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Memphis Earth Movers",
+            "url": "https://www.memphisearthmovers.com",
+            "logo": "https://www.memphisearthmovers.com/images/opengraph-main.png",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+19014611011",
+              "contactType": "customer service"
+            },
+            "sameAs": [
+              "https://www.facebook.com/YourActualFacebookPageURL",
+              "https://www.instagram.com/YourActualInstagramPageURL"
+            ]
+          })}
+        </script>
       </Helmet>
       
       <Header />

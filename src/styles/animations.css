@@ -135,7 +135,7 @@
   height: 100vh;
   background: #4DD2FF;
   box-shadow: 0 0 15px #4DD2FF;
-  animation-duration: 4s;
+  animation-duration: 8s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -157,7 +157,7 @@
   background: #4DD2FF;
   box-shadow: 0 0 20px #4DD2FF;
   border-radius: 4px;
-  animation: centerDashFlow 4s linear infinite;
+  animation: centerDashFlow 8s linear infinite;
 }
 
 /* Stars */

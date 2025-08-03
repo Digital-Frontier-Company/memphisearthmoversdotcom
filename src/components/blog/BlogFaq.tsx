@@ -25,32 +25,34 @@ const BlogFaq = () => {
   };
 
   return (
-    <section className="py-16 bg-mem-darkNavy">
+    <section className="py-16 relative z-10">
       <div className="mem-container">
-        <h2 className="text-center mb-12 text-white">Memphis Earth Movers Blog - FAQ</h2>
-        
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div key={index} className="mb-4">
-              <button
-                className="w-full bg-mem-blue/20 rounded-lg p-4 flex justify-between items-center cursor-pointer hover:bg-mem-blue/30 transition-colors border border-mem-babyBlue/20"
-                onClick={() => toggleFaq(index)}
-              >
-                <span className="font-semibold text-left text-white">{faq.question}</span>
-                {openIndex === index ? (
-                  <ChevronUp size={20} className="text-mem-babyBlue flex-shrink-0 ml-2" />
-                ) : (
-                  <ChevronDown size={20} className="text-mem-babyBlue flex-shrink-0 ml-2" />
+        <div className="bg-black/40 backdrop-blur-sm border border-mem-babyBlue/30 rounded-lg p-8">
+          <h2 className="text-center mb-12 text-white">Memphis Earth Movers Blog - FAQ</h2>
+          
+          <div className="max-w-3xl mx-auto">
+            {faqs.map((faq, index) => (
+              <div key={index} className="mb-4">
+                <button
+                  className="w-full bg-black/30 rounded-lg p-4 flex justify-between items-center cursor-pointer hover:bg-black/40 transition-colors border border-mem-babyBlue/20"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <span className="font-semibold text-left text-white">{faq.question}</span>
+                  {openIndex === index ? (
+                    <ChevronUp size={20} className="text-mem-babyBlue flex-shrink-0 ml-2" />
+                  ) : (
+                    <ChevronDown size={20} className="text-mem-babyBlue flex-shrink-0 ml-2" />
+                  )}
+                </button>
+                
+                {openIndex === index && (
+                  <div className="mt-2 p-4 bg-black/20 rounded-lg border border-mem-babyBlue/30">
+                    <p className="text-white/80">{faq.answer}</p>
+                  </div>
                 )}
-              </button>
-              
-              {openIndex === index && (
-                <div className="mt-2 p-4 bg-white/10 rounded-lg border border-mem-gray">
-                  <p className="text-white/80">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

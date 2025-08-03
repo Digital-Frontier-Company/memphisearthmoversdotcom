@@ -10,19 +10,20 @@ const SpaceRoadBackground = () => {
         <div className="stars3 absolute inset-0"></div>
       </div>
       
-      {/* Highway perspective */}
-<div className="absolute inset-0">
+      {/* First Person Highway View */}
+      <div className="absolute inset-0">
         {/* Multiple road edge lines for continuous effect */}
         <div className="road-edge-line left" style={{ animationDelay: '0s' }}></div>
-        <div className="road-edge-line left" style={{ animationDelay: '2s' }}></div>
+        <div className="road-edge-line left" style={{ animationDelay: '4s' }}></div>
         <div className="road-edge-line right" style={{ animationDelay: '0s' }}></div>
-        <div className="road-edge-line right" style={{ animationDelay: '2s' }}></div>
+        <div className="road-edge-line right" style={{ animationDelay: '4s' }}></div>
         
         {/* Multiple center dashed lines for continuous effect */}
         <div className="center-dash" style={{ animationDelay: '0s' }}></div>
-        <div className="center-dash" style={{ animationDelay: '1s' }}></div>
-        <div className="center-dash" style={{ animationDelay: '2s' }}></div>
+        <div className="center-dash" style={{ animationDelay: '1.5s' }}></div>
         <div className="center-dash" style={{ animationDelay: '3s' }}></div>
+        <div className="center-dash" style={{ animationDelay: '4.5s' }}></div>
+        <div className="center-dash" style={{ animationDelay: '6s' }}></div>
       </div>
       
       {/* Atmospheric glow */}

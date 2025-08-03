@@ -81,16 +81,19 @@
   animation-delay: 500ms;
 }
 
-/* Highway Road Animation */
+/* First Person Highway Animation */
 @keyframes roadEdgeExpand {
   0% {
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleY(0.1);
+    opacity: 0.3;
+  }
+  50% {
     opacity: 1;
   }
   100% {
-    left: 10%;
-    transform: translateX(0);
+    left: 5%;
+    transform: translateX(0) scaleY(1);
     opacity: 0;
   }
 }
@@ -98,24 +101,35 @@
 @keyframes roadEdgeExpandRight {
   0% {
     right: 50%;
-    transform: translateX(50%);
+    transform: translateX(50%) scaleY(0.1);
+    opacity: 0.3;
+  }
+  50% {
     opacity: 1;
   }
   100% {
-    right: 10%;
-    transform: translateX(0);
+    right: 5%;
+    transform: translateX(0) scaleY(1);
     opacity: 0;
   }
 }
 
 @keyframes centerDashFlow {
   0% {
-    top: -100px;
+    top: 40%;
+    transform: translateX(-50%) scaleY(0.2);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
     opacity: 1;
   }
   100% {
     top: 100vh;
-    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+    opacity: 0;
   }
 }
 
@@ -131,13 +145,18 @@
 .road-edge-line {
   position: absolute;
   top: 0;
-  width: 3px;
+  width: 2px;
   height: 100vh;
-  background: #4DD2FF;
-  box-shadow: 0 0 15px #4DD2FF;
-  animation-duration: 4s;
-  animation-timing-function: linear;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    transparent 40%, 
+    #4DD2FF 50%, 
+    #4DD2FF 100%);
+  box-shadow: 0 0 12px #4DD2FF;
+  animation-duration: 8s;
+  animation-timing-function: ease-out;
   animation-iteration-count: infinite;
+  transform-origin: center top;
 }
 
 .road-edge-line.left {
@@ -151,13 +170,14 @@
 .center-dash {
   position: absolute;
   left: 50%;
-  width: 8px;
-  height: 60px;
-  margin-left: -4px;
+  width: 6px;
+  height: 40px;
+  margin-left: -3px;
   background: #4DD2FF;
-  box-shadow: 0 0 20px #4DD2FF;
-  border-radius: 4px;
-  animation: centerDashFlow 4s linear infinite;
+  box-shadow: 0 0 15px #4DD2FF;
+  border-radius: 3px;
+  animation: centerDashFlow 8s ease-out infinite;
+  transform-origin: center top;
 }
 
 /* Stars */

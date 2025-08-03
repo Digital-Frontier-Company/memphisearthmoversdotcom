@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import DriverLogin from "@/components/drivers/DriverLogin";
 import AdminDashboard from "@/components/drivers/AdminDashboard";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 const Admin = () => {
   const [loggedInAdmin, setLoggedInAdmin] = useState<any>(null);
@@ -23,7 +24,8 @@ const Admin = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col relative">
+      <AnimatedBackground />
       <Helmet>
         <title>Admin Dashboard - Memphis Earth Movers</title>
         <meta 
@@ -36,7 +38,7 @@ const Admin = () => {
       {!loggedInAdmin ? (
         <>
           <Header />
-          <main className="min-h-screen morphing-grid-bg">
+          <main className="min-h-screen relative z-10">
             <div className="py-0">
               <div className="w-full px-0">
                 <div className="w-full">
@@ -48,9 +50,11 @@ const Admin = () => {
           <Footer />
         </>
       ) : (
-        <AdminDashboard driver={loggedInAdmin} onLogout={handleLogout} />
+        <div className="relative z-10">
+          <AdminDashboard driver={loggedInAdmin} onLogout={handleLogout} />
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

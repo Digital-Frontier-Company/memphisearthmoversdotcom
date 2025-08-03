@@ -2,18 +2,18 @@ import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
 import TypewriterEffect from "./TypewriterEffect";
+import ThreeDBackground from "./ThreeDBackground";
 const HeroSection = () => {
-  return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#143ff6]/[0.38]">
-      {/* Background Image with Overlay and Gradient Morphing */}
-      <div className="absolute inset-0 z-0">
-        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-75" width="1920" height="1080" fetchPriority="high" />
-        <div className="absolute inset-0 bg-gradient-to-br from-mem-blue/20 via-mem-babyBlue/30 to-mem-darkNavy/40 animate-gradient-morph"></div>
-        <div className="absolute inset-0 bg-black/15"></div>
-      </div>
+  return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden">
+      {/* 3D Animated Background */}
+      <ThreeDBackground />
       
-      {/* Glowing Baby Blue Light Effect */}
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-mem-babyBlue/30 blur-3xl"></div>
-      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-mem-babyBlue/20 blur-3xl"></div>
+      {/* Background Image Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-30 mix-blend-overlay" width="1920" height="1080" fetchPriority="high" />
+        <div className="absolute inset-0 bg-gradient-to-br from-mem-blue/20 via-mem-babyBlue/30 to-mem-darkNavy/40"></div>
+        <div className="absolute inset-0 bg-black/25"></div>
+      </div>
       
       <div className="mem-container relative z-10 py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">

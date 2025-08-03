@@ -2,20 +2,20 @@ import { Link } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 import QuoteForm from "./QuoteForm";
 import TypewriterEffect from "./TypewriterEffect";
-import ThreeDBackground from "./ThreeDBackground";
+import AnimatedBackground from "./AnimatedBackground";
 const HeroSection = () => {
   return <section id="quoteForm" className="relative min-h-[80vh] flex items-center overflow-hidden">
-      {/* 3D Animated Background */}
-      <ThreeDBackground />
+      {/* CSS Animated Background */}
+      <AnimatedBackground />
       
       {/* Background Image Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-30 mix-blend-overlay" width="1920" height="1080" fetchPriority="high" />
+      <div className="absolute inset-0 z-10">
+        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-40 mix-blend-overlay" width="1920" height="1080" fetchPriority="high" />
         <div className="absolute inset-0 bg-gradient-to-br from-mem-blue/20 via-mem-babyBlue/30 to-mem-darkNavy/40"></div>
         <div className="absolute inset-0 bg-black/25"></div>
       </div>
       
-      <div className="mem-container relative z-10 py-12 md:py-16 lg:py-20">
+      <div className="mem-container relative z-20 py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 mb-6 py-0 px-0">

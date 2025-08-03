@@ -10,55 +10,16 @@ const SpaceRoadBackground = () => {
         <div className="stars3 absolute inset-0"></div>
       </div>
       
-      {/* Highway grid perspective */}
+      {/* Highway perspective */}
       <div className="absolute inset-0 perspective-container">
-        {/* Road surface */}
-        <div className="road-surface"></div>
+        {/* Left road edge */}
+        <div className="road-edge-line left"></div>
         
-        {/* Grid lines */}
-        <div className="grid-container">
-          {/* Horizontal grid lines */}
-          {Array.from({ length: 20 }, (_, i) => (
-            <div 
-              key={`h-${i}`} 
-              className="grid-line horizontal"
-              style={{ 
-                transform: `translateZ(${-i * 50}px) translateY(${i * 10}px)`,
-                animationDelay: `${i * 0.1}s`
-              }}
-            />
-          ))}
-          
-          {/* Vertical grid lines */}
-          {Array.from({ length: 10 }, (_, i) => (
-            <div 
-              key={`v-${i}`} 
-              className="grid-line vertical"
-              style={{ 
-                left: `${10 + i * 10}%`,
-                animationDelay: `${i * 0.05}s`
-              }}
-            />
-          ))}
-        </div>
+        {/* Right road edge */}
+        <div className="road-edge-line right"></div>
         
-        {/* Center highway lines */}
-        <div className="highway-lines">
-          {Array.from({ length: 15 }, (_, i) => (
-            <div 
-              key={`lane-${i}`}
-              className="lane-marker"
-              style={{ 
-                transform: `translateZ(${-i * 80}px)`,
-                animationDelay: `${i * 0.2}s`
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Road edges */}
-        <div className="road-edge left"></div>
-        <div className="road-edge right"></div>
+        {/* Center dotted line */}
+        <div className="center-dotted-line"></div>
       </div>
       
       {/* Atmospheric glow */}

@@ -81,24 +81,26 @@
   animation-delay: 500ms;
 }
 
-/* Space Road Animations */
-@keyframes roadFlow {
+/* Highway Grid Animations */
+@keyframes gridFlow {
   0% {
-    stroke-dashoffset: 0;
-    transform: translateY(0) scale(1);
+    transform: translateZ(0) scale(1);
+    opacity: 1;
   }
   100% {
-    stroke-dashoffset: 200;
-    transform: translateY(50px) scale(1.1);
+    transform: translateZ(200px) scale(2);
+    opacity: 0;
   }
 }
 
-@keyframes dashFlow {
+@keyframes laneFlow {
   0% {
-    stroke-dashoffset: 0;
+    transform: translateZ(0) scale(1);
+    opacity: 1;
   }
   100% {
-    stroke-dashoffset: 35;
+    transform: translateZ(300px) scale(3);
+    opacity: 0;
   }
 }
 
@@ -111,22 +113,97 @@
   }
 }
 
-.animate-road-flow {
-  animation: roadFlow 3s linear infinite;
-}
-
-.animate-dash-flow {
-  animation: dashFlow 1s linear infinite;
-}
-
-.perspective-road {
+.perspective-container {
   perspective: 1000px;
+  perspective-origin: 50% 100%;
   transform-style: preserve-3d;
 }
 
-.road-svg {
-  transform: rotateX(60deg) translateZ(-100px);
-  animation: roadFlow 4s ease-in-out infinite alternate;
+.road-surface {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to top, 
+    rgba(20, 49, 102, 0.3) 0%, 
+    rgba(20, 49, 102, 0.1) 50%, 
+    transparent 100%);
+  transform: rotateX(75deg) translateZ(-100px);
+}
+
+.grid-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.grid-line {
+  position: absolute;
+  background: #4DD2FF;
+  box-shadow: 0 0 10px #4DD2FF;
+}
+
+.grid-line.horizontal {
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  animation: gridFlow 3s linear infinite;
+  transform-origin: center bottom;
+}
+
+.grid-line.vertical {
+  width: 1px;
+  height: 100%;
+  bottom: 0;
+  animation: gridFlow 4s linear infinite;
+  transform-origin: center bottom;
+}
+
+.highway-lines {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.lane-marker {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 4px;
+  height: 40px;
+  background: #4DD2FF;
+  box-shadow: 0 0 15px #4DD2FF;
+  transform-origin: center bottom;
+  animation: laneFlow 2s linear infinite;
+  margin-left: -2px;
+}
+
+.road-edge {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #4DD2FF, transparent);
+  box-shadow: 0 0 20px #4DD2FF;
+  animation: gridFlow 4s linear infinite;
+}
+
+.road-edge.left {
+  left: 25%;
+  transform: rotateY(-10deg);
+}
+
+.road-edge.right {
+  right: 25%;
+  transform: rotateY(10deg);
 }
 
 /* Stars */

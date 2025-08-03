@@ -135,14 +135,14 @@
   height: 2px;
   background: transparent;
   box-shadow: 
-    178px 156px hsl(var(--mem-babyBlue)), 
-    25px 169px hsl(var(--mem-babyBlue)), 
-    152px 55px hsl(var(--mem-babyBlue)),
-    75px 197px hsl(var(--mem-babyBlue)),
-    25px 25px hsl(var(--mem-babyBlue)),
-    200px 120px hsl(var(--mem-babyBlue)),
-    305px 85px hsl(var(--mem-babyBlue)),
-    125px 300px hsl(var(--mem-babyBlue));
+    178px 156px #4DD2FF, 
+    25px 169px #4DD2FF, 
+    152px 55px #4DD2FF,
+    75px 197px #4DD2FF,
+    25px 25px #4DD2FF,
+    200px 120px #4DD2FF,
+    305px 85px #4DD2FF,
+    125px 300px #4DD2FF;
   animation: starField 50s linear infinite;
 }
 
@@ -151,14 +151,14 @@
   height: 1px;
   background: transparent;
   box-shadow: 
-    178px 256px hsl(var(--mem-babyBlue)), 
-    325px 169px hsl(var(--mem-babyBlue)), 
-    52px 155px hsl(var(--mem-babyBlue)),
-    175px 97px hsl(var(--mem-babyBlue)),
-    225px 225px hsl(var(--mem-babyBlue)),
-    100px 320px hsl(var(--mem-babyBlue)),
-    405px 185px hsl(var(--mem-babyBlue)),
-    25px 400px hsl(var(--mem-babyBlue));
+    178px 256px #4DD2FF, 
+    325px 169px #4DD2FF, 
+    52px 155px #4DD2FF,
+    175px 97px #4DD2FF,
+    225px 225px #4DD2FF,
+    100px 320px #4DD2FF,
+    405px 185px #4DD2FF,
+    25px 400px #4DD2FF;
   animation: starField 100s linear infinite;
 }
 
@@ -167,12 +167,12 @@
   height: 3px;
   background: transparent;
   box-shadow: 
-    78px 356px hsl(var(--mem-babyBlue)), 
-    125px 69px hsl(var(--mem-babyBlue)), 
-    352px 255px hsl(var(--mem-babyBlue)),
-    75px 397px hsl(var(--mem-babyBlue)),
-    325px 125px hsl(var(--mem-babyBlue)),
-    200px 220px hsl(var(--mem-babyBlue));
+    78px 356px #4DD2FF, 
+    125px 69px #4DD2FF, 
+    352px 255px #4DD2FF,
+    75px 397px #4DD2FF,
+    325px 125px #4DD2FF,
+    200px 220px #4DD2FF;
   animation: starField 150s linear infinite;
 }
 

@@ -7,6 +7,7 @@ import WeeklyEarnings from "./WeeklyEarnings";
 import EditHours from "./EditHours";
 import AdminDashboard from "./AdminDashboard";
 import { supabase } from "@/integrations/supabase/client";
+import { getCentralWeekDates } from "@/utils/timezoneUtils";
 
 // --- START OF FIXES ---
 
@@ -56,25 +57,17 @@ const DriverDashboard = ({
     setIsClocked(!!data);
   };
   const fetchWeeklyData = async () => {
-    // FIX 3: Calculate the start of the week based on the current date in the US Central timezone.
-    const now = new Date();
-    // Create a new Date object that reflects the "wall time" in the target timezone.
-    const centralNow = new Date(now.toLocaleString('en-US', {
-      timeZone: TIME_ZONE
-    }));
-    const dayOfWeek = centralNow.getDay(); // 0=Sunday, 1=Monday, etc.
-    const diff = centralNow.getDate() - dayOfWeek;
-    const sunday = new Date(centralNow.setDate(diff));
-
-    // Format the date into YYYY-MM-DD for the database query.
-    const start = sunday.toISOString().split('T')[0];
+    const { start } = getCentralWeekDates();
     await supabase.rpc('calculate_weekly_earnings', {
       p_driver_id: driver.id,
       p_week_start: start
     });
-    const {
-      data
-    } = await supabase.from("weekly_earnings").select("*").eq("driver_id", driver.id).eq("week_start_date", start).single();
+    const { data } = await supabase
+      .from("weekly_earnings")
+      .select("*")
+      .eq("driver_id", driver.id)
+      .eq("week_start_date", start)
+      .single();
     if (data) {
       setWeeklyData({
         totalHours: data.total_hours || 0,

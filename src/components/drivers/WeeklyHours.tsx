@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Clock, Calendar } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { getCentralWeekDates } from "@/utils/timezoneUtils";
 
 const TIME_ZONE = 'America/Chicago';
 
@@ -32,25 +33,7 @@ const WeeklyHours = ({ driver }: WeeklyHoursProps) => {
     fetchWeekEntries();
   }, [driver.id]);
 
-  const getWeekDates = () => {
-    const now = new Date();
-    const centralDateStr = now.toLocaleDateString('en-CA', { timeZone: TIME_ZONE });
-    const centralDate = new Date(centralDateStr + 'T12:00:00');
-    
-    const dayOfWeek = centralDate.getDay();
-    const diff = centralDate.getDate() - dayOfWeek;
-    
-    const sunday = new Date(centralDate);
-    sunday.setDate(diff);
-    
-    const saturday = new Date(sunday);
-    saturday.setDate(sunday.getDate() + 6);
-    
-    return {
-      start: sunday.toISOString().split('T')[0],
-      end: saturday.toISOString().split('T')[0]
-    };
-  };
+  const getWeekDates = () => getCentralWeekDates();
 
   const fetchWeekEntries = async () => {
     setLoading(true);

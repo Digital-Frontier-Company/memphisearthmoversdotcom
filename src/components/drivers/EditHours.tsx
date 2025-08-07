@@ -8,6 +8,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { getCentralWeekDates } from "@/utils/timezoneUtils";
 
 const TIME_ZONE = 'America/Chicago';
 
@@ -49,25 +50,7 @@ const EditHours = ({ driver }: EditHoursProps) => {
   }, [driver.id]);
 
   // Get week dates in Central Time
-  const getWeekDates = () => {
-    const now = new Date();
-    const centralDateStr = now.toLocaleDateString('en-CA', { timeZone: TIME_ZONE });
-    const centralDate = new Date(centralDateStr + 'T12:00:00'); // Use noon to avoid DST issues
-    
-    const dayOfWeek = centralDate.getDay();
-    const diff = centralDate.getDate() - dayOfWeek;
-    
-    const sunday = new Date(centralDate);
-    sunday.setDate(diff);
-    
-    const saturday = new Date(sunday);
-    saturday.setDate(sunday.getDate() + 6);
-    
-    return {
-      start: format(sunday, 'yyyy-MM-dd'),
-      end: format(saturday, 'yyyy-MM-dd')
-    };
-  };
+  const getWeekDates = () => getCentralWeekDates();
 
   const fetchWeekEntries = async () => {
     setLoading(true);

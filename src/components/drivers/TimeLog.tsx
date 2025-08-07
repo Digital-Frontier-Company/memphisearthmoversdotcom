@@ -7,6 +7,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { getCentralWeekDates } from "@/utils/timezoneUtils";
 
 // --- START OF FIXES ---
 
@@ -69,20 +70,7 @@ const EditHours = ({ driver }: EditHoursProps) => {
   }, [driver.id]);
 
   // FIX 1: Calculate the week's start and end based on the current date in Central Time.
-  const getWeekDates = () => {
-    const now = new Date();
-    const centralNow = new Date(now.toLocaleString('en-US', { timeZone: TIME_ZONE }));
-    const dayOfWeek = centralNow.getDay();
-    const diff = centralNow.getDate() - dayOfWeek;
-
-    const sunday = new Date(centralNow.setDate(diff));
-    const saturday = new Date(new Date(sunday).setDate(sunday.getDate() + 6));
-    
-    return {
-      start: format(sunday, 'yyyy-MM-dd'),
-      end: format(saturday, 'yyyy-MM-dd')
-    };
-  };
+  const getWeekDates = () => getCentralWeekDates();
 
   const fetchWeekEntries = async () => {
     setLoading(true);

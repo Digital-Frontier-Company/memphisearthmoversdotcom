@@ -29,6 +29,7 @@ import {
   MapPin
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { getCentralWeekDates } from "@/utils/timezoneUtils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -311,16 +312,7 @@ const AdminDashboard = ({ driver, onLogout }: AdminDashboardProps) => {
     setActivityLogs(data || []);
   };
 
-  const getWeekDates = () => {
-    const now = new Date();
-    const dayOfWeek = now.getDay();
-    const diff = now.getDate() - dayOfWeek;
-    const sunday = new Date(now.setDate(diff));
-    
-    return {
-      start: sunday.toISOString().split('T')[0]
-    };
-  };
+  const getWeekDates = () => getCentralWeekDates();
 
   const resetTaskForm = () => {
     setTaskForm({

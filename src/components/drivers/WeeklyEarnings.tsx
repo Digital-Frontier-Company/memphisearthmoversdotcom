@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Calendar, Clock, DollarSign } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { getCentralWeekDates } from "@/utils/timezoneUtils";
 
 interface Driver {
   id: string;
@@ -26,17 +27,7 @@ const WeeklyEarnings = ({ driver }: WeeklyEarningsProps) => {
   }, [driver.id]);
 
   const getWeekDates = () => {
-    const now = new Date();
-    const dayOfWeek = now.getDay();
-    const diff = now.getDate() - dayOfWeek;
-    const sunday = new Date(now.setDate(diff));
-    const saturday = new Date(sunday);
-    saturday.setDate(sunday.getDate() + 6);
-    
-    return {
-      start: sunday.toISOString().split('T')[0],
-      end: saturday.toISOString().split('T')[0]
-    };
+    return getCentralWeekDates();
   };
 
   const fetchWeeklyEarnings = async () => {

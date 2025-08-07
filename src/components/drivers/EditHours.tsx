@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Edit3, Save, X, Calendar, Clock, Plus } from "lucide-react";
+import { Edit3, Save, X, Calendar, Clock, Plus, Trash2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -8,27 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
-// --- START OF FIXES ---
-
 const TIME_ZONE = 'America/Chicago';
-
-/**
- * Helper function to create a Date object from form inputs, assuming they are in US Central Time.
- * @param {string} dateStr - The date string, e.g., "2024-07-04".
- * @param {string} timeStr - The time string, e.g., "10:30".
- * @returns {Date | null} A timezone-correct Date object or null if inputs are invalid.
- */
-const createDateInTimeZone = (dateStr, timeStr) => {
-  if (!dateStr || !timeStr) return null;
-  const naiveDate = new Date(`${dateStr}T${timeStr}:00.000Z`);
-  const utcTime = new Date(naiveDate.toLocaleString('en-US', { timeZone: 'UTC' })).getTime();
-  const tzTime = new Date(naiveDate.toLocaleString('en-US', { timeZone: TIME_ZONE })).getTime();
-  const offsetMilliseconds = utcTime - tzTime;
-  return new Date(naiveDate.getTime() - offsetMilliseconds);
-};
-
-// --- END OF FIXES ---
-
 
 interface Driver {
   id: string;
@@ -57,7 +37,6 @@ const EditHours = ({ driver }: EditHoursProps) => {
   const [editForm, setEditForm] = useState({
     clockIn: "",
     clockOut: "",
-    hoursWorked: "",
     truckNumber: "",
     jobAddress: "",
   });
@@ -68,15 +47,20 @@ const EditHours = ({ driver }: EditHoursProps) => {
     fetchWeekEntries();
   }, [driver.id]);
 
-  // FIX 1: Calculate the week's start and end based on the current date in Central Time.
+  // Get week dates in Central Time
   const getWeekDates = () => {
     const now = new Date();
-    const centralNow = new Date(now.toLocaleString('en-US', { timeZone: TIME_ZONE }));
-    const dayOfWeek = centralNow.getDay();
-    const diff = centralNow.getDate() - dayOfWeek;
-
-    const sunday = new Date(centralNow.setDate(diff));
-    const saturday = new Date(new Date(sunday).setDate(sunday.getDate() + 6));
+    const centralDateStr = now.toLocaleDateString('en-CA', { timeZone: TIME_ZONE });
+    const centralDate = new Date(centralDateStr + 'T12:00:00'); // Use noon to avoid DST issues
+    
+    const dayOfWeek = centralDate.getDay();
+    const diff = centralDate.getDate() - dayOfWeek;
+    
+    const sunday = new Date(centralDate);
+    sunday.setDate(diff);
+    
+    const saturday = new Date(sunday);
+    saturday.setDate(sunday.getDate() + 6);
     
     return {
       start: format(sunday, 'yyyy-MM-dd'),
@@ -113,15 +97,32 @@ const EditHours = ({ driver }: EditHoursProps) => {
     return dateStr >= start && dateStr <= end;
   };
 
-  // FIX 2: When editing, display times converted to the Central timezone.
   const startEditing = (entry: TimeEntry) => {
     setEditingEntry(entry.id);
-    const commonTimeOptions = { hour12: false, hour: '2-digit' as const, minute: '2-digit' as const, timeZone: TIME_ZONE };
+    
+    // Convert UTC times to Central Time for display
+    const clockInDate = new Date(entry.clock_in_time);
+    const clockInTime = clockInDate.toLocaleTimeString('en-US', {
+      timeZone: TIME_ZONE,
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    
+    let clockOutTime = "";
+    if (entry.clock_out_time) {
+      const clockOutDate = new Date(entry.clock_out_time);
+      clockOutTime = clockOutDate.toLocaleTimeString('en-US', {
+        timeZone: TIME_ZONE,
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
     
     setEditForm({
-      clockIn: new Date(entry.clock_in_time).toLocaleTimeString('en-US', commonTimeOptions),
-      clockOut: entry.clock_out_time ? new Date(entry.clock_out_time).toLocaleTimeString('en-US', commonTimeOptions) : "",
-      hoursWorked: entry.hours_worked?.toString() || "",
+      clockIn: clockInTime,
+      clockOut: clockOutTime,
       truckNumber: entry.truck_number || "",
       jobAddress: entry.job_address || "",
     });
@@ -132,7 +133,6 @@ const EditHours = ({ driver }: EditHoursProps) => {
     setEditForm({
       clockIn: "",
       clockOut: "",
-      hoursWorked: "",
       truckNumber: "",
       jobAddress: "",
     });
@@ -141,18 +141,38 @@ const EditHours = ({ driver }: EditHoursProps) => {
   const cancelEditing = () => {
     setEditingEntry(null);
     setIsCreating(false);
-    setEditForm({ clockIn: "", clockOut: "", hoursWorked: "", truckNumber: "", jobAddress: "" });
+    setEditForm({ clockIn: "", clockOut: "", truckNumber: "", jobAddress: "" });
   };
 
-  // FIX 3: Centralized and accurate hours calculation using proper Date objects.
-  const calculateHours = (start: Date | null, end: Date | null) => {
-    if (!start || !end) return 0;
+  // Convert Central Time input to UTC for storage
+  const convertCentralTimeToUTC = (dateStr: string, timeStr: string): string | null => {
+    if (!dateStr || !timeStr) return null;
+    
+    // Create a date string in Central Time
+    const centralDateTimeStr = `${dateStr} ${timeStr}`;
+    
+    // Parse it as Central Time and convert to UTC
+    const date = new Date(centralDateTimeStr);
+    
+    // Adjust for Central Time offset
+    const centralOffset = new Date().toLocaleString('en-US', {
+      timeZone: TIME_ZONE,
+      timeZoneName: 'short'
+    }).includes('CDT') ? 5 : 6; // CDT is UTC-5, CST is UTC-6
+    
+    date.setHours(date.getHours() + centralOffset);
+    
+    return date.toISOString();
+  };
+
+  const calculateHours = (startISO: string, endISO: string): number => {
+    const start = new Date(startISO);
+    const end = new Date(endISO);
     const diffMs = end.getTime() - start.getTime();
     const diffHours = diffMs / (1000 * 60 * 60);
-    return Math.max(0, Math.round(diffHours * 100) / 100);
+    return Math.round(diffHours * 100) / 100;
   };
-  
-  // FIX 4: Rewrite saveEntry to be fully timezone-aware.
+
   const saveEntry = async (entryId: string) => {
     if (!editForm.clockIn || !editForm.truckNumber) {
       toast.error("Please fill in clock in time and truck number");
@@ -162,31 +182,29 @@ const EditHours = ({ driver }: EditHoursProps) => {
     const entry = timeEntries.find(e => e.id === entryId);
     if (!entry) return;
 
-    const clockInDate = createDateInTimeZone(entry.date, editForm.clockIn);
-    const clockOutDate = createDateInTimeZone(entry.date, editForm.clockOut);
+    const clockInUTC = convertCentralTimeToUTC(entry.date, editForm.clockIn);
+    const clockOutUTC = editForm.clockOut ? convertCentralTimeToUTC(entry.date, editForm.clockOut) : null;
     
-    if (!clockInDate) {
-        toast.error("Invalid clock-in time");
-        return;
+    if (!clockInUTC) {
+      toast.error("Invalid clock-in time");
+      return;
     }
 
-    const calculatedHours = clockOutDate ? 
-      calculateHours(clockInDate, clockOutDate) : 
-      parseFloat(editForm.hoursWorked) || null;
+    const hoursWorked = clockInUTC && clockOutUTC ? calculateHours(clockInUTC, clockOutUTC) : null;
 
     const { error } = await supabase
       .from("time_entries")
       .update({
-        clock_in_time: clockInDate.toISOString(),
-        clock_out_time: clockOutDate ? clockOutDate.toISOString() : null,
-        hours_worked: calculatedHours,
+        clock_in_time: clockInUTC,
+        clock_out_time: clockOutUTC,
+        hours_worked: hoursWorked,
         truck_number: editForm.truckNumber,
         job_address: editForm.jobAddress || null,
       })
       .eq("id", entryId);
 
     if (error) {
-      toast.error(`Failed to update time entry: ${error.message}`);
+      toast.error(`Failed to update: ${error.message}`);
       return;
     }
 
@@ -194,8 +212,7 @@ const EditHours = ({ driver }: EditHoursProps) => {
     cancelEditing();
     fetchWeekEntries();
   };
-  
-  // FIX 5: Rewrite createEntry to be fully timezone-aware.
+
   const createEntry = async () => {
     if (!editForm.clockIn || !editForm.truckNumber) {
       toast.error("Please fill in clock in time and truck number");
@@ -203,37 +220,52 @@ const EditHours = ({ driver }: EditHoursProps) => {
     }
 
     const entryDateStr = format(selectedDate, 'yyyy-MM-dd');
-    const clockInDate = createDateInTimeZone(entryDateStr, editForm.clockIn);
-    const clockOutDate = createDateInTimeZone(entryDateStr, editForm.clockOut);
+    const clockInUTC = convertCentralTimeToUTC(entryDateStr, editForm.clockIn);
+    const clockOutUTC = editForm.clockOut ? convertCentralTimeToUTC(entryDateStr, editForm.clockOut) : null;
 
-    if (!clockInDate) {
-        toast.error("Invalid clock-in time");
-        return;
+    if (!clockInUTC) {
+      toast.error("Invalid clock-in time");
+      return;
     }
     
-    const calculatedHours = clockOutDate ? 
-      calculateHours(clockInDate, clockOutDate) : 
-      parseFloat(editForm.hoursWorked) || null;
+    const hoursWorked = clockInUTC && clockOutUTC ? calculateHours(clockInUTC, clockOutUTC) : null;
 
     const { error } = await supabase
       .from("time_entries")
       .insert({
         driver_id: driver.id,
         date: entryDateStr,
-        clock_in_time: clockInDate.toISOString(),
-        clock_out_time: clockOutDate ? clockOutDate.toISOString() : null,
-        hours_worked: calculatedHours,
+        clock_in_time: clockInUTC,
+        clock_out_time: clockOutUTC,
+        hours_worked: hoursWorked,
         truck_number: editForm.truckNumber,
         job_address: editForm.jobAddress || null,
       });
 
     if (error) {
-      toast.error(`Failed to create time entry: ${error.message}`);
+      toast.error(`Failed to create: ${error.message}`);
       return;
     }
 
     toast.success("Time entry created successfully!");
     cancelEditing();
+    fetchWeekEntries();
+  };
+
+  const deleteEntry = async (entryId: string) => {
+    if (!confirm("Are you sure you want to delete this entry?")) return;
+
+    const { error } = await supabase
+      .from("time_entries")
+      .delete()
+      .eq("id", entryId);
+
+    if (error) {
+      toast.error(`Failed to delete: ${error.message}`);
+      return;
+    }
+
+    toast.success("Entry deleted successfully!");
     fetchWeekEntries();
   };
 
@@ -248,11 +280,48 @@ const EditHours = ({ driver }: EditHoursProps) => {
       <div className="text-center mb-8">
         <Edit3 className="mx-auto mb-4 text-blue-400" size={40} />
         <h2 className="text-xl font-bold text-white mb-2">Edit Hours</h2>
-        <p className="text-slate-400">Edit or create time entries for the current week.</p>
+        <p className="text-slate-400">Edit or create time entries for the current week</p>
       </div>
 
       <div className="mb-6 flex flex-wrap gap-4 items-center justify-between">
-         {/* Date Picker (unchanged) */}
+        <Popover open={showDatePicker} onOpenChange={setShowDatePicker}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              className={cn(
+                "justify-start text-left font-normal",
+                !selectedDate && "text-muted-foreground"
+              )}
+            >
+              <Calendar className="mr-2 h-4 w-4" />
+              {selectedDate ? format(selectedDate, "PPP") : "Pick a date"}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-0">
+            <CalendarComponent
+              mode="single"
+              selected={selectedDate}
+              onSelect={(date) => {
+                if (date && isDateInCurrentWeek(date)) {
+                  setSelectedDate(date);
+                  setShowDatePicker(false);
+                } else {
+                  toast.error("Please select a date within the current week");
+                }
+              }}
+              initialFocus
+            />
+          </PopoverContent>
+        </Popover>
+
+        <Button
+          onClick={startCreating}
+          disabled={isCreating}
+          className="bg-blue-600 hover:bg-blue-700"
+        >
+          <Plus className="mr-2 h-4 w-4" />
+          Add Entry
+        </Button>
       </div>
 
       {isCreating && (
@@ -260,7 +329,44 @@ const EditHours = ({ driver }: EditHoursProps) => {
           <div className="text-white font-semibold mb-3">
             Create New Entry for {format(selectedDate, "MMMM d, yyyy")}
           </div>
-          {/* Create form inputs... (unchanged) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="time"
+              value={editForm.clockIn}
+              onChange={(e) => setEditForm({ ...editForm, clockIn: e.target.value })}
+              className="px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+              placeholder="Clock In"
+            />
+            <input
+              type="time"
+              value={editForm.clockOut}
+              onChange={(e) => setEditForm({ ...editForm, clockOut: e.target.value })}
+              className="px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+              placeholder="Clock Out"
+            />
+            <input
+              type="text"
+              value={editForm.truckNumber}
+              onChange={(e) => setEditForm({ ...editForm, truckNumber: e.target.value })}
+              className="px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+              placeholder="Truck Number *"
+            />
+            <input
+              type="text"
+              value={editForm.jobAddress}
+              onChange={(e) => setEditForm({ ...editForm, jobAddress: e.target.value })}
+              className="px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+              placeholder="Job Address"
+            />
+          </div>
+          <div className="flex gap-2 mt-4">
+            <Button onClick={createEntry} size="sm" className="bg-green-600 hover:bg-green-700">
+              <Save className="mr-1 h-3 w-3" /> Save
+            </Button>
+            <Button onClick={cancelEditing} size="sm" variant="outline">
+              <X className="mr-1 h-3 w-3" /> Cancel
+            </Button>
+          </div>
         </div>
       )}
 
@@ -277,32 +383,114 @@ const EditHours = ({ driver }: EditHoursProps) => {
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <div className="text-white font-semibold">
-                    {/* FIX 6: Safely display date to avoid off-by-one errors */}
-                    {new Date(entry.date + 'T00:00:00Z').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: TIME_ZONE })}
+                    {new Date(entry.date + 'T12:00:00').toLocaleDateString('en-US', { 
+                      weekday: 'long', 
+                      month: 'long', 
+                      day: 'numeric',
+                      timeZone: 'UTC'
+                    })}
                   </div>
-                  {/* ... other details */}
+                  <div className="text-slate-400 text-sm">
+                    Truck: {entry.truck_number} {entry.job_address && `• ${entry.job_address}`}
+                  </div>
                 </div>
-                {/* ... edit button */}
+                <div className="flex gap-2">
+                  {editingEntry !== entry.id && (
+                    <>
+                      <Button
+                        onClick={() => startEditing(entry)}
+                        size="sm"
+                        variant="outline"
+                      >
+                        <Edit3 className="h-3 w-3" />
+                      </Button>
+                      <Button
+                        onClick={() => deleteEntry(entry.id)}
+                        size="sm"
+                        variant="outline"
+                        className="text-red-400 hover:text-red-300"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </>
+                  )}
+                </div>
               </div>
 
               {editingEntry === entry.id ? (
-                // Editing form (unchanged, handled by startEditing)
-                <></> 
+                <div className="space-y-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-xs text-slate-400">Clock In</label>
+                      <input
+                        type="time"
+                        value={editForm.clockIn}
+                        onChange={(e) => setEditForm({ ...editForm, clockIn: e.target.value })}
+                        className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-slate-400">Clock Out</label>
+                      <input
+                        type="time"
+                        value={editForm.clockOut}
+                        onChange={(e) => setEditForm({ ...editForm, clockOut: e.target.value })}
+                        className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-slate-400">Truck Number</label>
+                      <input
+                        type="text"
+                        value={editForm.truckNumber}
+                        onChange={(e) => setEditForm({ ...editForm, truckNumber: e.target.value })}
+                        className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs text-slate-400">Job Address</label>
+                      <input
+                        type="text"
+                        value={editForm.jobAddress}
+                        onChange={(e) => setEditForm({ ...editForm, jobAddress: e.target.value })}
+                        className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded text-white"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button onClick={() => saveEntry(entry.id)} size="sm" className="bg-green-600 hover:bg-green-700">
+                      <Save className="mr-1 h-3 w-3" /> Save
+                    </Button>
+                    <Button onClick={cancelEditing} size="sm" variant="outline">
+                      <X className="mr-1 h-3 w-3" /> Cancel
+                    </Button>
+                  </div>
+                </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                  {/* FIX 7: Display all times in the Central timezone */}
                   <div className="text-slate-300">
                     <div className="text-blue-400">Clock In:</div>
-                    {new Date(entry.clock_in_time).toLocaleTimeString('en-US', { timeZone: TIME_ZONE, hour: '2-digit', minute: '2-digit' })}
+                    {new Date(entry.clock_in_time).toLocaleTimeString('en-US', { 
+                      timeZone: TIME_ZONE, 
+                      hour: '2-digit', 
+                      minute: '2-digit' 
+                    })}
                   </div>
                   <div className="text-slate-300">
                     <div className="text-blue-400">Clock Out:</div>
                     {entry.clock_out_time ? 
-                      new Date(entry.clock_out_time).toLocaleTimeString('en-US', { timeZone: TIME_ZONE, hour: '2-digit', minute: '2-digit' }) : 
+                      new Date(entry.clock_out_time).toLocaleTimeString('en-US', { 
+                        timeZone: TIME_ZONE, 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                      }) : 
                       <span className="text-yellow-400">Not set</span>
                     }
                   </div>
-                  {/* ... hours worked */}
+                  <div className="text-slate-300">
+                    <div className="text-blue-400">Hours:</div>
+                    {entry.hours_worked ? entry.hours_worked.toFixed(2) : "N/A"}
+                  </div>
                 </div>
               )}
             </div>
@@ -314,6 +502,3 @@ const EditHours = ({ driver }: EditHoursProps) => {
 };
 
 export default EditHours;
-
-// NOTE: Some JSX parts were omitted for brevity as they did not require functional changes.
-// The core logic in the script portion and the time display in the JSX have been fully corrected.

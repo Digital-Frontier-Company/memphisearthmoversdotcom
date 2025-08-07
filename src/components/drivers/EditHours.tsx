@@ -8,7 +8,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { getCentralWeekDates } from "@/utils/timezoneUtils";
+import { getCentralWeekDates, centralToUtcISO } from "@/utils/timezoneUtils";
 
 const TIME_ZONE = 'America/Chicago';
 
@@ -128,26 +128,10 @@ const EditHours = ({ driver }: EditHoursProps) => {
     setEditForm({ clockIn: "", clockOut: "", truckNumber: "", jobAddress: "" });
   };
 
-  // Convert Central Time input to UTC for storage
-  const convertCentralTimeToUTC = (dateStr: string, timeStr: string): string | null => {
-    if (!dateStr || !timeStr) return null;
-    
-    // Create a date string in Central Time
-    const centralDateTimeStr = `${dateStr} ${timeStr}`;
-    
-    // Parse it as Central Time and convert to UTC
-    const date = new Date(centralDateTimeStr);
-    
-    // Adjust for Central Time offset
-    const centralOffset = new Date().toLocaleString('en-US', {
-      timeZone: TIME_ZONE,
-      timeZoneName: 'short'
-    }).includes('CDT') ? 5 : 6; // CDT is UTC-5, CST is UTC-6
-    
-    date.setHours(date.getHours() + centralOffset);
-    
-    return date.toISOString();
-  };
+// Convert Central Time input to UTC for storage
+const convertCentralTimeToUTC = (dateStr: string, timeStr: string): string | null => {
+  return centralToUtcISO(dateStr, timeStr);
+};
 
   const calculateHours = (startISO: string, endISO: string): number => {
     const start = new Date(startISO);
@@ -202,7 +186,6 @@ const EditHours = ({ driver }: EditHoursProps) => {
       toast.error("Please fill in clock in time and truck number");
       return;
     }
-
     const entryDateStr = format(selectedDate, 'yyyy-MM-dd');
     const clockInUTC = convertCentralTimeToUTC(entryDateStr, editForm.clockIn);
     const clockOutUTC = editForm.clockOut ? convertCentralTimeToUTC(entryDateStr, editForm.clockOut) : null;

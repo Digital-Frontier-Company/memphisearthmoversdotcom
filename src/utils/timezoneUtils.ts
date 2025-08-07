@@ -1,4 +1,5 @@
 import { formatInTimeZone } from 'date-fns-tz/formatInTimeZone';
+import { fromZonedTime } from 'date-fns-tz/fromZonedTime';
 
 export const CENTRAL_TZ = 'America/Chicago';
 
@@ -32,4 +33,11 @@ export function centralDateString(date?: Date) {
 export function formatCentralDate(input: Date | string, pattern = 'MMM d, yyyy') {
   const date = typeof input === 'string' ? new Date(input) : input;
   return formatInTimeZone(date, CENTRAL_TZ, pattern);
+}
+
+// Convert a Central Time date + time to ISO string in UTC
+export function centralToUtcISO(dateStr: string, timeStr: string): string | null {
+  if (!dateStr || !timeStr) return null;
+  const zoned = fromZonedTime(`${dateStr}T${timeStr}`, CENTRAL_TZ);
+  return zoned.toISOString();
 }

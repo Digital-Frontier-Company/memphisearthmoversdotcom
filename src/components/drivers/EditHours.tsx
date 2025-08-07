@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Edit3, Save, X, Calendar, Clock, Plus, Trash2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -383,11 +384,12 @@ const EditHours = ({ driver }: EditHoursProps) => {
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <div className="text-white font-semibold">
-                    {new Date(entry.date + 'T12:00:00').toLocaleDateString('en-US', { 
+                    {/* Display date directly from database - it's now correct thanks to our trigger */}
+                    {new Date(entry.date + 'T00:00:00').toLocaleDateString('en-US', { 
                       weekday: 'long', 
                       month: 'long', 
                       day: 'numeric',
-                      timeZone: 'UTC'
+                      timeZone: 'UTC' // Use UTC since we're adding T00:00:00
                     })}
                   </div>
                   <div className="text-slate-400 text-sm">

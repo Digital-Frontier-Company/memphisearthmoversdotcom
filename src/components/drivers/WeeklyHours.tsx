@@ -1,18 +1,23 @@
+
 import { useState, useEffect } from "react";
-import { Calendar, Clock } from "lucide-react";
+import { Clock, Calendar } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { format } from "date-fns"; // Import the date-fns format function
 
-// --- START OF FIXES ---
-
-// FIX 1: Define a constant for the target timezone.
 const TIME_ZONE = 'America/Chicago';
-
-// --- END OF FIXES ---
 
 interface Driver {
   id: string;
   name: string;
+}
+
+interface TimeEntry {
+  id: string;
+  date: string;
+  clock_in_time: string;
+  clock_out_time: string | null;
+  hours_worked: number | null;
+  truck_number: string;
+  job_address: string | null;
 }
 
 interface WeeklyHoursProps {
@@ -20,76 +25,138 @@ interface WeeklyHoursProps {
 }
 
 const WeeklyHours = ({ driver }: WeeklyHoursProps) => {
-  const [weeklyHours, setWeeklyHours] = useState(0);
+  const [timeEntries, setTimeEntries] = useState<TimeEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchWeeklyHours();
+    fetchWeekEntries();
   }, [driver.id]);
 
-  // FIX 2: Calculate the week's start and end based on the current date in Central Time.
   const getWeekDates = () => {
     const now = new Date();
-    const centralNow = new Date(now.toLocaleString('en-US', { timeZone: TIME_ZONE }));
-    const dayOfWeek = centralNow.getDay();
-    const diff = centralNow.getDate() - dayOfWeek;
-
-    const sunday = new Date(centralNow.setDate(diff));
-    const saturday = new Date(new Date(sunday).setDate(sunday.getDate() + 6));
+    const centralDateStr = now.toLocaleDateString('en-CA', { timeZone: TIME_ZONE });
+    const centralDate = new Date(centralDateStr + 'T12:00:00');
+    
+    const dayOfWeek = centralDate.getDay();
+    const diff = centralDate.getDate() - dayOfWeek;
+    
+    const sunday = new Date(centralDate);
+    sunday.setDate(diff);
+    
+    const saturday = new Date(sunday);
+    saturday.setDate(sunday.getDate() + 6);
     
     return {
-      start: format(sunday, 'yyyy-MM-dd'),
-      end: format(saturday, 'yyyy-MM-dd')
+      start: sunday.toISOString().split('T')[0],
+      end: saturday.toISOString().split('T')[0]
     };
   };
 
-  const fetchWeeklyHours = async () => {
+  const fetchWeekEntries = async () => {
     setLoading(true);
     const { start, end } = getWeekDates();
     
     const { data, error } = await supabase
       .from("time_entries")
-      .select("hours_worked")
+      .select("*")
       .eq("driver_id", driver.id)
       .gte("date", start)
       .lte("date", end)
-      .not("hours_worked", "is", null);
+      .order("date", { ascending: false })
+      .order("clock_in_time", { ascending: false });
 
     if (error) {
-      console.error("Failed to fetch weekly hours:", error);
+      console.error("Failed to fetch time entries:", error);
       setLoading(false);
       return;
     }
 
-    const total = data?.reduce((sum, entry) => sum + (entry.hours_worked || 0), 0) || 0;
-
-    setWeeklyHours(total);
+    setTimeEntries(data || []);
     setLoading(false);
   };
 
+  const totalHours = timeEntries.reduce((sum, entry) => sum + (entry.hours_worked || 0), 0);
+
   if (loading) {
     return (
-      <div className="bg-slate-800 p-6 rounded-lg text-center">
-        <div className="text-slate-400">Loading weekly hours...</div>
-      </div>
+      <div className="text-center text-white/90 p-8">Loading time entries...</div>
     );
   }
 
   return (
     <div className="bg-slate-800 p-6 rounded-lg border border-slate-700">
-      <div className="text-center mb-6">
-        <Calendar className="mx-auto mb-4 text-blue-400" size={40} />
-        <h2 className="text-xl font-bold text-white mb-1">Weekly Hours Summary</h2>
-        <p className="text-slate-400">Your total hours for the current week.</p>
+      <div className="text-center mb-8">
+        <Clock className="mx-auto mb-4 text-blue-400" size={40} />
+        <h2 className="text-xl font-bold text-white mb-2">Weekly Hours</h2>
+        <p className="text-slate-400">Your time entries for this week</p>
       </div>
 
-      <div className="bg-blue-600/20 rounded-lg p-6 text-center border border-blue-500/30">
-        <Clock className="mx-auto mb-2 text-blue-400" size={32} />
-        <div className="text-4xl font-bold text-white mb-1">
-          {weeklyHours.toFixed(2)}
+      <div className="bg-blue-600/20 rounded-lg p-6 mb-6 border border-blue-500/30">
+        <div className="text-center">
+          <div className="text-3xl font-bold text-blue-400 mb-2">
+            {totalHours.toFixed(2)} hours
+          </div>
+          <div className="text-slate-300">Total Hours This Week</div>
         </div>
-        <div className="text-slate-300">Total Hours</div>
       </div>
+
+      {timeEntries.length === 0 ? (
+        <div className="text-center text-slate-400 py-8">
+          <Calendar className="mx-auto mb-4 text-slate-600" size={48} />
+          <p>No time entries found for this week.</p>
+          <p className="text-sm mt-2">Your entries will appear here after clocking in.</p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {timeEntries.map((entry) => (
+            <div key={entry.id} className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <div className="text-white font-semibold">
+                    {/* Display date directly from database - it's now correct thanks to our trigger */}
+                    {new Date(entry.date + 'T00:00:00').toLocaleDateString('en-US', { 
+                      weekday: 'long', 
+                      month: 'long', 
+                      day: 'numeric',
+                      timeZone: 'UTC' // Use UTC since we're adding T00:00:00
+                    })}
+                  </div>
+                  <div className="text-slate-400 text-sm">
+                    Truck: {entry.truck_number}
+                    {entry.job_address && ` • ${entry.job_address}`}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div className="text-slate-300">
+                  <div className="text-blue-400">Clock In:</div>
+                  {new Date(entry.clock_in_time).toLocaleTimeString('en-US', { 
+                    timeZone: TIME_ZONE, 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                  })}
+                </div>
+                <div className="text-slate-300">
+                  <div className="text-blue-400">Clock Out:</div>
+                  {entry.clock_out_time ? 
+                    new Date(entry.clock_out_time).toLocaleTimeString('en-US', { 
+                      timeZone: TIME_ZONE, 
+                      hour: '2-digit', 
+                      minute: '2-digit' 
+                    }) : 
+                    <span className="text-yellow-400">Not set</span>
+                  }
+                </div>
+                <div className="text-slate-300">
+                  <div className="text-blue-400">Hours:</div>
+                  {entry.hours_worked ? entry.hours_worked.toFixed(2) : "N/A"}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -122,23 +122,19 @@ const HourlyRentalStructuredData = () => {
 
   return (
     <>
-      <LocalBusinessSchema 
-        page="hourly-rental"
-        pageSpecificDesc="Hourly dump truck rental in Memphis, TN with licensed crews, flexible scheduling, and affordable rates. Book by the hour and save on construction hauling costs." 
-        url="https://www.memphisearthmovers.com/hourly-dump-truck-rental"
-      />
+      {/* LocalBusinessSchema only provides structured data, not meta tags to avoid duplicates */}
       <Helmet>
         <title>Hourly Dump Truck Rental Memphis | From $125/hr | CDL Drivers Included</title>
-        <meta name="description" content="Need a licensed dump truck crew within hours? Memphis Earth Movers offers flexible hourly dump truck rentals in Memphis, TN with CDL-certified drivers, starting at $125/hr. Serving Shelby, Fayette, Tipton and DeSoto Counties." />
+        <meta name="description" content="Need licensed dump truck crews within hours? Memphis Earth Movers offers flexible hourly rentals with CDL drivers, starting at $125/hr." />
         <meta name="keywords" content="dump truck rental Memphis, hourly dump truck, Memphis dump trucks, CDL drivers, Shelby County hauling, construction material transport, tri-axle dump trucks, material delivery Memphis, Memphis Earth Movers, affordable dump trucks, Memphis contractors" />
         <meta property="og:title" content="Memphis Hourly Dump Truck Rental - CDL Drivers Included" />
-        <meta property="og:description" content="Need a licensed dump truck crew within hours? Memphis Earth Movers offers flexible hourly dump truck rentals with CDL-certified drivers, starting at $125/hr." />
+        <meta property="og:description" content="Need licensed dump truck crews within hours? Memphis Earth Movers offers flexible hourly rentals with CDL drivers, starting at $125/hr." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.memphisearthmovers.com/hourly-dump-truck-rental" />
         <meta property="og:image" content="https://www.memphisearthmovers.com/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Memphis Hourly Dump Truck Rental - CDL Drivers Included" />
-        <meta name="twitter:description" content="Need a licensed dump truck crew within hours? Memphis Earth Movers offers flexible hourly dump truck rentals in Memphis, TN with CDL-certified drivers." />
+        <meta name="twitter:description" content="Need licensed dump truck crews within hours? Memphis Earth Movers offers flexible hourly rentals with CDL drivers." />
         <meta name="twitter:image" content="https://www.memphisearthmovers.com/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}

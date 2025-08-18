@@ -197,7 +197,7 @@ const GravelCalculator = () => {
     <>
       <Helmet>
         <title>Memphis Gravel Calculator | Free Material Estimator</title>
-        <meta name="description" content="Calculate Memphis gravel needs with our free estimator. Plan your project with precise material quantities and request delivery from Memphis dump trucks for rent. Save time and money!" />
+        <meta name="description" content="Calculate Memphis gravel needs with our free estimator. Plan your project with precise material quantities and request delivery. Save time and money!" />
         <meta name="keywords" content="Memphis gravel calculator, Memphis material calculator, Memphis dump truck delivery, gravel estimator Memphis, Memphis material delivery" />
         <link rel="canonical" href="https://memphis-earthmovers.com/gravel-calculator" />
         <script type="application/ld+json">

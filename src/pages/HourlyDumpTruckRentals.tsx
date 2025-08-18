@@ -22,12 +22,7 @@ import LocalBusinessSchema from "@/components/shared/LocalBusinessSchema";
 const HourlyDumpTruckRentals = () => {
   return (
     <div className="min-h-screen flex flex-col morphing-grid-bg">
-      <Helmet>
-        <title>Hourly Dump Truck Rental Memphis - Starting at $125/Hour | Memphis Earth Movers</title>
-        <meta name="description" content="Save 43% on hourly dump truck rentals in Memphis. $125/hour with same-day availability for contractors. CDL drivers, insurance included. Call (901) 461-1011 for instant quotes." />
-        <meta name="keywords" content="hourly dump truck rental Memphis, construction equipment rental Memphis, dump truck rental near me, same day dump truck rental Memphis contractors, Memphis dump truck rental with driver" />
-        <link rel="canonical" href="https://www.memphisearthmovers.com/hourly-dump-truck-rental-memphis" />
-      </Helmet>
+      {/* SEO meta tags are handled by HourlyRentalStructuredData component */}
       
       <HourlyRentalStructuredData />
       <LocalBusinessSchema 

@@ -7,7 +7,7 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "12.2.3 (519615d)"
@@ -567,6 +567,15 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: undefined
       }
+      authenticate_driver: {
+        Args: { driver_pin: string }
+        Returns: {
+          driver_id: string
+          driver_name: string
+          driver_role: string
+          is_active: boolean
+        }[]
+      }
       calculate_weekly_earnings: {
         Args:
           | Record<PropertyKey, never>
@@ -580,20 +589,20 @@ export type Database = {
       get_admin_driver_overview: {
         Args: Record<PropertyKey, never>
         Returns: {
+          active: boolean
+          all_time_earnings: number
+          all_time_hours: number
+          created_at: string
+          current_week_earnings: number
+          current_week_hours: number
+          email: string
+          hourly_rate: number
           id: string
+          last_activity: string
           name: string
           phone: string
-          email: string
           pin: string
           truck_assigned: string
-          hourly_rate: number
-          active: boolean
-          created_at: string
-          current_week_hours: number
-          current_week_earnings: number
-          all_time_hours: number
-          all_time_earnings: number
-          last_activity: string
         }[]
       }
       hash_pin: {
@@ -606,14 +615,14 @@ export type Database = {
       }
       log_activity: {
         Args: {
+          p_action: string
           p_actor_id: string
           p_actor_name: string
-          p_action: string
-          p_target_type: string
-          p_target_id?: string
-          p_target_name?: string
           p_description?: string
           p_metadata?: Json
+          p_target_id?: string
+          p_target_name?: string
+          p_target_type: string
         }
         Returns: undefined
       }
@@ -622,7 +631,7 @@ export type Database = {
         Returns: undefined
       }
       verify_pin: {
-        Args: { pin_text: string; pin_hash: string }
+        Args: { pin_hash: string; pin_text: string }
         Returns: boolean
       }
     }

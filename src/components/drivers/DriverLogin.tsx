@@ -30,30 +30,35 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
   }, []);
 
   const fetchDrivers = async () => {
-    console.log("Fetching drivers and admins...");
+    console.log("Fetching available drivers...");
     setLoadingDrivers(true);
     
     try {
-      const { data, error } = await supabase
-        .from("drivers")
-        .select("id, name, pin, role")
-        .eq("active", true)
-        .order("name");
-
-      console.log("Drivers and admins data:", data);
-      console.log("Drivers and admins error:", error);
+      // Use the new secure authentication function to get driver list
+      // This will only work for admins or return minimal data
+      const { data, error } = await supabase.rpc('get_admin_driver_overview');
 
       if (error) {
-        console.error("Error fetching drivers and admins:", error);
-        toast.error("Failed to load users: " + error.message);
+        console.error("Error fetching drivers:", error);
+        // Fallback: just show a simple PIN entry without driver selection
+        setDrivers([]);
         return;
       }
 
-      setDrivers(data || []);
-      console.log("Set drivers and admins:", data?.length || 0, "users");
+      // Map the response to our driver interface
+      const mappedDrivers = (data || []).map((d: any) => ({
+        id: d.id,
+        name: d.name,
+        pin: '', // Don't expose PIN
+        role: 'driver' // Simplified role
+      }));
+
+      setDrivers(mappedDrivers);
+      console.log("Set drivers:", mappedDrivers.length, "users");
     } catch (err) {
       console.error("Unexpected error:", err);
-      toast.error("Unexpected error loading users");
+      // Fallback to PIN-only authentication
+      setDrivers([]);
     } finally {
       setLoadingDrivers(false);
     }
@@ -61,32 +66,61 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedDriver || !pin) {
-      toast.error("Please select a user and enter PIN");
+    if (!pin) {
+      toast.error("Please enter PIN");
+      return;
+    }
+
+    // If no driver selected but we have drivers available, require selection
+    if (drivers.length > 0 && !selectedDriver) {
+      toast.error("Please select a user");
       return;
     }
 
     setLoading(true);
     
     try {
-      // Use secure authentication edge function
-      const { data: response, error } = await supabase.functions.invoke('secure-driver-auth', {
-        body: {
-          driverId: selectedDriver,
-          pin: pin
-        }
+      // Use the secure database function for authentication
+      const { data, error } = await supabase.rpc('authenticate_driver', {
+        driver_pin: pin
       });
 
-      if (error || !response?.success) {
-        const errorMessage = response?.error || error?.message || "Authentication failed";
-        toast.error(errorMessage);
+      if (error) {
+        console.error("Authentication error:", error);
+        toast.error("Authentication failed. Please check your PIN.");
         setPin("");
         setLoading(false);
         return;
       }
 
-      toast.success(response.message);
-      onLogin(response.driver);
+      if (!data || data.length === 0) {
+        toast.error("Invalid PIN. Please try again.");
+        setPin("");
+        setLoading(false);
+        return;
+      }
+
+      const authenticatedDriver = data[0];
+      
+      // If we have a driver selection list, verify the selection matches
+      if (drivers.length > 0 && selectedDriver && authenticatedDriver.driver_id !== selectedDriver) {
+        toast.error("PIN does not match selected driver.");
+        setPin("");
+        setLoading(false);
+        return;
+      }
+
+      toast.success(`Welcome back, ${authenticatedDriver.driver_name}!`);
+      
+      // Convert to expected format
+      const driverData = {
+        id: authenticatedDriver.driver_id,
+        name: authenticatedDriver.driver_name,
+        pin: '', // Don't expose PIN
+        role: authenticatedDriver.driver_role
+      };
+      
+      onLogin(driverData);
     } catch (err) {
       console.error("Authentication error:", err);
       toast.error("Authentication service error. Please try again.");
@@ -201,7 +235,7 @@ const DriverLogin = ({ onLogin }: DriverLoginProps) => {
           <div className="pt-1">
             <button
               type="submit"
-              disabled={loading || loadingDrivers || !selectedDriver || pin.length !== 4}
+              disabled={loading || loadingDrivers || (drivers.length > 0 && !selectedDriver) || pin.length !== 4}
               className="w-full bg-mem-blue text-white font-bold py-4 px-4 rounded-lg hover:bg-mem-darkBlue transition-all duration-300 text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-mem-blue shadow-lg hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99] min-h-[56px]"
             >
               {loading ? (

@@ -52,6 +52,10 @@ const ServicesList = () => {
                   alt="Memphis hourly dump truck rental with CDL drivers" 
                   className="h-12 w-auto rounded" 
                   itemProp="image"
+                  width="48"
+                  height="32"
+                  sizes="48px"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -92,6 +96,10 @@ const ServicesList = () => {
                     className="object-cover w-full h-full" 
                     src="/lovable-uploads/75669d2c-878b-455e-8ca3-1b08055767d9.jpg" 
                     itemProp="image"
+                    width="320"
+                    height="200"
+                    sizes="(max-width: 768px) 100vw, 320px"
+                    loading="lazy"
                   />
                 </AspectRatio>
               </div>
@@ -133,6 +141,10 @@ const ServicesList = () => {
                     alt="Memphis dump truck delivering construction materials" 
                     className="object-cover w-full h-full" 
                     itemProp="image"
+                    width="320"
+                    height="200"
+                    sizes="(max-width: 768px) 100vw, 320px"
+                    loading="lazy"
                   />
                 </AspectRatio>
               </div>
@@ -174,6 +186,10 @@ const ServicesList = () => {
                     alt="Completed Memphis asphalt millings driveway" 
                     className="object-cover w-full h-full" 
                     itemProp="image"
+                    width="320"
+                    height="200"
+                    sizes="(max-width: 768px) 100vw, 320px"
+                    loading="lazy"
                   />
                 </AspectRatio>
               </div>

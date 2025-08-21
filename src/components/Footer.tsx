@@ -17,6 +17,10 @@ const Footer = () => {
               alt="Memphis Earth Movers Logo" 
               className="h-16 md:h-20 w-auto"
               itemProp="logo"
+              width="120"
+              height="80"
+              sizes="120px"
+              loading="lazy"
             />
           </div>
           
@@ -94,6 +98,10 @@ const Footer = () => {
                   src="/lovable-uploads/cae5df3f-f8b9-4e67-b2cc-7fffa955342d.png" 
                   alt="Digital Frontier" 
                   className="h-6 w-auto"
+                  width="34"
+                  height="24"
+                  sizes="34px"
+                  loading="lazy"
                 />
               </a>
             </div>

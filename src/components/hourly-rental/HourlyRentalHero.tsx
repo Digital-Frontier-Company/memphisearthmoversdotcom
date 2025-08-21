@@ -40,7 +40,11 @@ const HourlyRentalHero = () => {
             <img 
               src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
               alt="Memphis dump truck rentals - tri-axle dump trucks for hourly rental with CDL drivers in Shelby County" 
-              className="w-full object-cover h-auto lg:h-[450px]" 
+              className="w-full object-cover h-auto lg:h-[450px]"
+              width="600"
+              height="450"
+              sizes="(max-width: 1024px) 100vw, 600px"
+              loading="eager"
             />
           </div>
         </div>

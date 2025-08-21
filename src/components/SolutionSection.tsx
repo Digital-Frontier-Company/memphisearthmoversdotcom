@@ -17,17 +17,17 @@ const SolutionSection = () => {
           <div className="grid grid-cols-1 gap-8">
             <div className="rounded-lg overflow-hidden shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/20">
               <AspectRatio ratio={16 / 9}>
-                <img alt="Excavator loading a dump truck with dirt" src="/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg" className="w-full h-full object-cover" itemProp="image" />
+                <img alt="Excavator loading a dump truck with dirt" src="/lovable-uploads/84d27088-1fa3-4738-8bef-587ce32ecb13.jpg" className="w-full h-full object-cover" itemProp="image" width="582" height="776" sizes="(max-width: 768px) 100vw, 582px" loading="lazy" />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/20">
               <AspectRatio ratio={16 / 9}>
-                <img src="/lovable-uploads/cd9550e2-89af-4418-8ee9-79d50c4b551c.png" alt="Asphalt paving operation with dump trucks" className="w-full h-full object-cover" />
+                <img src="/lovable-uploads/cd9550e2-89af-4418-8ee9-79d50c4b551c.png" alt="Asphalt paving operation with dump trucks" className="w-full h-full object-cover" width="582" height="437" sizes="(max-width: 768px) 100vw, 582px" loading="lazy" />
               </AspectRatio>
             </div>
             <div className="rounded-lg overflow-hidden shadow-[0_0_15px_rgba(77,210,255,0.3)] border border-mem-babyBlue/20">
               <AspectRatio ratio={16 / 9}>
-                <img src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" alt="Memphis Earth Movers dump trucks" className="w-full h-full object-contain" />
+                <img src="https://images.squarespace-cdn.com/content/v1/673b6d977cd83470920f6a98/714e3097-3cbc-4041-adba-50543707e261/IMG_0748.JPG?format=2500w" alt="Memphis Earth Movers dump trucks" className="w-full h-full object-contain" width="246" height="327" sizes="(max-width: 768px) 100vw, 246px" loading="lazy" />
               </AspectRatio>
             </div>
           </div>

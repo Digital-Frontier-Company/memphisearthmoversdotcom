@@ -10,7 +10,7 @@ const HeroSection = () => {
       
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-10">
-        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-40 mix-blend-overlay" width="1920" height="1080" fetchPriority="high" />
+        <img src="/lovable-uploads/46c411d3-46df-46ce-b41b-c4e93a979a22.png" alt="Memphis Earth Movers fleet of dump trucks serving Memphis and DeSoto County" className="w-full h-full object-cover opacity-40 mix-blend-overlay" width="1920" height="1080" fetchPriority="high" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-br from-mem-blue/20 via-mem-babyBlue/30 to-mem-darkNavy/40"></div>
         <div className="absolute inset-0 bg-black/25"></div>
       </div>

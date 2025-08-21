@@ -159,6 +159,9 @@ const DumpTruckHauling = () => {
                   src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png"
                   alt="Kenworth T880 dump truck loaded with construction materials ready for hauling in Memphis"
                   className="w-full h-auto rounded-lg shadow-lg"
+                  width="600"
+                  height="400"
+                  sizes="(max-width: 768px) 100vw, 600px"
                   loading="eager"
                 />
               </div>

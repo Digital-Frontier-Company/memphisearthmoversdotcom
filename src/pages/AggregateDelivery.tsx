@@ -158,6 +158,9 @@ const AggregateDelivery = () => {
                   src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png"
                   alt="Dump truck loaded with construction aggregates ready for delivery in Memphis"
                   className="w-full h-auto rounded-lg shadow-lg"
+                  width="600"
+                  height="600"
+                  sizes="(max-width: 768px) 100vw, 600px"
                   loading="eager"
                 />
               </div>

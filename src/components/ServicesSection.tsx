@@ -40,7 +40,11 @@ const ServicesSection = () => {
                   alt="Memphis tri-axle dump truck ready for rental and hauling at a construction site" 
                   src="/lovable-uploads/5b59b1da-db52-4b8c-812b-e272aeac8493.png" 
                   className="w-full h-full transition-transform group-hover:scale-105 object-contain" 
-                  itemProp="image" 
+                  itemProp="image"
+                  width="264"
+                  height="176"
+                  sizes="(max-width: 768px) 100vw, 264px"
+                  loading="lazy"
                 />
               </Link>
             </div>
@@ -72,7 +76,11 @@ const ServicesSection = () => {
                     src="/lovable-uploads/2b84ef25-7937-40d5-9463-edeace1c28a6.png" 
                     alt="Construction materials being loaded into Memphis Earth Movers dump truck for delivery" 
                     className="w-full h-full object-contain transition-transform group-hover:scale-105" 
-                    itemProp="image" 
+                    itemProp="image"
+                    width="305"
+                    height="305"
+                    sizes="(max-width: 768px) 100vw, 305px"
+                    loading="lazy"
                   />
                 </Link>
               </AspectRatio>
@@ -105,7 +113,11 @@ const ServicesSection = () => {
                     alt="Excavator loading asphalt millings into Memphis dump truck for driveway installation" 
                     className="w-full h-full object-cover object-top transition-transform group-hover:scale-105" 
                     src="/lovable-uploads/82428262-43e6-4392-ad27-bed7e991e644.jpg" 
-                    itemProp="image" 
+                    itemProp="image"
+                    width="542"
+                    height="723"
+                    sizes="(max-width: 768px) 100vw, 542px"
+                    loading="lazy"
                   />
                 </Link>
               </AspectRatio>
@@ -138,7 +150,11 @@ const ServicesSection = () => {
                     alt="Landscaping project with topsoil delivery by Memphis Earth Movers dump truck for residential yard" 
                     className="w-full h-full object-contain transition-transform group-hover:scale-105" 
                     src="/lovable-uploads/b4d1af33-2f11-4fbc-9a5f-d4f124c661e4.jpg" 
-                    itemProp="image" 
+                    itemProp="image"
+                    width="271"
+                    height="305"
+                    sizes="(max-width: 768px) 100vw, 271px"
+                    loading="lazy"
                   />
                 </Link>
               </AspectRatio>

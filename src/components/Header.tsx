@@ -26,6 +26,9 @@ const Header = () => {
             src="/lovable-uploads/2815d7b7-489c-42c6-a5f2-45c7e47f6371.png" 
             alt="Memphis Earth Movers Logo" 
             className="h-16 md:h-20"
+            width="104"
+            height="80"
+            sizes="104px"
             onError={(e) => console.log('Logo failed to load:', e)}
             onLoad={() => console.log('Logo loaded successfully')}
           />
